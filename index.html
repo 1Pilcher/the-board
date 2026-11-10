@@ -41,10 +41,9 @@ img{display:block;max-width:100%}
 a{color:inherit}
 ::selection{background:var(--accent);color:#fff}
 
-/* Pinned paper strip with the reading progress bar at its bottom edge.
-   The strip stays for the entire scroll, exactly as on the editions. */
+/* Pinned paper strip at the top of the page.
+   The strip stays for the entire scroll. */
 #topstrip{position:fixed;top:0;left:0;right:0;height:var(--topchrome);background:var(--paper);z-index:300;pointer-events:none}
-#progress{position:fixed;top:calc(var(--topchrome) - 3px);left:0;height:3px;width:0;background:var(--accent);z-index:301}
 
 .page{max-width:1120px;margin:0 auto;padding:24px 22px var(--bottomclear)}
 @media(max-width:700px){.page{padding:16px 18px var(--bottomclear)}}
@@ -259,7 +258,6 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
 </head>
 <body>
 <div id="topstrip" aria-hidden="true"></div>
-<div id="progress" aria-hidden="true"></div>
 
 <div class="page">
 
@@ -273,8 +271,8 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
 
 <nav class="menu" id="menu" data-fade="none" aria-label="Sections">
   <div class="menu-track" id="menuTrack" role="tablist" aria-label="Homepage tabs">
-    <a href="#latest" id="tab-latest" data-tab="latest" role="tab" aria-selected="true" aria-controls="latest" class="active">Latest Edition</a>
-    <a href="#archive" id="tab-archive" data-tab="archive" role="tab" aria-selected="false" aria-controls="archive">All Reports</a>
+    <a href="#latest" id="tab-latest" data-tab="latest" role="tab" aria-selected="true" aria-controls="latest" class="active">Latest</a>
+    <a href="#archive" id="tab-archive" data-tab="archive" role="tab" aria-selected="false" aria-controls="archive">All</a>
     <a href="#purpose" id="tab-purpose" data-tab="purpose" role="tab" aria-selected="false" aria-controls="purpose">Purpose</a>
   </div>
 </nav>
@@ -282,7 +280,7 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
 <div class="headline-block" data-view="latest">
   <p class="kicker">The Board &middot; Front Page</p>
   <h1 class="headline">Every edition. One front door.</h1>
-  <p class="dek">The latest briefing sits up top. Every past edition stays underneath it at its own permanent address, so a new story never buries an old one. Pick a story and click through to the full piece.</p>
+  <p class="dek">The latest edition, first.</p>
   <div class="byline">By Josh Pilcher <span class="dateline">&middot; New editions Tuesday and Friday evenings</span></div>
   <div class="byline-rule"></div>
 </div>
@@ -446,7 +444,7 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
   <div class="sec-head">
     <span class="sk">All Reports &middot; By Release Date</span>
     <h2>Every report, newest first.</h2>
-    <p>Sorted by the day each report was released, newest on top. Every one keeps its own permanent address, so a new report joins the top of this list and never pushes an old one out.</p>
+    <p>The full archive, newest first.</p>
   </div>
 
   <div class="archive-list">
@@ -523,19 +521,6 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
     f.appendChild(d);
   }
 })();
-// Reading progress: the red bar fills left to right under the pinned strip.
-(function(){
-  var bar=document.getElementById('progress');
-  function tick(){
-    var h=document.documentElement;
-    var max=h.scrollHeight-h.clientHeight;
-    var p=max>0?(h.scrollTop||document.body.scrollTop)/max:0;
-    bar.style.width=(Math.max(0,Math.min(1,p))*100)+'%';
-  }
-  document.addEventListener('scroll',tick,{passive:true});
-  window.addEventListener('resize',tick);
-  tick();
-})();
 // Genuine tabs: clicking a tab switches the view. Only the blocks that
 // belong to the active tab are shown; the other views are hidden entirely,
 // not scrolled to. The active tab turns red and centers in the pill, the
@@ -587,8 +572,7 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
     if(!opts.keepHash){
       try{ history.replaceState(null,'','#'+id); }catch(e){}
     }
-    // Page height just changed: refresh the progress bar and the fades.
-    window.dispatchEvent(new Event('scroll'));
+    // Page height just changed: refresh the fades.
     updateFades();
   }
 

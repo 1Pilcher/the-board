@@ -111,7 +111,20 @@ nav.menu[data-fade="both"]::before,nav.menu[data-fade="both"]::after{opacity:1}
    (the block's bottom margin). The rule is the same everywhere:
    54px wide, 2px solid ink, centered. */
 .headline-block{text-align:center;margin:var(--view-top) auto var(--sp-5);max-width:720px}
-.kicker{font-family:var(--sans);font-size:var(--fs-label);font-weight:800;letter-spacing:.28em;line-height:1.5;text-transform:uppercase;color:var(--accent);margin:0 0 var(--sp-2)}
+.kicker{font-family:var(--sans);font-size:var(--fs-label);font-weight:800;letter-spacing:.28em;line-height:1.5;text-transform:uppercase;color:var(--accent);margin:0 0 var(--sp-2);display:grid;grid-template-columns:1fr auto 1fr;align-items:baseline;column-gap:.55em}
+/* letter-spacing (.28em) also lands after the final D of THE BOARD,
+   which would make the gap left of the dot .28em wider than the gap
+   right of it. The negative right margin cancels exactly that trailing
+   tracking, so the visible gap is the .55em column-gap on both sides. */
+.kicker .k-left{justify-self:end;text-align:right;white-space:nowrap;margin-right:-.28em}
+/* The dot is a drawn circle, not a type glyph: a middot glyph sits
+   off-center in its advance (measured 4px of bearing on the left,
+   7px on the right), so no text spacing can make its two ink gaps
+   equal. As a circle, its box is its ink: the gap on each side is
+   exactly the .55em column-gap. Raised .26em off the baseline so
+   its center lands on the cap center of the letters. */
+.kicker .k-dot{justify-self:center;width:.15em;height:.15em;border-radius:50%;background:var(--accent);transform:translateY(-.26em)}
+.kicker .k-right{justify-self:start;text-align:left;white-space:nowrap}
 .headline{font-family:var(--display);font-weight:900;font-size:var(--fs-heading);line-height:var(--lh-heading);text-wrap:balance;margin:0}
 .dek{font-style:italic;font-size:var(--fs-dek);line-height:var(--lh-dek);color:var(--ink-soft);max-width:620px;margin:0 auto}
 .byline{font-family:var(--sans);font-size:var(--fs-label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin:var(--sp-3) 0 0}
@@ -293,7 +306,7 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
 </nav>
 
 <div class="headline-block" data-view="latest">
-  <p class="kicker">THE BOARD &middot; LATEST</p>
+  <p class="kicker"><span class="k-left">THE BOARD</span><span class="k-dot" aria-hidden="true"></span><span class="k-right">LATEST</span></p>
   <h1 class="headline">The latest<br />report.</h1>
   <div class="byline">By Josh Pilcher <span class="dateline">&middot; New reports Tuesday and Friday evenings</span></div>
   <div class="byline-rule"></div>
@@ -453,7 +466,7 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
 <!-- ARCHIVE -->
 <section id="archive" data-view="archive" role="tabpanel" aria-labelledby="tab-archive" hidden>
   <div class="headline-block">
-    <p class="kicker">THE BOARD &middot; ALL</p>
+    <p class="kicker"><span class="k-left">THE BOARD</span><span class="k-dot" aria-hidden="true"></span><span class="k-right">ALL</span></p>
     <h2 class="headline">Every report, newest first.</h2>
     <div class="byline">By Josh Pilcher <span class="dateline">&middot; New reports Tuesday and Friday evenings</span></div>
     <div class="byline-rule"></div>
@@ -479,7 +492,7 @@ footer .ftag{font-family:"Cormorant Garamond",var(--display);font-style:italic;f
 <!-- PURPOSE -->
 <section id="purpose" data-view="purpose" role="tabpanel" aria-labelledby="tab-purpose" hidden>
   <div class="headline-block">
-    <p class="kicker">THE BOARD &middot; PURPOSE</p>
+    <p class="kicker"><span class="k-left">THE BOARD</span><span class="k-dot" aria-hidden="true"></span><span class="k-right">PURPOSE</span></p>
     <h2 class="headline">Why The Board exists.</h2>
     <div class="byline">By Josh Pilcher <span class="dateline">&middot; New reports Tuesday and Friday evenings</span></div>
     <div class="byline-rule"></div>

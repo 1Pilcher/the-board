@@ -127,7 +127,7 @@ img{max-width:100%}
 .double-rule{border-top:3px solid var(--accent);position:relative;margin-top:4px}
 .double-rule::after{content:"";display:block;border-top:1px solid var(--accent);margin-top:3px}
 .edition-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:var(--sp-1) 2px;border-bottom:1px solid var(--ink);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
-.edition-line .c{text-align:center;flex:1}
+.edition-line>span:first-child{flex:1 1 0;min-width:0;text-align:left}.edition-line .c{text-align:center;flex:0 0 auto}.edition-line>span:last-child{flex:1 1 0;min-width:0;text-align:right}
 
 /* ---------- Pill menu: minimal chrome ---------- */
 /* Persistence, exactly as the Mispriced Countries report: there
@@ -682,7 +682,7 @@ html.js .watch-list li.reveal.in{transform:none}
   .page{padding:var(--sp-2) max(18px,env(safe-area-inset-right)) 0 max(18px,env(safe-area-inset-left))}
   .masthead .topline .side{min-width:0}
   .masthead .topline .mid{display:none}
-  .edition-line{flex-direction:column;align-items:center;gap:3px;text-align:center}
+  .edition-line{flex-direction:column;align-items:center;gap:3px;text-align:center}.edition-line>span:first-child,.edition-line .c,.edition-line>span:last-child{flex:none;text-align:center}
   .headline-block{margin-top:var(--sp-5)}
   p.lede::first-letter{font-size:3.9em}
   figure.photo{margin-left:-18px;margin-right:-18px}
@@ -747,7 +747,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <div class="page">
 <div class="home-bar"><a class="home-link" href="https://1pilcher.github.io/the-board/" aria-label="Back to The Board homepage"><span class="arr" aria-hidden="true">&larr;</span> The Board &middot; Home</a></div>
 <header class="masthead">
-<div class="topline"><span class="side">Tuesday</span><span class="side right">Morning Report</span></div>
+<div class="topline"><span class="side">Houston</span><span class="side right">Morning Report</span></div>
 <div class="nameplate">THE BOARD</div>
 <div class="tagline">What's actually going on.</div>
 <div class="double-rule"></div>
@@ -844,14 +844,14 @@ html.js .watch-list li.reveal.in{transform:none}
 <circle cx="448" cy="323" r="5.5" fill="#b03a2e"/>
 <circle cx="855" cy="246" r="5.5" fill="#141310"/>
 <text x="104" y="62" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="27" fill="#141310">$201.91</text>
-<text x="104" y="112" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">PEAK &#183; MAR 8, 2021</text>
+<text x="245" y="62" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">PEAK &#183; MAR 8, 2021</text>
 <text x="173" y="112" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">$178.61</text>
-<text x="195" y="190" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">$162.11</text>
-<text x="268" y="290" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">$86.75 &#183; NOV 2022</text>
+<text x="205" y="148" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">$162.11</text>
+<text x="345" y="290" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">$86.75 &#183; NOV 2022</text>
 <text x="448" y="356" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">$79.32</text>
 <text x="448" y="378" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">TROUGH &#183; OCT 4, 2023</text>
 <text x="855" y="222" text-anchor="end" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="27" fill="#141310">$119.12</text>
-<text x="855" y="272" text-anchor="end" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">CLOSE &#183; NOV 9, 2026</text>
+<text x="855" y="302" text-anchor="end" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">CLOSE &#183; NOV 9, 2026</text>
 <text x="70" y="392" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="13" fill="#6f6a61">2021</text>
 <text x="328" y="392" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="13" fill="#6f6a61">2022</text>
 <text x="470" y="392" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="13" fill="#6f6a61">2023</text>
@@ -915,11 +915,11 @@ html.js .watch-list li.reveal.in{transform:none}
 </header>
 
 <section class="story">
-<p>The direct-to-consumer segment lost $3,424 million in fiscal 2022 on the restated basis, then $2,496 million in fiscal 2023, then turned to a profit of $143 million in fiscal 2024 and $1,327 million in fiscal 2025. That is a swing of $4.75 billion in three years, the single largest earnings driver in the company over the period.</p>
-<p>A housekeeping note, because the two numbers get mixed up constantly: the &ldquo;$4 billion loss&rdquo; Disney itself cites for fiscal 2022 is on the old basis, which included ESPN+. On the current segment basis used in the chart below, the loss was $3,424 million. Same hole, two rulers.</p>
+<p>The direct-to-consumer segment lost $3.4 billion in fiscal 2022 on the restated basis, then $2.5 billion in fiscal 2023, then turned to a profit of $143 million in fiscal 2024 and $1.3 billion in fiscal 2025. That is a swing of $4.75 billion in three years, the single largest earnings driver in the company over the period.</p>
+<p>A housekeeping note, because the two numbers get mixed up constantly: the &ldquo;$4 billion loss&rdquo; Disney itself cites for fiscal 2022 is on the old basis, which included ESPN+. On the current segment basis used in the chart below, the loss was $3.4 billion. Same hole, two rulers.</p>
 <p>It was bought with price, not growth. Disney+ Premium cost $6.99 a month at launch in 2019. It costs $21.49 now, after seven increases, a rise of 207 percent. The ad tier, paid sharing and bundling did the rest. Content spending was cut from above $30 billion to about $24 billion.</p>
 <p>Subscribers fell from a peak of 164.2 million in October 2022 to 131.6 million at the end of fiscal 2025, and Disney stopped reporting subscriber counts from the first quarter of fiscal 2026. The business became profitable by charging more for less content to fewer people.</p>
-<p>The margin is the problem. Direct-to-consumer earned $1,327 million on $24,614 million of revenue in fiscal 2025, a 5.4 percent margin. Netflix earned a 29.5 percent operating margin in the same period, on $45.2 billion of revenue and 325 million paid memberships.</p>
+<p>The margin is the problem. Direct-to-consumer earned $1.3 billion on $24.6 billion of revenue in fiscal 2025, a 5.4 percent margin. Netflix earned a 29.5 percent operating margin in the same period, on $45.2 billion of revenue and 325 million paid memberships.</p>
 <p>Disney&rsquo;s streaming profit is real. It is also thin. Disney forecasts a 10 percent streaming operating margin for fiscal 2026. One bad content cycle or one rights auction can erase it.</p>
 <p>The comparison that matters is not Disney against Netflix. It is Disney against itself. The streaming business was supposed to replace the linear television business, which at its peak threw off $7.5 billion a year at a 50 percent margin. The replacement throws off $1.3 billion at a 5.4 percent margin.</p>
 <p>That is a $6 billion hole in annual profit, and it is the structural fact underneath the stock&rsquo;s refusal to re-rate. The bet is not whether streaming can be profitable. It can. The bet is whether a 10 percent margin business can ever replace a 50 percent margin business, and the answer so far is that it cannot, not at this scale.</p>
@@ -931,20 +931,20 @@ html.js .watch-list li.reveal.in{transform:none}
 </figure>
 </div>
 
-<figure class="viz" aria-label="Visual: direct-to-consumer operating income by fiscal year: minus $3,424 million in 2022, minus $2,496 million in 2023, plus $143 million in 2024, plus $1,327 million in 2025">
+<figure class="viz" aria-label="Visual: direct-to-consumer operating income by fiscal year: minus $3.4 billion in 2022, minus $2.5 billion in 2023, plus $143 million in 2024, plus $1.3 billion in 2025">
 <div class="viz-in">
 <h3>The hole, filled</h3>
 <p class="chart-sub">Direct-to-consumer operating income, fiscal 2022 to fiscal 2025, in millions of dollars. The swing from trough to profit is $4.75 billion, the largest single earnings driver in the company.</p>
-<svg viewBox="0 0 920 400" width="100%" height="auto" role="img" aria-label="Bar chart: fiscal 2022 minus $3,424 million, fiscal 2023 minus $2,496 million, fiscal 2024 plus $143 million, fiscal 2025 plus $1,327 million" style="display:block;max-width:100%">
+<svg viewBox="0 0 920 400" width="100%" height="auto" role="img" aria-label="Bar chart: fiscal 2022 minus $3.4 billion, fiscal 2023 minus $2.5 billion, fiscal 2024 plus $143 million, fiscal 2025 plus $1.3 billion" style="display:block;max-width:100%">
 <line x1="60" y1="200" x2="880" y2="200" stroke="#141310" stroke-width="1.5"/>
 <rect x="140" y="200" width="120" height="150" fill="#b03a2e"/>
 <rect x="350" y="200" width="120" height="109" fill="#b03a2e" opacity=".72"/>
 <rect x="560" y="194" width="120" height="6" fill="#141310"/>
 <rect x="770" y="142" width="120" height="58" fill="#141310"/>
-<text x="200" y="372" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">-$3,424m</text>
-<text x="410" y="331" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">-$2,496m</text>
+<text x="200" y="372" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">-$3.4B</text>
+<text x="410" y="331" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">-$2.5B</text>
 <text x="620" y="182" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">+$143m</text>
-<text x="830" y="130" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">+$1,327m</text>
+<text x="830" y="130" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="900" font-size="24" fill="#141310">+$1.3B</text>
 <text x="200" y="396" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">FY2022</text>
 <text x="410" y="396" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">FY2023</text>
 <text x="620" y="396" text-anchor="middle" font-family="Libre Franklin, sans-serif" font-weight="700" font-size="14" fill="#6f6a61">FY2024</text>
@@ -972,7 +972,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <p>The price ladder tells the story. A one-day base ticket at Walt Disney World was $109. It became $119 on January 1, 2025. The Magic Kingdom peak price was $199 for the 2025 holidays and $209 from November 2026, the first time a single day at the park has cost more than $200. Disneyland&rsquo;s top tier rose from $199 to $224 for peak holidays. A family of four pays $896 for gate admission alone on a $224 peak day.</p>
 <p>There is a limit, and Disney&rsquo;s own people know it. The Wall Street Journal reported in 2025 that some inside Disney worry the company has become addicted to price hikes and has reached the limits of what middle-class Americans can afford.</p>
 <p>A LendingTree survey in June 2024 found that 45 percent of parents with young children who visited Disney went into debt for the trip. And the summer of 2026 brought promotions that do the work the price rises cannot: a four-day, four-park ticket from $99 a day, free dining for children with qualifying packages, up to 40 percent off select resort rooms for passholders. The model is now raise the rack rate, discount selectively to fill the park. That is pricing power with an asterisk.</p>
-<p>The answer is $60 billion. In September 2023, Disney announced plans to nearly double Experiences capital spending to about $60 billion over roughly ten years. Experiences capital spending was $6,429 million in fiscal 2025, up 76 percent on the prior year.</p>
+<p>The answer is $60 billion. In September 2023, Disney announced plans to nearly double Experiences capital spending to about $60 billion over roughly ten years. Experiences capital spending was $6.4 billion in fiscal 2025, up 76 percent on the prior year.</p>
 <p>The money buys new capacity: new lands at the Florida and Paris parks, a fleet growing from four cruise ships in 2022 to thirteen by 2031, and a resort in Abu Dhabi where the developer Miral funds, builds and operates the park and Disney takes royalties, the capital-light version of the same bet.</p>
 <p>The bet is that capacity converts pricing power into volume. But it arrives in waves over the coming years, not now, and it is a fixed-cost bet. If Orlando softness persists, the new capacity costs money whether or not the guests arrive.</p>
 <p>The rival is real. Universal&rsquo;s Epic Universe opened in May 2025, the first new full-scale American theme park gate built to challenge Disney in decades. It hosted about 4 million guests in 223 operating days in 2025. In March 2026, Universal Orlando visits rose 12 percent year on year including Epic, while Disney World rose 3 percent. Excluding Epic, Universal&rsquo;s older parks fell 12 percent.</p>
@@ -997,7 +997,7 @@ html.js .watch-list li.reveal.in{transform:none}
 </header>
 
 <section class="story">
-<p>Linear television is the business that built modern Disney, and it is melting at a steady rate. Linear Networks revenue fell from $12,828 million in fiscal 2022 to $9,364 million in fiscal 2025, down 27 percent. Operating income fell from $5,198 million to $2,955 million, down 43 percent. The margin compressed from 40.5 percent to 31.6 percent.</p>
+<p>Linear television is the business that built modern Disney, and it is melting at a steady rate. Linear Networks revenue fell from $12.8 billion in fiscal 2022 to $9.4 billion in fiscal 2025, down 27 percent. Operating income fell from $5.2 billion to $2.96 billion, down 43 percent. The margin compressed from 40.5 percent to 31.6 percent.</p>
 <p>It still throws off about $3.0 billion a year at a 32 percent margin, shrinking by roughly $500 million of operating income a year. It is a melting annuity, not a cliff, and that is precisely why it is dangerous: it is easy to ignore until it is not there.</p>
 <p>Disney says the mechanism plainly in its own releases: domestic linear operating income fell on lower advertising driven by decreases in viewership, and lower affiliate revenue from fewer subscribers, partially offset by higher effective rates. Volume down, price up, price no longer offsets volume.</p>
 <p>The mechanism is cord-cutting. ESPN peaked at 100.1 million households in 2011. It had about 68 million in 2024 and about 55 million entering 2026. United States pay-TV homes fell from 105 million in 2010 to 66.1 million in 2024. ESPN&rsquo;s affiliate fee, roughly $9 a month, is the highest in the industry, which means every household that cuts the cord costs ESPN more than it costs anyone else.</p>
@@ -1010,7 +1010,7 @@ html.js .watch-list li.reveal.in{transform:none}
 </section>
 </div>
 
-<figure class="viz" aria-label="Visual: Linear Networks operating income falling from $5,198 million in fiscal 2022 to $2,955 million in fiscal 2025">
+<figure class="viz" aria-label="Visual: Linear Networks operating income falling from $5.2 billion in fiscal 2022 to $2.96 billion in fiscal 2025">
 <div class="viz-in">
 <h3>The melt, measured</h3>
 <p class="chart-sub">Linear Networks operating income, fiscal 2022 to fiscal 2025, in billions of dollars. No cliff. Just $500 million a year, gone, on schedule.</p>

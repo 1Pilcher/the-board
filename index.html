@@ -166,7 +166,7 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper);overflow-x:hidden;overflow-x:clip;overflow-anchor:none}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.17rem;line-height:1.85;overflow-x:hidden;overflow-x:clip;overflow-anchor:none}
 img{max-width:100%}
-#progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:300;pointer-events:none}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;z-index:300;pointer-events:none}
 .page{max-width:1060px;margin:0 auto;padding:var(--sp-3) 22px 0}
 .column{max-width:620px;margin:0 auto}
 .wide{max-width:920px;margin:0 auto}
@@ -189,6 +189,16 @@ nav.menu{position:sticky;top:10px;z-index:60;margin:var(--sp-3) auto 0;max-width
 nav.menu a{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out}
 nav.menu a:hover{border-color:var(--rule-light);color:var(--ink)}
 nav.menu a.active{background:var(--accent);color:#fff}
+/* Edge fades on the pill menu are scroll-aware: a fade only shows
+   on a side where there is more menu hidden in that direction.
+   At the start there is no left fade, at the end there is no
+   right fade, in the middle both show, and when everything fits
+   neither shows. The script sets data-fade from the menu's own
+   scroll position; these rules are the only place the mask lives. */
+nav.menu[data-fade="none"]{-webkit-mask-image:none;mask-image:none}
+nav.menu[data-fade="right"]{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%)}
+nav.menu[data-fade="left"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 100%)}
+nav.menu[data-fade="both"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
 
 /* ---------- Headline block: Apple scale, newspaper voice ---------- */
 .headline-block{text-align:center;margin:var(--section-gap) auto;max-width:900px}
@@ -289,19 +299,19 @@ figure.photo figcaption strong{color:var(--ink)}
 .line-row .lr-label{font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .line-row .lr-val{font-family:var(--sans);font-weight:900;font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1;font-variant-numeric:tabular-nums}
 .line-track{height:8px;background:rgba(20,19,16,.1);position:relative;overflow:hidden}
-.line-fill{position:absolute;inset:0 auto 0 0;width:0}
+.line-fill{position:absolute;inset:0 auto 0 0;width:0;transform-origin:0 50%;will-change:transform}
 .line-fill::after{content:"";position:absolute;right:2px;top:50%;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;background:inherit;opacity:var(--fp,0);transform:scale(var(--fp,0))}
-.scrolly .line-fill{--fp:1;transition:width .95s cubic-bezier(.22,.8,.3,1)}
+.scrolly .line-fill{--fp:1;transition:transform .95s cubic-bezier(.22,.8,.3,1)}
 .fill-us{background:var(--ink)}.fill-cn{background:var(--accent)}.fill-gold{background:var(--gray)}
 .dotfield{display:grid;grid-template-columns:repeat(13,1fr);gap:10px;max-width:520px;margin:var(--sp-4) 0 var(--sp-1)}
 .dotfield i{display:block;aspect-ratio:1;border-radius:50%;background:var(--ink)}
-html.js .dotfield i{opacity:0;transform:scale(.4)}
+html.js .dotfield i{opacity:0;transform:scale(.4);transition:opacity .45s ease,transform .45s ease}
 html.js .dotfield i.on{opacity:1;transform:scale(1)}
 .dotfield i.hw{background:var(--accent)}
 .dot-legend{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:var(--sp-2)}
 .towers{display:flex;align-items:flex-end;gap:22px;height:320px;margin-top:16px}
 .tower{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
-.tower .tbar{width:100%;height:0}
+.tower .tbar{width:100%;height:0;transform-origin:50% 100%;will-change:transform}
 .tower .tval{font-family:var(--sans);font-weight:900;font-size:clamp(1.7rem,5vw,2.8rem);line-height:1;margin-bottom:var(--sp-2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .tower .tlab{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:var(--sp-2);line-height:1.5;min-height:3.2em}
 
@@ -341,7 +351,7 @@ html.js .dotfield i.on{opacity:1;transform:scale(1)}
    sideways overflow, so a card mid-slide never widens the page.
    States are keyed to html.js like every other entrance: with
    no script the cards simply sit finished in place. */
-html.js .step .step-card{opacity:0;will-change:transform,opacity;transition:opacity .9s cubic-bezier(.22,.8,.3,1),transform .9s cubic-bezier(.22,.8,.3,1)}
+html.js .step .step-card{opacity:0;will-change:transform,opacity;backface-visibility:hidden;transition:opacity .9s cubic-bezier(.22,.8,.3,1),transform .9s cubic-bezier(.22,.8,.3,1)}
 html.js .step[data-step="0"] .step-card,html.js .step[data-step="2"] .step-card{transform:translateX(-52px)}
 html.js .step[data-step="1"] .step-card,html.js .step[data-step="3"] .step-card{transform:translateX(52px)}
 html.js .step.in .step-card{opacity:1;transform:translateX(0)}
@@ -411,8 +421,8 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 .b-ink{background:var(--ink);opacity:.78}.b-red{background:var(--accent)}.b-gray{background:var(--gray);opacity:.8}
 .il-dots{display:flex;align-items:center;justify-content:center}
 .il-dots .rail{display:flex;align-items:center;gap:11px}
-.il-dots i{display:block;width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.13;transform:translateY(var(--y,0px)) scale(.65)}
-.il-dots i.on{opacity:.92;transform:translateY(var(--y,0px)) scale(1);transition:opacity .4s ease,transform .4s ease}
+.il-dots i{display:block;width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.13;transform:translateY(var(--y,0px)) scale(.65);transition:opacity .4s ease,transform .4s ease}
+.il-dots i.on{opacity:.92;transform:translateY(var(--y,0px)) scale(1)}
 .il-dots i.red{background:var(--accent)}
 .il-dots i:nth-child(3n+2){--y:-6px}
 .il-dots i:nth-child(3n){--y:5px}
@@ -427,9 +437,21 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
    turns and swells where they meet. */
 .il-diamond .stem-t{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:calc(var(--p,0)*44%)}
 .il-diamond .stem-b{position:absolute;left:50%;bottom:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:calc(var(--p,0)*44%)}
-.il-diamond .gem{position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(calc(45deg + var(--p,0)*45deg + var(--spin,0deg))) scale(calc(.55 + var(--p,0)*.6 + var(--gs,0)))}
+.il-diamond .gem{position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(calc(45deg + var(--p,0)*45deg)) scale(calc(.55 + var(--p,0)*.6))}
+.il-diamond.live .gem{animation:gemTurn 14s linear infinite}
+@keyframes gemTurn{from{rotate:0deg}to{rotate:360deg}}
 /* The second bars interlude grows in place instead of sliding. */
-.il-bars.grow .seg{transform:scaleX(calc(.12 + var(--p,0)*.88 + var(--breathe,0)*var(--df,1)));transform-origin:left center}
+.il-bars.grow .seg{transform:scaleX(calc(.12 + var(--p,0)*.88));transform-origin:left center}
+/* Idle sway, compositor-only: the bar rows drift a few pixels on
+   their own clocks while on screen. Transform on the row wrapper,
+   which the scroll engine never touches, so the two never fight. */
+.il-bars.live .bar{animation:barSway 7.5s ease-in-out infinite alternate}
+.il-bars.live .bar:nth-child(2){animation-duration:9.5s;animation-delay:-3.5s}
+.il-bars.live .bar:nth-child(3){animation-duration:8.2s;animation-delay:-1.8s}
+.il-bars.live .bar:nth-child(4){animation-duration:10.5s;animation-delay:-5s}
+@keyframes barSway{from{transform:translateX(-5px)}to{transform:translateX(5px)}}
+.il-dots.live .rail{animation:railBob 5.5s ease-in-out infinite alternate}
+@keyframes railBob{from{transform:translateY(-2px)}to{transform:translateY(2px)}}
 .il-bars.grow .seg.r{transform-origin:right center}
 .il-path svg{display:block;height:100%;width:auto;max-width:90%;margin:0 auto}
 .il-path .il-path-track{stroke:var(--rule-light);stroke-width:1.5;fill:none}
@@ -442,7 +464,7 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
    pins get none of this: they stay exactly where the scroll put
    them, landed and readable. */
 .il-thread.live .traveler:not(.ghost){animation:threadPing 3s cubic-bezier(.22,.8,.3,1) infinite}
-@keyframes threadPing{0%{box-shadow:0 0 0 0 rgba(176,58,46,.34)}72%{box-shadow:0 0 0 11px rgba(176,58,46,0)}100%{box-shadow:0 0 0 0 rgba(176,58,46,0)}}
+@keyframes threadPing{0%,100%{transform:scale(1)}50%{transform:scale(1.45)}}
 .il-echo.live .traveler{animation:echoPulse 3.8s ease-in-out infinite}
 @keyframes echoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.38)}}
 .il-path.live .il-path-head{animation:headPulse 2.6s ease-in-out infinite}
@@ -489,7 +511,7 @@ html.js .statement.in::before,html.js .statement.in::after{transform:scaleX(1)}
   .scroll-cue::before{animation:none;opacity:0}
   .statement::before,.statement::after{transform:none;transition:none}
   .il-dots i.on{transition:none}
-  .il-thread.live .traveler,.il-echo.live .traveler,.il-path.live .il-path-head{animation:none}
+  .il-thread.live .traveler,.il-echo.live .traveler,.il-path.live .il-path-head,.il-bars.live .bar,.il-dots.live .rail,.il-diamond.live .gem{animation:none}
 }
 
 /* ---------- Motion ---------- */
@@ -540,6 +562,9 @@ html.js .watch-list li.reveal.in{transform:none}
   html.js .watch-list li.reveal:nth-child(2),html.js .watch-list li.reveal:nth-child(4){transform:translateY(20px)}
 }
 .chapter .ch-inner{will-change:transform,opacity}
+.huge{will-change:transform,opacity}
+.tower .tval{will-change:transform,opacity}
+[data-animate] .viz-in{will-change:transform}
 .countup{font-variant-numeric:tabular-nums}
 
 @media(max-width:640px){
@@ -550,7 +575,7 @@ html.js .watch-list li.reveal.in{transform:none}
      line inside the pill bar and the bar itself scrolls sideways, so
      the whole control is ~40px tall instead of a three-row box eating
      the first screen. Sticky again now that it is slim. */
-  nav.menu{position:sticky;top:8px;border-radius:999px;padding:5px;gap:4px;margin-top:var(--sp-2);flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 6px 18px rgba(20,19,16,.1);-webkit-mask-image:linear-gradient(90deg,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,#000 94%,transparent 100%)}
+  nav.menu{position:sticky;top:8px;border-radius:999px;padding:5px;gap:4px;margin-top:var(--sp-2);flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 6px 18px rgba(20,19,16,.1)}
   nav.menu::-webkit-scrollbar{display:none}
   nav.menu a{display:inline-flex;align-items:center;justify-content:center;padding:6px 11px;font-size:.62rem;letter-spacing:.08em;flex:0 0 auto}
   .chapter{scroll-margin-top:0}
@@ -611,7 +636,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <div class="edition-line"><span>Monday, November 9, 2026</span><span class="c">USA vs China: Artificial Intelligence</span><span>By Josh Pilcher</span></div>
 </header>
 
-<nav class="menu" id="menu" aria-label="Sections">
+<nav class="menu" id="menu" data-fade="right" aria-label="Sections">
 <a href="#verdict">Verdict</a>
 <a href="#rulers">The Rulers</a>
 <a href="#chokepoints">Chokepoints</a>
@@ -1099,45 +1124,56 @@ html.js .watch-list li.reveal.in{transform:none}
 
 <script>
 (function(){
-  // Scroll engine: every animation is recomputed from scroll geometry.
-  // Progress is anchored to each element's CENTER crossing the middle of
-  // the screen, never to its edge entering at the bottom, so builds play
-  // while the reader is looking at them. Two drivers run the same update:
-  // a requestAnimationFrame loop (each frame guarded, so one bad frame
-  // can never kill the loop) and direct scroll / resize / load pokes, so
-  // the page still animates in webviews that throttle rAF.
+  // Scroll engine, rebuilt for smoothness.
+  //
+  // Why the old engine was choppy: it ran a requestAnimationFrame
+  // loop forever, and on every frame it called getBoundingClientRect
+  // on dozens of elements and then wrote styles back in the same
+  // pass. Reading layout right after writing it forces the browser
+  // to recompute the whole page synchronously, sixty times a
+  // second, even when the reader was holding still. On top of that
+  // the charts animated width and height, which are layout
+  // properties: every frame of a bar growing was a full re-layout
+  // and repaint, not a cheap composite. And a set of ambient
+  // "clocks" rewrote transforms on dots, rings and bars every
+  // frame just to keep them swaying.
+  //
+  // This engine fixes all three causes:
+  //  1. Nothing runs while the reader is still. Updates are
+  //     scheduled only by real scroll / resize events, one rAF
+  //     per event burst. Idle motion (pings, pulses, sways) is
+  //     pure CSS animation on transform and opacity, which the
+  //     compositor runs without touching layout.
+  //  2. Geometry is measured once and cached (on load, on resize,
+  //     when fonts settle). The scroll handler itself is plain
+  //     arithmetic on the cached numbers: no layout reads at all
+  //     in the hot path, and style writes are skipped whenever
+  //     the value has not actually changed.
+  //  3. Every scroll-driven effect animates transform or opacity
+  //     only. Bars grow with scaleX, towers with scaleY, the
+  //     progress bar with scaleX: the GPU composites them, the
+  //     layout never moves.
+  //
+  // Progress is still anchored to each element's centre crossing
+  // the middle of the screen, entrances still replay in reverse
+  // on the way back up, and the finished page is still the
+  // default when no script runs.
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
   function ease(p){ return 1-Math.pow(1-p,3); }
   function smooth(p){ return p*p*(3-2*p); }
-  // The counters' curve: smoothstep. Gentle at both ends, so a
-  // number eases in and settles instead of arriving at speed, but
-  // with a steady middle. The smootherstep used before spent so
-  // long creeping at the start and at the tail that counts felt
-  // stalled: this is the middle pace, not a snap and not a crawl.
   function easeSoft(p){ p = clamp(p, 0, 1); return p*p*(3-2*p); }
 
-  // The one true viewport height. svh/vh units resolve far taller than
-  // the visible screen inside some app webviews, which stretched the
-  // pinned photo stages and chapter cards into whole blank screens and
-  // washed the hero photo out under its own shade. visualViewport (or
-  // innerHeight) is what the reader actually sees, so every full-screen
-  // element is sized from it via the --vh custom property, and all
-  // trigger geometry below uses the same number.
+  // The one true viewport height, locked to its width: mobile
+  // Safari grows and shrinks the visible viewport as its toolbars
+  // hide and show during a scroll, and remeasuring then resized
+  // every full-screen section mid-scroll and teleported the page.
+  // A height-only change is ignored; --vh is remeasured only when
+  // the width changes (rotation, a real window resize).
   function viewH(){
     var vv = window.visualViewport;
     return (vv && vv.height) || window.innerHeight || document.documentElement.clientHeight || 0;
   }
-  // --vh is locked to the width it was measured at. Mobile Safari
-  // grows and shrinks the visible viewport as its toolbars hide
-  // and show DURING a scroll, and every full-screen element on
-  // this page (pins, chapters, steps, the sticky ruler stage) is
-  // sized from --vh: remeasuring on a toolbar change resized all
-  // of them mid-scroll, the document changed height under the
-  // reader's thumb, and the screen teleported up and down. A
-  // height-only change is now ignored; --vh is remeasured only
-  // when the width changes (rotation, a real window resize), so
-  // nothing on the page ever changes size while scrolling.
   var vhWidth = -1;
   function setVH(force){
     var w = window.innerWidth || document.documentElement.clientWidth || 0;
@@ -1147,26 +1183,52 @@ html.js .watch-list li.reveal.in{transform:none}
   }
   setVH(true);
 
-  // Menu scroll-spy
+  // Menu edge fades: show a fade only where more menu is hidden.
   var navEl = document.getElementById("menu");
+  function updateMenuFade(){
+    if(!navEl){ return; }
+    var max = navEl.scrollWidth - navEl.clientWidth;
+    var next;
+    if(max <= 2){ next = "none"; }
+    else if(navEl.scrollLeft <= 2){ next = "right"; }
+    else if(navEl.scrollLeft >= max - 2){ next = "left"; }
+    else { next = "both"; }
+    if(navEl.getAttribute("data-fade") !== next){ navEl.setAttribute("data-fade", next); }
+  }
+  if(navEl){
+    navEl.addEventListener("scroll", updateMenuFade, { passive: true });
+    window.addEventListener("resize", updateMenuFade, { passive: true });
+    window.addEventListener("orientationchange", function(){ window.setTimeout(updateMenuFade, 120); });
+    window.addEventListener("load", updateMenuFade);
+    updateMenuFade();
+    window.setTimeout(updateMenuFade, 300);
+    window.setTimeout(updateMenuFade, 1200);
+  }
+
+  // Menu scroll-spy (positions come from the geometry cache).
   var links = Array.prototype.slice.call(document.querySelectorAll("#menu a"));
   var map = {}; links.forEach(function(a){ map[a.getAttribute("href").slice(1)] = a; });
-  var lastSpyId = null;
+  var lastSpyId = null, lastPct = -1;
   function centerNavLink(a){
     if(!navEl || !a || navEl.scrollWidth <= navEl.clientWidth + 4){ return; }
     var target = a.offsetLeft - navEl.clientWidth / 2 + a.offsetWidth / 2;
     try{ navEl.scrollTo({ left: target, behavior: "smooth" }); }catch(e){ navEl.scrollLeft = target; }
   }
   var spyEls = ["verdict","rulers","chokepoints","money","giveaway","history","houston","texas","next","watchlist"].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var spyCache = [];
 
-  // Dot field: 104 ink + 4 red = 26 to 1
+  // Dot field: 104 ink + 4 red = 26 to 1. The dots ship in the
+  // markup; build them only if they are missing. Each dot's
+  // stagger delay is set once here, in CSS pixels of time, so
+  // the scroll pass only toggles a class.
   var df = document.getElementById("dotfield");
-  // The dots ship in the markup, so the field is complete even if
-  // this script never runs; build them only if they are missing.
   var dots = df ? Array.prototype.slice.call(df.querySelectorAll("i")) : [];
   if(df && !dots.length){ var frag = document.createDocumentFragment(); for(var i=0;i<104;i++){ var d=document.createElement("i"); frag.appendChild(d); } for(var j=0;j<4;j++){ var h=document.createElement("i"); h.className="hw"; frag.appendChild(h); } df.appendChild(frag); dots = Array.prototype.slice.call(df.querySelectorAll("i")); }
+  dots.forEach(function(dt, k){ dt.style.transitionDelay = ((k % 13) * 16 + Math.floor(k / 13) * 34) + "ms"; });
 
-  // Rulers scrolly steps
+  // Rulers scrolly steps. The bars are full-width and animate
+  // with scaleX under a CSS transform transition, so a step
+  // change composites instead of re-laying out the chart.
   var steps = [
     { num: "3%", lab: "LiveBench, October 4, 2026: DeepSeek V4.1 Flash 81.1, Claude Fable 5.1 83.4", us: 100, cn: 97.2, usv: "83.4", cnv: "81.1" },
     { num: "2.7%", lab: "Stanford Arena leaderboard, March 2026: Claude Opus 4.6 1503, DeepSeek R1 1464 (human preference ratings)", us: 100, cn: 97.4, usv: "1,503", cnv: "1,464" },
@@ -1178,26 +1240,26 @@ html.js .watch-list li.reveal.in{transform:none}
   function setStep(i){
     var s = steps[i]; if(!s || !numEl || i === currentStep){ return; } currentStep = i;
     numEl.textContent = s.num; labEl.textContent = s.lab;
-    barUS.style.width = s.us + "%"; barCN.style.width = s.cn + "%";
+    barUS.style.transform = "scaleX(" + (s.us / 100) + ")"; barCN.style.transform = "scaleX(" + (s.cn / 100) + ")";
     valUS.textContent = s.usv; valCN.textContent = s.cnv;
     if(!reduce){ numEl.classList.remove("swap"); void numEl.offsetWidth; numEl.classList.add("swap"); }
   }
-  if(numEl){ var s0 = steps[0]; numEl.textContent = s0.num; labEl.textContent = s0.lab; barUS.style.width = s0.us + "%"; barCN.style.width = s0.cn + "%"; valUS.textContent = s0.usv; valCN.textContent = s0.cnv; currentStep = 0; }
+  if(numEl && barUS && barCN){
+    barUS.style.width = "100%"; barCN.style.width = "100%";
+    barUS.style.setProperty("--fp", "1"); barCN.style.setProperty("--fp", "1");
+    var s0 = steps[0]; numEl.textContent = s0.num; labEl.textContent = s0.lab;
+    barUS.style.transform = "scaleX(" + (s0.us / 100) + ")"; barCN.style.transform = "scaleX(" + (s0.cn / 100) + ")";
+    valUS.textContent = s0.usv; valCN.textContent = s0.cnv; currentStep = 0;
+  }
 
-  // Pinned media blocks
   var pins = Array.prototype.slice.call(document.querySelectorAll("[data-pin]")).map(function(w){
-    return { wrap: w, img: w.querySelector(".pin-img"), shade: w.querySelector(".pin-shade"), txt: w.querySelector(".pin-text") };
-  }).filter(function(b){ return b.img; });
-
-  // Chapter title cards: gentle scale and fade as they cross the viewport
-  var chapters = Array.prototype.slice.call(document.querySelectorAll("[data-chapter]"));
-
-  // In-column photos are fixed too: no scroll-driven zoom list is
-  // built for them, so their size never changes as they cross the
-  // screen. The .zoomimg class now only clips the frame and its
-  // static dark vignette.
-
+    return { wrap: w, txt: w.querySelector(".pin-text"), top: 0, height: 0, _tp: -1 };
+  });
+  var chapters = Array.prototype.slice.call(document.querySelectorAll("[data-chapter]")).map(function(c){
+    return { el: c, top: 0, height: 0, _d: 99 };
+  });
   var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  var revCache = [];
 
   function fmtCount(el, v){
     var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
@@ -1208,87 +1270,91 @@ html.js .watch-list li.reveal.in{transform:none}
     var txt = fmtCount(el, to * p);
     if(el.textContent !== txt){ el.textContent = txt; }
   }
-  // A counter's own progress, read off the number itself rather
-  // than off the chart beneath it: the count starts as the
-  // number's centre enters at the bottom of the screen and
-  // completes as that centre reaches just above mid-screen, over
-  // about 0.44 of a screen of scroll. So the final value lands
-  // while the number is squarely in view, at full strength, and
-  // stays landed as it scrolls on. Driving the count off the
-  // lines or dots below it (the old way) meant a tall visual like
-  // the $730B one only finished counting after the number itself
-  // had already scrolled away toward the top, barely seen done.
-  function countP(el){
+  // A counter's progress from its cached position: the count
+  // starts as the number's centre enters at the bottom of the
+  // screen and completes just above mid-screen.
+  function countP(c, y, vh){
     if(reduce){ return 1; }
-    var vh = viewH();
-    if(!vh){ return 1; }
-    var r = el.getBoundingClientRect();
-    var center = r.top + r.height / 2;
+    var center = c.top - y + c.height / 2;
     return clamp((vh * 0.98 - center) / (vh * 0.44), 0, 1);
   }
+  function countObj(el){ return { el: el, top: 0, height: 0 }; }
+
   var vizBlocks = Array.prototype.slice.call(document.querySelectorAll("[data-animate]")).map(function(el){
-    // Anchor each build to the graphic itself, not the big number at
-    // the top of the section: anchoring to the number finished the
-    // dot field and the bars before the reader ever reached them.
     var kind = el.getAttribute("data-animate");
     var anchor = (kind === "dots" ? el.querySelector(".dotfield") : null)
       || (kind === "towers" ? el.querySelector(".towers") : null)
       || (kind === "lines" ? el.querySelector(".lines") : null)
       || el.querySelector(".viz-in") || el;
+    var fills = Array.prototype.slice.call(el.querySelectorAll(".line-fill[data-w]"));
+    // Final widths are set once, here. From now on the bars are
+    // only ever transformed, never resized.
+    fills.forEach(function(b){ b.style.width = b.getAttribute("data-w") + "%"; });
+    var towers = Array.prototype.slice.call(el.querySelectorAll(".tbar[data-h]"));
+    towers.forEach(function(b){ b.style.height = Math.max(parseFloat(b.getAttribute("data-h")), 3) + "%"; b.style.transform = "scaleY(0)"; });
     return { el: el,
-      anchor: anchor,
+      anchor: anchor, anchorTop: 0, anchorH: 0,
       build: el.getAttribute("data-build") || kind,
       hugeFx: el.getAttribute("data-huge") || "rise",
       huge: el.querySelector(".huge"),
-      fills: Array.prototype.slice.call(el.querySelectorAll(".line-fill[data-w]")),
-      towers: Array.prototype.slice.call(el.querySelectorAll(".tbar[data-h]")),
-      counts: Array.prototype.slice.call(el.querySelectorAll(".countup")),
-      hasDots: !!(df && el.contains(df)) };
+      hugeC: el.querySelector(".huge") ? countObj(el.querySelector(".huge")) : null,
+      fills: fills,
+      towers: towers,
+      counts: Array.prototype.slice.call(el.querySelectorAll(".countup")).map(countObj),
+      hasDots: !!(df && el.contains(df)), _bk: "", _dc: -1 };
   });
   var soloCounts = Array.prototype.slice.call(document.querySelectorAll(".countup")).filter(function(el){
     return !el.closest("[data-animate]");
-  }).map(function(el){ return { el: el, pin: el.closest("[data-pin]") }; });
-  // Interludes: ambient motion living in the whitespace between sections.
-  // Each one reads its own scroll progress in the frame loop below and
-  // exposes it as --p; the CSS turns that into threads, sliding bars,
-  // lighting dots and a drawn path.
+  }).map(function(el){
+    var pin = el.closest("[data-pin]");
+    var pinRec = null;
+    if(pin){ for(var q=0;q<pins.length;q++){ if(pins[q].wrap === pin){ pinRec = pins[q]; break; } } }
+    return { c: countObj(el), pin: pinRec };
+  });
   var interludes = Array.prototype.slice.call(document.querySelectorAll(".interlude")).map(function(el){
     var fore = el.querySelector(".il-path-fore");
     var plen = 0;
     if(fore){ try{ plen = fore.getTotalLength(); fore.style.strokeDasharray = String(plen); fore.style.strokeDashoffset = String(plen); }catch(e){ plen = 0; } }
-    return { el: el, isDots: el.classList.contains("il-dots"), isSeq: el.classList.contains("seq"), dots: Array.prototype.slice.call(el.querySelectorAll("i")), fore: fore, head: el.querySelector(".il-path-head"), plen: plen,
-      rings: Array.prototype.slice.call(el.querySelectorAll(".ring")).map(function(rg){ return { el: rg, at: parseFloat(rg.style.getPropertyValue("--at")) || 0.5 }; }),
-      nodes: Array.prototype.slice.call(el.querySelectorAll(".node")).map(function(nd){ return { el: nd, at: parseFloat(nd.style.getPropertyValue("--at")) || 0.5 }; }) };
+    return { el: el, top: 0, height: 0, isDots: el.classList.contains("il-dots"), dots: Array.prototype.slice.call(el.querySelectorAll("i")), fore: fore, head: el.querySelector(".il-path-head"), plen: plen, _p: -1, _dc: -1, _hp: -1, _live: false };
   });
   var tlEl = document.querySelector(".timeline");
   var tlItems = tlEl ? Array.prototype.slice.call(tlEl.querySelectorAll("li")) : [];
+  var tlCache = { top: 0, height: 0, itemTops: [], _tp: -1, passed: [] };
 
   var scrollyEl = document.getElementById("scrolly1");
   var stepEls = Array.prototype.slice.call(document.querySelectorAll("#scrolly1 .step"));
+  var stepCache = [];
   var prog = document.getElementById("progress");
 
-  function buildViz(v, p){
-    // Skip the whole build when neither the chart's progress nor
-    // its counter's progress has actually moved: the frame loop
-    // calls in constantly, and rewriting identical widths,
-    // heights and transforms every call forced the browser to
-    // repaint the charts on frames where nothing had changed.
-    var bk = Math.round(clamp(p, 0, 1) * 500) + "|" + (v.counts.length ? Math.round(easeSoft(countP(v.counts[0])) * 500) : 0);
+  // Geometry cache: measured in one pass, in document order,
+  // with no interleaved writes. Everything the scroll handler
+  // needs is arithmetic on these numbers.
+  function measure(){
+    var y = window.scrollY || window.pageYOffset || 0;
+    function box(el){ if(!el){ return { top: 0, height: 0 }; } var r = el.getBoundingClientRect(); return { top: r.top + y, height: r.height }; }
+    spyCache = spyEls.map(function(el){ return box(el).top; });
+    revCache = reveals.map(function(el){ return box(el); });
+    pins.forEach(function(b){ var bx = box(b.wrap); b.top = bx.top; b.height = bx.height; b._tp = -1; });
+    chapters.forEach(function(c){ var bx = box(c.el); c.top = bx.top; c.height = bx.height; c._d = 99; });
+    vizBlocks.forEach(function(v){
+      var bx = box(v.anchor); v.anchorTop = bx.top; v.anchorH = bx.height;
+      if(v.hugeC){ var hb = box(v.huge); v.hugeC.top = hb.top; v.hugeC.height = hb.height; }
+      v.counts.forEach(function(c){ var cb = box(c.el); c.top = cb.top; c.height = cb.height; });
+      v._bk = "";
+    });
+    soloCounts.forEach(function(sc){ var cb = box(sc.c.el); sc.c.top = cb.top; sc.c.height = cb.height; });
+    interludes.forEach(function(it){ var bx = box(it.el); it.top = bx.top; it.height = bx.height; it._p = -1; });
+    if(tlEl){ var tb = box(tlEl); tlCache.top = tb.top; tlCache.height = tb.height; tlCache.itemTops = tlItems.map(function(li){ return box(li).top; }); tlCache._tp = -1; }
+    stepCache = stepEls.map(function(el){ return box(el); });
+  }
+
+  function buildViz(v, p, y, vh){
+    var bk = Math.round(clamp(p, 0, 1) * 400) + "|" + (v.counts.length ? Math.round(easeSoft(countP(v.counts[0], y, vh)) * 400) : 0);
     if(v._bk === bk){ return; }
     v._bk = bk;
-    // The chart elements settle the way the chapter titles do: a
-    // small rise and a breath of scale as the graphic crosses the
-    // middle of the screen, run off the same progress, so scrolling
-    // back up reverses every bit of it.
     var pe = ease(clamp(p, 0, 1));
-    // Each huge number enters its own way: one rises with a breath
-    // of scale, one only swells, one simply fades in. No entrance
-    // is used twice.
     if(v.huge){
-      // The huge number settles on its own progress (see countP),
-      // not the chart anchor's: it reaches full opacity and its
-      // final size while it is still centred on screen.
-      var he = easeSoft(countP(v.huge));
+      var he = easeSoft(countP(v.hugeC, y, vh));
       v.huge.style.transformOrigin = "left bottom";
       if(v.hugeFx === "scale"){ v.huge.style.transform = "scale(" + (0.9 + 0.1 * he).toFixed(3) + ")"; v.huge.style.opacity = (0.1 + 0.9 * he).toFixed(3); }
       else if(v.hugeFx === "fade"){ v.huge.style.transform = "translateY(" + ((1 - he) * 5).toFixed(1) + "px)"; v.huge.style.opacity = he.toFixed(3); }
@@ -1298,248 +1364,206 @@ html.js .watch-list li.reveal.in{transform:none}
     v.fills.forEach(function(b, idx){
       var local = clamp((p * 1.45 - idx * 0.13) / 0.95, 0, 1);
       var le = ease(local);
-      // Two line charts, two builds: the first grows its bars from
-      // the axis, the second slides each finished bar in from the
-      // left edge of its track.
-      if(v.build === "slide"){ b.style.width = b.getAttribute("data-w") + "%"; b.style.transform = "translateX(" + (-(1 - le) * 106).toFixed(1) + "%)"; }
-      else { b.style.width = (parseFloat(b.getAttribute("data-w")) * le) + "%"; }
+      // Two line charts, two builds, both transform-only now:
+      // the first grows its bars from the axis with scaleX, the
+      // second slides each finished bar in from the left.
+      if(v.build === "slide"){ b.style.transform = "translateX(" + (-(1 - le) * 106).toFixed(1) + "%)"; }
+      else { b.style.transform = "scaleX(" + le.toFixed(3) + ")"; }
       b.style.setProperty("--fp", le.toFixed(3));
     });
     v.towers.forEach(function(b, idx){
       var local = clamp((p * 1.5 - idx * 0.16) / 0.9, 0, 1);
-      var target = Math.max(parseFloat(b.getAttribute("data-h")), 3);
       var te = ease(local);
-      b.style.height = (target * te) + "%";
+      b.style.transform = "scaleY(" + te.toFixed(3) + ")";
       var tw = b.parentElement; var tv = tw ? tw.querySelector(".tval") : null;
       if(tv){ tv.style.transform = "translateY(" + ((1 - te) * 10).toFixed(1) + "px)"; tv.style.opacity = (0.25 + 0.75 * te).toFixed(3); }
     });
-    v.counts.forEach(function(c){ setCount(c, easeSoft(countP(c))); });
+    v.counts.forEach(function(c){ setCount(c.el, easeSoft(countP(c, y, vh))); });
     if(v.hasDots && dots.length){
       var onCount = Math.floor(clamp(p * 1.2, 0, 1) * dots.length);
-      for(var k=0;k<dots.length;k++){ var on = k < onCount; var has = dots[k].classList.contains("on"); if(on && !has){ dots[k].classList.add("on"); dots[k].style.transition = "opacity .45s ease " + ((k % 13) * 16 + Math.floor(k / 13) * 34) + "ms, transform .45s ease " + ((k % 13) * 16 + Math.floor(k / 13) * 34) + "ms"; } else if(!on && has){ dots[k].classList.remove("on"); } }
+      if(onCount !== v._dc){
+        v._dc = onCount;
+        for(var k=0;k<dots.length;k++){ var on = k < onCount; if(on !== dots[k].classList.contains("on")){ dots[k].classList.toggle("on", on); } }
+      }
     }
   }
 
   function update(){
     var vh = viewH();
-    var t = (window.performance && window.performance.now) ? window.performance.now() / 1000 : 0;
-    var doc = document.documentElement;
+    if(!vh){ return; }
     var y = window.scrollY || window.pageYOffset || 0;
+    var doc = document.documentElement;
     var max = doc.scrollHeight - vh;
-    var pct = max > 0 ? clamp((y / max) * 100, 0, 100) : 0;
-    if(prog){ prog.style.width = pct + "%"; prog.setAttribute("aria-valuenow", String(Math.round(pct))); }
+    var pct = max > 0 ? clamp(y / max, 0, 1) : 0;
+    if(prog){
+      prog.style.transform = "scaleX(" + pct.toFixed(4) + ")";
+      var rp = Math.round(pct * 100);
+      if(rp !== lastPct){ lastPct = rp; prog.setAttribute("aria-valuenow", String(rp)); }
+    }
     var activeId = null;
-    for(var s=0;s<spyEls.length;s++){ if(spyEls[s].getBoundingClientRect().top <= vh * 0.45){ activeId = spyEls[s].id; } }
-    if(activeId){ links.forEach(function(a){ a.classList.toggle("active", map[activeId] === a); }); if(activeId !== lastSpyId){ lastSpyId = activeId; centerNavLink(map[activeId]); } }
-    // Reveals run in both directions, with a little hysteresis so
-    // nothing flickers at the boundary: a block fades in as it
-    // enters the reading band and fades back out only once it has
-    // fully left the screen, so scrolling back up replays the
-    // motion in reverse instead of finding it already spent. The
-    // CSS transition does the smoothing in both directions.
-    for(var i=0;i<reveals.length;i++){ var el = reveals[i]; var rr = el.getBoundingClientRect(); if(!el.classList.contains("in")){ if(rr.top < vh * 0.85 && rr.bottom > vh * 0.08){ el.classList.add("in"); } } else if(rr.top > vh * 1.02 || rr.bottom < -vh * 0.05){ el.classList.remove("in"); } }
-    // Ruler cards: the same hysteresis as the reveals, toggling a
-    // class and nothing else. The CSS transition does the sliding
-    // (left, right, left, right), the card's layout box never
-    // moves, and scrolling back up takes the class off so the
-    // slide replays in reverse.
-    for(var si=0;si<stepEls.length;si++){ var sel = stepEls[si]; var sr2 = sel.getBoundingClientRect(); if(!sel.classList.contains("in")){ if(sr2.top < vh * 0.92 && sr2.bottom > vh * 0.1){ sel.classList.add("in"); } } else if(sr2.top > vh * 1.05 || sr2.bottom < -vh * 0.05){ sel.classList.remove("in"); } }
+    for(var s=0;s<spyEls.length;s++){ if(spyCache[s] - y <= vh * 0.45){ activeId = spyEls[s].id; } }
+    for(var ri=0;ri<reveals.length;ri++){
+      var rTop = revCache[ri].top - y, rBot = rTop + revCache[ri].height;
+      if(!reveals[ri].classList.contains("in")){ if(rTop < vh * 0.85 && rBot > vh * 0.08){ reveals[ri].classList.add("in"); } }
+      else if(rTop > vh * 1.02 || rBot < -vh * 0.05){ reveals[ri].classList.remove("in"); }
+    }
+    for(var si2=0;si2<stepEls.length;si2++){
+      var sTop = stepCache[si2].top - y, sBot = sTop + stepCache[si2].height;
+      if(!stepEls[si2].classList.contains("in")){ if(sTop < vh * 0.92 && sBot > vh * 0.10){ stepEls[si2].classList.add("in"); } }
+      else if(sTop > vh * 1.05 || sBot < -vh * 0.05){ stepEls[si2].classList.remove("in"); }
+    }
+    if(activeId && activeId !== lastSpyId){
+      lastSpyId = activeId;
+      links.forEach(function(a){ a.classList.toggle("active", map[activeId] === a); });
+      centerNavLink(map[activeId]);
+    }
     if(!reduce){
       pins.forEach(function(b, bi){
-        var r = b.wrap.getBoundingClientRect();
-        if(r.bottom < 0 || r.top > vh){ return; }
-        var total = r.height - vh;
-        var p = total > 0 ? clamp(-r.top / total, 0, 1) : 0;
-        // The photograph itself never moves: no shrink, no zoom, no
-        // drift, at any scroll position. Its dark vignette is static
-        // CSS, painted once, so the picture reads the same size from
-        // the moment it pins to the moment it releases. Only the
-        // overlay text rises out of the photograph as the pin
-        // begins, then holds.
-        // The rise runs over the approach as well as the short
-        // dwell: it starts as the pin's top reaches the lower
-        // middle of the screen and settles just as the pin does,
-        // so a 3vh dwell never turns it into a snap.
-        var tp = clamp((vh * 0.55 - r.top) / (vh * 0.55 + Math.max(total, 1)), 0, 1);
-        // Unchanged progress writes nothing: repainting the same
-        // transform and opacity on every frame is what made the
-        // pinned sections feel choppy on a phone.
-        if(b._tp !== undefined && Math.abs(b._tp - tp) < 0.0015){ return; }
+        var top = b.top - y;
+        if(top + b.height < 0 || top > vh){ return; }
+        var total = b.height - vh;
+        var tp = clamp((vh * 0.55 - top) / (vh * 0.55 + Math.max(total, 1)), 0, 1);
+        if(Math.abs(b._tp - tp) < 0.0015){ return; }
         b._tp = tp;
-        // The overlay text never drops below high contrast against
-        // the darkened base of the photo, and each pin's text
-        // settles its own way: odd pins rise, even pins rise less
-        // and swell a breath instead.
+        // The photograph itself never moves. Only the overlay
+        // text rises, on transform and opacity.
         if(b.txt){ var ts = smooth(tp); b.txt.style.opacity = String(0.72 + 0.28 * ts); b.txt.style.transform = (bi % 2 ? "translateY(" + ((1 - ts) * 14).toFixed(1) + "px) scale(" + (0.975 + 0.025 * ts).toFixed(3) + ")" : "translateY(" + ((1 - ts) * 24).toFixed(1) + "px)"); }
       });
       chapters.forEach(function(c, ci){
-        var r = c.getBoundingClientRect();
-        if(r.bottom < -60 || r.top > vh + 60){ return; }
-        var center = r.top + r.height / 2;
+        var top = c.top - y;
+        if(top + c.height < -60 || top > vh + 60){ return; }
+        var center = top + c.height / 2;
         var d = clamp((center - vh * 0.5) / (vh * 0.75), -1, 1);
-        if(c._d !== undefined && Math.abs(c._d - d) < 0.002){ return; }
+        if(Math.abs(c._d - d) < 0.002){ return; }
         c._d = d;
         var sc = 1 - Math.abs(d) * 0.045;
         var drift = (ci % 2 === 0 ? 1 : -1) * d * 12;
-        c.style.transform = "scale(" + sc + ") translate(" + drift.toFixed(1) + "px," + (d * 20).toFixed(1) + "px)";
-        c.style.opacity = String(1 - Math.abs(d) * 0.25);
-        if(c.parentElement){ c.parentElement.style.setProperty("--d", d.toFixed(3)); }
+        c.el.style.transform = "scale(" + sc + ") translate(" + drift.toFixed(1) + "px," + (d * 20).toFixed(1) + "px)";
+        c.el.style.opacity = String(1 - Math.abs(d) * 0.25);
+        if(c.el.parentElement){ c.el.parentElement.style.setProperty("--d", d.toFixed(3)); }
       });
     }
-    // Builds run while the graphic itself crosses the middle of the
-    // screen: progress starts as the graphic's center enters at the
-    // bottom edge and completes as it reaches screen center.
-    vizBlocks.forEach(function(v){ var r = (v.anchor || v.el).getBoundingClientRect(); if(r.bottom < -160 || r.top > vh * 1.8){ return; } var p = reduce ? 1 : clamp((vh - (r.top + r.height / 2)) / (vh * 0.5), 0, 1); buildViz(v, p); });
-    // Standalone counters are scroll-driven like everything else:
-    // the number climbs as its line crosses the middle band of the
-    // screen and runs back down when the reader scrolls back up.
-    // Nothing here is timed or latched, so a count can never finish
-    // before it is seen or stay spent on the way back.
+    vizBlocks.forEach(function(v){
+      var top = v.anchorTop - y;
+      if(top + v.anchorH < -160 || top > vh * 1.8){ return; }
+      var p = reduce ? 1 : clamp((vh - (top + v.anchorH / 2)) / (vh * 0.5), 0, 1);
+      buildViz(v, p, y, vh);
+    });
     soloCounts.forEach(function(sc){
-      var r = sc.el.getBoundingClientRect();
-      if(r.bottom < -120 || r.top > vh + 120){ return; }
+      var top = sc.c.top - y;
+      if(top + sc.c.height < -120 || top > vh + 120){ return; }
       var p;
       if(reduce){ p = 1; }
       else if(sc.pin){
-        // A counter riding on a pinned photo counts across the
-        // pin's approach, so it lands on its final value just as
-        // the photograph settles and the reader reaches the words.
-        var wr = sc.pin.getBoundingClientRect();
-        var tot = Math.max(wr.height - vh, 1);
-        p = clamp((vh * 0.6 - wr.top) / (vh * 0.6 + tot), 0, 1);
+        var pTop = sc.pin.top - y;
+        var tot = Math.max(sc.pin.height - vh, 1);
+        p = clamp((vh * 0.6 - pTop) / (vh * 0.6 + tot), 0, 1);
       }
-      else {
-        // Same middle pace as the visual counters: done by the
-        // time the number reaches just above mid-screen.
-        p = countP(sc.el);
-      }
-      setCount(sc.el, easeSoft(p));
+      else { p = countP(sc.c, y, vh); }
+      setCount(sc.c.el, easeSoft(p));
     });
-    interludes.forEach(function(it, ii){
-      var r = it.el.getBoundingClientRect();
-      // .live marks an interlude that is actually on screen; the
-      // CSS loops keyed to it (traveler pings, the path head pulse)
-      // run only while the reader can see them.
-      it.el.classList.toggle("live", r.bottom > 0 && r.top < vh);
-      if(r.bottom < -120 || r.top > vh + 120){ return; }
-      var p = reduce ? 0.55 : clamp((vh - (r.top + r.height / 2)) / (vh * 0.55), 0, 1);
+    interludes.forEach(function(it){
+      var top = it.top - y;
+      // .live marks an interlude actually on screen; the CSS
+      // loops keyed to it run only while the reader can see
+      // them, and they are compositor-only animations.
+      var live = top + it.height > 0 && top < vh;
+      if(live !== it._live){ it._live = live; it.el.classList.toggle("live", live); }
+      if(top + it.height < -120 || top > vh + 120){ return; }
+      var p = reduce ? 0.55 : clamp((vh - (top + it.height / 2)) / (vh * 0.55), 0, 1);
+      if(Math.abs(it._p - p) < 0.004){ return; }
+      it._p = p;
       it.el.style.setProperty("--p", p.toFixed(3));
-      if(!reduce){
-        // The ambient layer: a slow clock laid over the scroll
-        // state, so an interlude keeps moving the whole time it is
-        // on screen instead of freezing when the scrolling stops.
-        // The scroll component is untouched and still reverses on
-        // the way back up; the clock only adds a gentle sway,
-        // breath or turn, different for every motif. Data visuals
-        // and counters never come through here: they stay landed.
-        it.el.style.setProperty("--drift", (Math.sin(t * 0.55 + ii * 1.7) * 32).toFixed(1) + "px");
-        it.el.style.setProperty("--breathe", (Math.sin(t * 0.8 + ii * 2.1) * 0.035).toFixed(3));
-        it.el.style.setProperty("--spin", ((t * 9 + ii * 40) % 360).toFixed(1) + "deg");
-        it.el.style.setProperty("--gs", (Math.sin(t * 1.3 + ii) * 0.045).toFixed(3));
-        // Echo rings keep rippling outward and dissolving on the
-        // clock, swelling as the scroll fill passes their point.
-        if(it.rings.length){ it.rings.forEach(function(rg){ var act = clamp((p - rg.at + 0.12) * 3, 0, 1); var rip = (t * 0.11 + rg.at * 1.7) % 1; rg.el.style.transform = "scale(" + (0.4 + rip * 1.25).toFixed(3) + ")"; rg.el.style.opacity = ((1 - rip) * 0.6 * (0.4 + 0.6 * act)).toFixed(3); }); }
-        // Node rings breathe gently once the scroll has bloomed
-        // them, each on its own phase.
-        if(it.nodes.length){ it.nodes.forEach(function(nd){ var act2 = clamp((p - nd.at + 0.3) * 2.2, 0, 1); var br = 1 + Math.sin(t * 1.4 + nd.at * 9) * 0.055 * act2; nd.el.style.transform = "scale(" + ((0.55 + act2 * 0.5) * br).toFixed(3) + ")"; nd.el.style.opacity = act2.toFixed(3); }); }
-      }
       if(it.isDots && it.dots.length){
+        // Dots light in sequence as a pure function of scroll
+        // progress, so the way back up runs it backwards. Only
+        // class toggles here: the CSS transition does the easing
+        // and the .live sway keeps the row alive while it sits
+        // on screen, with no per-frame script work at all.
         var n = it.dots.length;
-        if(reduce){ var onr = Math.round(p * n); for(var k2=0;k2<n;k2++){ it.dots[k2].classList.toggle("on", k2 < onr); } }
-        else if(it.isSeq){
-          // The second dot row does something else entirely: a
-          // steady type-on, each dot rising into place with a small
-          // settle pop, no travelling wave, and the final red dot
-          // breathing once it lands. Also a pure function of p, so
-          // it un-types on the way back up.
-          for(var ks=0;ks<n;ks++){
-            var dseq = it.dots[ks];
-            var phs = n > 1 ? ks / (n - 1) : 0;
-            var ls = smooth(clamp(p * 1.25 - phs * 0.25, 0, 1));
-            var pop = Math.sin(ls * Math.PI) * 0.16;
-            var altS = (ks % 3 === 1) ? -6 : (ks % 3 === 2) ? 5 : 0;
-            // Once typed on, the row stays alive on the clock: a
-            // slow bob travels dot to dot, and the final red dot
-            // breathes on time rather than on scroll.
-            var breathe = (ks === n - 1) ? Math.sin(t * 2.3) * 0.07 * ls : 0;
-            var bob = Math.sin(t * 1.7 + ks * 0.6) * 1.5 * ls;
-            dseq.style.opacity = (0.13 + 0.82 * ls).toFixed(3);
-            dseq.style.transform = "translateY(" + (altS + bob + (1 - ls) * 9).toFixed(1) + "px) scale(" + (0.6 + 0.4 * ls + pop + breathe).toFixed(3) + ")";
-            dseq.style.backgroundColor = "";
-          }
-        }
-        else{
-          // The alternating dots, given a wave to ride: they light
-          // in sequence as before, but a soft crest travels the row
-          // with the scroll, swelling each dot as it passes and
-          // flashing the crest dot red, while the whole row breathes
-          // up and down in a slow travelling wave. All of it is a
-          // pure function of p, so scrolling back up runs the wave
-          // backwards, dot for dot.
-          // The wave also runs on the clock now: the crest keeps
-          // travelling and the row keeps undulating the whole time
-          // it is on screen, not only while the page is moving.
-          // The scroll still sets how lit the row is and where the
-          // crest sits on average, so it all runs backwards too.
-          var front = p * (n + 2) - 1 + Math.sin(t * 0.6) * 1.1;
-          var amp = Math.sin(Math.PI * clamp(p, 0, 1));
-          for(var k=0;k<n;k++){
-            var dot = it.dots[k];
-            var phase = n > 1 ? k / (n - 1) : 0;
-            var loc = smooth(clamp(p * 1.3 - phase * 0.3, 0, 1));
-            var dd = k - front; var bump = Math.max(0, 1 - Math.abs(dd) / 1.9); bump *= bump;
-            var alt = (k % 3 === 1) ? -6 : (k % 3 === 2) ? 5 : 0;
-            var wave = Math.sin(phase * 9.42 - p * 12.57 - t * 1.7) * 4.5 * amp;
-            dot.style.opacity = (0.13 + 0.8 * loc).toFixed(3);
-            dot.style.transform = "translateY(" + (alt + wave).toFixed(1) + "px) scale(" + (0.65 + 0.35 * loc + 0.5 * bump).toFixed(3) + ")";
-            dot.style.backgroundColor = (bump > 0.62 && !dot.classList.contains("red")) ? "#b03a2e" : "";
-          }
+        var onCount = Math.round(clamp(p * 1.15, 0, 1) * n);
+        if(onCount !== it._dc){
+          it._dc = onCount;
+          for(var k=0;k<n;k++){ var on = k < onCount; if(on !== it.dots[k].classList.contains("on")){ it.dots[k].classList.toggle("on", on); } }
         }
       }
-      if(it.fore && it.plen){ it.fore.style.strokeDashoffset = String(it.plen * (1 - p)); if(it.head && (it._hp === undefined || Math.abs(it._hp - p) > 0.004)){ it._hp = p; try{ var pt = it.fore.getPointAtLength(it.plen * p); it.head.setAttribute("cx", pt.x.toFixed(1)); it.head.setAttribute("cy", pt.y.toFixed(1)); }catch(e){} } }
+      if(it.fore && it.plen){
+        it.fore.style.strokeDashoffset = String(it.plen * (1 - p));
+        if(it.head && Math.abs(it._hp - p) > 0.004){
+          it._hp = p;
+          try{ var pt = it.fore.getPointAtLength(it.plen * p); it.head.setAttribute("cx", pt.x.toFixed(1)); it.head.setAttribute("cy", pt.y.toFixed(1)); }catch(e){}
+        }
+      }
     });
-    if(tlEl){ var tr = tlEl.getBoundingClientRect(); if(tr.bottom > -80 && tr.top < vh + 80){ tlEl.style.setProperty("--tp", clamp((vh * 0.55 - tr.top) / tr.height, 0, 1).toFixed(3)); tlItems.forEach(function(li){ li.classList.toggle("passed", li.getBoundingClientRect().top < vh * 0.55); }); } }
-    // The graphic follows the step the reader is actually looking
-    // at: whichever step's centre is nearest the middle of the
-    // screen owns the big number. The old mapping divided the
-    // section's total scroll into four equal slices, but the
-    // pinned stage's own screen of travel is part of that height,
-    // so the number flipped a beat before its card arrived and
-    // sat stale while the next card was already on screen - the
-    // graphic read as stuck, disagreeing with the text beside it.
-    if(scrollyEl && numEl){ var sr = scrollyEl.getBoundingClientRect(); if(sr.bottom > 0 && sr.top < vh){ var mid = vh * 0.55, best = -1, bestD = Infinity; for(var q=0;q<stepEls.length;q++){ var qr = stepEls[q].getBoundingClientRect(); if(qr.bottom < 0 || qr.top > vh){ continue; } var qd = Math.abs(qr.top + qr.height / 2 - mid); if(qd < bestD){ bestD = qd; best = q; } } if(best >= 0){ setStep(best); } } }
+    if(tlEl){
+      var tTop = tlCache.top - y;
+      if(tTop + tlCache.height > -80 && tTop < vh + 80){
+        var tpv = clamp((vh * 0.55 - tTop) / tlCache.height, 0, 1);
+        if(Math.abs(tlCache._tp - tpv) > 0.005){
+          tlCache._tp = tpv;
+          tlEl.style.setProperty("--tp", tpv.toFixed(3));
+        }
+        tlItems.forEach(function(li, ix){
+          var passed = tlCache.itemTops[ix] - y < vh * 0.55;
+          if(tlCache.passed[ix] !== passed){ tlCache.passed[ix] = passed; li.classList.toggle("passed", passed); }
+        });
+      }
+    }
+    // The rulers graphic follows the step the reader is actually
+    // looking at: whichever step's centre is nearest the middle
+    // of the screen owns the big number.
+    if(scrollyEl && numEl && stepCache.length){
+      var mid = vh * 0.55, best = -1, bestD = Infinity;
+      for(var q=0;q<stepCache.length;q++){
+        var qTop = stepCache[q].top - y;
+        if(qTop + stepCache[q].height < 0 || qTop > vh){ continue; }
+        var qd = Math.abs(qTop + stepCache[q].height / 2 - mid);
+        if(qd < bestD){ bestD = qd; best = q; }
+      }
+      if(best >= 0){ setStep(best); }
+    }
   }
-  // Driver 1: the animation-frame loop. Guarded, so a single throwing
-  // frame is skipped and the loop always reschedules itself.
-  // The loop runs a full update on every frame the scroll
-  // position actually moved. When the reader is holding still,
-  // only every second frame runs, just to feed the ambient
-  // interlude clocks: the previous version remeasured and
-  // repainted the entire page sixty times a second even when
-  // nothing was moving, which is the chop the reader felt.
-  var frameTick = 0, lastFrameY = -1;
-  function frame(){
-    frameTick++;
-    var cy = window.scrollY || window.pageYOffset || 0;
-    var moved = Math.abs(cy - lastFrameY) > 0.5;
-    if(moved || frameTick % 2 === 0){ lastFrameY = cy; try{ update(); }catch(e){} }
-    requestAnimationFrame(frame);
+
+  // Entrances (article reveals and the four ruler cards) run
+  // in the update pass above, off the geometry cache, with
+  // the same hysteresis as always: in as they enter the
+  // reading band, back out only once fully off screen, so
+  // the way back up replays them in reverse.
+  if(reduce){
+    reveals.forEach(function(el){ el.classList.add("in"); });
+    stepEls.forEach(function(el){ el.classList.add("in"); });
   }
-  // Driver 2: direct pokes from scroll and layout events, throttled.
-  // If a webview throttles or pauses rAF, scrolling still animates.
-  var lastPoke = 0;
-  function poke(){ var now = Date.now(); if(now - lastPoke < 50){ return; } lastPoke = now; try{ update(); }catch(e){} }
-  window.addEventListener("scroll", poke, { passive: true });
-  window.addEventListener("resize", function(){ setVH(false); poke(); });
-  window.addEventListener("orientationchange", function(){ window.setTimeout(function(){ setVH(true); poke(); }, 120); });
-  window.addEventListener("load", function(){ setVH(false); poke(); });
-  document.addEventListener("visibilitychange", function(){ if(!document.hidden){ poke(); } });
-  // Safety net: one extra pass two seconds after load, so if a
-  // webview throttled the frame loop the page still settles into
-  // exactly the state its scroll position calls for.
-  window.setTimeout(function(){ poke(); }, 2000);
-  if(reduce){ reveals.forEach(function(el){ el.classList.add("in"); }); stepEls.forEach(function(el){ el.classList.add("in"); }); }
-  requestAnimationFrame(frame);
+
+  // Scheduling: one rAF per burst of scroll events, and nothing
+  // at all while the page is still. That is the whole fix in one
+  // function: the previous engine burned a full layout pass on
+  // every frame forever; this one only works when the reader
+  // actually moves.
+  var ticking = false;
+  function requestUpdate(){
+    if(ticking){ return; }
+    ticking = true;
+    requestAnimationFrame(function(){ ticking = false; try{ update(); }catch(e){} });
+  }
+  var resizeTimer = 0;
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", function(){
+    setVH(false);
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(function(){ measure(); requestUpdate(); }, 120);
+  }, { passive: true });
+  window.addEventListener("orientationchange", function(){
+    window.setTimeout(function(){ setVH(true); measure(); requestUpdate(); }, 140);
+  });
+  window.addEventListener("load", function(){ measure(); requestUpdate(); });
+  document.addEventListener("visibilitychange", function(){ if(!document.hidden){ requestUpdate(); } });
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ measure(); requestUpdate(); }); }
+  // Late-settling layout (webfont swaps, image decode) gets two
+  // quiet re-measures, then the page is fully cached.
+  window.setTimeout(function(){ measure(); requestUpdate(); }, 1200);
+  window.setTimeout(function(){ measure(); requestUpdate(); }, 2600);
+  measure();
+  update();
 })();
 </script>
 

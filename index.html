@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light" />
+<script>document.documentElement.className += " js";</script>
 <link rel="icon" href="data:," />
 <title>The Board - USA vs China: Artificial Intelligence</title>
 <style>
@@ -152,8 +153,18 @@
   --sans:"Libre Franklin","Helvetica Neue",Arial,sans-serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.17rem;line-height:1.85;overflow-x:hidden}
+/* No sideways play, ever: a few things on this page are painted a
+   hair past the screen edge by design or mid-animation (the 100vw
+   full-bleed bands, the reveal entrances that start 24-32px off to
+   one side). On their own they widen the page past the viewport,
+   and iOS Safari answers by opening slightly zoomed and letting
+   the reader pan side to side. Clip the overflow on BOTH html and
+   body: Safari largely ignores body-only overflow-x, and "clip"
+   (with "hidden" as the older-engine fallback) cuts the excess
+   without creating a scroll container, so position:sticky - the
+   pill menu, the pinned photo stages - keeps working. */
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper);overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.17rem;line-height:1.85;overflow-x:hidden;overflow-x:clip}
 img{max-width:100%}
 #progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:300;pointer-events:none}
 .page{max-width:1060px;margin:0 auto;padding:var(--sp-3) 22px 0}
@@ -283,8 +294,9 @@ figure.photo figcaption strong{color:var(--ink)}
 .scrolly .line-fill{--fp:1;transition:width .95s cubic-bezier(.22,.8,.3,1)}
 .fill-us{background:var(--ink)}.fill-cn{background:var(--accent)}.fill-gold{background:var(--gray)}
 .dotfield{display:grid;grid-template-columns:repeat(13,1fr);gap:10px;max-width:520px;margin:var(--sp-4) 0 var(--sp-1)}
-.dotfield i{display:block;aspect-ratio:1;border-radius:50%;background:var(--ink);opacity:0;transform:scale(.4)}
-.dotfield i.on{opacity:1;transform:scale(1)}
+.dotfield i{display:block;aspect-ratio:1;border-radius:50%;background:var(--ink)}
+html.js .dotfield i{opacity:0;transform:scale(.4)}
+html.js .dotfield i.on{opacity:1;transform:scale(1)}
 .dotfield i.hw{background:var(--accent)}
 .dot-legend{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:var(--sp-2)}
 .towers{display:flex;align-items:flex-end;gap:22px;height:320px;margin-top:16px}
@@ -411,9 +423,10 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 .scroll-cue::before{content:"";position:absolute;left:50%;top:22px;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:var(--accent);animation:cuefall 2.8s cubic-bezier(.45,0,.55,1) infinite}
 @keyframes cuefall{0%{transform:translateY(0);opacity:0}16%{opacity:1}80%{opacity:1}100%{transform:translateY(40px);opacity:0}}
 .statement{position:relative}
-.statement::before,.statement::after{content:"";display:block;width:64px;height:1px;background:var(--accent);margin:0 auto var(--sp-3);transform:scaleX(0);transition:transform 1.3s cubic-bezier(.22,.8,.3,1)}
+.statement::before,.statement::after{content:"";display:block;width:64px;height:1px;background:var(--accent);margin:0 auto var(--sp-3);transition:transform 1.3s cubic-bezier(.22,.8,.3,1)}
+html.js .statement::before,html.js .statement::after{transform:scaleX(0)}
+html.js .statement.in::before,html.js .statement.in::after{transform:scaleX(1)}
 .statement::after{margin:var(--sp-3) auto 0}
-.statement.in::before,.statement.in::after{transform:scaleX(1)}
 /* The second statement sweeps its rules in from opposite edges
    instead of growing them from the centre. */
 .statement.sweep::before{transform-origin:left center}
@@ -434,27 +447,52 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 }
 
 /* ---------- Motion ---------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s cubic-bezier(.22,.8,.3,1),transform 1.2s cubic-bezier(.22,.8,.3,1)}
-.reveal.in{opacity:1;transform:none}
+/* Every "starts hidden / starts offset" state below is keyed to
+   html.js, a class the tiny script in <head> adds before first
+   paint. The finished page is the default: if the main script
+   never runs (a downloaded copy opened in a viewer that blocks
+   or strips scripts, a webview that kills the frame loop),
+   nothing waits invisible - every section, chart and number
+   simply sits there complete. When the script does run, the
+   entrances arm exactly as before and the scroll engine drives
+   them. No blank pages, ever, in any copy of this file. */
+html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s cubic-bezier(.22,.8,.3,1),transform 1.2s cubic-bezier(.22,.8,.3,1)}
+html.js .reveal.in{opacity:1;transform:none}
 /* No two blocks share a recipe: every reveal variant moves its own
    way, at its own pace, so the same entrance never plays twice. */
-.rv-deep{transform:translateY(38px);transition:opacity 1.6s cubic-bezier(.22,.8,.3,1),transform 1.6s cubic-bezier(.22,.8,.3,1)}
-.rv-fade{transform:none;transition:opacity 1.7s ease}
-.rv-left{transform:translateX(-32px);transition:opacity 1.3s cubic-bezier(.22,.8,.3,1),transform 1.3s cubic-bezier(.22,.8,.3,1)}
-.rv-right{transform:translateX(32px);transition:opacity 1.3s cubic-bezier(.22,.8,.3,1),transform 1.3s cubic-bezier(.22,.8,.3,1)}
-.rv-drop{transform:translateY(-22px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
-.rv-scale{transform:scale(.93) translateY(12px);transition:opacity 1.45s cubic-bezier(.22,.8,.3,1),transform 1.45s cubic-bezier(.22,.8,.3,1)}
-.rv-zoom{transform:scale(1.035);transition:opacity 1.5s ease,transform 1.5s ease}
-.rv-tilt{transform:perspective(700px) rotateX(7deg) translateY(16px);transition:opacity 1.4s cubic-bezier(.22,.8,.3,1),transform 1.4s cubic-bezier(.22,.8,.3,1)}
-.rv-diag-l{transform:translate(-26px,18px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
-.rv-diag-r{transform:translate(26px,18px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-deep{transform:translateY(38px);transition:opacity 1.6s cubic-bezier(.22,.8,.3,1),transform 1.6s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-fade{transform:none;transition:opacity 1.7s ease}
+html.js .rv-left{transform:translateX(-32px);transition:opacity 1.3s cubic-bezier(.22,.8,.3,1),transform 1.3s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-right{transform:translateX(32px);transition:opacity 1.3s cubic-bezier(.22,.8,.3,1),transform 1.3s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-drop{transform:translateY(-22px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-scale{transform:scale(.93) translateY(12px);transition:opacity 1.45s cubic-bezier(.22,.8,.3,1),transform 1.45s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-zoom{transform:scale(.95) translateY(10px);transition:opacity 1.5s ease,transform 1.5s ease}
+html.js .rv-tilt{transform:perspective(700px) rotateX(7deg) translateY(16px);transition:opacity 1.4s cubic-bezier(.22,.8,.3,1),transform 1.4s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-diag-l{transform:translate(-26px,18px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
+html.js .rv-diag-r{transform:translate(26px,18px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
 /* Each watchlist row enters from a different direction. */
-.watch-list li.reveal{transform:translateY(20px)}
-.watch-list li.reveal:nth-child(2){transform:translateX(-24px)}
-.watch-list li.reveal:nth-child(3){transform:translateY(30px) scale(.97)}
-.watch-list li.reveal:nth-child(4){transform:translateX(24px)}
-.watch-list li.reveal:nth-child(5){transform:translateY(-16px)}
-.watch-list li.reveal.in{transform:none}
+html.js .watch-list li.reveal{transform:translateY(20px)}
+html.js .watch-list li.reveal:nth-child(2){transform:translateX(-24px)}
+html.js .watch-list li.reveal:nth-child(3){transform:translateY(30px) scale(.97)}
+html.js .watch-list li.reveal:nth-child(4){transform:translateX(24px)}
+html.js .watch-list li.reveal:nth-child(5){transform:translateY(-16px)}
+html.js .watch-list li.reveal.in{transform:none}
+/* Small screens: the sideways entrances retire. On a phone the
+   column runs nearly edge to edge, so a block that starts 24-32px
+   to one side starts past the screen edge - and WebKit counts
+   that overhang in the page's scrollable width even with the
+   root clipped, which is exactly the slight zoom and side-to-side
+   pan this page must never have. Below 700px every entrance
+   travels vertically instead: same recipes, same pacing, nothing
+   ever wider than the screen. The zoom entrance now starts
+   slightly small rather than slightly large for the same reason:
+   at full-bleed phone width, scale(1.035) painted 7px past both
+   edges. */
+@media(max-width:700px){
+  html.js .rv-left,html.js .rv-right{transform:translateY(22px)}
+  html.js .rv-diag-l,html.js .rv-diag-r{transform:translateY(20px)}
+  html.js .watch-list li.reveal:nth-child(2),html.js .watch-list li.reveal:nth-child(4){transform:translateY(20px)}
+}
 .chapter .ch-inner{will-change:transform,opacity}
 .countup{font-variant-numeric:tabular-nums}
 
@@ -624,8 +662,8 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 <div class="bignum" id="scrollyNum">3%</div>
 <div class="biglab" id="scrollyLab">LiveBench, October 4, 2026: DeepSeek V4.1 Flash 81.1, Claude Fable 5.1 83.4</div>
 <div class="lines" style="margin-top:var(--sp-3)">
-<div class="line-row"><div class="lr-top"><span class="lr-label">United States</span><span class="lr-val" id="valUS" style="font-size:1.5rem">83.4</span></div><div class="line-track"><span class="line-fill fill-us" id="barUS"></span></div></div>
-<div class="line-row"><div class="lr-top"><span class="lr-label">China</span><span class="lr-val" id="valCN" style="font-size:1.5rem">81.1</span></div><div class="line-track"><span class="line-fill fill-cn" id="barCN"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">United States</span><span class="lr-val" id="valUS" style="font-size:1.5rem">83.4</span></div><div class="line-track"><span class="line-fill fill-us" id="barUS" style="width:100%"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">China</span><span class="lr-val" id="valCN" style="font-size:1.5rem">81.1</span></div><div class="line-track"><span class="line-fill fill-cn" id="barCN" style="width:97.2%"></span></div></div>
 </div>
 <p class="src-note">Sources: LiveBench via Bloomberg Intelligence, Oct 4, 2026. Stanford AI Index, Apr 2026. Artificial Analysis Intelligence Index v5, Oct 27, 2026. NIST CAISI, May 1, 2026. Scores across benchmarks are not comparable to each other, which is rather the point.</p>
 </div>
@@ -689,7 +727,7 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 <p class="chart-sub">AI compute produced in 2026, in H100-equivalents. Count it, dot by dot.</p>
 <div class="huge"><span class="countup" data-to="26">26</span><span class="unit"> to 1</span></div>
 <p class="huge-sub">For every 26 units Nvidia ships this year, Huawei ships one</p>
-<div class="dotfield" id="dotfield" aria-hidden="true"></div>
+<div class="dotfield" id="dotfield" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="hw"></i><i class="hw"></i><i class="hw"></i><i class="hw"></i></div>
 <div class="dot-legend"><span>&#9679; Nvidia &middot; 23M</span><span style="color:var(--accent)">&#9679; Huawei &middot; 0.88M</span></div>
 <p class="chart-note">Huawei at full stretch makes less than 4 percent of what one American company makes. And the shortage underneath is worse: domestic memory can equip only about 16 percent of Huawei output, and the stockpile covering the rest runs out this year.</p>
 <figcaption>Source: Epoch AI, Sep 24, 2026. HBM constraint and stockpile: Epoch AI; CXMT yields via Reuters, Oct 28, 2026.</figcaption>
@@ -761,10 +799,10 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 <div class="huge">$<span class="countup" data-to="730">730</span><span class="unit">B promised</span></div>
 <p class="huge-sub">Hyperscaler capital spending guidance for 2026, against $30B of free cash flow pace</p>
 <div class="lines" style="margin-top:var(--sp-4)">
-<div class="line-row"><div class="lr-top"><span class="lr-label">Capex guidance, 2026</span><span class="lr-val">$730B</span></div><div class="line-track"><span class="line-fill fill-us" data-w="81.6"></span></div></div>
-<div class="line-row"><div class="lr-top"><span class="lr-label">Free cash flow pace, H1 2026</span><span class="lr-val">$30B</span></div><div class="line-track"><span class="line-fill fill-gold" data-w="3.4"></span></div></div>
-<div class="line-row"><div class="lr-top"><span class="lr-label">Anthropic commitments</span><span class="lr-val">$895B</span></div><div class="line-track"><span class="line-fill fill-cn" data-w="100"></span></div></div>
-<div class="line-row"><div class="lr-top"><span class="lr-label">Anthropic revenue, H1 2026</span><span class="lr-val">$16.3B</span></div><div class="line-track"><span class="line-fill fill-gold" data-w="1.8"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">Capex guidance, 2026</span><span class="lr-val">$730B</span></div><div class="line-track"><span class="line-fill fill-us" data-w="81.6" style="width:81.6%"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">Free cash flow pace, H1 2026</span><span class="lr-val">$30B</span></div><div class="line-track"><span class="line-fill fill-gold" data-w="3.4" style="width:3.4%"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">Anthropic commitments</span><span class="lr-val">$895B</span></div><div class="line-track"><span class="line-fill fill-cn" data-w="100" style="width:100%"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">Anthropic revenue, H1 2026</span><span class="lr-val">$16.3B</span></div><div class="line-track"><span class="line-fill fill-gold" data-w="1.8" style="width:1.8%"></span></div></div>
 </div>
 <p class="chart-note">None of this makes the spending foolish. Railroads and fiber optics were built the same way, ahead of the revenue, and the builders who survived owned the century. It does mean the American lead carries a due date, and the due dates cluster around 2030.</p>
 <figcaption>Sources: company reports and guidance, Q3 2026. Anthropic S-1, Oct 26, 2026, and amended S-1, Nov 2, 2026. Free cash flow: combined, four hyperscalers, annualized from H1 2026.</figcaption>
@@ -811,9 +849,9 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 <div class="huge"><span class="countup" data-to="62.2" data-dec="1">62.2</span><span class="unit">T vs 14.2T</span></div>
 <p class="huge-sub">Chinese tokens vs American tokens, in a single week</p>
 <div class="lines" style="margin-top:var(--sp-4)">
-<div class="line-row"><div class="lr-top"><span class="lr-label">China, tokens</span><span class="lr-val">62.2T</span></div><div class="line-track"><span class="line-fill fill-cn" data-w="100"></span></div></div>
-<div class="line-row"><div class="lr-top"><span class="lr-label">United States, tokens</span><span class="lr-val">14.2T</span></div><div class="line-track"><span class="line-fill fill-us" data-w="22.8"></span></div></div>
-<div class="line-row"><div class="lr-top"><span class="lr-label">China, share of spend</span><span class="lr-val">&lt;6%</span></div><div class="line-track"><span class="line-fill fill-gold" data-w="6"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">China, tokens</span><span class="lr-val">62.2T</span></div><div class="line-track"><span class="line-fill fill-cn" data-w="100" style="width:100%"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">United States, tokens</span><span class="lr-val">14.2T</span></div><div class="line-track"><span class="line-fill fill-us" data-w="22.8" style="width:22.8%"></span></div></div>
+<div class="line-row"><div class="lr-top"><span class="lr-label">China, share of spend</span><span class="lr-val">&lt;6%</span></div><div class="line-track"><span class="line-fill fill-gold" data-w="6" style="width:6%"></span></div></div>
 </div>
 <p class="chart-note">Read the three lines together and you have China's whole strategy in one picture: be everywhere, charge almost nothing, and bet that the layer the world builds on is worth more than the layer it pays for.</p>
 <figcaption>Source: OpenRouter usage data, week of Sep 21 to 27, 2026, and May 2026 shares. Download shares: Hugging Face State of Open Source, Spring 2026.</figcaption>
@@ -912,9 +950,9 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 <h3>The queue is a wish list</h3>
 <p class="chart-sub">ERCOT, the Texas grid, in gigawatts. Three towers, one scale. The first one is five times the entire grid at its busiest moment in history.</p>
 <div class="towers">
-<div class="tower"><span class="tval"><span class="countup" data-to="474">474</span> GW</span><div class="tbar" data-h="100" style="background:var(--accent)"></div><span class="tlab">Requested in the queue</span></div>
-<div class="tower"><span class="tval"><span class="countup" data-to="91">91</span> GW</span><div class="tbar" data-h="19.2" style="background:var(--ink)"></div><span class="tlab">Record peak demand, Jul 2026</span></div>
-<div class="tower"><span class="tval"><span class="countup" data-to="9.5" data-dec="1">9.5</span> GW</span><div class="tbar" data-h="4" style="background:var(--gray)"></div><span class="tlab">Approved to energize</span></div>
+<div class="tower"><span class="tval"><span class="countup" data-to="474">474</span> GW</span><div class="tbar" data-h="100" style="background:var(--accent);height:100%"></div><span class="tlab">Requested in the queue</span></div>
+<div class="tower"><span class="tval"><span class="countup" data-to="91">91</span> GW</span><div class="tbar" data-h="19.2" style="background:var(--ink);height:19.2%"></div><span class="tlab">Record peak demand, Jul 2026</span></div>
+<div class="tower"><span class="tval"><span class="countup" data-to="9.5" data-dec="1">9.5</span> GW</span><div class="tbar" data-h="4" style="background:var(--gray);height:4%"></div><span class="tlab">Approved to energize</span></div>
 </div>
 <p class="chart-note">About 90 percent of the queue is data centers. ERCOT Batch Zero review conditionally included 362 projects totaling about 194 gigawatts and excluded 373 projects totaling about 302. The gap between the first tower and the third is the American bottleneck, measured.</p>
 <figcaption>Source: ERCOT, June to September 2026. Record peak: 91,134 MW on July 22, 2026, which demand response kept from reaching 94,861 MW.</figcaption>
@@ -1059,8 +1097,10 @@ footer.method p{font-size:.92rem;line-height:1.7;color:var(--ink-soft);margin:0 
 
   // Dot field: 104 ink + 4 red = 26 to 1
   var df = document.getElementById("dotfield");
-  var dots = [];
-  if(df){ var frag = document.createDocumentFragment(); for(var i=0;i<104;i++){ var d=document.createElement("i"); frag.appendChild(d); dots.push(d); } for(var j=0;j<4;j++){ var h=document.createElement("i"); h.className="hw"; frag.appendChild(h); dots.push(h); } df.appendChild(frag); }
+  // The dots ship in the markup, so the field is complete even if
+  // this script never runs; build them only if they are missing.
+  var dots = df ? Array.prototype.slice.call(df.querySelectorAll("i")) : [];
+  if(df && !dots.length){ var frag = document.createDocumentFragment(); for(var i=0;i<104;i++){ var d=document.createElement("i"); frag.appendChild(d); } for(var j=0;j<4;j++){ var h=document.createElement("i"); h.className="hw"; frag.appendChild(h); } df.appendChild(frag); dots = Array.prototype.slice.call(df.querySelectorAll("i")); }
 
   // Rulers scrolly steps
   var steps = [

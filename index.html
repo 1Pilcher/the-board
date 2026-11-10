@@ -27,6 +27,12 @@
      from documentElement.clientWidth and held until the width
      changes. The vw fallbacks are the pre-script first paint. */
   --cw:100vw;--chw:50vw;
+  /* Height of the pinned top chrome: the solid paper strip that
+     stays at the very top of the screen for the entire scroll,
+     with the reading progress bar sitting at its bottom edge.
+     The strip is the safe-area inset plus 10px of paper, and
+     the 3px progress track makes up the rest. */
+  --topchrome:calc(env(safe-area-inset-top, 0px) + 13px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 /* No sideways play, ever - and nothing clips above a pinned
@@ -49,7 +55,7 @@
    card reaches the screen edge but never crosses it). The
    build is verified with scrollWidth === clientWidth from
    320px to 1920px, top and bottom of the page. */
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper);overflow-anchor:none}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--topchrome) + 74px);background:var(--paper);overflow-anchor:none}
 /* Rotation guard, added in the static edition: the old no-clip
    rule protected the pinned scrolly stages, and those are gone -
    nothing on this page is pinned any more except the slim menu,
@@ -63,7 +69,19 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84p
    (the --cw bands below); this is the belt over the braces. */
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.17rem;line-height:1.85;overflow-anchor:none;overflow-x:clip}
 img{max-width:100%}
-#progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;z-index:300;pointer-events:none}
+/* The solid paper strip above the progress bar stays pinned to
+   the top of the screen for the entire scroll. It used to be
+   just the top edge of the page in flow, so it scrolled away
+   with the masthead and the progress bar ended up sitting
+   directly on whatever passed underneath it, photographs
+   included. Now the strip is fixed, full width and paper solid,
+   the progress bar rides at its bottom edge, and the strip
+   backs the whole progress track, so the unfilled part of the
+   track reads as paper too, never as the content below. At the
+   top of the page the strip is invisible: it covers only the
+   page's own top padding, in the page's own colour. */
+#topstrip{position:fixed;top:0;left:0;right:0;height:var(--topchrome);background:var(--paper);z-index:300;pointer-events:none}
+#progress{position:fixed;top:calc(var(--topchrome) - 3px);left:0;height:3px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;z-index:301;pointer-events:none}
 .page{max-width:1060px;margin:0 auto;padding:var(--sp-3) 22px 0}
 .column{max-width:620px;margin:0 auto}
 .wide{max-width:920px;margin:0 auto}
@@ -82,7 +100,7 @@ img{max-width:100%}
 .edition-line .c{text-align:center;flex:1}
 
 /* ---------- Pill menu: minimal chrome ---------- */
-nav.menu{position:sticky;top:10px;z-index:60;margin:var(--sp-3) auto 0;max-width:920px;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14)}
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) auto 0;max-width:920px;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14)}
 nav.menu a{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out}
 nav.menu a:hover{border-color:var(--rule-light);color:var(--ink)}
 nav.menu a.active{background:var(--accent);color:#fff}
@@ -554,13 +572,13 @@ html.js .watch-list li.reveal.in{transform:none}
 
 @media(max-width:640px){
   :root{--section-gap:clamp(56px,9vh,80px)}
-  html{scroll-padding-top:64px}
+  html{scroll-padding-top:calc(var(--topchrome) + 54px)}
   .reads{grid-template-columns:1fr;gap:8px}
   /* Compact menu: ONE slim row. The ten section links sit on a single
      line inside the pill bar and the bar itself scrolls sideways, so
      the whole control is ~40px tall instead of a three-row box eating
      the first screen. Sticky again now that it is slim. */
-  nav.menu{position:sticky;top:8px;border-radius:999px;padding:5px;gap:4px;margin-top:var(--sp-2);flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 6px 18px rgba(20,19,16,.1)}
+  nav.menu{position:sticky;top:calc(var(--topchrome) + 8px);border-radius:999px;padding:5px;gap:4px;margin-top:var(--sp-2);flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 6px 18px rgba(20,19,16,.1)}
   nav.menu::-webkit-scrollbar{display:none}
   nav.menu a{display:inline-flex;align-items:center;justify-content:center;padding:6px 11px;font-size:.62rem;letter-spacing:.08em;flex:0 0 auto}
   .chapter{scroll-margin-top:0}
@@ -617,6 +635,7 @@ html.js .watch-list li.reveal.in{transform:none}
 </style>
 </head>
 <body>
+<div id="topstrip" aria-hidden="true"></div>
 <div id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="page">
 <header class="masthead">

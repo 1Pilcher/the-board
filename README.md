@@ -28,9 +28,9 @@ Each report opens with a plain-English bottom line, then the full story.
 >
 > There are so many conflicting narratives, fed by conflicting interests. It feels hard to know what is true, and I know I'm not alone in that.
 >
-> I often find that I have questions I'd like the answer to, or have things I don't understand that simply aren't covered by the news. Not all of the time, but sometimes. When that happens, there is nowhere obvious to go for a straight answer.
+> I often have questions I want answered, or things I don't understand, that the news simply doesn't cover. Not all of the time, but sometimes. When that happens, there is nowhere obvious to go for a straight answer.
 >
-> My ideal world is that I build something that is beneficial to me. That I enjoy reading. Because if I do, so will other people, and it will help them too.
+> In my ideal world, I build something useful to me. Something I enjoy reading. Because if I do, so will other people, and it will help them too.
 >
 > What that looks like in a year, who knows.
 

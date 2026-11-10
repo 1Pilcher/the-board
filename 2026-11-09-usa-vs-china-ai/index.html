@@ -97,6 +97,15 @@ img{max-width:100%}
 #progress{position:fixed;top:calc(var(--topchrome) - 3px);left:0;height:3px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;z-index:301;pointer-events:none}
 .page{max-width:1060px;margin:0 auto;padding:var(--sp-3) 22px 0}
 .column{max-width:620px;margin:0 auto}
+/* Standing home link: every report carries this small link at the
+   very top, above the masthead, back to The Board homepage at the
+   site root. Kept in the paper's own type: Libre Franklin caps,
+   ink-soft at rest, accent red on hover, no box or pill. */
+.home-bar{max-width:1060px;margin:0 auto var(--sp-2);text-align:left}
+.home-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 2px;line-height:1.2}
+.home-link .arr{font-size:.85rem;line-height:1;letter-spacing:0}
+.home-link:hover{color:var(--accent)}
+.home-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 .wide{max-width:920px;margin:0 auto}
 
 /* ---------- Masthead: the newspaper stays ---------- */
@@ -671,6 +680,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <div id="topstrip" aria-hidden="true"></div>
 <div id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 <div class="page">
+<div class="home-bar"><a class="home-link" href="https://1pilcher.github.io/the-board/" aria-label="Back to The Board homepage"><span class="arr" aria-hidden="true">&larr;</span> The Board &middot; Home</a></div>
 <header class="masthead">
 <div class="topline"><span class="side">Monday</span><span class="mid">A Twice-Weekly Briefing on Power</span><span class="side right">Evening Edition</span></div>
 <div class="nameplate">THE BOARD</div>

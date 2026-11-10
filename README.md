@@ -2,7 +2,7 @@
 
 **Power, plainly.**
 
-A twice-weekly briefing on geopolitics, money, and influence — written for one reader, by Josh Pilcher. New editions Tuesday and Friday evenings.
+A twice-weekly briefing on geopolitics, money, and influence, written for one reader, by Josh Pilcher. New reports Tuesday and Friday evenings.
 
 Read it live: **https://1pilcher.github.io/the-board/**
 
@@ -10,17 +10,17 @@ Read it live: **https://1pilcher.github.io/the-board/**
 
 ## What it is
 
-The Board is a briefing on power: who has it, how it moves, and what it costs. Geopolitics, markets, the Fed, commodities, war, trade, elections — the forces that decide what happens next, explained in plain English with the history that makes them make sense.
+The Board is a briefing on power: who has it, how it moves, and what it costs. Geopolitics, markets, the Fed, commodities, war, trade, elections. The forces that decide what happens next, explained in plain English with the history that makes them make sense.
 
-Every edition is built by a team of analysts working blind — historians, power mappers, economists, localists, and red teams who hold veto power over any claim that doesn't survive scrutiny. What survives is what gets published.
+Every report is built by a team of analysts working blind. Historians, power mappers, economists, localists, and red teams who hold veto power over any claim that doesn't survive scrutiny. What survives is what gets published.
 
 ## How to read
 
-- **Latest** — the newest edition, featured up top.
-- **All** — every report, newest first. Each edition keeps its own permanent address, so a new story never buries an old one.
+- **Latest** — the newest report, featured up top.
+- **All** — every report, newest first. Each report keeps its own permanent address, so a new story never buries an old one.
 - **Purpose** — why The Board exists, in the author's own words.
 
-Each edition opens with a plain-English bottom line, then the full story.
+Each report opens with a plain-English bottom line, then the full story.
 
 ## Why The Board exists
 
@@ -35,11 +35,11 @@ Each edition opens with a plain-English bottom line, then the full story.
 ## Structure
 
 - `index.html` — the homepage (Latest, All, Purpose).
-- `YYYY-MM-DD-<topic>/index.html` — each edition in its own dated folder.
+- `YYYY-MM-DD-<topic>/index.html` — each report in its own dated folder.
 
 ## Format
 
-Every report is a standalone longform article in the same design system: cream paper, near-black ink, a lighter red accent, PT Serif body text, and a visual in every section. Static pages, no animations, built to read beautifully on any screen — phone, laptop, or desktop.
+Every report is a standalone longform piece in the same design system: cream paper, near-black ink, a lighter red accent, PT Serif body text, and a visual in every section. Static pages, no animations, built to read beautifully on any screen, phone, laptop, or desktop.
 
 ---
 

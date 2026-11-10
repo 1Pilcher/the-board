@@ -127,7 +127,7 @@ img{max-width:100%}
 .double-rule{border-top:3px solid var(--accent);position:relative;margin-top:4px}
 .double-rule::after{content:"";display:block;border-top:1px solid var(--accent);margin-top:3px}
 .edition-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:var(--sp-1) 2px;border-bottom:1px solid var(--ink);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
-.edition-line .c{text-align:center;flex:1}
+.edition-line>span:first-child{flex:1 1 0;min-width:0;text-align:left}.edition-line .c{text-align:center;flex:0 0 auto}.edition-line>span:last-child{flex:1 1 0;min-width:0;text-align:right}
 
 /* ---------- Pill menu: minimal chrome ---------- */
 /* Persistence, exactly as the Mispriced Countries report: there
@@ -682,7 +682,7 @@ html.js .watch-list li.reveal.in{transform:none}
   .page{padding:var(--sp-2) max(18px,env(safe-area-inset-right)) 0 max(18px,env(safe-area-inset-left))}
   .masthead .topline .side{min-width:0}
   .masthead .topline .mid{display:none}
-  .edition-line{flex-direction:column;align-items:center;gap:3px;text-align:center}
+  .edition-line{flex-direction:column;align-items:center;gap:3px;text-align:center}.edition-line>span:first-child,.edition-line .c,.edition-line>span:last-child{flex:none;text-align:center}
   .headline-block{margin-top:var(--sp-5)}
   p.lede::first-letter{font-size:3.9em}
   figure.photo{margin-left:-18px;margin-right:-18px}
@@ -747,7 +747,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <div class="page">
 <div class="home-bar"><a class="home-link" href="https://1pilcher.github.io/the-board/" aria-label="Back to The Board homepage"><span class="arr" aria-hidden="true">&larr;</span> The Board &middot; Home</a></div>
 <header class="masthead">
-<div class="topline"><span class="side">Monday</span><span class="side right">Evening Report</span></div>
+<div class="topline"><span class="side">Houston</span><span class="side right">Evening Report</span></div>
 <div class="nameplate">THE BOARD</div>
 <div class="tagline">What's actually going on.</div>
 <div class="double-rule"></div>

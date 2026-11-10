@@ -130,10 +130,39 @@ img{max-width:100%}
 .edition-line .c{text-align:center;flex:1}
 
 /* ---------- Pill menu: minimal chrome ---------- */
-nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14)}
-nav.menu a{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out}
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav.menu::-webkit-scrollbar{display:none}
+/* Uniform in every report and at every width: one single row that
+   scrolls sideways inside the pill, never wraps, and the same pill
+   formatting everywhere - the compact phone block below no longer
+   restyles the menu at all. When every pill fits, auto margins on
+   the end pills centre the group exactly as the old wrapped menu
+   did; the moment the row overflows, those margins compute to
+   zero and the row scrolls from the start. The margins key to
+   first/last-of-type, not first/last-child, because the row's
+   first and last children are the end-room pads below. */
+/* End room: an invisible pad sits inside the scrolling row at
+   each end, both always the same width, set by the script to
+   exactly the room the end pills need - the first and last pills
+   sit one half-viewport from the row's ends, so without room the
+   centring scroll target clamps to the scroll range and an end
+   pill can never reach the middle. With the pads, every pill,
+   first to last, centres exactly, in both scroll directions.
+   When every pill fits there is nothing to centre-scroll and
+   the script leaves both pads at zero, so the fits case is
+   untouched. The pads carry no content and no styling of their
+   own: they are pure scrollable room. */
+nav.menu .menu-pad{flex:0 0 auto;width:0}
+nav.menu a:first-of-type{margin-left:auto}
+nav.menu a:last-of-type{margin-right:auto}
+nav.menu a{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;flex:0 0 auto;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out,transform .25s ease-out}
 nav.menu a:hover{border-color:var(--rule-light);color:var(--ink)}
-nav.menu a.active{background:var(--accent);color:#fff}
+nav.menu a.active{background:var(--accent);color:#fff;animation:pillPop .38s cubic-bezier(.22,.8,.3,1)}
+/* The pop: each time a pill becomes the active section - scrolling
+   down or back up - it lands in the centre of the menu (the script
+   scrolls the container) with one small, clean scale pulse.
+   Transform only, so it never moves the layout around it. */
+@keyframes pillPop{0%{transform:scale(1)}35%{transform:scale(1.12)}100%{transform:scale(1)}}
 /* Edge fades on the pill menu are scroll-aware: a fade only shows
    on a side where there is more menu hidden in that direction.
    At the start there is no left fade, at the end there is no
@@ -623,13 +652,10 @@ html.js .watch-list li.reveal.in{transform:none}
   :root{--section-gap:clamp(56px,9vh,80px)}
   html{scroll-padding-top:calc(var(--topchrome) + 54px)}
   .reads{grid-template-columns:1fr;gap:8px}
-  /* Compact menu: ONE slim row. The ten section links sit on a single
-     line inside the pill bar and the bar itself scrolls sideways, so
-     the whole control is ~40px tall instead of a three-row box eating
-     the first screen. Sticky again now that it is slim. */
-  nav.menu{position:sticky;top:calc(var(--topchrome) + 8px);border-radius:999px;padding:5px;gap:4px;margin-top:var(--sp-2);flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;box-shadow:0 6px 18px rgba(20,19,16,.1)}
-  nav.menu::-webkit-scrollbar{display:none}
-  nav.menu a{display:inline-flex;align-items:center;justify-content:center;padding:6px 11px;font-size:.62rem;letter-spacing:.08em;flex:0 0 auto}
+  /* The pill menu is NOT restyled here: it is one slim single row
+     that scrolls sideways inside the pill at every width, with the
+     exact same padding, gap, type and shadow as on desktop, so the
+     control is identical in every report and on every screen. */
   .chapter{scroll-margin-top:0}
   .towers{gap:12px}
   .tzone{height:250px}
@@ -676,6 +702,7 @@ html.js .watch-list li.reveal.in{transform:none}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   nav.menu a,.reveal,.timeline li::before{transition:none!important}
+  nav.menu a.active{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
   html.js .step .step-card{opacity:1;transform:none;transition:none}
   .scrolly .bignum.swap{animation:none}
@@ -717,6 +744,7 @@ html.js .watch-list li.reveal.in{transform:none}
 </header>
 
 <nav class="menu" id="menu" data-fade="right" aria-label="Sections">
+<span class="menu-pad" aria-hidden="true"></span>
 <a href="#verdict">Verdict</a>
 <a href="#rulers">The Rulers</a>
 <a href="#chokepoints">Chokepoints</a>
@@ -727,6 +755,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <a href="#texas">Texas</a>
 <a href="#next">What Comes Next</a>
 <a href="#watchlist">Watchlist</a>
+<span class="menu-pad" aria-hidden="true"></span>
 </nav>
 
 <div class="headline-block">
@@ -1281,17 +1310,80 @@ html.js .watch-list li.reveal.in{transform:none}
   if(window.visualViewport){ window.visualViewport.addEventListener("resize", setW, { passive: true }); }
   window.addEventListener("pageshow", settleW, { passive: true });
   var links = {};
-  Array.prototype.forEach.call(document.querySelectorAll("#menu a"), function(a){ links[a.getAttribute("href").slice(1)] = a; });
+  var pillList = document.querySelectorAll("#menu a");
+  Array.prototype.forEach.call(pillList, function(a){ links[a.getAttribute("href").slice(1)] = a; });
+  var pads = nav ? nav.querySelectorAll(".menu-pad") : [];
+  var padL = pads[0] || null, padR = pads[1] || null;
+  // End room: size the two pads inside the row so the first and
+  // last pills can be centred too. Measured with both pads at
+  // zero: for each end pill, how far its centring target falls
+  // outside the reachable scroll range. Growing both pads by W
+  // moves the first pill's target up by W and the last pill's
+  // reachable range out by W, so one width - the larger deficit,
+  // applied equally to both ends - centres both exactly. When
+  // the whole row fits there is no deficit and the pads stay at
+  // zero. Runs again whenever the geometry can change: resize,
+  // orientation, and once the webfont lands (pill widths move
+  // when Libre Franklin replaces the fallback).
+  function sizeEndRoom(){
+    if(!nav || !padL || !padR || !pillList.length){ return; }
+    padL.style.width = "0px"; padR.style.width = "0px";
+    var cw = nav.clientWidth, max = nav.scrollWidth - cw, w = 0;
+    if(max > 0){
+      var first = pillList[0], last = pillList[pillList.length - 1];
+      var leftDef = (cw - first.offsetWidth) / 2 - first.offsetLeft;
+      var rightDef = (last.offsetLeft - (cw - last.offsetWidth) / 2) - max;
+      w = Math.ceil(Math.max(0, leftDef, rightDef));
+    }
+    padL.style.width = w + "px"; padR.style.width = w + "px";
+  }
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var activeId = null;
+  // Centre the active pill: scroll the pill container (never the
+  // page) so the active section's pill sits in the middle of the
+  // visible pill area. Works the same in both scroll directions,
+  // because it runs on every change of the active section. The
+  // clamp below only bites at the true ends of the travel, and
+  // the end-room pads (sizeEndRoom) put every pill's centre
+  // inside that travel, first and last included. When every pill
+  // fits there is nothing to scroll and the group is already
+  // centred by the end pills' auto margins.
+  function centerActive(){
+    if(!nav || !activeId || !links[activeId]){ return; }
+    var a = links[activeId];
+    var max = nav.scrollWidth - nav.clientWidth;
+    if(max <= 0){ return; }
+    var target = a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2;
+    if(target < 0){ target = 0; } if(target > max){ target = max; }
+    if(Math.abs(nav.scrollLeft - target) < 1){ return; }
+    if(reduceMotion || !nav.scrollTo){ nav.scrollLeft = target; }
+    else { nav.scrollTo({ left: target, behavior: "smooth" }); }
+  }
+  function setActive(id){
+    if(id === activeId){ return; }
+    activeId = id;
+    for(var k in links){ links[k].classList.toggle("active", k === id); }
+    // Adding .active restarts the pill's pop animation in CSS;
+    // centring rides along in the same beat.
+    centerActive();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#menu a"), function(a){
+    a.addEventListener("click", function(){ setActive(a.getAttribute("href").slice(1)); });
+  });
+  window.addEventListener("resize", function(){ sizeEndRoom(); centerActive(); fade(); }, { passive: true });
+  window.addEventListener("orientationchange", function(){ sizeEndRoom(); centerActive(); fade(); }, { passive: true });
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ sizeEndRoom(); centerActive(); fade(); }); }
   if(window.IntersectionObserver){
     var spy = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ for(var id in links){ links[id].classList.toggle("active", id === e.target.id); } }
+        if(e.isIntersecting){ setActive(e.target.id); }
       });
     }, { rootMargin: "-40% 0px -55% 0px" });
     ["verdict","rulers","chokepoints","money","giveaway","history","houston","texas","next","watchlist"].forEach(function(id){
       var el = document.getElementById(id); if(el){ spy.observe(el); }
     });
   }
+  sizeEndRoom();
   settleW(); fade(); onScroll();
 })();
 </script>

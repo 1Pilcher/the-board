@@ -1,8 +1,8 @@
 # The Board
 
-**Power, plainly.**
+**What's actually going on.**
 
-A twice-weekly briefing on geopolitics, money, and influence, written for one reader, by Josh Pilcher. New reports Tuesday and Friday evenings.
+A briefing on geopolitics, money, and influence, written for one reader, by Josh Pilcher.
 
 Read it live: **https://1pilcher.github.io/the-board/**
 

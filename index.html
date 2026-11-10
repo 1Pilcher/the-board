@@ -66,13 +66,16 @@ a{color:inherit}
 .double-rule{border-top:3px solid var(--accent);position:relative;margin-top:4px}
 .double-rule::after{content:"";display:block;border-top:1px solid var(--accent);margin-top:3px}
 .edition-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:var(--sp-1) 2px;border-bottom:1px solid var(--ink);font-family:var(--sans);font-size:var(--fs-date);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
-.edition-line .c{text-align:center;flex:1}
+.edition-line>span:first-child{flex:1 1 0;min-width:0;text-align:left}
+.edition-line .c{text-align:center;flex:0 0 auto}
+.edition-line>span:last-child{flex:1 1 0;min-width:0;text-align:right}
 @media(max-width:700px){
   .masthead .topline .side{min-width:0}
   .masthead .topline .mid{display:none}
   .masthead .topline{font-size:var(--fs-label-sm);letter-spacing:.12em}
   .nameplate{font-size:2.3rem;letter-spacing:.1em;text-indent:.1em}
   .edition-line{flex-direction:column;align-items:center;gap:3px;text-align:center;font-size:var(--fs-label-sm);letter-spacing:.12em}
+  .edition-line>span:first-child,.edition-line .c,.edition-line>span:last-child{flex:none;text-align:center}
 }
 
 /* Pill menu: full content width, the same width as the masthead rules

@@ -130,7 +130,23 @@ img{max-width:100%}
 .edition-line .c{text-align:center;flex:1}
 
 /* ---------- Pill menu: minimal chrome ---------- */
-nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+/* Persistence, exactly as the Mispriced Countries report: there
+   the menu sits inside a .page that runs the whole length of the
+   report, so its sticky range is the whole document and the pill
+   stays pinned from the moment it reaches the top until the end
+   of the page. This report's .page is chopped into fragments
+   around the full-bleed bands, and the first fragment ends right
+   after the headline block - when the menu lived inside it, the
+   sticky range ended there too and the pill scrolled away with
+   the masthead a few screens in. So here the menu is a direct
+   child of <body>, the one container that spans the entire
+   document, with the sticky rule itself unchanged. Its size is
+   the old in-page size restated without the parent: the 1120px
+   frame minus the frame's own 22px side padding (1076px), or
+   the viewport minus that same padding on narrower screens
+   (the 700px block at the end of this stylesheet restates it
+   with the phone frame's 18px sides and safe-area insets). */
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) auto 0;width:min(1076px,calc(100% - 44px));max-width:1076px;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 nav.menu::-webkit-scrollbar{display:none}
 /* Uniform in every report and at every width: one single row that
    scrolls sideways inside the pill, never wraps, and the same pill
@@ -712,6 +728,11 @@ html.js .watch-list li.reveal.in{transform:none}
    of 560px/640px breakpoints and 16px/20px sides. */
 @media(max-width:700px){
   .page{padding:16px max(18px,env(safe-area-inset-right)) 0 max(18px,env(safe-area-inset-left))}
+  /* The body-level pill menu takes the phone frame's exact side
+     margins (18px, or the device's safe-area inset when larger),
+     the same ones .page uses just above, so the pill still spans
+     the full content width and not a pixel more. */
+  nav.menu{width:calc(100% - max(18px,env(safe-area-inset-left,0px)) - max(18px,env(safe-area-inset-right,0px)))}
   .pin-text{padding-left:18px;padding-right:18px}
   .pin-cap{padding-left:18px;padding-right:18px}
   .viz{padding-left:18px;padding-right:18px}
@@ -732,6 +753,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <div class="double-rule"></div>
 <div class="edition-line"><span>Monday, November 9, 2026</span><span class="c">USA vs China: Artificial Intelligence</span><span>By Josh Pilcher</span></div>
 </header>
+</div>
 
 <nav class="menu" id="menu" data-fade="right" aria-label="Sections">
 <a href="#verdict">Verdict</a>
@@ -746,6 +768,7 @@ html.js .watch-list li.reveal.in{transform:none}
 <a href="#watchlist">Watchlist</a>
 </nav>
 
+<div class="page" style="padding-top:0">
 <div class="headline-block">
 <p class="kicker">The Board &middot; Special Report</p>
 <h1 class="headline">Two Races, One Scoreboard</h1>

@@ -163,8 +163,8 @@
    (with "hidden" as the older-engine fallback) cuts the excess
    without creating a scroll container, so position:sticky - the
    pill menu, the pinned photo stages - keeps working. */
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper);overflow-x:hidden;overflow-x:clip}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.17rem;line-height:1.85;overflow-x:hidden;overflow-x:clip}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper);overflow-x:hidden;overflow-x:clip;overflow-anchor:none}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.17rem;line-height:1.85;overflow-x:hidden;overflow-x:clip;overflow-anchor:none}
 img{max-width:100%}
 #progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:300;pointer-events:none}
 .page{max-width:1060px;margin:0 auto;padding:var(--sp-3) 22px 0}
@@ -306,12 +306,23 @@ html.js .dotfield i.on{opacity:1;transform:scale(1)}
 .tower .tlab{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:var(--sp-2);line-height:1.5;min-height:3.2em}
 
 /* ---------- Pinned scrolly: the rulers ---------- */
-.scrolly{margin:0 calc(50% - 50vw);width:100vw;background:var(--box);position:relative;border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light)}
-.scrolly .sticky-wrap{position:sticky;top:0;min-height:100vh;min-height:calc(var(--vh,1vh)*100);display:flex;flex-direction:column;justify-content:center;padding:var(--sp-5) 22px}
+.scrolly{margin:0 calc(50% - 50vw);width:100vw;background:var(--box);position:relative;border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);overflow-x:hidden;overflow-x:clip}
+/* The pinned graphic lives in the TOP of the stage, never centred
+   over the whole screen: the step cards travel through the bottom
+   of the screen, and a centred graphic put its bars, labels and
+   source note exactly in the cards' path, so card text and chart
+   text landed on top of each other. The stage is also exactly one
+   screen tall (a definite height, not a min-height the content
+   can stretch): a sticky box taller than the viewport traps its
+   own overflow, which read as the graphic getting stuck with its
+   bottom half wedged behind the cards. Compact type and top
+   anchoring keep the whole graphic inside the upper zone on any
+   screen, and the card zone below it stays empty band. */
+.scrolly .sticky-wrap{position:sticky;top:0;height:100vh;height:calc(var(--vh,1vh)*100);display:flex;flex-direction:column;justify-content:flex-start;padding:calc(var(--vh,1vh)*6) 22px var(--sp-3)}
 .scrolly-in{max-width:920px;margin:0 auto;width:100%}
 .scrolly h3{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.5vw,2.4rem);margin:0 0 var(--sp-1)}
 .scrolly .chart-sub{font-style:italic;color:var(--ink-soft);margin:0 0 var(--sp-2);font-size:1.02rem}
-.scrolly .bignum{font-family:var(--sans);font-weight:900;font-size:clamp(6rem,22vw,12rem);line-height:.92;letter-spacing:-.04em;color:var(--accent);font-variant-numeric:tabular-nums}
+.scrolly .bignum{font-family:var(--sans);font-weight:900;font-size:clamp(4.4rem,15vw,8.25rem);line-height:.92;letter-spacing:-.04em;color:var(--accent);font-variant-numeric:tabular-nums}
 .scrolly .bignum.swap{animation:numswap .85s cubic-bezier(.22,.8,.3,1)}
 @keyframes numswap{0%{opacity:.5;transform:translateY(6px)}100%{opacity:1;transform:none}}
 .scrolly .biglab{font-family:var(--sans);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:var(--sp-2);line-height:1.6;min-height:2.6em;max-width:640px}
@@ -320,6 +331,25 @@ html.js .dotfield i.on{opacity:1;transform:scale(1)}
 .step .step-card{background:var(--paper);color:var(--ink);padding:var(--sp-3);max-width:560px;border:1px solid var(--rule-light);box-shadow:0 18px 44px rgba(20,19,16,.14)}
 .step .step-card p{margin:0;font-size:1.06rem;line-height:1.65}
 .step .step-card .step-k{font-family:var(--sans);font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
+/* The four ruler cards slide in alternately: left, right, left,
+   right, all four with the same distance, the same duration and
+   the same curve, so card three reads exactly like card one and
+   card four exactly like card two. The travel is a transform
+   only: it never changes the card's layout box, its height or
+   the height of anything around it, so the entrance cannot push
+   the page up or down while it plays. The scrolly band clips
+   sideways overflow, so a card mid-slide never widens the page.
+   States are keyed to html.js like every other entrance: with
+   no script the cards simply sit finished in place. */
+html.js .step .step-card{opacity:0;will-change:transform,opacity;transition:opacity .9s cubic-bezier(.22,.8,.3,1),transform .9s cubic-bezier(.22,.8,.3,1)}
+html.js .step[data-step="0"] .step-card,html.js .step[data-step="2"] .step-card{transform:translateX(-52px)}
+html.js .step[data-step="1"] .step-card,html.js .step[data-step="3"] .step-card{transform:translateX(52px)}
+html.js .step.in .step-card{opacity:1;transform:translateX(0)}
+@media(max-width:700px){
+  html.js .step[data-step="0"] .step-card,html.js .step[data-step="2"] .step-card{transform:translateX(-22px)}
+  html.js .step[data-step="1"] .step-card,html.js .step[data-step="3"] .step-card{transform:translateX(22px)}
+  html.js .step.in .step-card{transform:translateX(0)}
+}
 
 /* ---------- Timeline ---------- */
 .timeline{margin:var(--sp-5) 0 0;border-left:2px solid var(--ink);padding:0;list-style:none}
@@ -435,6 +465,22 @@ html.js .statement.in::before,html.js .statement.in::after{transform:scaleX(1)}
 .timeline::after{content:"";position:absolute;left:-2px;top:0;width:2px;background:var(--accent);height:calc(var(--tp,0)*100%);opacity:.85}
 .timeline li::before{transition:background .45s ease,border-color .45s ease}
 .timeline li.passed::before{background:var(--accent)}
+/* Short screens (small laptops, landscape phones, webviews with
+   chrome): the pinned graphic compresses so it still ends above
+   the step cards' travel zone instead of running underneath it. */
+@media(max-height:860px){
+  .scrolly .sticky-wrap{padding-top:var(--sp-4)}
+  .scrolly .bignum{font-size:5.4rem}
+  .scrolly .biglab{min-height:0}
+  .scrolly .lines{gap:var(--sp-3)}
+  .scrolly .src-note{margin-top:var(--sp-2)}
+}
+@media(max-height:560px){
+  .scrolly .sticky-wrap{padding-top:var(--sp-3)}
+  .scrolly h3{font-size:1.45rem}
+  .scrolly .bignum{font-size:3.9rem}
+  .scrolly .chart-sub{margin-bottom:var(--sp-1)}
+}
 @media(max-width:560px){
   .il-dots .rail{gap:7px}
   :root{--interlude-h:clamp(104px,16vh,144px);--interlude-h-short:clamp(80px,12vh,112px)}
@@ -511,6 +557,10 @@ html.js .watch-list li.reveal.in{transform:none}
   .towers{height:240px;gap:12px}
   .step{min-height:92vh;min-height:calc(var(--vh,1vh)*92);padding-bottom:var(--sp-7)}
   .step .step-card{max-width:none;width:100%;padding:18px 20px}
+  .scrolly .sticky-wrap{padding-top:var(--sp-5);padding-left:18px;padding-right:18px}
+  .scrolly .bignum{font-size:4.3rem}
+  .scrolly .lines{gap:var(--sp-3)}
+  .scrolly .src-note{margin-top:var(--sp-2)}
   .viz{padding-left:18px;padding-right:18px}
   .verdict{padding-left:20px;padding-right:20px}
   .watch-list li{gap:16px}
@@ -543,6 +593,7 @@ html.js .watch-list li.reveal.in{transform:none}
   html{scroll-behavior:auto}
   nav.menu a,.reveal,.timeline li::before{transition:none!important}
   .reveal{opacity:1;transform:none;transition:none}
+  html.js .step .step-card{opacity:1;transform:none;transition:none}
   .scrolly .bignum.swap{animation:none}
   .pin{height:auto!important}
   .pin-stage{position:relative;height:82vh;height:calc(var(--vh,1vh)*82)}
@@ -668,10 +719,10 @@ html.js .watch-list li.reveal.in{transform:none}
 <p class="src-note">Sources: LiveBench via Bloomberg Intelligence, Oct 4, 2026. Stanford AI Index, Apr 2026. Artificial Analysis Intelligence Index v5, Oct 27, 2026. NIST CAISI, May 1, 2026. Scores across benchmarks are not comparable to each other, which is rather the point.</p>
 </div>
 </div>
-<div class="step" data-step="0"><div class="step-card reveal rv-left"><span class="step-k">Ruler one: the public exam</span><p>LiveBench rotates fresh questions in so models cannot memorize the answers in advance. Even so, on questions the whole industry can see coming, China's best is within about 3 percent of America's best, and ahead of it at agentic coding.</p></div></div>
-<div class="step" data-step="1"><div class="step-card reveal rv-right"><span class="step-k">Ruler two: the crowd</span><p>Stanford's Arena leaderboard asks ordinary users to pick the better answer, blind. In March 2026 the gap was 2.7 percent, and first place had already traded hands several times since early 2025. At the level of everyday questions, most users cannot reliably tell the two apart.</p></div></div>
-<div class="step" data-step="2"><div class="step-card reveal rv-left"><span class="step-k">Ruler three: the hard exam</span><p>Artificial Analysis rebuilt its index in version 5 around harder, partly private tests, including a coding evaluation worth 15 percent of the score. The moment the ruler got harder, the gap at the top widened to 13 points: 59 for Gemini 4 Carbon, 46 for Kimi K3.1 Pro.</p></div></div>
-<div class="step" data-step="3"><div class="step-card reveal rv-right"><span class="step-k">Ruler four: the exam nobody can study for</span><p>On NIST's held-out tests, the kind with no practice set, DeepSeek V4 Pro solved 44 percent of software engineering problems against 78 percent at the American frontier. Eight months behind, by the government's own measurement. The closer a test is to real, unseen work, the wider the American lead.</p></div></div>
+<div class="step" data-step="0"><div class="step-card"><span class="step-k">Ruler one: the public exam</span><p>LiveBench rotates fresh questions in so models cannot memorize the answers in advance. Even so, on questions the whole industry can see coming, China's best is within about 3 percent of America's best, and ahead of it at agentic coding.</p></div></div>
+<div class="step" data-step="1"><div class="step-card"><span class="step-k">Ruler two: the crowd</span><p>Stanford's Arena leaderboard asks ordinary users to pick the better answer, blind. In March 2026 the gap was 2.7 percent, and first place had already traded hands several times since early 2025. At the level of everyday questions, most users cannot reliably tell the two apart.</p></div></div>
+<div class="step" data-step="2"><div class="step-card"><span class="step-k">Ruler three: the hard exam</span><p>Artificial Analysis rebuilt its index in version 5 around harder, partly private tests, including a coding evaluation worth 15 percent of the score. The moment the ruler got harder, the gap at the top widened to 13 points: 59 for Gemini 4 Carbon, 46 for Kimi K3.1 Pro.</p></div></div>
+<div class="step" data-step="3"><div class="step-card"><span class="step-k">Ruler four: the exam nobody can study for</span><p>On NIST's held-out tests, the kind with no practice set, DeepSeek V4 Pro solved 44 percent of software engineering problems against 78 percent at the American frontier. Eight months behind, by the government's own measurement. The closer a test is to real, unseen work, the wider the American lead.</p></div></div>
 </div>
 
 <div class="column">
@@ -1077,11 +1128,24 @@ html.js .watch-list li.reveal.in{transform:none}
     var vv = window.visualViewport;
     return (vv && vv.height) || window.innerHeight || document.documentElement.clientHeight || 0;
   }
-  function setVH(){
+  // --vh is locked to the width it was measured at. Mobile Safari
+  // grows and shrinks the visible viewport as its toolbars hide
+  // and show DURING a scroll, and every full-screen element on
+  // this page (pins, chapters, steps, the sticky ruler stage) is
+  // sized from --vh: remeasuring on a toolbar change resized all
+  // of them mid-scroll, the document changed height under the
+  // reader's thumb, and the screen teleported up and down. A
+  // height-only change is now ignored; --vh is remeasured only
+  // when the width changes (rotation, a real window resize), so
+  // nothing on the page ever changes size while scrolling.
+  var vhWidth = -1;
+  function setVH(force){
+    var w = window.innerWidth || document.documentElement.clientWidth || 0;
+    if(!force && vhWidth > 0 && w === vhWidth){ return; }
     var h = viewH();
-    if(h > 0){ document.documentElement.style.setProperty("--vh", (h / 100) + "px"); }
+    if(h > 0){ vhWidth = w; document.documentElement.style.setProperty("--vh", (h / 100) + "px"); }
   }
-  setVH();
+  setVH(true);
 
   // Menu scroll-spy
   var navEl = document.getElementById("menu");
@@ -1200,9 +1264,18 @@ html.js .watch-list li.reveal.in{transform:none}
   var tlItems = tlEl ? Array.prototype.slice.call(tlEl.querySelectorAll("li")) : [];
 
   var scrollyEl = document.getElementById("scrolly1");
+  var stepEls = Array.prototype.slice.call(document.querySelectorAll("#scrolly1 .step"));
   var prog = document.getElementById("progress");
 
   function buildViz(v, p){
+    // Skip the whole build when neither the chart's progress nor
+    // its counter's progress has actually moved: the frame loop
+    // calls in constantly, and rewriting identical widths,
+    // heights and transforms every call forced the browser to
+    // repaint the charts on frames where nothing had changed.
+    var bk = Math.round(clamp(p, 0, 1) * 500) + "|" + (v.counts.length ? Math.round(easeSoft(countP(v.counts[0])) * 500) : 0);
+    if(v._bk === bk){ return; }
+    v._bk = bk;
     // The chart elements settle the way the chapter titles do: a
     // small rise and a breath of scale as the graphic crosses the
     // middle of the screen, run off the same progress, so scrolling
@@ -1265,6 +1338,12 @@ html.js .watch-list li.reveal.in{transform:none}
     // motion in reverse instead of finding it already spent. The
     // CSS transition does the smoothing in both directions.
     for(var i=0;i<reveals.length;i++){ var el = reveals[i]; var rr = el.getBoundingClientRect(); if(!el.classList.contains("in")){ if(rr.top < vh * 0.85 && rr.bottom > vh * 0.08){ el.classList.add("in"); } } else if(rr.top > vh * 1.02 || rr.bottom < -vh * 0.05){ el.classList.remove("in"); } }
+    // Ruler cards: the same hysteresis as the reveals, toggling a
+    // class and nothing else. The CSS transition does the sliding
+    // (left, right, left, right), the card's layout box never
+    // moves, and scrolling back up takes the class off so the
+    // slide replays in reverse.
+    for(var si=0;si<stepEls.length;si++){ var sel = stepEls[si]; var sr2 = sel.getBoundingClientRect(); if(!sel.classList.contains("in")){ if(sr2.top < vh * 0.92 && sr2.bottom > vh * 0.1){ sel.classList.add("in"); } } else if(sr2.top > vh * 1.05 || sr2.bottom < -vh * 0.05){ sel.classList.remove("in"); } }
     if(!reduce){
       pins.forEach(function(b, bi){
         var r = b.wrap.getBoundingClientRect();
@@ -1282,6 +1361,11 @@ html.js .watch-list li.reveal.in{transform:none}
         // middle of the screen and settles just as the pin does,
         // so a 3vh dwell never turns it into a snap.
         var tp = clamp((vh * 0.55 - r.top) / (vh * 0.55 + Math.max(total, 1)), 0, 1);
+        // Unchanged progress writes nothing: repainting the same
+        // transform and opacity on every frame is what made the
+        // pinned sections feel choppy on a phone.
+        if(b._tp !== undefined && Math.abs(b._tp - tp) < 0.0015){ return; }
+        b._tp = tp;
         // The overlay text never drops below high contrast against
         // the darkened base of the photo, and each pin's text
         // settles its own way: odd pins rise, even pins rise less
@@ -1293,6 +1377,8 @@ html.js .watch-list li.reveal.in{transform:none}
         if(r.bottom < -60 || r.top > vh + 60){ return; }
         var center = r.top + r.height / 2;
         var d = clamp((center - vh * 0.5) / (vh * 0.75), -1, 1);
+        if(c._d !== undefined && Math.abs(c._d - d) < 0.002){ return; }
+        c._d = d;
         var sc = 1 - Math.abs(d) * 0.045;
         var drift = (ci % 2 === 0 ? 1 : -1) * d * 12;
         c.style.transform = "scale(" + sc + ") translate(" + drift.toFixed(1) + "px," + (d * 20).toFixed(1) + "px)";
@@ -1410,30 +1496,49 @@ html.js .watch-list li.reveal.in{transform:none}
           }
         }
       }
-      if(it.fore && it.plen){ it.fore.style.strokeDashoffset = String(it.plen * (1 - p)); if(it.head){ try{ var pt = it.fore.getPointAtLength(it.plen * p); it.head.setAttribute("cx", pt.x.toFixed(1)); it.head.setAttribute("cy", pt.y.toFixed(1)); }catch(e){} } }
+      if(it.fore && it.plen){ it.fore.style.strokeDashoffset = String(it.plen * (1 - p)); if(it.head && (it._hp === undefined || Math.abs(it._hp - p) > 0.004)){ it._hp = p; try{ var pt = it.fore.getPointAtLength(it.plen * p); it.head.setAttribute("cx", pt.x.toFixed(1)); it.head.setAttribute("cy", pt.y.toFixed(1)); }catch(e){} } }
     });
     if(tlEl){ var tr = tlEl.getBoundingClientRect(); if(tr.bottom > -80 && tr.top < vh + 80){ tlEl.style.setProperty("--tp", clamp((vh * 0.55 - tr.top) / tr.height, 0, 1).toFixed(3)); tlItems.forEach(function(li){ li.classList.toggle("passed", li.getBoundingClientRect().top < vh * 0.55); }); } }
-    if(scrollyEl && numEl){ var sr = scrollyEl.getBoundingClientRect(); var total = sr.height - vh; var sp = total > 0 ? clamp(-sr.top / total, 0, 1) : 0; var idx = Math.min(steps.length - 1, Math.floor(sp * steps.length)); if(sr.bottom > 0 && sr.top < vh){ setStep(idx); } }
+    // The graphic follows the step the reader is actually looking
+    // at: whichever step's centre is nearest the middle of the
+    // screen owns the big number. The old mapping divided the
+    // section's total scroll into four equal slices, but the
+    // pinned stage's own screen of travel is part of that height,
+    // so the number flipped a beat before its card arrived and
+    // sat stale while the next card was already on screen - the
+    // graphic read as stuck, disagreeing with the text beside it.
+    if(scrollyEl && numEl){ var sr = scrollyEl.getBoundingClientRect(); if(sr.bottom > 0 && sr.top < vh){ var mid = vh * 0.55, best = -1, bestD = Infinity; for(var q=0;q<stepEls.length;q++){ var qr = stepEls[q].getBoundingClientRect(); if(qr.bottom < 0 || qr.top > vh){ continue; } var qd = Math.abs(qr.top + qr.height / 2 - mid); if(qd < bestD){ bestD = qd; best = q; } } if(best >= 0){ setStep(best); } } }
   }
   // Driver 1: the animation-frame loop. Guarded, so a single throwing
   // frame is skipped and the loop always reschedules itself.
-  function frame(){ try{ update(); }catch(e){} requestAnimationFrame(frame); }
+  // The loop runs a full update on every frame the scroll
+  // position actually moved. When the reader is holding still,
+  // only every second frame runs, just to feed the ambient
+  // interlude clocks: the previous version remeasured and
+  // repainted the entire page sixty times a second even when
+  // nothing was moving, which is the chop the reader felt.
+  var frameTick = 0, lastFrameY = -1;
+  function frame(){
+    frameTick++;
+    var cy = window.scrollY || window.pageYOffset || 0;
+    var moved = Math.abs(cy - lastFrameY) > 0.5;
+    if(moved || frameTick % 2 === 0){ lastFrameY = cy; try{ update(); }catch(e){} }
+    requestAnimationFrame(frame);
+  }
   // Driver 2: direct pokes from scroll and layout events, throttled.
   // If a webview throttles or pauses rAF, scrolling still animates.
   var lastPoke = 0;
   function poke(){ var now = Date.now(); if(now - lastPoke < 50){ return; } lastPoke = now; try{ update(); }catch(e){} }
   window.addEventListener("scroll", poke, { passive: true });
-  window.addEventListener("touchmove", poke, { passive: true });
-  window.addEventListener("resize", function(){ setVH(); poke(); });
-  window.addEventListener("orientationchange", function(){ setVH(); poke(); });
-  window.addEventListener("load", function(){ setVH(); poke(); });
-  if(window.visualViewport){ window.visualViewport.addEventListener("resize", function(){ setVH(); poke(); }); }
-  document.addEventListener("visibilitychange", function(){ if(!document.hidden){ setVH(); poke(); } });
+  window.addEventListener("resize", function(){ setVH(false); poke(); });
+  window.addEventListener("orientationchange", function(){ window.setTimeout(function(){ setVH(true); poke(); }, 120); });
+  window.addEventListener("load", function(){ setVH(false); poke(); });
+  document.addEventListener("visibilitychange", function(){ if(!document.hidden){ poke(); } });
   // Safety net: one extra pass two seconds after load, so if a
   // webview throttled the frame loop the page still settles into
   // exactly the state its scroll position calls for.
   window.setTimeout(function(){ poke(); }, 2000);
-  if(reduce){ reveals.forEach(function(el){ el.classList.add("in"); }); }
+  if(reduce){ reveals.forEach(function(el){ el.classList.add("in"); }); stepEls.forEach(function(el){ el.classList.add("in"); }); }
   requestAnimationFrame(frame);
 })();
 </script>

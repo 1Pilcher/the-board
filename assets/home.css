@@ -74,8 +74,8 @@ a{color:inherit}
 .masthead{text-align:center}
 .masthead .topline{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:3px solid var(--ink);padding-top:8px;font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
 .masthead .topline .mid{text-align:center;flex:1 1 0;min-width:0}
-.masthead .topline .side{flex:1 1 0;min-width:0}
-.masthead .topline .side.right{text-align:right}
+.masthead .topline .side{flex:1 1 0;min-width:0;text-align:left}
+.masthead .topline .side.right{text-align:right;margin-right:-.18em}
 .nameplate{font-family:var(--display);font-weight:900;font-size:clamp(2.8rem,10vw,5.4rem);letter-spacing:.16em;line-height:1.08;margin:var(--sp-3) 0 var(--sp-1);text-indent:.16em}
 .tagline{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(1.2rem,3vw,1.5rem);color:var(--ink-soft);margin:0 0 var(--sp-2)}
 .double-rule{border-top:3px solid var(--accent);position:relative;margin-top:4px}
@@ -95,7 +95,7 @@ a{color:inherit}
 }
 @media(max-width:380px){
 .nameplate{font-size:2.3rem;letter-spacing:.1em;text-indent:.1em}
-.masthead .topline{font-size:.6rem;letter-spacing:.12em}
+.masthead .topline{font-size:.6rem;letter-spacing:.12em}.masthead .topline .side.right{margin-right:-.12em}
 .edition-line{font-size:.62rem;letter-spacing:.12em}
 }
 /* Pill menu: full content width, the same width as the masthead rules

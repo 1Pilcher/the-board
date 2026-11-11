@@ -788,3 +788,49 @@ html.js .watch-list li.reveal.in{transform:none}
 .dy-moved{padding:0 18px}
 .dy-moved li{gap:14px}
 }
+
+/* Daily nav removal (Josh, Nov 11, 2026): the briefing carries no
+   pill nav of its own; a daily page's sections simply scroll. The
+   pages this sheet serves that hold .dy-sec sections are exactly
+   the daily pages, which is what scopes this rule: report pages
+   keep their menu untouched. The removal is CSS-level while the
+   generator still emits the markup. With no sticky nav left, the
+   sections' scroll margin shrinks to clear just the paper strip. */
+body:has(.dy-sec) nav.menu{display:none}
+.dy-sec{scroll-margin-top:28px}
+
+/* Daily motion: a clean, subtle entry. Each daily component fades
+   in with a few pixels of rise as it enters the viewport, scrubbed
+   by the scroll itself, and sits still once it has arrived. Pure
+   CSS with no hidden start state in the static page: browsers
+   without scroll-driven animations get the finished page as-is,
+   and reduced motion gets no animation at all. */
+@keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .dy-head,.dy-item,.dy-shape,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  }
+}
+
+/* The daily page on desktop: the briefing laid out as a newspaper
+   front across the full frame instead of one centred column.
+   What's Moved leads as a full-width band with its list run in
+   two columns, World and US sit side by side (the divider that
+   follows World in the markup belongs to the single-column flow
+   and is not rendered here), Markets takes a wide band and Worth
+   Knowing closes the page. Reading order stays the DOM order.
+   Below 1000px the page keeps its single column exactly. */
+@media(min-width:1000px){
+  .page:has(> .dy-sec){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;row-gap:var(--sp-6);align-items:start}
+  .page:has(> .dy-sec)>*{min-width:0}
+  .page:has(> .dy-sec)>.headline-block,.page:has(> .dy-sec)>footer{grid-column:1/-1}
+  .page:has(> .dy-sec) .dy-sec{margin:0;max-width:none}
+  .page:has(> .dy-sec) #moved{grid-column:1/-1}
+  .page:has(> .dy-sec) #world{grid-column:1}
+  .page:has(> .dy-sec) #us{grid-column:2}
+  .page:has(> .dy-sec) #markets,.page:has(> .dy-sec) #worth{grid-column:1/-1}
+  .page:has(> .dy-sec)>.dy-divider{grid-column:1/-1;padding:0}
+  .page:has(> .dy-sec)>#world+.dy-divider{display:none}
+  .page:has(> .dy-sec) .dy-head,.page:has(> .dy-sec) .dy-col{padding-left:0;padding-right:0}
+  .page:has(> .dy-sec) #moved .dy-moved{max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;padding:0}
+}

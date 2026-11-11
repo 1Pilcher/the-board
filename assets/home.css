@@ -353,3 +353,45 @@ html{scroll-behavior:auto}
 .dy-moved li{gap:14px}
 .prev-row{flex-wrap:wrap;gap:6px 14px}
 }
+
+/* Daily nav removal (Josh, Nov 11, 2026): the briefing needs no
+   section pills of its own; the site's tab bar above is the only
+   nav. The removal is CSS-level while the generator still emits
+   the markup, and the element leaves no space behind. */
+.dy-pills{display:none}
+
+/* Daily motion: a clean, subtle entry. Each daily component fades
+   in with a few pixels of rise as it enters the viewport, scrubbed
+   by the scroll itself, and sits still once it has arrived. Pure
+   CSS with no hidden start state in the static page: browsers
+   without scroll-driven animations get the finished page as-is,
+   and reduced motion gets no animation at all. */
+@keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .dy-head,.dy-item,.dy-shape,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  }
+}
+
+/* Today on desktop: the briefing laid out as a newspaper front
+   across the full frame instead of one centred column. What's
+   Moved leads as a full-width band with its list run in two
+   columns, World and US sit side by side (the divider that
+   follows World in the markup belongs to the single-column flow
+   and is not rendered here), Markets takes a wide band and Worth
+   Knowing closes. Reading order stays the DOM order. The tab
+   system's [hidden] rule carries !important, so this grid only
+   ever applies while Today is the open tab. Below 1000px the
+   briefing keeps its single column exactly. */
+@media(min-width:1000px){
+  #today:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;row-gap:var(--sp-6);align-items:start}
+  #today>*{min-width:0}
+  #today .dy-sec{margin-top:0}
+  #today #moved{grid-column:1/-1}
+  #today #world{grid-column:1}
+  #today #us{grid-column:2}
+  #today #markets,#today #worth{grid-column:1/-1}
+  #today>.dy-divider{grid-column:1/-1;padding:0}
+  #today>#world+.dy-divider{display:none}
+  #today .dy-moved{max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
+}

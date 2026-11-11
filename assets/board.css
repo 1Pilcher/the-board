@@ -770,6 +770,10 @@ html.js .watch-list li.reveal.in{transform:none}
 .dy-moved .dy-wn{font-family:var(--sans);font-weight:900;font-size:1.6rem;line-height:1;color:var(--accent);min-width:1.1em}
 .dy-moved p{font-size:1.08rem;line-height:1.7;margin:0}
 .dy-shape{background:#fffdf8;border:1px solid var(--rule-light);border-radius:10px;padding:28px 28px 24px;max-width:920px;margin:30px auto 10px;min-width:0}
+/* Shape panels carry a phone variant of each wide SVG, drawn at
+   phone width with labels at reading size; it never renders on
+   wider screens (the phone block below swaps the two variants). */
+.dy-svg.dy-m{display:none}
 .dy-shape h3{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,4vw,1.75rem);line-height:1.2;margin:0 0 4px}
 .dy-shape .dy-sub{color:var(--ink-soft);font-style:italic;font-size:1rem;line-height:1.55;margin:0 0 18px}
 .dy-shape figcaption{color:var(--ink-soft);font-family:var(--sans);font-size:.7rem;line-height:1.55;margin-top:16px;border-top:1px solid var(--rule-light);padding-top:var(--sp-2)}
@@ -782,7 +786,9 @@ html.js .watch-list li.reveal.in{transform:none}
 .dy-divider{display:flex;justify-content:center;padding:44px 0 6px}
 .dy-divider svg{display:block;max-width:100%}
 @media(max-width:700px){
-.dy-shape{padding:22px 18px 18px;margin-left:18px;margin-right:18px}
+.dy-shape{padding:22px 14px 18px;margin-left:0;margin-right:0}
+.dy-svg.dy-d{display:none!important}
+.dy-svg.dy-m{display:block}
 .dy-head{padding:0 18px}
 .dy-col{padding:0 18px}
 .dy-moved{padding:0 18px}
@@ -808,7 +814,7 @@ body:has(.dy-sec) nav.menu{display:none}
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-item,.dy-shape,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    .dy-head,.dy-item,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
   }
 }
 
@@ -833,4 +839,29 @@ body:has(.dy-sec) nav.menu{display:none}
   .page:has(> .dy-sec)>#world+.dy-divider{display:none}
   .page:has(> .dy-sec) .dy-head,.page:has(> .dy-sec) .dy-col{padding-left:0;padding-right:0}
   .page:has(> .dy-sec) #moved .dy-moved{max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;padding:0}
+}
+
+/* Daily shape motion (Josh, Nov 11, 2026): the shapes themselves
+   move, more expressive than the plain fade, still subtle and
+   clean. Dot fields assemble as the field enters, bars and steps
+   rise from their baseline in sequence, traces draw themselves
+   in and stop where the number stops, panel text fades in behind
+   them. Smooth ease curves, no bounce, no overshoot, no looping;
+   everything is still once it has settled, and the page is
+   complete and readable without any of it. */
+@keyframes dyFade{from{opacity:0}to{opacity:1}}
+@keyframes dyDot{from{opacity:0;transform:scale(.35)}to{opacity:1;transform:scale(1)}}
+@keyframes dyRise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes dyDraw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% entry 35%}
+    .dy-pop{animation-range:entry 35% entry 60%}
+    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 10% entry 55%}
+    .dy-steps rect:nth-of-type(3){animation-range:entry 20% entry 65%}
+    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 15% entry 55%}
+    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 5% entry 55%}
+  }
 }

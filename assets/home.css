@@ -104,18 +104,18 @@ a{color:inherit}
    bubble always clears the pill border) and one uniform gap between
    tabs. Each tab takes an equal share of the width and centers its
    label, so the row looks spread out on desktop and still fits a phone. */
-nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:0;overflow:hidden;box-shadow:0 10px 30px rgba(20,19,16,.14)}
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(111,106,97,.97);border:1px solid var(--accent);border-radius:999px;padding:0;overflow:hidden;box-shadow:0 10px 30px rgba(20,19,16,.14)}
 .menu-track{position:relative;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:12px;padding:7px 10px;overflow-x:hidden;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
 .menu-track::before,.menu-track::after{content:none}
 .menu-track::-webkit-scrollbar{display:none}
 nav.menu.fits .menu-track{justify-content:space-between}
-nav.menu a{flex:1 1 0;min-width:0;text-align:center;font-family:var(--sans);font-size:var(--fs-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out,transform .25s ease-out}
-nav.menu a:hover{border-color:var(--rule-light);color:var(--ink)}
+nav.menu a{flex:1 1 0;min-width:0;text-align:center;font-family:var(--sans);font-size:var(--fs-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out,transform .25s ease-out}
+nav.menu a:hover{border-color:var(--rule-light);color:#fff}
 nav.menu a.active{background:var(--accent);color:#fff;border-color:var(--accent);animation:pillPop .38s cubic-bezier(.22,.8,.3,1)}
 @keyframes pillPop{0%{transform:scale(1)}35%{transform:scale(1.12)}100%{transform:scale(1)}}
 nav.menu::before,nav.menu::after{content:"";position:absolute;top:0;bottom:0;width:46px;z-index:2;pointer-events:none;opacity:0;transition:opacity .25s ease}
-nav.menu::before{left:0;border-radius:999px 0 0 999px;background:linear-gradient(to right,rgba(250,247,240,1) 18%,rgba(250,247,240,0))}
-nav.menu::after{right:0;border-radius:0 999px 999px 0;background:linear-gradient(to left,rgba(250,247,240,1) 18%,rgba(250,247,240,0))}
+nav.menu::before{left:0;border-radius:999px 0 0 999px;background:linear-gradient(to right,rgba(111,106,97,1) 18%,rgba(111,106,97,0))}
+nav.menu::after{right:0;border-radius:0 999px 999px 0;background:linear-gradient(to left,rgba(111,106,97,1) 18%,rgba(111,106,97,0))}
 nav.menu[data-fade="left"]::before{opacity:1}
 nav.menu[data-fade="right"]::after{opacity:1}
 nav.menu[data-fade="both"]::before,nav.menu[data-fade="both"]::after{opacity:1}

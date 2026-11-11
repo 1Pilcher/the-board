@@ -153,7 +153,7 @@ img{max-width:100%}
 /* LOCKED 2026-11-10: nav size/shape are template defaults (width, 7px padding,
    999px radius, pill type). Do not restyle per report; behaviour (sticky range,
    scroll-aware edge fades, pill pop) is unchanged. */
-nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) auto 0;width:min(1076px,calc(100% - 44px));max-width:1076px;background:rgba(250,247,240,.97);border:1px solid var(--ink);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) auto 0;width:min(1076px,calc(100% - 44px));max-width:1076px;background:rgba(111,106,97,.97);border:1px solid var(--accent);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 nav.menu::-webkit-scrollbar{display:none}
 /* Uniform in every report and at every width: one single row that
    scrolls sideways inside the pill, never wraps, and the same pill
@@ -167,8 +167,8 @@ nav.menu::-webkit-scrollbar{display:none}
    active pill scrolls only within the natural scroll range. */
 nav.menu a:first-of-type{margin-left:auto}
 nav.menu a:last-of-type{margin-right:auto}
-nav.menu a{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;flex:0 0 auto;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out,transform .25s ease-out}
-nav.menu a:hover{border-color:var(--rule-light);color:var(--ink)}
+nav.menu a{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid transparent;white-space:nowrap;flex:0 0 auto;transition:color .2s ease-out,border-color .2s ease-out,background-color .2s ease-out,transform .25s ease-out}
+nav.menu a:hover{border-color:var(--rule-light);color:#fff}
 nav.menu a.active{background:var(--accent);color:#fff;animation:pillPop .38s cubic-bezier(.22,.8,.3,1)}
 /* The pop: each time a pill becomes the active section - scrolling
    down or back up - the script scrolls the container to centre it

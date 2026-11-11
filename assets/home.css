@@ -375,7 +375,7 @@ html{scroll-behavior:auto}
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-item,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    .dy-head,.dy-ghead,.dy-item,.dy-tile,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
   }
 }
 
@@ -416,13 +416,84 @@ html{scroll-behavior:auto}
 @keyframes dyDraw{to{stroke-dashoffset:0}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
-    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% entry 35%}
-    .dy-pop{animation-range:entry 35% entry 60%}
-    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
-    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 10% entry 55%}
-    .dy-steps rect:nth-of-type(3){animation-range:entry 20% entry 65%}
-    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 15% entry 55%}
-    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 5% entry 55%}
+    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% cover 55%}
+    .dy-pop{animation-range:entry 10% cover 65%}
+    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 5% cover 55%}
+    .dy-steps rect:nth-of-type(3){animation-range:entry 10% cover 60%}
+    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 5% cover 55%}
+    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 0% cover 60%}
   }
 }
+
+/* ===== Daily front page: ground-up tiles (Nov 11, 2026) =====
+   The daily is built tile by tile and fitted into a newspaper
+   front page: at desktop widths a 12-column grid of varied tiles
+   (lead, side, paired), on phones a single column in the same
+   order. Shape panels are single-variant now: one SVG per panel,
+   drawn in the phone variants' bold, simple language at every
+   width, so no variant swap exists to fail. */
+.dy-front{display:flex;flex-direction:column;gap:30px;min-width:0}
+.dy-front figure{margin:0}
+.dy-ghead{display:flex;align-items:center;gap:18px}
+.dy-ghead h2{font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.1;margin:0}
+.dy-ghead .dy-rule{flex:1;height:3px;background:var(--ink)}
+.dy-tile{background:#fffdf8;border:1px solid var(--rule-light);border-radius:12px;padding:26px 28px;min-width:0}
+.dy-tile.lead{border-top:3px solid var(--accent)}
+.dy-tile.plain{background:transparent;border:none;border-top:3px solid var(--ink);border-radius:0;padding:20px 4px 2px}
+.dy-tile h3{font-family:var(--display);font-weight:800;font-size:1.45rem;line-height:1.25;margin:0 0 8px}
+.dy-tile p{font-size:1.05rem;line-height:1.65;margin:0 0 10px}
+.dy-tile p:last-child{margin-bottom:0}
+.dy-tile .dy-tag{display:inline-block;font-family:var(--sans);font-weight:800;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.dy-tile .dy-item{margin-bottom:18px}
+.dy-tile .dy-item:last-child{margin-bottom:0}
+.dy-tile .dy-cap{font-family:var(--sans);font-size:.78rem;line-height:1.55;color:var(--ink-soft)}
+.dy-tileimg{width:100%;height:auto;display:block;border-radius:8px;margin-bottom:16px}
+.dy-front .dy-moved{max-width:none;padding:0;border-top:none}
+.dy-front .dy-shape{max-width:none;margin:0}
+.dy-shape .dy-figp{font-size:1.02rem;line-height:1.65;margin:14px 0 0}
+.dy-photo{padding:14px}
+.dy-photo img{width:100%;height:auto;display:block;border-radius:8px}
+.dy-photo figcaption{font-family:var(--sans);font-size:.78rem;line-height:1.55;color:var(--ink-soft);margin-top:12px;padding:0 6px 4px}
+.dy-photo figcaption strong{color:var(--ink)}
+.dy-quiz{list-style:none;margin:6px 0 0;padding:0}
+.dy-quiz li{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule-light)}
+.dy-quiz li:last-child{border-bottom:none;padding-bottom:2px}
+.dy-quiz .qn{font-family:var(--display);font-weight:900;font-size:1.5rem;color:var(--accent);line-height:1.05;white-space:nowrap}
+.dy-quiz p{font-size:.99rem;line-height:1.55;margin:0}
+@media(min-width:1000px){
+  .dy-front{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:26px;align-items:start}
+  .dy-front>.dy-ghead,.dy-front>.dy-divider{grid-column:1/-1}
+  .dy-front>.dy-divider{padding:0}
+  .dy-front>.s4{grid-column:span 4}
+  .dy-front>.s5{grid-column:span 5}
+  .dy-front>.s6{grid-column:span 6}
+  .dy-front>.s7{grid-column:span 7}
+  .dy-front>.s8{grid-column:span 8}
+  .dy-front>.s12{grid-column:1/-1}
+  .dy-front .dy-moved{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:44px}
+}
+@media(max-width:700px){
+  .dy-front{gap:26px}
+  .dy-tile{padding:22px 18px}
+  .dy-tile.plain{padding:18px 2px 0}
+  .dy-photo{padding:10px}
+}
+
+/* Divider shapes animate on scroll (Nov 11, 2026): each divider's
+   motif draws, assembles or scales in as it crosses the viewport,
+   scrubbed across a long stretch of the passage, same restraint
+   as the panels: no bounce, no looping, still once settled, and
+   the finished still is what reduced motion gets. */
+@keyframes dyDiv{from{opacity:.1;transform:scale(.35)}to{opacity:1;transform:scale(1)}}
+@keyframes dyDivX{from{opacity:.25;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+@media (prefers-reduced-motion: no-preference){
+  @supports (animation-timeline: view()){
+    .dy-divider .dv{transform-box:fill-box;transform-origin:center;animation:dyDiv ease-out both;animation-timeline:view();animation-range:entry calc(var(--d,0)*5%) cover calc(40% + var(--d,0)*5%)}
+    .dy-divider .dvl{transform-box:fill-box;transform-origin:left center;animation:dyDivX ease-out both;animation-timeline:view();animation-range:entry 0% cover 55%}
+  }
+}
+
+/* The tile front page spans the Today tab's whole frame. */
+@media(min-width:1000px){#today>.dy-front{grid-column:1/-1}}

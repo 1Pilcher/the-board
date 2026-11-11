@@ -901,8 +901,25 @@ body:has(.dy-sec) nav.menu{display:none}
 .dy-quiz li:last-child{border-bottom:none;padding-bottom:2px}
 .dy-quiz .qn{font-family:var(--display);font-weight:900;font-size:1.5rem;color:var(--accent);line-height:1.05;white-space:nowrap}
 .dy-quiz p{font-size:.99rem;line-height:1.55;margin:0}
+
+/* Density (Josh, Nov 11, 2026): no accidental empty space. Tiles
+   in a row share one height and carry their content through the
+   whole tile instead of huddling at the top: shape panels centre
+   their drawing in the room the row gives them and set their
+   caption at the foot, photo captions pin to the foot of their
+   frame, multi-story tiles spread their stories down the tile,
+   and a tile with honest room left over anchors a quiet motif
+   from the shape language at its foot (.dy-fill in the markup).
+   The page reads as fitted together, never as boxes with air
+   left in them. */
+.dy-front>.dy-tile,.dy-front>.dy-shape{display:flex;flex-direction:column}
+.dy-front>.dy-shape>svg{flex:1 1 auto}
+.dy-front>.dy-photo>figcaption{margin-top:auto}
+.dy-front>.dy-tile:has(>.dy-item+.dy-item){justify-content:space-between}
+.dy-fill{margin-top:auto;padding-top:20px}
+.dy-fill svg{display:block}
 @media(min-width:1000px){
-  .dy-front{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:26px;align-items:start}
+  .dy-front{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:26px}
   .dy-front>.dy-ghead,.dy-front>.dy-divider{grid-column:1/-1}
   .dy-front>.dy-divider{padding:0}
   .dy-front>.s4{grid-column:span 4}

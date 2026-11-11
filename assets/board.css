@@ -814,7 +814,7 @@ body:has(.dy-sec) nav.menu{display:none}
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-ghead,.dy-item,.dy-tile,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    .dy-head,.dy-item,.dy-tile,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
   }
 }
 
@@ -875,9 +875,17 @@ body:has(.dy-sec) nav.menu{display:none}
    width, so no variant swap exists to fail. */
 .dy-front{display:flex;flex-direction:column;gap:30px;min-width:0}
 .dy-front figure{margin:0}
-.dy-ghead{display:flex;align-items:center;gap:18px}
-.dy-ghead h2{font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.1;margin:0}
-.dy-ghead .dy-rule{flex:1;height:3px;background:var(--ink)}
+/* The section head is ONE canonical component (fixed Nov 11,
+   2026): a big name and a full-width ink rule, defined completely
+   here so nothing leaks in from the legacy .dy-rule tick (54px
+   wide, accent border, auto margins) that used to stack a thin
+   red line on top of the rule and leave the head looking faint,
+   and kept OUT of the scroll-driven dyIn fade entirely: a head
+   renders at full strength at every scroll position, in every
+   browser, with scripts on or off. */
+.dy-ghead{display:flex;align-items:center;gap:18px;animation:none}
+.dy-ghead h2{font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.1;margin:0;white-space:nowrap}
+.dy-ghead .dy-rule{flex:1 1 auto;width:auto;min-width:0;height:3px;margin:0;border:0;background:var(--ink)}
 .dy-tile{background:#fffdf8;border:1px solid var(--rule-light);border-radius:12px;padding:26px 28px;min-width:0}
 .dy-tile.lead{border-top:3px solid var(--accent)}
 .dy-tile.plain{background:transparent;border:none;border-top:3px solid var(--ink);border-radius:0;padding:20px 4px 2px}
@@ -913,11 +921,46 @@ body:has(.dy-sec) nav.menu{display:none}
    The page reads as fitted together, never as boxes with air
    left in them. */
 .dy-front>.dy-tile,.dy-front>.dy-shape{display:flex;flex-direction:column}
-.dy-front>.dy-shape>svg{flex:1 1 auto}
+.dy-front>.dy-shape>svg{flex:0 1 auto;margin-top:auto;margin-bottom:auto}
 .dy-front>.dy-photo>figcaption{margin-top:auto}
 .dy-front>.dy-tile:has(>.dy-item+.dy-item){justify-content:space-between}
 .dy-fill{margin-top:auto;padding-top:20px}
 .dy-fill svg{display:block}
+
+/* Section slots (standardized Nov 11, 2026): every news section
+   (World, US, Markets, Worth Knowing) is assembled from the same
+   named slots, so the layout works the same way every day:
+   the head band (.dy-ghead, one component, defined above: big
+   name, full-width ink rule, always at full strength, never
+   animated); the lead tile (.dy-tile.lead); visual slots
+   (.dy-photo for a photograph, .dy-shape for a shape panel);
+   text tiles (.dy-tile / .dy-tile.plain); the big-number slot
+   (.dy-bignum: one number or statement set huge, with its label
+   and line; .duo sets two side by side); the stat strip
+   (.dy-stats: two or three real numbers from the section, set
+   inside a photo or text tile); and the motif fill (.dy-fill).
+   A section ships only when every slot it uses is filled: a
+   tile that would stand mostly empty takes a stat strip, a big
+   number, a photograph or a foot motif, never air. */
+.dy-stats{display:flex;margin-top:14px;padding-bottom:8px;border-top:1px solid var(--rule-light)}
+.dy-stats>div{flex:1 1 0;min-width:0;padding:11px 12px 3px;border-left:1px solid var(--rule-light)}
+.dy-stats>div:first-child{border-left:0;padding-left:2px}
+.dy-stats .n{font-family:var(--display);font-weight:900;font-size:1.55rem;line-height:1.05;color:var(--ink)}
+.dy-stats .n em{font-style:normal;color:var(--accent)}
+.dy-stats .l{font-family:var(--sans);font-size:.72rem;line-height:1.5;color:var(--ink-soft);margin-top:5px}
+.dy-photo .dy-stats{margin:14px 6px 0}
+.dy-bignum .n{font-family:var(--display);font-weight:900;font-size:4.4rem;line-height:.98;color:var(--ink);margin:4px 0 10px}
+.dy-bignum .n em{font-style:normal;font-size:.36em;color:var(--accent)}
+.dy-bignum .l{font-family:var(--display);font-weight:700;font-size:1.16rem;line-height:1.35;margin:0 0 8px}
+.dy-bignum.duo{flex-direction:row;gap:34px}
+.dy-bignum.duo .cell{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
+.dy-bignum.duo .cell+.cell{border-left:1px solid var(--rule-light);padding-left:34px}
+@media(max-width:700px){
+  .dy-stats .n{font-size:1.28rem}
+  .dy-bignum .n{font-size:3.3rem}
+  .dy-bignum.duo{flex-direction:column;gap:22px}
+  .dy-bignum.duo .cell+.cell{border-left:0;border-top:1px solid var(--rule-light);padding-left:0;padding-top:20px}
+}
 @media(min-width:1000px){
   .dy-front{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:26px}
   .dy-front>.dy-ghead,.dy-front>.dy-divider{grid-column:1/-1}

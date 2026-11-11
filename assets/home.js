@@ -49,7 +49,7 @@
   function showTab(id,opts){
     opts=opts||{};
     var a=tabs[id];
-    if(!a) id='latest',a=tabs[id];
+    if(!a) id='today',a=tabs[id];
     links.forEach(function(x){
       var on=x===a;
       x.classList.toggle('active',on);
@@ -85,5 +85,5 @@
   window.addEventListener('load',updateFades);
 
   var initial=(location.hash||'').slice(1);
-  showTab(tabs[initial]?initial:'latest',{keepScroll:true,keepHash:true});
+  showTab(tabs[initial]?initial:'today',{keepScroll:true,keepHash:true});
 })();

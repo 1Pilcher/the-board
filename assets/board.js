@@ -1,10 +1,11 @@
 
 (function(){
   // Static edition: no scroll engine, no animated effects. This
-  // script only runs the reading chrome: the progress bar, the
-  // pill menu's edge fades and active section, and the locked
-  // full-bleed width the bands are sized from. Nothing here
-  // moves, hides or transforms any content.
+  // script only runs the reading chrome: the pill menu's edge
+  // fades and active section, and the locked full-bleed width the
+  // bands are sized from. (The progress bar's fill is CSS now,
+  // keyed to the scroll position itself.) Nothing here moves,
+  // hides or transforms any content.
   var root = document.documentElement;
   function setW(){
     var cw = root.clientWidth || window.innerWidth || 0;
@@ -31,13 +32,6 @@
       }, ms));
     });
   }
-  var prog = document.getElementById("progress");
-  function onScroll(){
-    var max = root.scrollHeight - root.clientHeight;
-    var p = max > 0 ? (window.scrollY || 0) / max : 0;
-    if(p < 0){ p = 0; } if(p > 1){ p = 1; }
-    if(prog){ prog.style.transform = "scaleX(" + p + ")"; prog.setAttribute("aria-valuenow", String(Math.round(p * 100))); }
-  }
   var nav = document.getElementById("menu");
   function fade(){
     if(!nav){ return; }
@@ -49,9 +43,8 @@
     if(nav.getAttribute("data-fade") !== next){ nav.setAttribute("data-fade", next); }
   }
   if(nav){ nav.addEventListener("scroll", fade, { passive: true }); }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", function(){ setW(); fade(); onScroll(); }, { passive: true });
-  window.addEventListener("orientationchange", function(){ settleW(); fade(); onScroll(); }, { passive: true });
+  window.addEventListener("resize", function(){ setW(); fade(); }, { passive: true });
+  window.addEventListener("orientationchange", function(){ settleW(); fade(); }, { passive: true });
   if(window.visualViewport){ window.visualViewport.addEventListener("resize", setW, { passive: true }); }
   window.addEventListener("pageshow", settleW, { passive: true });
   var links = {};
@@ -109,5 +102,5 @@
       var el = document.getElementById(id); if(el){ spy.observe(el); }
     });
   }
-  settleW(); fade(); onScroll();
+  settleW(); fade();
 })();

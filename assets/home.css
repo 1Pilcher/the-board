@@ -204,6 +204,10 @@ section{margin-top:var(--section-gap);scroll-margin-top:calc(var(--topchrome) + 
 .towers-src{font-size:var(--fs-source);line-height:1.55;color:var(--ink-soft);border-top:1px solid var(--rule-light);padding-top:var(--sp-2);margin-top:var(--sp-4)}
 /* Still interludes: finished ornaments in their own bands, never over text */
 .interlude{overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:var(--section-gap);padding:6px 0}
+/* The Today briefing hands off to the latest report in one deliberate beat:
+   the divider dots and a single short gap, not two stacked section gaps */
+.interlude[data-view="today"]{margin-top:32px}
+#latest-report{margin-top:32px}
 .interlude .dots{display:flex;gap:clamp(10px,3vw,22px);align-items:center}
 .interlude .dots i{display:block;width:9px;height:9px;border-radius:50%;background:var(--ink)}
 .interlude .dots i.r{background:var(--accent)}

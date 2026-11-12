@@ -808,11 +808,27 @@ body:has(.dy-sec) nav.menu{display:none}
    by the scroll itself, and sits still once it has arrived. Pure
    CSS with no hidden start state in the static page: browsers
    without scroll-driven animations get the finished page as-is,
-   and reduced motion gets no animation at all. */
+   and reduced motion gets no animation at all.
+   Rest-state rule (Nov 12, 2026, Josh): whatever is on screen when
+   the page opens must already be fully drawn, and an arrival must
+   complete before the element reaches reading position. The dyIn
+   range below is therefore anchored to the ENTRY phase, whose
+   span the engine caps at the viewport height, and ends at 22%
+   of it: a tile's fade completes within its first stretch of
+   travel into the viewport however tall the tile is, and a tile
+   already past its range at load renders at full strength. The
+   old range ran into the cover phase, whose length grows with
+   the element, so the tall first-screen What's Moved tile sat at
+   0.19 opacity at rest and its first item at 0.07 (measured Nov
+   12, 2026). The shape-internal animations further down keep
+   their cover-anchored ranges on purpose: a shape never sits in
+   an initial viewport (the head and What's Moved always precede
+   it), and their scrub across the panel's whole passage is the
+   calibrated assembly, verified unchanged by A/B render. */
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-item,.dy-tile,.dy-moved li{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    .dy-head,.dy-item,.dy-tile,.dy-moved li{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
   }
 }
 

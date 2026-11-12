@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light" />
+<meta name="theme-color" id="themeColor" content="#faf7f0" />
 <link rel="icon" href="data:," />
 <title>The Board - Coffee to Kalshi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -914,6 +915,11 @@ html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
    sits finished and static. No text, headlines, photos, pins, tables
    or source notes are ever touched. */
 (function(){
+  var themeColorEl = document.getElementById('themeColor');
+  function setTxDone(done){
+    document.documentElement.classList.toggle('tx-done', done);
+    if (themeColorEl) themeColorEl.setAttribute('content', done ? '#0a0c08' : '#faf7f0');
+  }
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* --- (a) transport --- */
@@ -937,7 +943,7 @@ html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
         sticky.style.setProperty('--txp', t.toFixed(4));
       }
       w = t; f = clamp(t * 2 - 1);
-      document.documentElement.classList.toggle('tx-done', t >= 0.999 || p >= 1);
+      setTxDone(t >= 0.999 || p >= 1);
       stage.setAttribute('data-p', p.toFixed(4));
       stage.setAttribute('data-w', w.toFixed(4));
       stage.setAttribute('data-f', f.toFixed(4));
@@ -953,7 +959,7 @@ html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
     var flipRM = function(){
       var done = false;
       if (p2el){ done = p2el.getBoundingClientRect().top <= (window.innerHeight || 0) * 0.5; }
-      document.documentElement.classList.toggle('tx-done', done);
+      setTxDone(done);
     };
     window.addEventListener('scroll', flipRM, { passive: true });
     window.addEventListener('resize', flipRM);

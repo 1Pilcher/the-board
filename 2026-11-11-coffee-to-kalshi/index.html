@@ -735,12 +735,16 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
    releasing into the dark part below. Reverse scroll reverses
    everything exactly. Native scroll only: no scroll-jacking.
    ============================================================ */
+@property --txp { syntax: '<number>'; inherits: true; initial-value: 0; }
+
 .tx-stage{
   --txp: 0;
   position: relative;
   height: 500vh;
   width: var(--cw);
   margin: 0 calc(50% - var(--chw));
+  view-timeline-name: --tx;
+  view-timeline-axis: block;
 }
 .tx-sticky{
   --txi1: min(var(--txp) * 2, 1);
@@ -876,6 +880,13 @@ html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
    500vh, so the pin spans 16.6667% to 83.3333% of the timeline
    (100vh of entry travel, then 400vh pinned, of 600vh total).
    The JS driver below engages ONLY when this support is absent. */
+@supports (animation-timeline: view()) {
+  .tx-sticky{
+    animation-name: txSpin; animation-duration: 1s; animation-timing-function: linear; animation-fill-mode: both;
+    animation-timeline: --tx; animation-range: 16.6667% 83.3333%;
+  }
+  @keyframes txSpin { from { --txp: 0; } to { --txp: 1; } }
+}
 @media (prefers-reduced-motion: reduce){
   .tx-stage{ height: auto; view-timeline-name: none; }
   .tx-sticky{ position: static; height: 62vh; height: 62dvh; animation: none; }
@@ -917,7 +928,8 @@ html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
     var sticky = document.getElementById('txSticky');
     var outer = document.getElementById('txOuter');
     var finalEl = document.getElementById('txFinal');
-    var cssDriven = false; /* band test C: JS driver forced */
+    var cssDriven = false;
+    try { cssDriven = !!(window.CSS && CSS.supports('animation-timeline: view()') && CSS.supports('view-timeline-name: --tx')); } catch(e) {}
     function clamp(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
     window.__txMeasure = function(){
       var r = stage.getBoundingClientRect();

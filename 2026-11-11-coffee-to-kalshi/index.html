@@ -413,9 +413,18 @@
 <div class="tx-stage" id="txStage" aria-hidden="true">
 <div class="tx-sticky" id="txSticky">
 <div class="tx-outer" id="txOuter"></div>
+<div class="tx-grid"></div>
+<div class="tx-front"></div>
+<div class="tx-cue" id="txCue"><svg width="20" height="11" viewBox="0 0 20 11" aria-hidden="true" style="display:block;margin:0 auto"><path d="M2 2 L10 9 L18 2" fill="none" stroke="#446d00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="lbl">SCROLL</div></div>
 <div class="tx-disc" id="txDisc">
 <div class="tx-disc-wipe" id="txWipe"></div>
 <div class="tx-disc-final" id="txFinal"></div>
+<div class="tx-grid-disc"></div>
+<div class="tx-texture"></div>
+<div class="tx-shine"></div>
+<div class="tx-rim"></div>
+<div class="tx-ticks"></div>
+<div class="tx-ticks-major"></div>
 </div>
 </div>
 </div>
@@ -693,31 +702,39 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
 .part2 svg line[stroke-opacity="0.6"]{stroke:#0a0c08}
 
 /* ============================================================
-   TRANSPORT TRANSITION (Josh, Nov 11, 2026, 23:01-23:07 CT).
-   Between The Favorite (cream) and The Week (dark): a pinned
-   full-screen stage. NO fades anywhere: two hard-edged circular
-   wipes run from 12 o'clock at the same rate as scroll scrubs
-   the stage - outside the disc, black sweeps CLOCKWISE over the
-   cream screen; inside the disc, white sweeps COUNTERCLOCKWISE
-   over the black disc. At the end of the wipe phase the outside
-   is fully black and the disc fully white; in the last quarter
-   of the stage, black sweeps clockwise over the disc too, so
-   the pinned screen ends fully black and releases seamlessly
-   into part 2. Scrolling up runs everything backwards. Native
-   scroll only (position sticky): no scroll-jacking.
+   TRANSPORT TRANSITION - refined build (Nov 11, 2026, 23:21-23:25 CT)
+   Josh's refinements: smaller disc (58vmin) with a textured,
+   tick-marked gauge rim; the inner wipe runs at TWICE the outer
+   rate, so the disc goes black to white to black across one
+   outer turn; Nvidia-green wire grid revealed by the wipe
+   fronts themselves; a longer stage (500vh, a 400vh pinned
+   scroll, twice the original dwell); a static SCROLL cue under
+   the disc that the advancing front consumes.
+   Choreography: NO fades on the color surfaces. Outside the
+   disc, black sweeps CLOCKWISE from 12 o'clock over the cream
+   screen (angle = 360 x progress). Inside the disc, white
+   sweeps COUNTERCLOCKWISE from 12 at twice the rate (black to
+   white across progress 0 to 0.5), then black sweeps
+   counterclockwise over the white at the same doubled rate
+   (progress 0.5 to 1). End state: screen and disc fully black,
+   releasing into the dark part below. Reverse scroll reverses
+   everything exactly. Native scroll only: no scroll-jacking.
    ============================================================ */
-@property --txw { syntax: '<number>'; inherits: true; initial-value: 0; }
-@property --txf { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --txp { syntax: '<number>'; inherits: true; initial-value: 0; }
+
 .tx-stage{
-  --txw: 0; --txf: 0;
+  --txp: 0;
   position: relative;
-  height: 300vh;
+  height: 500vh;
   width: var(--cw);
   margin: 0 calc(50% - var(--chw));
   view-timeline-name: --tx;
   view-timeline-axis: block;
 }
 .tx-sticky{
+  --txi1: min(var(--txp) * 2, 1);
+  --txi2: max(var(--txp) * 2 - 1, 0);
+  --txm: calc(var(--txi1) - var(--txi2));
   position: sticky; top: 0;
   height: 100vh; height: 100dvh;
   overflow: hidden;
@@ -725,42 +742,105 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
 }
 .tx-outer{
   position: absolute; inset: 0;
-  background: conic-gradient(from 0deg, #0a0c08 0deg calc(var(--txw) * 360deg), #faf7f0 calc(var(--txw) * 360deg) 360deg);
+  background: conic-gradient(from 0deg, #0a0c08 0deg calc(var(--txp) * 360deg), #faf7f0 calc(var(--txp) * 360deg) 360deg);
+}
+.tx-grid{
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 0 0, rgba(118,185,0,.55) 1.5px, rgba(118,185,0,0) 2.6px),
+    repeating-linear-gradient(0deg, rgba(118,185,0,.16) 0 1px, rgba(118,185,0,0) 1px 46px),
+    repeating-linear-gradient(90deg, rgba(118,185,0,.16) 0 1px, rgba(118,185,0,0) 1px 46px);
+  background-size: 46px 46px, 100% 100%, 100% 100%;
+  -webkit-mask-image: conic-gradient(from 0deg, #000 0deg calc(var(--txp) * 360deg), transparent calc(var(--txp) * 360deg) 360deg);
+  mask-image: conic-gradient(from 0deg, #000 0deg calc(var(--txp) * 360deg), transparent calc(var(--txp) * 360deg) 360deg);
+}
+.tx-front{
+  position: absolute; inset: 0; pointer-events: none;
+  background: conic-gradient(from 0deg, transparent 0deg calc(var(--txp) * 360deg - 1.4deg), rgba(118,185,0,.8) calc(var(--txp) * 360deg - 1.4deg) calc(var(--txp) * 360deg), transparent calc(var(--txp) * 360deg) 360deg);
+}
+.tx-cue{
+  position: absolute; left: 50%; top: calc(50% + 29vmin + 20px);
+  transform: translateX(-50%);
+  text-align: center; pointer-events: none;
+  clip-path: inset(calc(min(var(--txp) * 4.5, 1) * 100%) 0 0 0);
+}
+.tx-cue .lbl{
+  font-family: "Libre Franklin", sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: .38em; text-indent: .38em; color: #446d00;
+  margin-top: 7px;
 }
 .tx-disc{
   position: absolute; left: 50%; top: 50%;
-  width: min(78vh, 92vw); width: min(78dvh, 92vw);
+  width: 58vmin;
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   overflow: hidden;
   background: #0a0c08;
-  box-shadow: 0 0 0 3px rgba(118,185,0,.9), 0 24px 70px rgba(20,19,16,.28);
+  box-shadow: 0 34px 90px rgba(10,12,8,.5), 0 10px 30px rgba(10,12,8,.35), 0 0 0 1px rgba(118,185,0,.35);
 }
 .tx-disc-wipe{
   position: absolute; inset: 0;
-  background: conic-gradient(from 0deg, transparent 0deg calc((1 - var(--txw)) * 360deg), #faf7f0 calc((1 - var(--txw)) * 360deg) 360deg);
+  background: conic-gradient(from 0deg, transparent 0deg calc((1 - var(--txi1)) * 360deg), #faf7f0 calc((1 - var(--txi1)) * 360deg) 360deg);
 }
 .tx-disc-final{
   position: absolute; inset: 0;
-  background: conic-gradient(from 0deg, #0a0c08 0deg calc(var(--txf) * 360deg), transparent calc(var(--txf) * 360deg) 360deg);
+  background: conic-gradient(from 0deg, transparent 0deg calc((1 - var(--txi2)) * 360deg), #0a0c08 calc((1 - var(--txi2)) * 360deg) 360deg);
 }
+.tx-grid-disc{
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(118,185,0,.32) 0 1px, rgba(118,185,0,0) 1px 23px),
+    repeating-linear-gradient(90deg, rgba(118,185,0,.32) 0 1px, rgba(118,185,0,0) 1px 23px);
+  -webkit-mask-image: conic-gradient(from 0deg, transparent 0deg calc((1 - var(--txm)) * 360deg), #000 calc((1 - var(--txm)) * 360deg) 360deg);
+  mask-image: conic-gradient(from 0deg, transparent 0deg calc((1 - var(--txm)) * 360deg), #000 calc((1 - var(--txm)) * 360deg) 360deg);
+}
+.tx-texture{
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background:
+    repeating-radial-gradient(circle at 50% 50%, rgba(118,185,0,.08) 0 1px, rgba(118,185,0,0) 1px 9px),
+    repeating-linear-gradient(0deg, rgba(118,185,0,.05) 0 1px, rgba(118,185,0,0) 1px 26px),
+    repeating-linear-gradient(90deg, rgba(118,185,0,.05) 0 1px, rgba(118,185,0,0) 1px 26px);
+}
+.tx-shine{
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(130% 100% at 50% -10%, rgba(250,247,240,.15), rgba(250,247,240,0) 55%);
+  box-shadow: inset 0 20px 34px rgba(250,247,240,.05), inset 0 -26px 44px rgba(0,0,0,.35);
+}
+.tx-rim{
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: conic-gradient(from 215deg, #3a452a 0deg, #131a0d 70deg, #5f7439 140deg, #0c100a 210deg, #485c2d 285deg, #1b2214 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 11px), #000 calc(100% - 10px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 11px), #000 calc(100% - 10px));
+  box-shadow: inset 0 2px 4px rgba(250,247,240,.4), inset 0 -4px 9px rgba(0,0,0,.6), inset 3px 0 7px rgba(0,0,0,.35), inset -3px 0 7px rgba(0,0,0,.35);
+}
+.tx-ticks{
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: repeating-conic-gradient(from -.3deg, rgba(235,242,220,.5) 0deg .6deg, rgba(235,242,220,0) .6deg 6deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 12px), #000 calc(100% - 5px), transparent calc(100% - 4px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 12px), #000 calc(100% - 5px), transparent calc(100% - 4px));
+}
+.tx-ticks-major{
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: repeating-conic-gradient(from -.6deg, rgba(118,185,0,.85) 0deg 1.2deg, rgba(118,185,0,0) 1.2deg 30deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px), #000 calc(100% - 5px), transparent calc(100% - 4px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px), #000 calc(100% - 5px), transparent calc(100% - 4px));
+}
+/* CSS scroll-driven path: one keyframe pair drives --txp across
+   the pinned window of the stage's view timeline. Stage is
+   500vh, so the pin spans 16.6667% to 83.3333% of the timeline
+   (100vh of entry travel, then 400vh pinned, of 600vh total).
+   The JS driver below engages ONLY when this support is absent. */
 @supports (animation-timeline: view()) {
-  .tx-outer, .tx-disc-wipe{
-    animation-name: txWipe; animation-duration: 1s; animation-timing-function: linear; animation-fill-mode: both;
-    animation-timeline: --tx; animation-range: 25% 75%;
+  .tx-sticky{
+    animation-name: txSpin; animation-duration: 1s; animation-timing-function: linear; animation-fill-mode: both;
+    animation-timeline: --tx; animation-range: 16.6667% 83.3333%;
   }
-  .tx-disc-final{
-    animation-name: txFinal; animation-duration: 1s; animation-timing-function: linear; animation-fill-mode: both;
-    animation-timeline: --tx; animation-range: 25% 75%;
-  }
-  @keyframes txWipe { 0% { --txw: 0; } 75% { --txw: 1; } 100% { --txw: 1; } }
-  @keyframes txFinal { 0% { --txf: 0; } 75% { --txf: 0; } 100% { --txf: 1; } }
+  @keyframes txSpin { from { --txp: 0; } to { --txp: 1; } }
 }
 @media (prefers-reduced-motion: reduce){
   .tx-stage{ height: auto; view-timeline-name: none; }
-  .tx-sticky{ position: static; height: 62vh; height: 62dvh; }
-  .tx-outer, .tx-disc-wipe, .tx-disc-final{ animation: none; }
+  .tx-sticky{ position: static; height: 62vh; height: 62dvh; animation: none; }
 }
 </style>
 <noscript><style>
@@ -772,7 +852,7 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
 /* ===== PAGE-LOCAL SCROLL-SCRUBBED MOTION (Nov 11, 2026): replaces the
    Phase 3 one-shot entry triggers at Josh's direction - every animation
    on this page is driven by scroll position, in both directions.
-   (a) Transport: if CSS scroll-driven animations own --txw/--txf this
+   (a) Transport: if CSS scroll-driven animations own --txp this
    script only measures them for diagnostics; if that support is absent
    it writes the vars itself from the stage's scroll progress. The two
    paths never write at the same time.
@@ -801,15 +881,14 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
       var r = stage.getBoundingClientRect();
       var total = stage.offsetHeight - window.innerHeight;
       var p = total > 0 ? clamp(-r.top / total) : 0;
-      var w, f;
+      var t, w, f;
       if (cssDriven){
-        w = parseFloat(window.getComputedStyle(outer).getPropertyValue('--txw')) || 0;
-        f = parseFloat(window.getComputedStyle(finalEl).getPropertyValue('--txf')) || 0;
+        t = parseFloat(window.getComputedStyle(sticky).getPropertyValue('--txp')) || 0;
       } else {
-        w = clamp(p / 0.75); f = clamp((p - 0.75) / 0.25);
-        sticky.style.setProperty('--txw', w.toFixed(4));
-        sticky.style.setProperty('--txf', f.toFixed(4));
+        t = p;
+        sticky.style.setProperty('--txp', t.toFixed(4));
       }
+      w = t; f = clamp(t * 2 - 1);
       stage.setAttribute('data-p', p.toFixed(4));
       stage.setAttribute('data-w', w.toFixed(4));
       stage.setAttribute('data-f', f.toFixed(4));

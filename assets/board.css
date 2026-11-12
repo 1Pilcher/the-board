@@ -87,6 +87,17 @@ img{max-width:100%}
    page's own top padding, in the page's own colour. */
 #topstrip{position:fixed;top:0;left:0;right:0;height:var(--topchrome);background:var(--paper);z-index:300;pointer-events:none}
 #progress{position:fixed;top:calc(var(--topchrome) - 3px);left:0;height:3px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform;z-index:301;pointer-events:none}
+/* The fill is the scroll position itself, not a script's division
+   (native-only, Nov 12, 2026): a scroll() timeline stretches the
+   bar across the root scroller's whole range, so it is right by
+   construction, toolbar resizes included. Browsers without
+   scroll-driven animations keep the empty track above: the bar
+   is furniture, and an unfilled bar costs nothing. No JS
+   fallback is kept. */
+@keyframes progfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@supports (animation-timeline:scroll()){
+  #progress{animation:progfill linear both;animation-timeline:scroll(root)}
+}
 /* Page frame, identical to The Board homepage: the same 1120px
    content width and the same side margins (22px on desktop, 18px
    at 700px and below, in the unification block at the end of this
@@ -293,8 +304,6 @@ figure.photo figcaption strong{color:var(--ink)}
 .fill-us{background:var(--ink)}.fill-cn{background:var(--accent)}.fill-gold{background:var(--gray)}
 .dotfield{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:10px;width:100%;max-width:520px;margin:var(--sp-4) 0 var(--sp-1)}
 .dotfield i{display:block;aspect-ratio:1;border-radius:50%;background:var(--ink)}
-html.js .dotfield i{opacity:0;transform:scale(.4);transition:opacity .45s ease,transform .45s ease}
-html.js .dotfield i.on{opacity:1;transform:scale(1)}
 .dotfield i.hw{background:var(--accent)}
 .dot-legend{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:var(--sp-2)}
 /* Standing rule for every vertical bar chart on this page: the
@@ -330,16 +339,14 @@ html.js .dotfield i.on{opacity:1;transform:scale(1)}
    bottom half wedged behind the cards. Compact type and top
    anchoring keep the whole graphic inside the upper zone on any
    screen, and the card zone below it stays empty band. */
-.scrolly .sticky-wrap{position:sticky;top:0;height:100vh;height:calc(var(--vh,1vh)*100);display:flex;flex-direction:column;justify-content:flex-start;padding:calc(var(--vh,1vh)*6) 22px var(--sp-3)}
+.scrolly .sticky-wrap{position:sticky;top:0;height:100vh;height:calc(1vh*100);display:flex;flex-direction:column;justify-content:flex-start;padding:calc(1vh*6) 22px var(--sp-3)}
 .scrolly-in{max-width:920px;margin:0 auto;width:100%}
 .scrolly h3{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.5vw,2.4rem);margin:0 0 var(--sp-1)}
 .scrolly .chart-sub{font-style:italic;color:var(--ink-soft);margin:0 0 var(--sp-2);font-size:1.02rem}
 .scrolly .bignum{font-family:var(--sans);font-weight:900;font-size:clamp(4.4rem,15vw,8.25rem);line-height:.92;letter-spacing:-.04em;color:var(--accent);font-variant-numeric:tabular-nums}
-.scrolly .bignum.swap{animation:numswap .85s cubic-bezier(.22,.8,.3,1)}
 /* Opacity only: the old keyframes also slid the number 6px up
    as it landed, a small vertical hop at every step change that
    read as part of the rulers section twitching. */
-@keyframes numswap{0%{opacity:.35}100%{opacity:1}}
 /* The label box is a FIXED height at every step, not a
    minimum: two lines on wide screens, three on phones, four
    on narrow phones (see the 640px and 380px blocks). The four
@@ -359,7 +366,7 @@ html.js .dotfield i.on{opacity:1;transform:scale(1)}
    bars instead of moving them. */
 .scrolly .biglab{font-family:var(--sans);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:var(--sp-2);line-height:1.6;height:3.2em;max-width:640px}
 .scrolly .src-note{font-family:var(--sans);font-size:.66rem;color:var(--ink-soft);line-height:1.55;border-top:1px solid var(--rule-light);padding-top:var(--sp-1);margin-top:var(--sp-3)}
-.step{min-height:88vh;min-height:calc(var(--vh,1vh)*88);display:flex;align-items:flex-end;justify-content:center;padding:0 22px var(--section-gap);position:relative;z-index:2}
+.step{min-height:88vh;min-height:calc(1vh*88);display:flex;align-items:flex-end;justify-content:center;padding:0 22px var(--section-gap);position:relative;z-index:2}
 .step .step-card{background:var(--paper);color:var(--ink);padding:var(--sp-3);max-width:560px;border:1px solid var(--rule-light);box-shadow:0 18px 44px rgba(20,19,16,.14)}
 .step .step-card p{margin:0;font-size:1.06rem;line-height:1.65}
 .step .step-card .step-k{font-family:var(--sans);font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
@@ -375,15 +382,6 @@ html.js .dotfield i.on{opacity:1;transform:scale(1)}
    phones), so a card mid-slide never widens the page either.
    States are keyed to html.js like every other entrance: with
    no script the cards simply sit finished in place. */
-html.js .step .step-card{opacity:0;will-change:transform,opacity;backface-visibility:hidden;transition:opacity .9s cubic-bezier(.22,.8,.3,1),transform .9s cubic-bezier(.22,.8,.3,1)}
-html.js .step[data-step="0"] .step-card,html.js .step[data-step="2"] .step-card{transform:translateX(-52px)}
-html.js .step[data-step="1"] .step-card,html.js .step[data-step="3"] .step-card{transform:translateX(52px)}
-html.js .step.in .step-card{opacity:1;transform:translateX(0)}
-@media(max-width:700px){
-  html.js .step[data-step="0"] .step-card,html.js .step[data-step="2"] .step-card{transform:translateX(-22px)}
-  html.js .step[data-step="1"] .step-card,html.js .step[data-step="3"] .step-card{transform:translateX(22px)}
-  html.js .step.in .step-card{transform:translateX(0)}
-}
 
 /* ---------- The rulers, static edition ---------- */
 /* The pinned scrolly is gone. All four rulers sit on the page at
@@ -499,20 +497,11 @@ footer.method a{color:inherit;text-decoration:underline;text-decoration-color:va
 .il-diamond .stem-t{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:calc(var(--p,0)*44%)}
 .il-diamond .stem-b{position:absolute;left:50%;bottom:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:calc(var(--p,0)*44%)}
 .il-diamond .gem{position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(calc(45deg + var(--p,0)*45deg)) scale(calc(.55 + var(--p,0)*.6))}
-.il-diamond.live .gem{animation:gemTurn 14s linear infinite}
-@keyframes gemTurn{from{rotate:0deg}to{rotate:360deg}}
 /* The second bars interlude grows in place instead of sliding. */
 .il-bars.grow .seg{transform:scaleX(calc(.12 + var(--p,0)*.88));transform-origin:left center}
 /* Idle sway, compositor-only: the bar rows drift a few pixels on
    their own clocks while on screen. Transform on the row wrapper,
    which the scroll engine never touches, so the two never fight. */
-.il-bars.live .bar{animation:barSway 7.5s ease-in-out infinite alternate}
-.il-bars.live .bar:nth-child(2){animation-duration:9.5s;animation-delay:-3.5s}
-.il-bars.live .bar:nth-child(3){animation-duration:8.2s;animation-delay:-1.8s}
-.il-bars.live .bar:nth-child(4){animation-duration:10.5s;animation-delay:-5s}
-@keyframes barSway{from{transform:translateX(-5px)}to{transform:translateX(5px)}}
-.il-dots.live .rail{animation:railBob 5.5s ease-in-out infinite alternate}
-@keyframes railBob{from{transform:translateY(-2px)}to{transform:translateY(2px)}}
 .il-bars.grow .seg.r{transform-origin:right center}
 .il-path svg{display:block;height:100%;width:auto;max-width:90%;margin:0 auto}
 .il-path .il-path-track{stroke:var(--rule-light);stroke-width:1.5;fill:none}
@@ -524,12 +513,6 @@ footer.method a{color:inherit;text-decoration:underline;text-decoration-color:va
    its own loop, nothing is shared. The data visuals, counters and
    pins get none of this: they stay exactly where the scroll put
    them, landed and readable. */
-.il-thread.live .traveler:not(.ghost){animation:threadPing 3s cubic-bezier(.22,.8,.3,1) infinite}
-@keyframes threadPing{0%,100%{transform:scale(1)}50%{transform:scale(1.45)}}
-.il-echo.live .traveler{animation:echoPulse 3.8s ease-in-out infinite}
-@keyframes echoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.38)}}
-.il-path.live .il-path-head{animation:headPulse 2.6s ease-in-out infinite}
-@keyframes headPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.75}}
 .chapter{position:relative}
 .chapter::after{content:"";position:absolute;left:0;right:0;bottom:var(--sp-5);height:1px;background-image:linear-gradient(90deg,transparent,var(--accent),transparent);background-size:150px 1px;background-repeat:no-repeat;background-position:calc(50% + var(--d,0)*42vw) 0;opacity:.45}
 .scroll-cue{position:relative}
@@ -537,8 +520,6 @@ footer.method a{color:inherit;text-decoration:underline;text-decoration-color:va
 @keyframes cuefall{0%{transform:translateY(0);opacity:0}16%{opacity:1}80%{opacity:1}100%{transform:translateY(40px);opacity:0}}
 .statement{position:relative}
 .statement::before,.statement::after{content:"";display:block;width:64px;height:1px;background:var(--accent);margin:0 auto var(--sp-3);transition:transform 1.3s cubic-bezier(.22,.8,.3,1)}
-html.js .statement::before,html.js .statement::after{transform:scaleX(0)}
-html.js .statement.in::before,html.js .statement.in::after{transform:scaleX(1)}
 .statement::after{margin:var(--sp-3) auto 0}
 /* The second statement sweeps its rules in from opposite edges
    instead of growing them from the centre. */
@@ -573,7 +554,6 @@ html.js .statement.in::before,html.js .statement.in::after{transform:scaleX(1)}
   .scroll-cue::before{animation:none;opacity:0}
   .statement::before,.statement::after{transform:none;transition:none}
   .il-dots i.on{transition:none}
-  .il-thread.live .traveler,.il-echo.live .traveler,.il-path.live .il-path-head,.il-bars.live .bar,.il-dots.live .rail,.il-diamond.live .gem{animation:none}
 }
 /* Glide mode: while a flick coasts on momentum - no finger down,
    moving fast - the script adds .gliding to <html> and every
@@ -619,27 +599,9 @@ html.gliding *,html.gliding *::before,html.gliding *::after{animation-play-state
    simply sits there complete. When the script does run, the
    entrances arm exactly as before and the scroll engine drives
    them. No blank pages, ever, in any copy of this file. */
-html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s cubic-bezier(.22,.8,.3,1),transform 1.2s cubic-bezier(.22,.8,.3,1)}
-html.js .reveal.in{opacity:1;transform:none}
 /* No two blocks share a recipe: every reveal variant moves its own
    way, at its own pace, so the same entrance never plays twice. */
-html.js .rv-deep{transform:translateY(38px);transition:opacity 1.6s cubic-bezier(.22,.8,.3,1),transform 1.6s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-fade{transform:none;transition:opacity 1.7s ease}
-html.js .rv-left{transform:translateX(-32px);transition:opacity 1.3s cubic-bezier(.22,.8,.3,1),transform 1.3s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-right{transform:translateX(32px);transition:opacity 1.3s cubic-bezier(.22,.8,.3,1),transform 1.3s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-drop{transform:translateY(-22px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-scale{transform:scale(.93) translateY(12px);transition:opacity 1.45s cubic-bezier(.22,.8,.3,1),transform 1.45s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-zoom{transform:scale(.95) translateY(10px);transition:opacity 1.5s ease,transform 1.5s ease}
-html.js .rv-tilt{transform:perspective(700px) rotateX(7deg) translateY(16px);transition:opacity 1.4s cubic-bezier(.22,.8,.3,1),transform 1.4s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-diag-l{transform:translate(-26px,18px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
-html.js .rv-diag-r{transform:translate(26px,18px);transition:opacity 1.35s cubic-bezier(.22,.8,.3,1),transform 1.35s cubic-bezier(.22,.8,.3,1)}
 /* Each watchlist row enters from a different direction. */
-html.js .watch-list li.reveal{transform:translateY(20px)}
-html.js .watch-list li.reveal:nth-child(2){transform:translateX(-24px)}
-html.js .watch-list li.reveal:nth-child(3){transform:translateY(30px) scale(.97)}
-html.js .watch-list li.reveal:nth-child(4){transform:translateX(24px)}
-html.js .watch-list li.reveal:nth-child(5){transform:translateY(-16px)}
-html.js .watch-list li.reveal.in{transform:none}
 /* Small screens: the sideways entrances retire. On a phone the
    column runs nearly edge to edge, so a block that starts 24-32px
    to one side starts past the screen edge - and WebKit counts
@@ -651,11 +613,6 @@ html.js .watch-list li.reveal.in{transform:none}
    slightly small rather than slightly large for the same reason:
    at full-bleed phone width, scale(1.035) painted 7px past both
    edges. */
-@media(max-width:700px){
-  html.js .rv-left,html.js .rv-right{transform:translateY(22px)}
-  html.js .rv-diag-l,html.js .rv-diag-r{transform:translateY(20px)}
-  html.js .watch-list li.reveal:nth-child(2),html.js .watch-list li.reveal:nth-child(4){transform:translateY(20px)}
-}
 .chapter .ch-inner{will-change:transform,opacity}
 .huge{will-change:transform,opacity}
 .tower .tval{will-change:transform,opacity}
@@ -673,7 +630,7 @@ html.js .watch-list li.reveal.in{transform:none}
   .chapter{scroll-margin-top:0}
   .towers{gap:12px}
   .tzone{height:250px}
-  .step{min-height:92vh;min-height:calc(var(--vh,1vh)*92);padding-bottom:var(--sp-7)}
+  .step{min-height:92vh;min-height:calc(1vh*92);padding-bottom:var(--sp-7)}
   .step .step-card{max-width:none;width:100%;padding:18px 20px}
   .scrolly .sticky-wrap{padding-top:var(--sp-5);padding-left:18px;padding-right:18px}
   .scrolly .bignum{font-size:4.3rem}
@@ -719,10 +676,8 @@ html.js .watch-list li.reveal.in{transform:none}
   nav.menu a,.reveal,.timeline li::before{transition:none!important}
   nav.menu a.active{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
-  html.js .step .step-card{opacity:1;transform:none;transition:none}
-  .scrolly .bignum.swap{animation:none}
   .pin{height:auto!important}
-  .pin-stage{position:relative;height:82vh;height:calc(var(--vh,1vh)*82)}
+  .pin-stage{position:relative;height:82vh;height:calc(1vh*82)}
 }
 /* ---------- Page margins: one frame with the homepage ----------
    The homepage frame is .page{max-width:1120px;padding:24px 22px
@@ -824,11 +779,18 @@ body:has(.dy-sec) nav.menu{display:none}
    their cover-anchored ranges on purpose: a shape never sits in
    an initial viewport (the head and What's Moved always precede
    it), and their scrub across the panel's whole passage is the
-   calibrated assembly, verified unchanged by A/B render. */
+   calibrated assembly, verified unchanged by A/B render.
+   Box rule (Nov 12, 2026, Josh: "each box should render as one.
+   not each independent element within a box."): dyIn is keyed to
+   the box containers only (.dy-tile, .dy-bignum, .dy-photo,
+   .dy-shape). Inner elements (.dy-item, .dy-moved li) and the
+   edition head (.dy-head) carry no timeline of their own and
+   render at their box's state, so a box arrives whole, never as
+   fragments at staggered opacities. */
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-item,.dy-tile,.dy-moved li{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
+    .dy-tile,.dy-bignum,.dy-photo,.dy-shape{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
   }
 }
 
@@ -864,16 +826,26 @@ body:has(.dy-sec) nav.menu{display:none}
 @keyframes dyDot{from{opacity:0;transform:scale(.35)}to{opacity:1;transform:scale(1)}}
 @keyframes dyRise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @keyframes dyDraw{to{stroke-dashoffset:0}}
+/* Completion rule (Nov 12, 2026, Josh): chart and shape animations
+   are the allowed exception to boxes rendering as one, provided
+   each one is fully done well before centre stage - bar panels
+   used to finish filling only at about 50% of viewport height,
+   at centre. Every range below therefore shares one end anchor
+   (cover 12%), starts kept for the sequence: measured on the
+   homepage and the current edition at 390px and 1280px, bars
+   complete with their tops at 70-81% of viewport height, shape
+   text at 75-79%, dots at 79-80% (the last dot of a field at its
+   own entry), all before the 70% line or at it, none near centre. */
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
-    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% cover 55%}
-    .dy-pop{animation-range:entry 10% cover 65%}
-    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
-    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 5% cover 55%}
-    .dy-steps rect:nth-of-type(3){animation-range:entry 10% cover 60%}
-    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 5% cover 55%}
-    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 0% cover 60%}
+    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
+    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
+    .dy-pop{animation-range:entry 10% cover 12%}
+    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
+    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 5% cover 12%}
+    .dy-steps rect:nth-of-type(3){animation-range:entry 10% cover 12%}
+    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 5% cover 12%}
+    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
   }
 }
 

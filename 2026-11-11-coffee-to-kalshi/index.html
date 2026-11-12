@@ -677,7 +677,82 @@ figure[aria-label*="Step chart"] svg path[fill="#76B900"]{fill:#5f9e00}
 svg rect[fill-opacity="0.28"]{fill-opacity:.55}
 svg line[stroke-opacity="0.6"]{stroke:#0a0c08}
 </style>
+<style>
+/* ===== PAGE-LOCAL ENTRY MOTION: Coffee to Kalshi small graphics only
+   (Phase 3, Josh, Nov 11, 2026). Animates only the design elements: divider
+   artworks and circuit traces (stroke draw), the ring, wafer and die motifs
+   (assemble), the growing-unit panels (assemble) and the Kalshi staircase
+   (its single filled path rises). Text, headlines, photographs, tables,
+   source notes, the scoreboard and the NVDA price line are never touched.
+   Initial states are set by the page-local script below, never by this
+   sheet alone: with no script, or under prefers-reduced-motion, every
+   element sits in its finished state. Motion runs once on entry, settles,
+   and stays still. Colors come from the dark experiment block above. */
+svg.p3a .p3f{opacity:0;transform:translateY(5px)}
+svg.p3a .p3big{transform:translateY(14px)}
+svg.p3a .p3o{opacity:0}
+svg.p3a .p3d{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+svg.p3a.go .p3f,svg.p3a.go .p3o{opacity:1;transform:none;transition:opacity .55s ease var(--dl,0s),transform .55s ease var(--dl,0s)}
+svg.p3a.go .p3big{transition-duration:.8s,.8s}
+svg.p3a.go .p3d{stroke-dashoffset:0;transition:stroke-dashoffset .9s ease var(--dl,0s)}
+@media (prefers-reduced-motion: reduce){
+  svg.p3a .p3f,svg.p3a .p3o{opacity:1;transform:none}
+  svg.p3a .p3d{stroke-dashoffset:0}
+}
+</style>
 <script src="../assets/board.js"></script>
+<script>
+/* ===== PAGE-LOCAL ENTRY MOTION (Phase 3, Josh, Nov 11, 2026): arms the
+   small graphics of this page only. Filled shapes assemble with a short
+   staggered rise; open strokes draw; elements whose dash pattern or stroke
+   opacity is itself data (the ring arcs and tracks) only fade. The price
+   line and the scoreboard are excluded by label. Under reduced motion
+   nothing is armed and the page is simply static. */
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var SKIP = ['Nvidia share price', 'Compute scoreboard'];
+  var svgs = Array.prototype.filter.call(document.querySelectorAll('svg'), function(sv){
+    var a = sv.getAttribute('aria-label') || '';
+    return !SKIP.some(function(k){ return a.indexOf(k) === 0; });
+  });
+  function classify(el, state){
+    if (el.nodeType !== 1) return;
+    var tag = el.tagName.toLowerCase();
+    if (tag === 'text' || tag === 'defs' || tag === 'title' || tag === 'desc') return;
+    if (tag === 'g'){ Array.prototype.forEach.call(el.childNodes, function(c){ classify(c, state); }); return; }
+    var dl = Math.min(state.i++ * 45, 500);
+    el.style.setProperty('--dl', dl + 'ms');
+    var hasDash = el.hasAttribute('stroke-dasharray');
+    var hasStrokeOp = el.hasAttribute('stroke-opacity');
+    if ((tag === 'path' || tag === 'line') && !hasDash){
+      var f = el.getAttribute('fill');
+      if (tag === 'path' && f && f !== 'none'){
+        el.classList.add('p3f'); el.classList.add('p3big');
+      } else {
+        try { el.style.setProperty('--len', el.getTotalLength().toFixed(1)); } catch(e) {}
+        el.classList.add('p3d');
+      }
+    } else if (hasDash || hasStrokeOp){
+      el.classList.add('p3o');
+    } else {
+      el.classList.add('p3f');
+    }
+  }
+  svgs.forEach(function(sv){
+    var state = { i: 0 };
+    Array.prototype.forEach.call(sv.childNodes, function(c){ classify(c, state); });
+    sv.classList.add('p3a');
+  });
+  function go(sv){ sv.classList.add('go'); }
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ go(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.2 });
+    svgs.forEach(function(sv){ io.observe(sv); });
+  } else { svgs.forEach(go); }
+  setTimeout(function(){ svgs.forEach(go); }, 20000);
+})();
+</script>
 
 </body>
 </html>

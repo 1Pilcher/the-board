@@ -413,8 +413,6 @@
 <div class="tx-stage" id="txStage" aria-hidden="true">
 <div class="tx-sticky" id="txSticky">
 <div class="tx-outer" id="txOuter"></div>
-<div class="tx-grid"></div>
-<div class="tx-front"></div>
 <div class="tx-cue" id="txCue"><svg width="20" height="11" viewBox="0 0 20 11" aria-hidden="true" style="display:block;margin:0 auto"><path d="M2 2 L10 9 L18 2" fill="none" stroke="#446d00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="lbl">SCROLL</div></div>
 <div class="tx-disc" id="txDisc">
 <div class="tx-disc-wipe" id="txWipe"></div>
@@ -515,7 +513,7 @@
 
 </div>
 
-<div class="interlude" aria-hidden="true"><svg viewBox="0 0 920 96" style="width:100%;height:auto;display:block"><path d="M 30 48 L 140 48 L 158 64 L 228 64 L 338 64 L 356 80 L 466 80 L 484 96 L 634 96 L 652 112 L 722 112 L 740 128 L 890 128" fill="none" stroke="#76B900" stroke-width="2.5"/><rect x="205" y="43" width="10" height="10" fill="#76B900" stroke="#141310" stroke-width="1.2"/><rect x="465" y="59" width="10" height="10" fill="#76B900" stroke="#141310" stroke-width="1.2"/><rect x="725" y="43" width="10" height="10" fill="#76B900" stroke="#141310" stroke-width="1.2"/><g transform="translate(540 26)"><rect x="0" y="0" width="44" height="44" fill="none" stroke="#446d00" stroke-width="2.5"/><rect x="13" y="13" width="18" height="18" fill="#76B900"/><rect x="-16" y="8" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/><rect x="50" y="8" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/><rect x="-16" y="28" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/><rect x="50" y="28" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/></g></svg></div>
+<div class="interlude" aria-hidden="true"><svg viewBox="0 0 920 96" style="width:100%;height:auto;display:block"><path d="M 30 48 L 140 48 L 158 64 L 308 64 L 326 80 L 476 80 L 494 64 L 644 64 L 662 48 L 812 48 L 830 64 L 890 64" fill="none" stroke="#76B900" stroke-width="2.5"/><rect x="200" y="59" width="10" height="10" fill="#76B900" stroke="#141310" stroke-width="1.2"/><rect x="395" y="75" width="10" height="10" fill="#76B900" stroke="#141310" stroke-width="1.2"/><rect x="725" y="43" width="10" height="10" fill="#76B900" stroke="#141310" stroke-width="1.2"/><g transform="translate(540 26)"><rect x="0" y="0" width="44" height="44" fill="none" stroke="#446d00" stroke-width="2.5"/><rect x="13" y="13" width="18" height="18" fill="#76B900"/><rect x="-16" y="8" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/><rect x="50" y="8" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/><rect x="-16" y="28" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/><rect x="50" y="28" width="10" height="10" fill="none" stroke="#446d00" stroke-width="1.8"/></g></svg></div>
 
 <div class="column">
 <header class="chapter" id="next">
@@ -706,10 +704,12 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
    Josh's refinements: smaller disc (58vmin) with a textured,
    tick-marked gauge rim; the inner wipe runs at TWICE the outer
    rate, so the disc goes black to white to black across one
-   outer turn; Nvidia-green wire grid revealed by the wipe
-   fronts themselves; a longer stage (500vh, a 400vh pinned
+   outer turn; a longer stage (500vh, a 400vh pinned
    scroll, twice the original dwell); a static SCROLL cue under
-   the disc that the advancing front consumes.
+   the disc that the advancing front consumes. The outside wire
+   grid and its leading edge were REMOVED Nov 11, 23:41 CT at
+   Josh's direction: clean sweep outside the disc, texture only
+   inside it (engraving, sheen, inner grid, rim, ticks).
    Choreography: NO fades on the color surfaces. Outside the
    disc, black sweeps CLOCKWISE from 12 o'clock over the cream
    screen (angle = 360 x progress). Inside the disc, white
@@ -744,20 +744,6 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
   position: absolute; inset: 0;
   background: conic-gradient(from 0deg, #0a0c08 0deg calc(var(--txp) * 360deg), #faf7f0 calc(var(--txp) * 360deg) 360deg);
 }
-.tx-grid{
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(circle at 0 0, rgba(118,185,0,.55) 1.5px, rgba(118,185,0,0) 2.6px),
-    repeating-linear-gradient(0deg, rgba(118,185,0,.16) 0 1px, rgba(118,185,0,0) 1px 46px),
-    repeating-linear-gradient(90deg, rgba(118,185,0,.16) 0 1px, rgba(118,185,0,0) 1px 46px);
-  background-size: 46px 46px, 100% 100%, 100% 100%;
-  -webkit-mask-image: conic-gradient(from 0deg, #000 0deg calc(var(--txp) * 360deg), transparent calc(var(--txp) * 360deg) 360deg);
-  mask-image: conic-gradient(from 0deg, #000 0deg calc(var(--txp) * 360deg), transparent calc(var(--txp) * 360deg) 360deg);
-}
-.tx-front{
-  position: absolute; inset: 0; pointer-events: none;
-  background: conic-gradient(from 0deg, transparent 0deg calc(var(--txp) * 360deg - 1.4deg), rgba(118,185,0,.8) calc(var(--txp) * 360deg - 1.4deg) calc(var(--txp) * 360deg), transparent calc(var(--txp) * 360deg) 360deg);
-}
 .tx-cue{
   position: absolute; left: 50%; top: calc(50% + 29vmin + 20px);
   transform: translateX(-50%);
@@ -777,7 +763,7 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
   border-radius: 50%;
   overflow: hidden;
   background: #0a0c08;
-  box-shadow: 0 34px 90px rgba(10,12,8,.5), 0 10px 30px rgba(10,12,8,.35), 0 0 0 1px rgba(118,185,0,.35);
+  box-shadow: 0 18px 44px rgba(10,12,8,.45), 0 6px 18px rgba(10,12,8,.32), 0 0 0 1px rgba(118,185,0,.35);
 }
 .tx-disc-wipe{
   position: absolute; inset: 0;
@@ -826,6 +812,35 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px), #000 calc(100% - 5px), transparent calc(100% - 4px));
   mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px), #000 calc(100% - 5px), transparent calc(100% - 4px));
 }
+/* World flip for the fixed chrome (Josh, Nov 11, 23:33 CT): when
+   transport progress is full, the fixed top strip goes black
+   (safe-area part included - the strip IS that element), the
+   progress bar and the active nav pill go Nvidia green per this
+   page's standing spec (green wherever other pages use red), and
+   the disc's soft shadows (invisible on the full-black screen)
+   drop so the pinned layer leaves cheaply at the release. Hard
+   switches, no fades. The tx-done class is toggled by the
+   transport measure below, which runs in both the CSS-timeline
+   and JS-fallback driver paths (plus a geometric check under
+   reduced motion). */
+html.tx-done #topstrip{ background:#0a0c08; }
+html.tx-done #progress{ background:#76B900; }
+html.tx-done nav.menu a.active{ background:#76B900; color:#0a0c08; transition:none; }
+html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
+/* Paint containment for the scroll-scrubbed graphics (Nov 11,
+   23:40 CT): bounds each panel's repaint to its own box so scrub
+   work cannot smear across the release seam. */
+.viz svg, .nv-motif svg, .interlude svg{ contain: paint; }
+/* Part 2 dividers (Nov 11, 23:38 CT): on black the stock divider
+   stack read as dead air around a hairline trace. In part 2 the
+   divider box hugs its artwork instead of the fixed tall height,
+   chapter heads sit closer, and the trace/die strokes gain
+   weight so the moment reads at a glance. */
+.part2 .interlude{ height:auto; }
+.part2 .chapter{ padding-top:calc(var(--section-gap) * .55); }
+.part2 .interlude svg path{ stroke-width:4.2; }
+.part2 .interlude svg rect[stroke="#141310"]{ stroke-width:2.2; }
+.part2 .interlude svg [stroke="#446d00"]{ stroke-width:3.4; }
 /* CSS scroll-driven path: one keyframe pair drives --txp across
    the pinned window of the stage's view timeline. Stage is
    500vh, so the pin spans 16.6667% to 83.3333% of the timeline
@@ -889,12 +904,27 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
         sticky.style.setProperty('--txp', t.toFixed(4));
       }
       w = t; f = clamp(t * 2 - 1);
+      document.documentElement.classList.toggle('tx-done', t >= 0.999 || p >= 1);
       stage.setAttribute('data-p', p.toFixed(4));
       stage.setAttribute('data-w', w.toFixed(4));
       stage.setAttribute('data-f', f.toFixed(4));
       stage.setAttribute('data-driver', cssDriven ? 'css' : 'js');
       return { p: p, w: w, f: f };
     };
+  }
+
+  /* Reduced motion: no transport driver runs, so flip the chrome
+     geometrically - black once part 2 owns the screen. */
+  if (stage && reduced){
+    var p2el = document.querySelector('.part2');
+    var flipRM = function(){
+      var done = false;
+      if (p2el){ done = p2el.getBoundingClientRect().top <= (window.innerHeight || 0) * 0.5; }
+      document.documentElement.classList.toggle('tx-done', done);
+    };
+    window.addEventListener('scroll', flipRM, { passive: true });
+    window.addEventListener('resize', flipRM);
+    flipRM();
   }
 
   if (reduced) return;
@@ -943,6 +973,8 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
     var vh = window.innerHeight || 0;
     if (r.bottom < -240 || r.top > vh + 240) return;
     var p = clamp2((vh - r.top) / (vh + Math.max(r.height, 1)));
+    if (panel._p !== undefined && Math.abs(p - panel._p) < 0.0005) return;
+    panel._p = p;
     panel.items.forEach(function(it){
       var local = clamp2((p - it.start) / 0.6);
       var el = it.el;

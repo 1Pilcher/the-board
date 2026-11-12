@@ -2,12 +2,24 @@
 (function(){
   // Static edition: no scroll engine, no animated effects. This
   // script only runs the reading chrome: the pill menu's edge
-  // fades and active section, and the locked full-bleed width the
-  // bands are sized from. (The progress bar's fill is CSS now,
-  // keyed to the scroll position itself.) Nothing here moves,
-  // hides or transforms any content.
+  // fades and active section, and - on the few pages that need it
+  // (see needsW below) - the locked full-bleed width the bands
+  // are sized from. (The progress bar's fill is CSS now, keyed
+  // to the scroll position itself.) Nothing here moves, hides or
+  // transforms any content.
   var root = document.documentElement;
+  // The measured width only runs where a page needs its own
+  // number: the Coffee transport stage, whose disc and wipes are
+  // sized from --cw, and any page whose <html> element carries a
+  // baked inline --cw (a build artifact the shared sheet cannot
+  // override, so the measured width has to overwrite it - the
+  // inline property is the marker, never a page name). Everywhere
+  // else the sheet's own --cw governs: this helper never
+  // measures, never writes, never sets a timer.
+  var needsW = !!document.querySelector(".tx-stage") ||
+    root.style.getPropertyValue("--cw").trim() !== "";
   function setW(){
+    if(!needsW){ return; }
     var cw = root.clientWidth || window.innerWidth || 0;
     if(cw > 0){ root.style.setProperty("--cw", cw + "px"); root.style.setProperty("--chw", (cw / 2) + "px"); }
   }
@@ -22,6 +34,7 @@
   // clears any sideways pan the too-wide moment left behind.
   var settleTimers = [];
   function settleW(){
+    if(!needsW){ return; }
     setW();
     for(var i = 0; i < settleTimers.length; i++){ clearTimeout(settleTimers[i]); }
     settleTimers = [];

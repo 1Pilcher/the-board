@@ -783,8 +783,6 @@ html.js .watch-list li.reveal.in{transform:none}
 .dy-sw.ink{background:var(--ink)}
 .dy-sw.red{background:var(--accent)}
 .dy-sw.off{background:#cfc7b6}
-.dy-divider{display:flex;justify-content:center;padding:44px 0 6px}
-.dy-divider svg{display:block;max-width:100%}
 @media(max-width:700px){
 .dy-shape{padding:22px 14px 18px;margin-left:0;margin-right:0}
 .dy-svg.dy-d{display:none!important}
@@ -814,16 +812,15 @@ body:has(.dy-sec) nav.menu{display:none}
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-item,.dy-tile,.dy-moved li,.dy-divider{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    .dy-head,.dy-item,.dy-tile,.dy-moved li{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
   }
 }
 
 /* The daily page on desktop: the briefing laid out as a newspaper
    front across the full frame instead of one centred column.
    What's Moved leads as a full-width band with its list run in
-   two columns, World and US sit side by side (the divider that
-   follows World in the markup belongs to the single-column flow
-   and is not rendered here), Markets takes a wide band and Worth
+   two columns, World and US sit side by side; Markets takes
+   a wide band and Worth
    Knowing closes the page. Reading order stays the DOM order.
    Below 1000px the page keeps its single column exactly. */
 @media(min-width:1000px){
@@ -835,8 +832,6 @@ body:has(.dy-sec) nav.menu{display:none}
   .page:has(> .dy-sec) #world{grid-column:1}
   .page:has(> .dy-sec) #us{grid-column:2}
   .page:has(> .dy-sec) #markets,.page:has(> .dy-sec) #worth{grid-column:1/-1}
-  .page:has(> .dy-sec)>.dy-divider{grid-column:1/-1;padding:0}
-  .page:has(> .dy-sec)>#world+.dy-divider{display:none}
   .page:has(> .dy-sec) .dy-head,.page:has(> .dy-sec) .dy-col{padding-left:0;padding-right:0}
   .page:has(> .dy-sec) #moved .dy-moved{max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;padding:0}
 }
@@ -896,6 +891,22 @@ body:has(.dy-sec) nav.menu{display:none}
 .dy-tile .dy-item{margin-bottom:18px}
 .dy-tile .dy-item:last-child{margin-bottom:0}
 .dy-tile .dy-cap{font-family:var(--sans);font-size:.78rem;line-height:1.55;color:var(--ink-soft)}
+/* The More link: ONE canonical component (hardcoded Nov 12, 2026).
+   Every "More:" link in a daily build uses exactly this markup:
+   <span class="dy-more"><a href="URL" target="_blank"
+   rel="noopener">More: X</a></span>. The wrapper carries the
+   furniture typography (small sans, semibold, warm gray, accent
+   on hover) so the link renders identically in every context:
+   a tile foot, a multi-story item, a What's Moved item. A bare
+   anchor, or one wrapped in .dy-cap or body prose, is a defect;
+   the pre-push lint hard-fails it. */
+.dy-more{display:block;margin-top:auto;padding-top:12px;font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.03em}
+.dy-more a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule-light);padding-bottom:1px}
+.dy-more a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.dy-moved .dy-more{padding-top:8px}
+.dy-item .dy-more{margin-top:2px;padding-top:8px}
+.dy-quiz .dy-more{margin-top:6px;padding-top:0}
+
 .dy-tileimg{width:100%;height:auto;display:block;border-radius:8px;margin-bottom:16px}
 .dy-front .dy-moved{max-width:none;padding:0;border-top:none}
 .dy-front .dy-shape{max-width:none;margin:0}
@@ -915,17 +926,13 @@ body:has(.dy-sec) nav.menu{display:none}
    whole tile instead of huddling at the top: shape panels centre
    their drawing in the room the row gives them and set their
    caption at the foot, photo captions pin to the foot of their
-   frame, multi-story tiles spread their stories down the tile,
-   and a tile with honest room left over anchors a quiet motif
-   from the shape language at its foot (.dy-fill in the markup).
+   frame, multi-story tiles spread their stories down the tile.
    The page reads as fitted together, never as boxes with air
    left in them. */
 .dy-front>.dy-tile,.dy-front>.dy-shape{display:flex;flex-direction:column}
 .dy-front>.dy-shape>svg{flex:0 1 auto;margin-top:auto;margin-bottom:auto}
 .dy-front>.dy-photo>figcaption{margin-top:auto}
 .dy-front>.dy-tile:has(>.dy-item+.dy-item){justify-content:space-between}
-.dy-fill{margin-top:auto;padding-top:20px}
-.dy-fill svg{display:block}
 
 /* Section slots (standardized Nov 11, 2026): every news section
    (World, US, Markets, Worth Knowing) is assembled from the same
@@ -938,10 +945,10 @@ body:has(.dy-sec) nav.menu{display:none}
    (.dy-bignum: one number or statement set huge, with its label
    and line; .duo sets two side by side); the stat strip
    (.dy-stats: two or three real numbers from the section, set
-   inside a photo or text tile); and the motif fill (.dy-fill).
-   A section ships only when every slot it uses is filled: a
-   tile that would stand mostly empty takes a stat strip, a big
-   number, a photograph or a foot motif, never air. */
+   inside a photo or text tile). A section ships only when
+   every slot it uses is filled: a tile that would stand mostly
+   empty takes a stat strip, a big number or a photograph,
+   never air. */
 .dy-stats{display:flex;margin-top:14px;padding-bottom:8px;border-top:1px solid var(--rule-light)}
 .dy-stats>div{flex:1 1 0;min-width:0;padding:11px 12px 3px;border-left:1px solid var(--rule-light)}
 .dy-stats>div:first-child{border-left:0;padding-left:2px}
@@ -963,8 +970,7 @@ body:has(.dy-sec) nav.menu{display:none}
 }
 @media(min-width:1000px){
   .dy-front{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:26px}
-  .dy-front>.dy-ghead,.dy-front>.dy-divider{grid-column:1/-1}
-  .dy-front>.dy-divider{padding:0}
+  .dy-front>.dy-ghead{grid-column:1/-1}
   .dy-front>.s4{grid-column:span 4}
   .dy-front>.s5{grid-column:span 5}
   .dy-front>.s6{grid-column:span 6}
@@ -980,19 +986,11 @@ body:has(.dy-sec) nav.menu{display:none}
   .dy-photo{padding:10px}
 }
 
-/* Divider shapes animate on scroll (Nov 11, 2026): each divider's
-   motif draws, assembles or scales in as it crosses the viewport,
-   scrubbed across a long stretch of the passage, same restraint
-   as the panels: no bounce, no looping, still once settled, and
-   the finished still is what reduced motion gets. */
-@keyframes dyDiv{from{opacity:.1;transform:scale(.35)}to{opacity:1;transform:scale(1)}}
-@keyframes dyDivX{from{opacity:.25;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
-@media (prefers-reduced-motion: no-preference){
-  @supports (animation-timeline: view()){
-    .dy-divider .dv{transform-box:fill-box;transform-origin:center;animation:dyDiv ease-out both;animation-timeline:view();animation-range:entry calc(var(--d,0)*5%) cover calc(40% + var(--d,0)*5%)}
-    .dy-divider .dvl{transform-box:fill-box;transform-origin:left center;animation:dyDivX ease-out both;animation-timeline:view();animation-range:entry 0% cover 55%}
-  }
-}
+/* Ornamental graphics banned (Josh, Nov 12, 2026): the Daily
+   carries no motif fills and no divider ornaments; the classes
+   .dy-fill and .dy-divider are removed, and the pre-push lint
+   hard-fails their presence in a daily build. Sections are
+   separated by their head bands; every visual carries data. */
 
 /* The daily page carries no nav of its own; hide the report
    menu whenever the tile front page is what the page holds. */

@@ -687,6 +687,12 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
 .part2 .viz{background:#12140f}
 .part2 footer.method a{color:#76B900}
 .part2 ::selection{background:#76B900;color:#0a0c08}
+/* Pin overlay text in part 2 (polish find, Nov 11, 23:50 CT):
+   board.css colors .pin-text with var(--paper), which inside
+   part 2 computes to the dark ground itself, leaving the
+   Washington pin's headline near-black over its own photo.
+   Pins in part 2 take the paper color literally. */
+.part2 .pin-text, .part2 .pin-text h2, .part2 .pin-text .big, .part2 .pin-text p{ color:#faf7f0; }
 /* SVG internals in part 2: cream-theme paints remapped for the
    dark ground, exactly as the Phase 2 block remapped them. */
 .part2 svg text[fill="#446d00"]{fill:#76B900}
@@ -836,6 +842,13 @@ html.tx-done body{ background:#0a0c08; }
 html.tx-done #topstrip{ background:#0a0c08; }
 html.tx-done #progress{ background:#76B900; }
 html.tx-done nav.menu a.active{ background:#76B900; color:#0a0c08; transition:none; }
+/* Nav in the black world (polish, Nov 11, 23:50 CT): the stock
+   translucent warm-gray bar ghosts body text through itself on
+   black and its red border fights the world. While tx-done,
+   the bar goes solid part-2 panel dark with a green border;
+   geometry, spacing and behavior untouched, and the cream
+   world keeps the standard Board bar. */
+html.tx-done nav.menu{ background:#12140f; border-color:#76B900; }
 html.tx-done .tx-disc{ box-shadow: 0 0 0 1px rgba(118,185,0,.35); }
 /* Paint containment for the scroll-scrubbed graphics (Nov 11,
    23:40 CT): bounds each panel's repaint to its own box so scrub

@@ -383,11 +383,18 @@ html{scroll-behavior:auto}
    their cover-anchored ranges on purpose: a shape never sits in
    an initial viewport (the head and What's Moved always precede
    it), and their scrub across the panel's whole passage is the
-   calibrated assembly, verified unchanged by A/B render. */
+   calibrated assembly, verified unchanged by A/B render.
+   Box rule (Nov 12, 2026, Josh: "each box should render as one.
+   not each independent element within a box."): dyIn is keyed to
+   the box containers only (.dy-tile, .dy-bignum, .dy-photo,
+   .dy-shape). Inner elements (.dy-item, .dy-moved li) and the
+   edition head (.dy-head) carry no timeline of their own and
+   render at their box's state, so a box arrives whole, never as
+   fragments at staggered opacities. */
 @keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-head,.dy-item,.dy-tile,.dy-moved li{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
+    .dy-tile,.dy-bignum,.dy-photo,.dy-shape{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
   }
 }
 
@@ -417,16 +424,26 @@ html{scroll-behavior:auto}
 @keyframes dyDot{from{opacity:0;transform:scale(.35)}to{opacity:1;transform:scale(1)}}
 @keyframes dyRise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @keyframes dyDraw{to{stroke-dashoffset:0}}
+/* Completion rule (Nov 12, 2026, Josh): chart and shape animations
+   are the allowed exception to boxes rendering as one, provided
+   each one is fully done well before centre stage - bar panels
+   used to finish filling only at about 50% of viewport height,
+   at centre. Every range below therefore shares one end anchor
+   (cover 12%), starts kept for the sequence: measured on the
+   homepage and the current edition at 390px and 1280px, bars
+   complete with their tops at 70-81% of viewport height, shape
+   text at 75-79%, dots at 79-80% (the last dot of a field at its
+   own entry), all before the 70% line or at it, none near centre. */
 @media(prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
-    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
-    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% cover 55%}
-    .dy-pop{animation-range:entry 10% cover 65%}
-    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% cover 45%}
-    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 5% cover 55%}
-    .dy-steps rect:nth-of-type(3){animation-range:entry 10% cover 60%}
-    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 5% cover 55%}
-    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 0% cover 60%}
+    .dy-shape h3,.dy-shape .dy-sub,.dy-shape figcaption,.dy-legend{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
+    .dy-dots circle,.dy-pop{transform-box:fill-box;transform-origin:center;animation:dyDot ease-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
+    .dy-pop{animation-range:entry 10% cover 12%}
+    .dy-steps rect,.dy-bars rect{transform-box:fill-box;transform-origin:50% 100%;animation:dyRise ease-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
+    .dy-steps rect:nth-of-type(2),.dy-bars rect:nth-of-type(2){animation-range:entry 5% cover 12%}
+    .dy-steps rect:nth-of-type(3){animation-range:entry 10% cover 12%}
+    .dy-steps text,.dy-bars text,.dy-trace text,.dy-range text{animation:dyFade ease-out both;animation-timeline:view();animation-range:entry 5% cover 12%}
+    .dy-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dyDraw ease-in-out both;animation-timeline:view();animation-range:entry 0% cover 12%}
   }
 }
 

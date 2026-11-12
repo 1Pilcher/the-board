@@ -624,6 +624,59 @@ Huang at the White House AI Summit, July 2025 (The White House, Joyce N. Boghosi
 .viz svg.nv-svg{display:block;width:100%;height:auto}
 .reads .read .rk{color:var(--accent)}
 </style>
+<style>
+/* ============================================================
+   ONE-PAGE DARK EXPERIMENT — Coffee to Kalshi only (Josh, Nov 11, 2026)
+   Full Nvidia inversion of this page: near-black ground, light text,
+   green in every place the Board's other pages use red. Colors and
+   color-scheme ONLY: no layout, geometry, spacing, font, or content
+   changes. Revert the experiment by deleting this block.
+   ============================================================ */
+:root{
+  color-scheme:dark;
+  --ink:#faf7f0;
+  --ink-soft:#a89f8d;
+  --gray:#a89f8d;
+  --accent:#76B900;
+  --box:#12140f;
+  --rule-light:#2e3128;
+}
+.nv{--accent:#76B900}
+html,body{background:#0a0c08}
+#topstrip{background:#0a0c08}
+.pin{background:#0a0c08}
+.pin-cap{background:#0a0c08}
+.pin-stage{background:#12140f}
+figure.photo .photo-frame{background:#12140f}
+figure.photo figcaption{background:#0a0c08}
+.viz{background:#12140f}
+nav.menu a.active{color:#0a0c08}
+footer.method a{color:#76B900}
+::selection{background:#76B900;color:#0a0c08}
+/* SVG internals: cream-theme paints remapped for the dark ground.
+   Text and fine lines in the deep green become the brand green;
+   the deep-green dot fields take one step down so a whole field
+   does not go neon; ink shapes become lifted dark cells with
+   visible edges; ink text becomes paper. */
+svg text[fill="#446d00"]{fill:#76B900}
+svg text[fill="#6f6a61"]{fill:#a89f8d}
+svg text[fill="#141310"]{fill:#faf7f0}
+svg [fill="#446d00"]{fill:#76B900}
+svg circle[fill="#446d00"]{fill:#5f9e00}
+svg [stroke="#446d00"]{stroke:#76B900}
+svg [stroke="#6f6a61"]{stroke:#a89f8d}
+svg :not(text)[fill="#141310"]{fill:#252a20}
+svg rect[fill="#141310"]{fill:#2f342a;stroke:#585f50;stroke-width:1}
+svg :not(text)[fill="#6f6a61"]{fill:#8a8271}
+svg [stroke="#141310"]{stroke:#5a6152}
+svg path[stroke="#141310"]{stroke:#0a0c08}
+svg polyline[stroke="#141310"]{stroke:#faf7f0}
+svg [stroke="#cfc8b4"]{stroke:#4c5145}
+/* The staircase is the page's one giant flat fill: one step down on black. */
+figure[aria-label*="Step chart"] svg path[fill="#76B900"]{fill:#5f9e00}
+svg rect[fill-opacity="0.28"]{fill-opacity:.55}
+svg line[stroke-opacity="0.6"]{stroke:#0a0c08}
+</style>
 <script src="../assets/board.js"></script>
 
 </body>

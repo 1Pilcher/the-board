@@ -77,6 +77,76 @@
   .tr-dash .dy-rule{background:var(--ink)}
   .tr-flow .dy-rule{background:var(--ink)}
 }
+
+/* ===== Batch two (Nov 12, 2026): bolder, texture first =====
+   Same discipline: pure CSS keyframe loops, own clocks, palette
+   limited to ink, warm gray and the accent red. */
+
+/* 6 — The Hatch: the line is a narrow band of fine diagonal shade
+   lines penned between two hairlines; the whole texture slides
+   sideways continuously, a conveyor of slanted strokes. */
+.tr-hatch .dy-rule{position:relative;overflow:hidden;height:13px;background:none;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.tr-hatch .dy-rule::after{content:"";position:absolute;top:-6px;bottom:-6px;left:-40px;right:-40px;background:repeating-linear-gradient(45deg,rgba(20,19,16,.6) 0 1.5px,transparent 1.5px 7px);animation:lnHatch 1.1s linear infinite}
+@keyframes lnHatch{
+  from{transform:translateX(0)}
+  to{transform:translateX(9.9px)}
+}
+
+/* 7 — The Engraving: a diagonal hatch band whose slashes ripple —
+   the angle rocks and the spacing breathes, slowly, out of phase,
+   so the engraving feels alive rather than mechanical. */
+.tr-engrave .dy-rule{position:relative;overflow:hidden;height:13px;background:none;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.tr-engrave .dy-rule::after{content:"";position:absolute;top:-8px;bottom:-8px;left:-40px;right:-40px;background:repeating-linear-gradient(45deg,rgba(20,19,16,.55) 0 1.5px,transparent 1.5px 7px);animation:lnEngraveTilt 7s ease-in-out infinite,lnEngraveSpace 5s ease-in-out infinite}
+@keyframes lnEngraveTilt{
+  0%,100%{transform:skewX(-7deg)}
+  50%{transform:skewX(5deg)}
+}
+@keyframes lnEngraveSpace{
+  0%,100%{background-size:100% 100%}
+  50%{background-size:142% 100%}
+}
+
+/* 8 — The Weave: two hairlines braid over and under each other in a
+   slow endless plait. One strand solid ink, one dashed warm gray,
+   so the eye reads the ducking under at every crossing. */
+.tr-weave .dy-rule{height:13px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 7 Q12 -2 24 7 T48 7' fill='none' stroke='%23141310' stroke-width='2'/%3E%3Cpath d='M0 7 Q12 16 24 7 T48 7' fill='none' stroke='%236f6a61' stroke-width='2' stroke-dasharray='13 11'/%3E%3C/svg%3E");background-size:48px 14px;background-repeat:repeat-x;background-position:0 center;animation:lnWeave 3.2s linear infinite}
+@keyframes lnWeave{
+  from{background-position-x:0}
+  to{background-position-x:48px}
+}
+
+/* 9 — The Tide: the line itself is a slow, low sine wave travelling
+   sideways, with a fainter second swell behind it moving slower —
+   a calm waterline. */
+.tr-tide .dy-rule{position:relative;height:13px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14' viewBox='0 0 72 14'%3E%3Cpath d='M0 7 Q18 0 36 7 T72 7' fill='none' stroke='%23141310' stroke-width='2'/%3E%3C/svg%3E");background-size:72px 14px;background-repeat:repeat-x;background-position:0 center;animation:lnTide 4.5s linear infinite}
+.tr-tide .dy-rule::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14' viewBox='0 0 72 14'%3E%3Cpath d='M0 7 Q18 0 36 7 T72 7' fill='none' stroke='%23b03a2e' stroke-width='1.5'/%3E%3C/svg%3E");background-size:72px 14px;background-repeat:repeat-x;background-position:36px center;opacity:.28;animation:lnTideSlow 7s linear infinite}
+@keyframes lnTide{
+  from{background-position-x:0}
+  to{background-position-x:72px}
+}
+@keyframes lnTideSlow{
+  from{background-position-x:36px}
+  to{background-position-x:108px}
+}
+
+/* 10 — The Sawtooth: a fine zigzag line in ink; a short run of the
+    same teeth in the accent red travels point to point along it,
+    continuously, edged soft at both ends. */
+.tr-saw .dy-rule{position:relative;overflow:hidden;height:11px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Cpath d='M0 10 L8 2 L16 10' fill='none' stroke='%23141310' stroke-width='2'/%3E%3C/svg%3E");background-size:16px 12px;background-repeat:repeat-x;background-position:0 center}
+.tr-saw .dy-rule::after{content:"";position:absolute;top:0;bottom:0;left:-56px;width:56px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Cpath d='M0 10 L8 2 L16 10' fill='none' stroke='%23b03a2e' stroke-width='2'/%3E%3C/svg%3E");background-size:16px 12px;background-repeat:repeat-x;background-position:0 center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);animation:lnSaw 3.6s linear infinite}
+@keyframes lnSaw{
+  0%{left:-56px;opacity:0}
+  6%{opacity:1}
+  94%{opacity:1}
+  100%{left:100%;opacity:0}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tr-hatch .dy-rule::after,.tr-engrave .dy-rule::after,
+  .tr-weave .dy-rule,.tr-tide .dy-rule,.tr-tide .dy-rule::after,
+  .tr-saw .dy-rule::after{animation:none}
+  .tr-saw .dy-rule::after{display:none}
+}
 </style>
 </head>
 <body>
@@ -84,7 +154,7 @@
 
 <div class="page">
 
-<p class="sample-intro">Five treatments for the line beside a section head. Each one runs on its own clock, whether you scroll or not. The tile under each is identical, so the only thing being judged is the line.</p>
+<p class="sample-intro">Ten treatments for the line beside a section head. Each one runs on its own clock, whether you scroll or not. The tile under each is identical, so the only thing being judged is the line. The second five lean on texture, the shade lines an engraver cuts by hand.</p>
 
 <div class="dy-front">
 
@@ -122,6 +192,46 @@
 
 <div class="sample-cap">Sample 5 · The Flow</div>
 <div class="dy-ghead tr-flow"><h2>The Flow</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 6 · The Hatch</div>
+<div class="dy-ghead tr-hatch"><h2>The Hatch</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 7 · The Engraving</div>
+<div class="dy-ghead tr-engrave"><h2>The Engraving</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 8 · The Weave</div>
+<div class="dy-ghead tr-weave"><h2>The Weave</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 9 · The Tide</div>
+<div class="dy-ghead tr-tide"><h2>The Tide</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 10 · The Sawtooth</div>
+<div class="dy-ghead tr-saw"><h2>The Sawtooth</h2><span class="dy-rule"></span></div>
 <article class="dy-tile s12">
 <h3>The headline under the line, at the size it will actually run</h3>
 <p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>

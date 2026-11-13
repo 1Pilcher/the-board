@@ -933,7 +933,14 @@ body:has(.dy-sec) nav.menu{display:none}
 .dy-bignum .l{font-family:var(--display);font-weight:700;font-size:1.16rem;line-height:1.35;margin:0 0 8px}
 .dy-bignum.duo{flex-direction:row;gap:34px}
 .dy-bignum.duo .cell{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
-.dy-bignum.duo .cell+.cell{border-left:1px solid var(--rule-light);padding-left:34px}
+/* Stacked duo cells share ONE left edge (Nov 13, 2026, Josh):
+   .dy-bignum is display:block, so the duo's cells stack, and the
+   old side-by-side divider rule (border-left + padding-left on the
+   second cell) misfired in the stacked layout as a 35px indent on
+   the second number and its caption. The divider is a top rule
+   instead, at every width: both numbers and both captions sit on
+   the tile's left edge. */
+.dy-bignum.duo .cell+.cell{border-left:0;border-top:1px solid var(--rule-light);padding-left:0;padding-top:20px}
 @media(max-width:700px){
   .dy-stats .n{font-size:1.28rem}
   .dy-bignum .n{font-size:3.3rem}

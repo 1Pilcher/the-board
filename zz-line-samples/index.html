@@ -20,6 +20,23 @@
 .sample-cap{grid-column:1/-1;font-family:var(--sans);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-top:18px}
 .dy-front>.sample-cap:first-child{margin-top:0}
 
+/* ===== Josh's geometry spec (Nov 12, 2026) — samples 1-10 + The Rank =====
+   The line sits beside the section name, after the word. One fixed
+   gap of 34px (two letters of the head type: measured two-letter
+   pairs in Playfair 900 at 1.9rem average 34.6px) between the end
+   of the word and the start of the line, identical on every head.
+   The line flexes to the right margin, flush, mirroring the word's
+   start at the left margin. And the line is a band exactly as tall
+   as the lettering: align-self:stretch sets the band's height to
+   the h2's line box (1.9rem at 1.1 = 33.44px), top and bottom
+   aligned with the text. Texture treatments fill the band; the
+   simple lines (Current, Blip, Flow) run their track as a hairline
+   centred inside it. */
+.dy-ghead[class*=" tr-"]{gap:34px}
+.dy-ghead[class*=" tr-"] .dy-rule{align-self:stretch;height:auto}
+.tr-current .dy-rule,.tr-blip .dy-rule{background-color:transparent;background-image:linear-gradient(var(--ink),var(--ink));background-size:100% 3px;background-position:center;background-repeat:no-repeat}
+.tr-flow .dy-rule{background-color:transparent;background-image:linear-gradient(var(--rule-light),var(--rule-light));background-size:100% 3px;background-position:center;background-repeat:no-repeat}
+
 /* 1 — The Current: the hairline at rest; a short bright segment in
    the accent red travels the full length (~2.5s), fades at the end,
    then ~4s of stillness. 7s cycle. */
@@ -75,7 +92,7 @@
   .tr-flow .dy-rule,.tr-flow .dy-rule::after{animation:none}
   .tr-current .dy-rule::after,.tr-blip .dy-rule::after,.tr-flow .dy-rule::after{display:none}
   .tr-dash .dy-rule{background:var(--ink)}
-  .tr-flow .dy-rule{background:var(--ink)}
+  .tr-flow .dy-rule{background-color:transparent;background-image:linear-gradient(var(--ink),var(--ink));background-size:100% 3px;background-position:center;background-repeat:no-repeat}
 }
 
 /* ===== Batch two (Nov 12, 2026): bolder, texture first =====
@@ -109,7 +126,7 @@
 /* 8 — The Weave: two hairlines braid over and under each other in a
    slow endless plait. One strand solid ink, one dashed warm gray,
    so the eye reads the ducking under at every crossing. */
-.tr-weave .dy-rule{height:13px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 7 Q12 -2 24 7 T48 7' fill='none' stroke='%23141310' stroke-width='2'/%3E%3Cpath d='M0 7 Q12 16 24 7 T48 7' fill='none' stroke='%236f6a61' stroke-width='2' stroke-dasharray='13 11'/%3E%3C/svg%3E");background-size:48px 14px;background-repeat:repeat-x;background-position:0 center;animation:lnWeave 3.2s linear infinite}
+.tr-weave .dy-rule{height:13px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 7 Q12 -2 24 7 T48 7' fill='none' stroke='%23141310' stroke-width='2'/%3E%3Cpath d='M0 7 Q12 16 24 7 T48 7' fill='none' stroke='%236f6a61' stroke-width='2' stroke-dasharray='13 11'/%3E%3C/svg%3E");background-size:48px 100%;background-repeat:repeat-x;background-position:0 center;animation:lnWeave 3.2s linear infinite}
 @keyframes lnWeave{
   from{background-position-x:0}
   to{background-position-x:48px}
@@ -118,8 +135,8 @@
 /* 9 — The Tide: the line itself is a slow, low sine wave travelling
    sideways, with a fainter second swell behind it moving slower —
    a calm waterline. */
-.tr-tide .dy-rule{position:relative;height:13px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14' viewBox='0 0 72 14'%3E%3Cpath d='M0 7 Q18 0 36 7 T72 7' fill='none' stroke='%23141310' stroke-width='2'/%3E%3C/svg%3E");background-size:72px 14px;background-repeat:repeat-x;background-position:0 center;animation:lnTide 4.5s linear infinite}
-.tr-tide .dy-rule::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14' viewBox='0 0 72 14'%3E%3Cpath d='M0 7 Q18 0 36 7 T72 7' fill='none' stroke='%23b03a2e' stroke-width='1.5'/%3E%3C/svg%3E");background-size:72px 14px;background-repeat:repeat-x;background-position:36px center;opacity:.28;animation:lnTideSlow 7s linear infinite}
+.tr-tide .dy-rule{position:relative;height:13px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14' viewBox='0 0 72 14'%3E%3Cpath d='M0 7 Q18 0 36 7 T72 7' fill='none' stroke='%23141310' stroke-width='2'/%3E%3C/svg%3E");background-size:72px 100%;background-repeat:repeat-x;background-position:0 center;animation:lnTide 4.5s linear infinite}
+.tr-tide .dy-rule::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='14' viewBox='0 0 72 14'%3E%3Cpath d='M0 7 Q18 0 36 7 T72 7' fill='none' stroke='%23b03a2e' stroke-width='1.5'/%3E%3C/svg%3E");background-size:72px 100%;background-repeat:repeat-x;background-position:36px center;opacity:.28;animation:lnTideSlow 7s linear infinite}
 @keyframes lnTide{
   from{background-position-x:0}
   to{background-position-x:72px}
@@ -132,8 +149,8 @@
 /* 10 — The Sawtooth: a fine zigzag line in ink; a short run of the
     same teeth in the accent red travels point to point along it,
     continuously, edged soft at both ends. */
-.tr-saw .dy-rule{position:relative;overflow:hidden;height:11px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Cpath d='M0 10 L8 2 L16 10' fill='none' stroke='%23141310' stroke-width='2'/%3E%3C/svg%3E");background-size:16px 12px;background-repeat:repeat-x;background-position:0 center}
-.tr-saw .dy-rule::after{content:"";position:absolute;top:0;bottom:0;left:-56px;width:56px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Cpath d='M0 10 L8 2 L16 10' fill='none' stroke='%23b03a2e' stroke-width='2'/%3E%3C/svg%3E");background-size:16px 12px;background-repeat:repeat-x;background-position:0 center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);animation:lnSaw 3.6s linear infinite}
+.tr-saw .dy-rule{position:relative;overflow:hidden;height:11px;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Cpath d='M0 10 L8 2 L16 10' fill='none' stroke='%23141310' stroke-width='2'/%3E%3C/svg%3E");background-size:16px 100%;background-repeat:repeat-x;background-position:0 center}
+.tr-saw .dy-rule::after{content:"";position:absolute;top:0;bottom:0;left:-56px;width:56px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Cpath d='M0 10 L8 2 L16 10' fill='none' stroke='%23b03a2e' stroke-width='2'/%3E%3C/svg%3E");background-size:16px 100%;background-repeat:repeat-x;background-position:0 center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);animation:lnSaw 3.6s linear infinite}
 @keyframes lnSaw{
   0%{left:-56px;opacity:0}
   6%{opacity:1}
@@ -148,6 +165,28 @@
   .tr-saw .dy-rule::after{display:none}
 }
 
+/* 11 — The Rank: the concept tied to the name. One rank of the
+   chessboard runs from the section name to the right margin:
+   alternating squares of ink and paper-negative, each square
+   exactly as wide as the band is tall (2.09rem, the lettering
+   height), the strip framed by a hairline so the empty squares
+   read on the cream ground. A single accent-red square-pulse
+   walks the rank square by square (steps of exactly one square,
+   five squares a second), end to end, then quiet, then again.
+   10s cycle. */
+.tr-rank .dy-rule{position:relative;overflow:hidden;background-color:transparent;background-image:repeating-linear-gradient(90deg,var(--ink) 0 2.09rem,transparent 2.09rem 4.18rem);box-shadow:inset 0 0 0 1px var(--rule-light)}
+.tr-rank .dy-rule::after{content:"";position:absolute;top:0;bottom:0;left:0;width:2.09rem;background:var(--accent);opacity:0;animation:lnRank 10s linear infinite}
+@keyframes lnRank{
+  0%{transform:translateX(0);opacity:0}
+  3%{transform:translateX(0);opacity:1;animation-timing-function:steps(30)}
+  63%{transform:translateX(62.7rem);opacity:1}
+  68%,100%{transform:translateX(62.7rem);opacity:0}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tr-rank .dy-rule::after{animation:none;display:none}
+}
+
 /* ===== Batch three (Nov 12, 2026): section openers =====
    The mark does not have to be a line. Each device stands at the
    head's left as the first flex item of the canonical .dy-ghead,
@@ -160,7 +199,7 @@
 .dev{flex:0 0 auto;align-self:stretch;position:relative}
 .tail p{margin:0}
 
-/* 11 — The Ruler: a vertical drafting scale the height of the
+/* 12 — The Ruler: a vertical drafting scale the height of the
    head text. A spine at the left, fine ticks of two lengths cut
    against it, and one red tick that travels the scale up and
    down, perpetually re-measuring. */
@@ -176,7 +215,7 @@
   to{top:calc(100% - 3px)}
 }
 
-/* 12 — The Equalizer: six thin vertical bars in a row, together
+/* 13 — The Equalizer: six thin vertical bars in a row, together
    as tall as the head text, pulsing gently out of phase with
    each other — a quiet signal meter. The fourth bar is red. */
 .dev-eq{display:flex;gap:3px;width:33px}
@@ -192,7 +231,7 @@
   to{transform:scaleY(1)}
 }
 
-/* 13 — The Dot Column: a four-by-four dot field compressed to
+/* 14 — The Dot Column: a four-by-four dot field compressed to
    the head's height; the dots brighten and dim in a slow wave
    travelling diagonally, in the spirit of the site's dot fields. */
 .dev-dots{display:grid;grid-template-columns:repeat(4,4px);grid-template-rows:repeat(4,4px);justify-content:space-between;align-content:space-between;width:31px}
@@ -218,7 +257,7 @@
   50%{opacity:1}
 }
 
-/* 14 — The Brackets: drafting registration brackets at the four
+/* 15 — The Brackets: drafting registration brackets at the four
    corners of an invisible box the height of the head text. The
    corners trace themselves in sequence — draw, hold, fade,
    redraw — on a slow loop. */
@@ -235,7 +274,7 @@
   88%,100%{stroke-dashoffset:0;opacity:0}
 }
 
-/* 15 — The Stack: three short rules stacked like a paragraph
+/* 16 — The Stack: three short rules stacked like a paragraph
    glyph, spread across the head's height; their lengths ripple
    in sequence, each extending and retracting in turn. The
    middle rule is red. */
@@ -262,7 +301,7 @@
 
 <div class="page">
 
-<p class="sample-intro">Fifteen treatments for the mark beside a section head. Each one runs on its own clock, whether you scroll or not. The tile under each is identical, so the only thing being judged is the mark. The second five lean on texture, the shade lines an engraver cuts by hand. The last five drop the line entirely: a small working device opens the section instead, standing at the left of the section name and exactly as tall as the name itself.</p>
+<p class="sample-intro">Sixteen treatments for the mark beside a section head. Each one runs on its own clock, whether you scroll or not. The tile under each is identical, so the only thing being judged is the mark. The second five lean on texture, the shade lines an engraver cuts by hand. One more is built from the name itself: a rank of the board, squares running to the margin, a single red pulse walking them. The last five drop the line entirely: a small working device opens the section instead, standing at the left of the section name and exactly as tall as the name itself.</p>
 
 <div class="dy-front">
 
@@ -346,9 +385,17 @@
 <p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
 </article>
 
+<div class="sample-cap">Sample 11 · The Rank</div>
+<div class="dy-ghead tr-rank"><h2>The Rank</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
 <div class="sample-head3">Batch three: openers. The mark does not have to be a line at all, and it does not have to sit under the title. Each device below stands at the left of the section name, exactly as tall as the name it stands beside, in the seam between the tile above and the section starting here.</div>
 
-<div class="sample-cap">Sample 11 · The Ruler</div>
+<div class="sample-cap">Sample 12 · The Ruler</div>
 <article class="dy-tile s12 tail">
 <p>The tail of the tile above, ending where it ends, because an opener has to earn its place in the seam between the news that just finished and the section that starts here.</p>
 </article>
@@ -359,7 +406,7 @@
 <p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
 </article>
 
-<div class="sample-cap">Sample 12 · The Equalizer</div>
+<div class="sample-cap">Sample 13 · The Equalizer</div>
 <article class="dy-tile s12 tail">
 <p>The tail of the tile above, ending where it ends, because an opener has to earn its place in the seam between the news that just finished and the section that starts here.</p>
 </article>
@@ -370,7 +417,7 @@
 <p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
 </article>
 
-<div class="sample-cap">Sample 13 · The Dot Column</div>
+<div class="sample-cap">Sample 14 · The Dot Column</div>
 <article class="dy-tile s12 tail">
 <p>The tail of the tile above, ending where it ends, because an opener has to earn its place in the seam between the news that just finished and the section that starts here.</p>
 </article>
@@ -381,7 +428,7 @@
 <p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
 </article>
 
-<div class="sample-cap">Sample 14 · The Brackets</div>
+<div class="sample-cap">Sample 15 · The Brackets</div>
 <article class="dy-tile s12 tail">
 <p>The tail of the tile above, ending where it ends, because an opener has to earn its place in the seam between the news that just finished and the section that starts here.</p>
 </article>
@@ -392,7 +439,7 @@
 <p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
 </article>
 
-<div class="sample-cap">Sample 15 · The Stack</div>
+<div class="sample-cap">Sample 16 · The Stack</div>
 <article class="dy-tile s12 tail">
 <p>The tail of the tile above, ending where it ends, because an opener has to earn its place in the seam between the news that just finished and the section that starts here.</p>
 </article>

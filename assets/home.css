@@ -452,7 +452,6 @@ html{scroll-behavior:auto}
 .dy-ghead h2{font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.1;margin:0;white-space:nowrap}
 .dy-ghead .dy-rule{flex:1 1 auto;width:auto;min-width:0;height:3px;margin:0;border:0;background:var(--ink)}
 .dy-tile{background:#fffdf8;border:1px solid var(--rule-light);border-radius:12px;padding:26px 28px;min-width:0}
-.dy-tile.lead{border-top:3px solid var(--accent)}
 .dy-tile.plain{background:transparent;border:none;border-top:3px solid var(--ink);border-radius:0;padding:20px 4px 2px}
 .dy-tile h3{font-family:var(--display);font-weight:800;font-size:1.45rem;line-height:1.25;margin:0 0 8px}
 .dy-tile p{font-size:1.05rem;line-height:1.65;margin:0 0 10px}
@@ -531,14 +530,18 @@ html{scroll-behavior:auto}
 .dy-bignum .l{font-family:var(--display);font-weight:700;font-size:1.16rem;line-height:1.35;margin:0 0 8px}
 .dy-bignum.duo{flex-direction:row;gap:34px}
 .dy-bignum.duo .cell{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
-/* Stacked duo cells share ONE left edge (Nov 13, 2026, Josh):
-   .dy-bignum is display:block, so the duo's cells stack, and the
-   old side-by-side divider rule (border-left + padding-left on the
-   second cell) misfired in the stacked layout as a 35px indent on
-   the second number and its caption. The divider is a top rule
-   instead, at every width: both numbers and both captions sit on
-   the tile's left edge. */
+/* Duo dividers follow the layout (Nov 13, 2026, Josh). A duo
+   nested inside a tile (.dy-bignum is display:block) stacks its
+   cells at every width, and on phones every duo stacks: there
+   the divider is a top rule and both numbers and both captions
+   share ONE left edge, no spacer indent. A duo that IS the tile
+   (a direct .dy-front child) sits side by side on desktop: there
+   the divider is the side rule, with no top rule and no top
+   padding, so the two numbers share one top and one baseline. */
 .dy-bignum.duo .cell+.cell{border-left:0;border-top:1px solid var(--rule-light);padding-left:0;padding-top:20px}
+@media(min-width:701px){
+  .dy-front>.dy-tile.dy-bignum.duo .cell+.cell{border-top:0;border-left:1px solid var(--rule-light);padding-top:0;padding-left:34px}
+}
 @media(max-width:700px){
   .dy-stats .n{font-size:1.28rem}
   .dy-bignum .n{font-size:3.3rem}

@@ -294,6 +294,102 @@
   .dev-dots i{opacity:.55}
   .dev-brk path{stroke-dashoffset:0;opacity:1}
 }
+
+/* ===== Batch four (Nov 12, 2026): bands drawn for the band =====
+   Five originals conceived for the wide format: the band beside
+   the section name is exactly as tall as the lettering (33.44px,
+   via the same align-self:stretch the earlier heads use), the gap
+   after the word is the same fixed 34px, and the band runs flush
+   to the right margin. Nothing here is a thin line scaled up:
+   each design's native unit is the full height of the band.
+   Pure CSS keyframe loops, own clocks, palette only, no scripts,
+   dead under reduced motion. */
+
+/* 17 — The Wire Bundle: five fine wires stacked to fill the band.
+   A short red pulse rides one wire at a time, end to end, and the
+   lit wire steps down the stack in sequence. 12.5s cycle. */
+.tr-wire .dy-rule{position:relative;overflow:hidden;background-color:transparent;background-image:linear-gradient(rgba(20,19,16,.6),rgba(20,19,16,.6)),linear-gradient(rgba(20,19,16,.6),rgba(20,19,16,.6)),linear-gradient(rgba(20,19,16,.6),rgba(20,19,16,.6)),linear-gradient(rgba(20,19,16,.6),rgba(20,19,16,.6)),linear-gradient(rgba(20,19,16,.6),rgba(20,19,16,.6));background-size:100% 1.5px;background-repeat:no-repeat;background-position:0 6%,0 29%,0 50%,0 71%,0 94%}
+.tr-wire .dy-rule::after{content:"";position:absolute;left:-13%;top:calc(8% - 1.5px);width:13%;height:3px;border-radius:2px;background:var(--accent);box-shadow:0 0 6px rgba(176,58,46,.45);opacity:0;animation:lnWire 12.5s linear infinite}
+@keyframes lnWire{
+  0%{left:-13%;top:calc(8% - 1.5px);opacity:0}
+  2%{left:-9%;top:calc(8% - 1.5px);opacity:1}
+  16%{left:100%;top:calc(8% - 1.5px);opacity:1}
+  17.5%{left:100%;top:calc(8% - 1.5px);opacity:0}
+  18%{left:-13%;top:calc(30% - 1.5px);opacity:0}
+  20%{left:-9%;top:calc(30% - 1.5px);opacity:1}
+  34%{left:100%;top:calc(30% - 1.5px);opacity:1}
+  35.5%{left:100%;top:calc(30% - 1.5px);opacity:0}
+  36%{left:-13%;top:calc(50% - 1.5px);opacity:0}
+  38%{left:-9%;top:calc(50% - 1.5px);opacity:1}
+  52%{left:100%;top:calc(50% - 1.5px);opacity:1}
+  53.5%{left:100%;top:calc(50% - 1.5px);opacity:0}
+  54%{left:-13%;top:calc(70% - 1.5px);opacity:0}
+  56%{left:-9%;top:calc(70% - 1.5px);opacity:1}
+  70%{left:100%;top:calc(70% - 1.5px);opacity:1}
+  71.5%{left:100%;top:calc(70% - 1.5px);opacity:0}
+  72%{left:-13%;top:calc(92% - 1.5px);opacity:0}
+  74%{left:-9%;top:calc(92% - 1.5px);opacity:1}
+  88%{left:100%;top:calc(92% - 1.5px);opacity:1}
+  89.5%,100%{left:100%;top:calc(92% - 1.5px);opacity:0}
+}
+
+/* 18 — The Contour: four wave strands stacked through the band's
+   height, phase-offset, travelling sideways at four speeds — a
+   wave field designed for height, not one wave stretched. */
+.tr-contour .dy-rule{background-color:transparent;background-repeat:repeat-x;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='10' viewBox='0 0 72 10'%3E%3Cpath d='M0 5 Q18 0 36 5 T72 5' fill='none' stroke='%23141310' stroke-width='1.7'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='10' viewBox='0 0 96 10'%3E%3Cpath d='M0 5 Q24 0 48 5 T96 5' fill='none' stroke='%236f6a61' stroke-width='1.5'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='10' viewBox='0 0 60 10'%3E%3Cpath d='M0 5 Q15 0 30 5 T60 5' fill='none' stroke='%233d3a35' stroke-width='1.5'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='10' viewBox='0 0 84 10'%3E%3Cpath d='M0 5 Q21 0 42 5 T84 5' fill='none' stroke='%236f6a61' stroke-width='1.7'/%3E%3C/svg%3E");background-size:72px 9px,96px 9px,60px 9px,84px 9px;background-position:0 4%,14px 35%,0 66%,28px 95%;animation:lnContour 8s linear infinite}
+@keyframes lnContour{
+  from{background-position:0 4%,14px 35%,0 66%,28px 95%}
+  to{background-position:72px 4%,110px 35%,60px 66%,112px 95%}
+}
+
+/* 19 — The Skyline: a row of thin bars of varied heights standing
+   on the band's bottom edge; the band is their ceiling, not their
+   measure. A soft red scan hops bar to bar down the row. */
+.tr-skyline .dy-rule{position:relative;overflow:hidden;background-color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='100' viewBox='0 0 300 100' preserveAspectRatio='none'%3E%3Cg fill='%23141310' opacity='.85'%3E%3Crect x='0' y='62' width='6' height='38'/%3E%3Crect x='10' y='38' width='6' height='62'/%3E%3Crect x='20' y='55' width='6' height='45'/%3E%3Crect x='30' y='20' width='6' height='80'/%3E%3Crect x='40' y='45' width='6' height='55'/%3E%3Crect x='50' y='5' width='6' height='95'/%3E%3Crect x='60' y='30' width='6' height='70'/%3E%3Crect x='70' y='58' width='6' height='42'/%3E%3Crect x='80' y='12' width='6' height='88'/%3E%3Crect x='90' y='40' width='6' height='60'/%3E%3Crect x='100' y='65' width='6' height='35'/%3E%3Crect x='110' y='25' width='6' height='75'/%3E%3Crect x='120' y='50' width='6' height='50'/%3E%3Crect x='130' y='8' width='6' height='92'/%3E%3Crect x='140' y='34' width='6' height='66'/%3E%3Crect x='150' y='60' width='6' height='40'/%3E%3Crect x='160' y='16' width='6' height='84'/%3E%3Crect x='170' y='42' width='6' height='58'/%3E%3Crect x='180' y='28' width='6' height='72'/%3E%3Crect x='190' y='52' width='6' height='48'/%3E%3Crect x='200' y='2' width='6' height='98'/%3E%3Crect x='210' y='36' width='6' height='64'/%3E%3Crect x='220' y='56' width='6' height='44'/%3E%3Crect x='230' y='22' width='6' height='78'/%3E%3Crect x='240' y='48' width='6' height='52'/%3E%3Crect x='250' y='14' width='6' height='86'/%3E%3Crect x='260' y='32' width='6' height='68'/%3E%3Crect x='270' y='64' width='6' height='36'/%3E%3Crect x='280' y='10' width='6' height='90'/%3E%3Crect x='290' y='44' width='6' height='56'/%3E%3C/g%3E%3C/svg%3E");background-size:100% 100%;background-repeat:no-repeat;border-bottom:2px solid var(--ink)}
+.tr-skyline .dy-rule::after{content:"";position:absolute;top:0;bottom:0;left:-18px;width:16px;background:linear-gradient(90deg,transparent,rgba(176,58,46,.55),transparent);opacity:0;animation:lnScan 11s steps(30) infinite}
+@keyframes lnScan{
+  0%{left:-18px;opacity:0}
+  4%{opacity:1}
+  96%{opacity:1}
+  100%{left:100%;opacity:0}
+}
+
+/* 20 — The Dot Field: three rows of dots filling the band. The
+   dots rest faint; a brightness wave travels diagonally through
+   them, row to row, corner to corner. 5.5s cycle. */
+.tr-dotfield .dy-rule{position:relative;background-color:transparent;background-image:radial-gradient(circle,rgba(20,19,16,.28) 1.8px,transparent 2.5px);background-size:18px calc(2.09rem/3);background-position:0 0;background-repeat:repeat}
+.tr-dotfield .dy-rule::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,var(--ink) 2.2px,transparent 2.9px);background-size:18px calc(2.09rem/3);background-position:0 0;background-repeat:repeat;-webkit-mask-image:linear-gradient(115deg,transparent 42%,#000 50%,transparent 58%);mask-image:linear-gradient(115deg,transparent 42%,#000 50%,transparent 58%);-webkit-mask-size:280% 280%;mask-size:280% 280%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:lnDotWave 5.5s linear infinite}
+@keyframes lnDotWave{
+  from{-webkit-mask-position:100% 100%;mask-position:100% 100%}
+  to{-webkit-mask-position:0% 0%;mask-position:0% 0%}
+}
+
+/* 21 — The Circuit: right-angle drafting traces spanning the
+   band — horizontal runs, square bends, node squares at the
+   corners — the way a board is drawn. A red pulse travels the
+   path corner to corner. 9s cycle. */
+.tr-circuit .dy-rule{position:relative;overflow:hidden;background-color:transparent;background-repeat:no-repeat;background-image:linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(rgba(20,19,16,.78),rgba(20,19,16,.78)),linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink));background-size:22% 2px,2px 32%,22% 2px,2px 64%,22% 2px,2px 32%,34% 2px,5px 5px,5px 5px,5px 5px,5px 5px,5px 5px,5px 5px;background-position:0% 50%,22% 73.5%,28.2% 82%,44% 50%,56.4% 18%,66% 26.5%,100% 50%,22% 50%,22% 82%,44% 82%,44% 18%,66% 18%,66% 50%}
+.tr-circuit .dy-rule::after{content:"";position:absolute;left:1%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--accent);box-shadow:0 0 6px rgba(176,58,46,.55);opacity:0;animation:lnCircuit 9s linear infinite}
+@keyframes lnCircuit{
+  0%{left:1%;top:50%;opacity:0}
+  3%{left:4%;top:50%;opacity:1}
+  16%{left:22%;top:50%;opacity:1}
+  17.5%{left:22%;top:82%;opacity:1}
+  33.5%{left:44%;top:82%;opacity:1}
+  36%{left:44%;top:18%;opacity:1}
+  52%{left:66%;top:18%;opacity:1}
+  53.5%{left:66%;top:50%;opacity:1}
+  78%{left:99%;top:50%;opacity:1}
+  82%,100%{left:99%;top:50%;opacity:0}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tr-wire .dy-rule::after,.tr-contour .dy-rule,
+  .tr-skyline .dy-rule::after,.tr-dotfield .dy-rule::after,
+  .tr-circuit .dy-rule::after{animation:none}
+  .tr-wire .dy-rule::after,.tr-skyline .dy-rule::after,
+  .tr-dotfield .dy-rule::after,.tr-circuit .dy-rule::after{display:none}
+}
 </style>
 </head>
 <body>
@@ -444,6 +540,48 @@
 <p>The tail of the tile above, ending where it ends, because an opener has to earn its place in the seam between the news that just finished and the section that starts here.</p>
 </article>
 <div class="dy-ghead"><span class="dev dev-stack" aria-hidden="true"><i></i><i></i><i></i></span><h2>The Stack</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-head3">Batch four: bands drawn for the band. The mark beside the name is as tall as the lettering itself, so these five were designed at that height from the first stroke — fields, stacks and traces whose native shape is the whole band, not a thin line made taller. Same fixed gap after the word, same flush run to the right margin.</div>
+
+<div class="sample-cap">Sample 17 · The Wire Bundle</div>
+<div class="dy-ghead tr-wire"><h2>The Wire Bundle</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 18 · The Contour</div>
+<div class="dy-ghead tr-contour"><h2>The Contour</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 19 · The Skyline</div>
+<div class="dy-ghead tr-skyline"><h2>The Skyline</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 20 · The Dot Field</div>
+<div class="dy-ghead tr-dotfield"><h2>The Dot Field</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 21 · The Circuit</div>
+<div class="dy-ghead tr-circuit"><h2>The Circuit</h2><span class="dy-rule"></span></div>
 <article class="dy-tile s12">
 <h3>The headline under the line, at the size it will actually run</h3>
 <p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>

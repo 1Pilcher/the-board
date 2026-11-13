@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>The Board - Line Samples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/home.css" />
+<style>
+/* ===== Line samples (scratch demo, Nov 12, 2026) =====
+   Five perpetual-motion treatments for the hairline rule beside a
+   Daily section head. Every treatment is a pure CSS keyframe loop
+   on its own clock: no scripts, no scroll coupling. All treatments
+   die under reduced motion, per the standing discipline. */
+.sample-intro{font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:var(--ink-soft);max-width:620px;margin:8px 0 6px}
+.sample-cap{grid-column:1/-1;font-family:var(--sans);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-top:18px}
+.dy-front>.sample-cap:first-child{margin-top:0}
+
+/* 1 — The Current: the hairline at rest; a short bright segment in
+   the accent red travels the full length (~2.5s), fades at the end,
+   then ~4s of stillness. 7s cycle. */
+.tr-current .dy-rule{position:relative;overflow:hidden}
+.tr-current .dy-rule::after{content:"";position:absolute;top:0;bottom:0;left:-18%;width:18%;background:var(--accent);opacity:0;animation:lnCurrent 7s linear infinite}
+@keyframes lnCurrent{
+  0%{left:-18%;opacity:0}
+  5%{opacity:1}
+  30%{opacity:1}
+  36%,100%{left:100%;opacity:0}
+}
+
+/* 2 — The Blip: a still line; one small point of red light crosses
+   once, quickly (~1s), then ~5s of stillness. 6s cycle. */
+.tr-blip .dy-rule{position:relative}
+.tr-blip .dy-rule::after{content:"";position:absolute;top:50%;left:-8px;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--accent);box-shadow:0 0 7px rgba(176,58,46,.6);opacity:0;animation:lnBlip 6s linear infinite}
+@keyframes lnBlip{
+  0%{left:-8px;opacity:0}
+  3%{opacity:1}
+  14%{opacity:1}
+  17%,100%{left:calc(100% + 1px);opacity:0}
+}
+
+/* 3 — Marching Dashes: the line as faint dashes drifting sideways
+   at a slow walking pace, endless, low contrast. */
+.tr-dash .dy-rule{background:repeating-linear-gradient(90deg,rgba(20,19,16,.5) 0 9px,transparent 9px 17px);animation:lnMarch 1.4s linear infinite}
+@keyframes lnMarch{
+  from{background-position-x:0}
+  to{background-position-x:17px}
+}
+
+/* 4 — The Breathing Rule: no travel; the line's color slowly
+   deepens toward the accent and lightens back. 6s cycle. */
+.tr-breathe .dy-rule{animation:lnBreathe 6s ease-in-out infinite}
+@keyframes lnBreathe{
+  0%,100%{background-color:#141310}
+  50%{background-color:#93392d}
+}
+
+/* 5 — The Flow: small red dots spaced along a faint line, drifting
+   continuously in one direction at a quiet pace. */
+.tr-flow .dy-rule{position:relative;background:var(--rule-light)}
+.tr-flow .dy-rule::after{content:"";position:absolute;left:0;right:0;top:50%;height:9px;margin-top:-4.5px;background-image:radial-gradient(circle,rgba(176,58,46,.8) 2px,transparent 2.6px);background-size:26px 9px;background-repeat:repeat-x;background-position:0 center;animation:lnFlow 2.4s linear infinite}
+@keyframes lnFlow{
+  from{background-position-x:0}
+  to{background-position-x:26px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tr-current .dy-rule,.tr-current .dy-rule::after,
+  .tr-blip .dy-rule,.tr-blip .dy-rule::after,
+  .tr-dash .dy-rule,.tr-breathe .dy-rule,
+  .tr-flow .dy-rule,.tr-flow .dy-rule::after{animation:none}
+  .tr-current .dy-rule::after,.tr-blip .dy-rule::after,.tr-flow .dy-rule::after{display:none}
+  .tr-dash .dy-rule{background:var(--ink)}
+  .tr-flow .dy-rule{background:var(--ink)}
+}
+</style>
+</head>
+<body>
+<div id="topstrip" aria-hidden="true"></div>
+
+<div class="page">
+
+<p class="sample-intro">Five treatments for the line beside a section head. Each one runs on its own clock, whether you scroll or not. The tile under each is identical, so the only thing being judged is the line.</p>
+
+<div class="dy-front">
+
+<div class="sample-cap">Sample 1 · The Current</div>
+<div class="dy-ghead tr-current"><h2>The Current</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 2 · The Blip</div>
+<div class="dy-ghead tr-blip"><h2>The Blip</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 3 · Marching Dashes</div>
+<div class="dy-ghead tr-dash"><h2>Marching Dashes</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 4 · The Breathing Rule</div>
+<div class="dy-ghead tr-breathe"><h2>The Breathing Rule</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+<div class="sample-cap">Sample 5 · The Flow</div>
+<div class="dy-ghead tr-flow"><h2>The Flow</h2><span class="dy-rule"></span></div>
+<article class="dy-tile s12">
+<h3>The headline under the line, at the size it will actually run</h3>
+<p>This tile is only here so the line gets judged where it will live, beside the section name and above the news, at the same weight and width it carries on the front page.</p>
+<p>The line itself keeps its own time. Scroll or do not scroll; it runs either way.</p>
+</article>
+
+</div>
+
+</div>
+</body>
+</html>

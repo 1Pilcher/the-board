@@ -397,6 +397,18 @@ html{scroll-behavior:auto}
     .dy-tile,.dy-bignum,.dy-photo,.dy-shape{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
   }
 }
+/* First-box rule (Nov 12, 2026, Josh: "just no fade on the first
+   thing."): the lead tile of the first section, the box that opens
+   the briefing on edition pages and in the homepage's Today embed,
+   carries NO arrival animation at all. It renders at full strength
+   in every state (scripts on or off, reduced motion, any browser);
+   every box below it keeps the scroll-driven fade above. Keyed to
+   the box's structural position: the tile that follows the first
+   section's head band, in each of the briefing's three shapes
+   (sectioned front, single front, homepage Today embed). */
+.page > .dy-front > .dy-ghead + .dy-tile,
+.page > .dy-sec:first-of-type .dy-front > .dy-ghead + .dy-tile,
+#today > .dy-front > .dy-ghead + .dy-tile{animation:none;animation-timeline:none}
 
 /* Today on desktop: the section's only child is the tile front
    page (.dy-front, below), which spans the whole frame. The

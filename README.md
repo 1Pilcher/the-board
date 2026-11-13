@@ -16,10 +16,9 @@ Every report is built by a team of analysts working blind. Historians, power map
 
 ## How to read
 
-- **Today**: the daily briefing in full: what's moved, world, US, markets, and worth knowing. A new briefing every morning.
-- **Reports**: every long report, newest first. Each report keeps its own permanent address, so a new story never buries an old one.
-- **Previous days**: earlier daily briefings, each at its own dated address.
-- **Purpose**: why The Board exists, in the author's own words.
+- **Latest** — the newest report, featured up top.
+- **All** — every report, newest first. Each report keeps its own permanent address, so a new story never buries an old one.
+- **Purpose** — why The Board exists, in the author's own words.
 
 Each report opens with a plain-English bottom line, then the full story.
 
@@ -37,9 +36,11 @@ Each report opens with a plain-English bottom line, then the full story.
 
 ## Structure
 
-- `index.html`: the homepage (Today, Reports, Purpose).
-- `YYYY-MM-DD-daily/index.html`: each daily briefing in its own dated folder.
-- `YYYY-MM-DD-<topic>/index.html`: each report in its own dated folder.
+- `index.html` — the homepage (Today, Reports, Purpose).
+- `daily/YYYY-MM/YYYY-MM-DD-daily-HHMM/index.html` — each Daily edition in its own dated folder, grouped by month.
+- `reports/YYYY-MM-DD-<topic>/index.html` — each long report in its own dated folder. The seven reports' original root addresses carry redirect stubs that forward to the new locations.
+- `lab/<name>/index.html` — prototypes and specimen pages, kept off the root.
+- `assets/` — the shared style sheets and scripts every page builds on.
 
 ## Format
 

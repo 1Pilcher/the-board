@@ -362,53 +362,24 @@ html{scroll-behavior:auto}
    the markup, and the element leaves no space behind. */
 .dy-pills{display:none}
 
-/* Daily motion: a clean, subtle entry. Each daily component fades
-   in with a few pixels of rise as it enters the viewport, scrubbed
-   by the scroll itself, and sits still once it has arrived. Pure
-   CSS with no hidden start state in the static page: browsers
-   without scroll-driven animations get the finished page as-is,
-   and reduced motion gets no animation at all.
-   Rest-state rule (Nov 12, 2026, Josh): whatever is on screen when
-   the page opens must already be fully drawn, and an arrival must
-   complete before the element reaches reading position. The dyIn
-   range below is therefore anchored to the ENTRY phase, whose
-   span the engine caps at the viewport height, and ends at 22%
-   of it: a tile's fade completes within its first stretch of
-   travel into the viewport however tall the tile is, and a tile
-   already past its range at load renders at full strength. The
-   old range ran into the cover phase, whose length grows with
-   the element, so the tall first-screen What's Moved tile sat at
-   0.19 opacity at rest and its first item at 0.07 (measured Nov
-   12, 2026). The shape-internal animations further down keep
-   their cover-anchored ranges on purpose: a shape never sits in
-   an initial viewport (the head and What's Moved always precede
-   it), and their scrub across the panel's whole passage is the
-   calibrated assembly, verified unchanged by A/B render.
-   Box rule (Nov 12, 2026, Josh: "each box should render as one.
-   not each independent element within a box."): dyIn is keyed to
-   the box containers only (.dy-tile, .dy-bignum, .dy-photo,
-   .dy-shape). Inner elements (.dy-item, .dy-moved li) and the
-   edition head (.dy-head) carry no timeline of their own and
-   render at their box's state, so a box arrives whole, never as
-   fragments at staggered opacities. */
-@keyframes dyIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:no-preference){
-  @supports (animation-timeline:view()){
-    .dy-tile,.dy-bignum,.dy-photo,.dy-shape{animation:dyIn ease-out both;animation-timeline:view();animation-range:entry 0% entry 22%}
-  }
-}
-/* First-box rule (Nov 12, 2026, Josh: "just no fade on the first
-   thing."): the lead tile of the first section, the box that opens
-   the briefing on edition pages and in the homepage's Today embed,
-   carries NO arrival animation at all. It renders at full strength
-   in every state (scripts on or off, reduced motion, any browser);
-   every box below it keeps the scroll-driven fade above. Keyed to
-   the box's structural position: the tile that follows the first
-   section's head band, in each of the briefing's three shapes
-   (sectioned front, single front, homepage Today embed). */
-.page > .dy-front > .dy-ghead + .dy-tile,
-.page > .dy-sec:first-of-type .dy-front > .dy-ghead + .dy-tile,
-#today > .dy-front > .dy-ghead + .dy-tile{animation:none;animation-timeline:none}
+/* Daily motion (settled Nov 12, 2026, Josh: "only shapes and
+   charts and graphs move."): motion lives ONLY inside shapes,
+   charts and graphs: their dots, bars, traces and internal
+   labels, animated by the shape-internal rules further down
+   with their scroll-driven ranges and the shared cover-12%
+   completion anchor (chart completion rule, Nov 12, 2026:
+   a graphic is fully drawn well before it reaches centre
+   stage). Every container box, all prose, photos, and head
+   and section furniture is STATIC: tiles, big-number blocks,
+   photo blocks and shape panels render at full strength at
+   every scroll position, in every state, scripts on or off.
+   The box arrival fade (dyIn) is RETIRED the same day: the
+   brief experiment with a first-box-only exemption left the
+   first box solid beside still-fading boxes below it, a
+   mixed state Josh ruled "looked horrible," so the fade came
+   off every box rather than one. No hidden start state exists
+   anywhere in the Daily system: the static page is the
+   finished page. */
 
 /* Today on desktop: the section's only child is the tile front
    page (.dy-front, below), which spans the whole frame. The
@@ -472,10 +443,11 @@ html{scroll-behavior:auto}
    2026): a big name and a full-width ink rule, defined completely
    here so nothing leaks in from the legacy .dy-rule tick (54px
    wide, accent border, auto margins) that used to stack a thin
-   red line on top of the rule and leave the head looking faint,
-   and kept OUT of the scroll-driven dyIn fade entirely: a head
-   renders at full strength at every scroll position, in every
-   browser, with scripts on or off. */
+   red line on top of the rule and leave the head looking faint.
+   A head is furniture and never animated: it renders at full
+   strength at every scroll position, in every browser, with
+   scripts on or off (Daily motion rule, Nov 12, 2026: only
+   shapes and charts and graphs move). */
 .dy-ghead{display:flex;align-items:center;gap:18px;animation:none}
 .dy-ghead h2{font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.1;margin:0;white-space:nowrap}
 .dy-ghead .dy-rule{flex:1 1 auto;width:auto;min-width:0;height:3px;margin:0;border:0;background:var(--ink)}

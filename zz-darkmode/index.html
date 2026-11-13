@@ -59,9 +59,24 @@ html[data-theme="dark"] [fill="#6f6a61"]{fill:#a79d89}
 html[data-theme="dark"] [fill="#b03a2e"]{fill:#de6046}
 html[data-theme="dark"] [stroke="#141310"]{stroke:#faf7f0}
 /* The toggle itself: masthead furniture, Board small caps */
-.theme-toggle{font:inherit;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+/* Nav text in dark mode: the shared sheet colors resting links with
+   var(--paper), which this theme redefines to the dark ground, so
+   unselected links went near-black on the charcoal bar. Pin every
+   nav state to light values explicitly. */
+html[data-theme="dark"] nav.menu a{color:#faf7f0}
+html[data-theme="dark"] nav.menu a:hover{color:#fff;border-color:#403c31}
+html[data-theme="dark"] .dy-pills a{color:#faf7f0}
+html[data-theme="dark"] .dy-pills a:hover{color:#fff}
+/* The toggle: a small pill in the nav pill language, hairline border
+   in the current mode's border color, small-caps label, and a pure
+   CSS indicator: empty ring in light mode, filled disc in dark. */
+.theme-toggle{display:inline-flex;align-items:center;gap:7px;font:inherit;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;line-height:1;
   color:var(--ink-soft);background:none;border:1px solid var(--rule-light);
-  border-radius:999px;padding:3px 12px 4px;cursor:pointer;margin-right:-.18em}
+  border-radius:999px;padding:7px 12px;cursor:pointer}
+.theme-toggle .tt-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;
+  border:1.5px solid currentColor;background:transparent;box-sizing:border-box}
+html[data-theme="dark"] .tt-dot{background:currentColor}
 .theme-toggle:hover{color:var(--accent);border-color:var(--accent)}
 </style>
 
@@ -72,7 +87,7 @@ html[data-theme="dark"] [stroke="#141310"]{stroke:#faf7f0}
 <div class="page">
 
 <header class="masthead">
-  <div class="topline"><span class="side">Houston, Texas</span><!-- left slot intentionally blank: no weekday label above the masthead --><span class="mid"></span><span class="side right"><button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">Dark</button></span></div>
+  <div class="topline"><span class="side">Houston, Texas</span><!-- left slot intentionally blank: no weekday label above the masthead --><span class="mid"></span><span class="side right"><button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false"><span class="tt-dot" aria-hidden="true"></span><span class="tt-label">Dark</span></button></span></div>
   <div class="nameplate">THE BOARD</div>
   <div class="tagline">What&rsquo;s actually going on.</div>
   <div class="double-rule"></div>
@@ -384,7 +399,7 @@ html[data-theme="dark"] [stroke="#141310"]{stroke:#faf7f0}
   if(!btn){return;}
   function sync(){
     var dark=document.documentElement.getAttribute("data-theme")==="dark";
-    btn.textContent=dark?"Light":"Dark";
+    var lbl=btn.querySelector(".tt-label");if(lbl){lbl.textContent=dark?"Light":"Dark";}else{btn.textContent=dark?"Light":"Dark";}
     btn.setAttribute("aria-pressed",dark?"true":"false");
   }
   btn.addEventListener("click",function(){

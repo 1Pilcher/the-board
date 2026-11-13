@@ -39,11 +39,16 @@ html[data-theme="dark"] body{background:#171410}
 html[data-theme="dark"] .dy-tile,
 html[data-theme="dark"] .dy-shape{background:#211e18;border-color:#403c31}
 html[data-theme="dark"] .dy-tile.plain{background:transparent}
-/* The gray pill furniture goes deep warm charcoal */
-html[data-theme="dark"] nav.menu,
+/* The section pill furniture goes deep warm charcoal */
 html[data-theme="dark"] .dy-pills{background:rgba(38,35,29,.97)}
-html[data-theme="dark"] nav.menu::before{background:linear-gradient(to right,rgba(38,35,29,1) 18%,rgba(38,35,29,0))}
-html[data-theme="dark"] nav.menu::after{background:linear-gradient(to left,rgba(38,35,29,1) 18%,rgba(38,35,29,0))}
+/* The nav menu bar goes LIGHT in dark mode (Josh, Nov 12, 2026):
+   the site's warm beige paper, #faf7f0, as a light band on the
+   dark page; the scroll-edge fades take the same paper. Links on
+   the bar flip to ink (see the nav text block below); the active
+   pill keeps its red fill and white text, unchanged. */
+html[data-theme="dark"] nav.menu{background:rgba(250,247,240,.97)}
+html[data-theme="dark"] nav.menu::before{background:linear-gradient(to right,rgba(250,247,240,1) 18%,rgba(250,247,240,0))}
+html[data-theme="dark"] nav.menu::after{background:linear-gradient(to left,rgba(250,247,240,1) 18%,rgba(250,247,240,0))}
 /* Filled red components keep white text on the deeper red (4.9:1) */
 html[data-theme="dark"] nav.menu a.active,
 html[data-theme="dark"] .read-btn{background:#c44536;border-color:#c44536;color:#fff}
@@ -60,11 +65,14 @@ html[data-theme="dark"] [fill="#b03a2e"]{fill:#de6046}
 html[data-theme="dark"] [stroke="#141310"]{stroke:#faf7f0}
 /* The toggle itself: masthead furniture, Board small caps */
 /* Nav text in dark mode: the shared sheet colors resting links with
-   var(--paper), which this theme redefines to the dark ground, so
-   unselected links went near-black on the charcoal bar. Pin every
-   nav state to light values explicitly. */
-html[data-theme="dark"] nav.menu a{color:#faf7f0}
-html[data-theme="dark"] nav.menu a:hover{color:#fff;border-color:#403c31}
+   var(--paper), which this theme redefines to the dark ground. The
+   nav bar itself is now light paper (above), so its links flip to
+   ink: resting links full ink, hover full ink with an ink hairline.
+   The active pill's red fill and white text sit earlier in this
+   sheet at higher specificity and are unchanged. The section pills
+   stay charcoal, so their links stay paper. */
+html[data-theme="dark"] nav.menu a{color:#141310}
+html[data-theme="dark"] nav.menu a:hover{color:#141310;border-color:rgba(20,19,16,.45)}
 html[data-theme="dark"] .dy-pills a{color:#faf7f0}
 html[data-theme="dark"] .dy-pills a:hover{color:#fff}
 /* The toggle: a small pill in the nav pill language, hairline border

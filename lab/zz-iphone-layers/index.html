@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The iPhone's seven layers, and who makes each one</title>
+<style>
+  :root{
+    --paper:#faf7f0; --ink:#141310; --gray:#6f6a61; --red:#b03a2e;
+    --tint:#e9e4d8; --tint2:#ded7c8; --deep:#d8d1c0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"PT Serif",Georgia,"Times New Roman",serif;
+    -webkit-font-smoothing:antialiased;}
+  .fig{max-width:720px;margin:0 auto;padding:34px 20px 40px;}
+  h1{font-size:29px;line-height:1.25;font-weight:700;margin-bottom:6px;}
+  .standfirst{font-size:16.5px;line-height:1.5;color:var(--gray);margin-bottom:26px;}
+  .layer{display:grid;grid-template-columns:minmax(0,1fr) 218px;gap:4px 26px;
+    align-items:center;margin-bottom:2px;}
+  .layer svg{display:block;width:100%;height:auto;}
+  .lab .no{font-size:12.5px;letter-spacing:.14em;color:var(--red);
+    font-family:"Libre Franklin",Helvetica,Arial,sans-serif;font-weight:700;}
+  .lab .name{font-size:21px;font-weight:700;line-height:1.2;margin:2px 0 3px;}
+  .lab .who{font-size:15.5px;line-height:1.45;color:var(--gray);}
+  .caption{margin-top:24px;padding-top:14px;border-top:1px solid #ddd5c3;
+    font-size:15px;line-height:1.55;color:var(--gray);}
+  @media (max-width:700px){
+    .fig{padding:24px 16px 32px;}
+    h1{font-size:24px;}
+    .layer{grid-template-columns:minmax(0,1fr);gap:0;margin-bottom:10px;}
+    .lab{padding:0 2px;}
+    .lab .name{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<figure class="fig">
+  <h1>The iPhone&rsquo;s seven layers, and who makes each one</h1>
+  <p class="standfirst">One phone, taken apart in the order it is built, from the cover glass down to the frame.</p>
+
+  <!-- 1 · COVER GLASS : thin full slab -->
+  <div class="layer">
+    <svg viewBox="0 0 400 104" role="img" aria-label="Cover glass: a thin full slab">
+      <polygon points="60,82 320,82 320,87 60,87" fill="#ded7c8"/>
+      <polygon points="320,82 384,40 384,45 320,87" fill="#cfc7b4"/>
+      <polygon points="60,82 320,82 384,40 124,40" fill="#fffdf8" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <line x1="110" y1="76" x2="304" y2="46" stroke="#6f6a61" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 1</div><div class="name">Cover glass</div>
+      <div class="who">Corning &middot; Harrodsburg, Kentucky</div></div>
+  </div>
+
+  <!-- 2 · OLED DISPLAY : thin full slab, dark — it is a screen -->
+  <div class="layer">
+    <svg viewBox="0 0 400 106" role="img" aria-label="OLED display: a thin dark slab">
+      <polygon points="60,82 320,82 320,89 60,89" fill="#3a362f"/>
+      <polygon points="320,82 384,40 384,47 320,89" fill="#2a2723"/>
+      <polygon points="60,82 320,82 384,40 124,40" fill="#141310" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <polygon points="209,53 261,53 271,46 219,46" fill="#faf7f0"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 2</div><div class="name">OLED display</div>
+      <div class="who">Samsung Display / LG Display &middot; South Korea</div></div>
+  </div>
+
+  <!-- 3 · CAMERA STACK : compact module, not a slab -->
+  <div class="layer">
+    <svg viewBox="0 0 400 98" role="img" aria-label="Camera stack: a compact module with two lenses">
+      <polygon points="87,67 195,67 195,83 87,83" fill="#b9b09c"/>
+      <polygon points="195,67 242,41 242,57 195,83" fill="#a39a86"/>
+      <polygon points="87,67 195,67 242,41 134,41" fill="#e9e4d8" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <g transform="translate(131 58) rotate(-33)">
+        <ellipse rx="13" ry="7.6" fill="#faf7f0" stroke="#141310" stroke-width="4.5"/>
+        <ellipse rx="6" ry="3.5" fill="#141310"/>
+      </g>
+      <g transform="translate(152 44) rotate(-33)">
+        <ellipse rx="13" ry="7.6" fill="#faf7f0" stroke="#141310" stroke-width="4.5"/>
+        <ellipse rx="6" ry="3.5" fill="#141310"/>
+      </g>
+      <ellipse cx="186" cy="52" rx="5.5" ry="3.2" fill="#141310" transform="rotate(-33 186 52)"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 3</div><div class="name">Camera stack</div>
+      <div class="who">Sony sensors &middot; Japan &middot; Largan lenses &middot; Taiwan</div></div>
+  </div>
+
+  <!-- 4 · LOGIC BOARD : stepped board outline, red chip -->
+  <div class="layer">
+    <svg viewBox="0 0 400 106" role="img" aria-label="Logic board: a stepped board with a large chip">
+      <polygon points="60,90 210,90 242,69 342,69 374,48 124,48" fill="#141310"/>
+      <polygon points="60,82 210,82 242,61 342,61 374,40 124,40" fill="#ded7c8" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <polygon points="116,72 186,72 218,51 148,51" fill="#b03a2e" stroke="#141310" stroke-width="3"/>
+      <polygon points="225,59 280,59 303,44 248,44" fill="#faf7f0" stroke="#141310" stroke-width="3.5"/>
+      <polygon points="185,79 213,79 229,69 201,69" fill="#141310"/>
+      <polygon points="83,80 108,80 124,69 99,69" fill="#6f6a61"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 4</div><div class="name">Logic board</div>
+      <div class="who">A-series chip, TSMC &middot; Taiwan &middot; memory &middot; Korea, US</div></div>
+  </div>
+
+  <!-- 5 · BATTERY : thick slab -->
+  <div class="layer">
+    <svg viewBox="0 0 400 114" role="img" aria-label="Battery: a thick slab">
+      <polygon points="60,82 320,82 320,98 60,98" fill="#d8d1c0"/>
+      <polygon points="320,82 384,40 384,56 320,98" fill="#c6bda6"/>
+      <polygon points="60,82 320,82 384,40 124,40" fill="#e9e4d8" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <polygon points="80,78 312,78 364,44 132,44" fill="none" stroke="#6f6a61" stroke-width="2.5" opacity="0.65"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 5</div><div class="name">Battery</div>
+      <div class="who">ATL cells &middot; China &middot; graphite anode, China-processed</div></div>
+  </div>
+
+  <!-- 6 · MAGNETS & HAPTICS : ring + small motor block -->
+  <div class="layer">
+    <svg viewBox="0 0 400 104" role="img" aria-label="Magnets and haptics: a ring and a small motor block inside the phone's outline">
+      <polygon points="60,82 320,82 384,40 124,40" fill="none" stroke="#6f6a61" stroke-width="2.5" stroke-dasharray="7 6" opacity="0.55"/>
+      <g transform="translate(192 58) rotate(-33)">
+        <ellipse rx="34" ry="20" fill="none" stroke="#141310" stroke-width="11"/>
+      </g>
+      <polygon points="149,79 173,79 185,75 161,75" fill="#141310"/>
+      <polygon points="256,76 319,76 358,61 295,61" fill="#141310"/>
+      <polygon points="256,69 319,69 358,54 295,54" fill="#ded7c8" stroke="#141310" stroke-width="4" stroke-linejoin="round"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 6</div><div class="name">Magnets &amp; haptics</div>
+      <div class="who">Neodymium magnets &middot; rare earths refined in China</div></div>
+  </div>
+
+  <!-- 7 · FRAME : hollow rim -->
+  <div class="layer">
+    <svg viewBox="0 0 400 112" role="img" aria-label="Frame: a hollow rim">
+      <polygon points="60,82 320,82 320,95 60,95" fill="#e9e4d8" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <polygon points="320,82 384,40 384,53 320,95" fill="#d8d1c0" stroke="#141310" stroke-width="4.5" stroke-linejoin="round"/>
+      <polygon points="60,82 320,82 384,40 124,40" fill="none" stroke="#141310" stroke-width="12" stroke-linejoin="round"/>
+    </svg>
+    <div class="lab"><div class="no">LAYER 7</div><div class="name">Frame</div>
+      <div class="who">Forged aluminium &middot; assembled in China and India</div></div>
+  </div>
+
+  <p class="caption">One phone separated into the seven layers of its construction, in order from the cover glass down to the frame. Every layer is made by a different firm, in a different place.</p>
+</figure>
+</body>
+</html>

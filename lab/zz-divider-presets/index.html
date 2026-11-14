@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Divider presets — 30</title><style>
+:root{--paper:#faf7f0;--ink:#141310;--ink-soft:#3d3a35;--gray:#6f6a61;--accent:#b03a2e;--rule-light:#cfc8b4;--serif:"PT Serif",Charter,Georgia,"Times New Roman",serif;--sans:"Libre Franklin","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}
+.page{max-width:1120px;margin:0 auto;padding:24px 22px 96px}
+h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
+.sub{text-align:center;color:var(--gray);font-size:.95rem;margin:0 0 40px}
+.item{max-width:920px;margin:0 auto 34px}
+.label{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin:0 0 6px 2px}
+.dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;border-top:1px solid #eee7d6;border-bottom:1px solid #eee7d6;background:var(--paper)}
+@media(max-width:700px){.page{padding:16px 18px 72px}.dv{height:135px}}
+/* 01 Thread */
+.dv-01 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
+.dv-01 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
+.dv-01 .tick{position:absolute;top:calc(var(--at,.5)*100%);height:1px;background:var(--ink);opacity:.4;width:56px}
+.dv-01 .tick.r{left:50%}.dv-01 .tick.l{right:50%}
+.dv-01 .traveler{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent)}
+.dv-01 .ghost{position:absolute;left:50%;top:36%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent);opacity:.38}
+/* 02 Dots */
+.dv-02 .rail{display:flex;align-items:center;gap:11px}
+.dv-02 i{display:block;width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.92}
+.dv-02 i.red{background:var(--accent)}
+.dv-02 i:nth-child(3n+2){transform:translateY(-6px)}
+.dv-02 i:nth-child(3n){transform:translateY(5px)}
+@media(max-width:560px){.dv-02 .rail{gap:7px}}
+/* 03 Bars */
+.dv-03{flex-direction:column;gap:18px;padding:0 10px}
+.dv-03 .bar{position:relative;height:14px;width:100%;max-width:780px}
+.dv-03 .bar::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule-light)}
+.dv-03 .seg{position:absolute;left:4px;top:50%;height:6px;margin-top:-3px;background:var(--ink);opacity:.85}
+.dv-03 .seg.r{left:auto;right:4px}
+.dv-03 .seg.red{background:var(--accent);opacity:1}
+.dv-03 .seg.gray{background:var(--gray)}
+.dv-03 .seg.thin{height:3px;margin-top:-1.5px}
+/* 04 Diamond */
+.dv-04 .stem-t{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:44%}
+.dv-04 .stem-b{position:absolute;left:50%;bottom:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:44%}
+.dv-04 .gem{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(45deg)}
+/* 05 Nodes */
+.dv-05 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
+.dv-05 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
+.dv-05 .node{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:24px;height:24px;margin:-12px 0 0 -12px;border:1px solid var(--ink-soft);border-radius:50%;background:var(--paper)}
+.dv-05 .node::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent)}
+/* 06 Path */
+.dv-06 svg{display:block;height:100%;width:auto;max-width:90%}
+.dv-06 .t{stroke:var(--rule-light);stroke-width:1.5;fill:none}
+.dv-06 .f{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
+.dv-06 .h{fill:var(--accent)}
+/* 07 Echo */
+.dv-07 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
+.dv-07 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
+.dv-07 .ring{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--accent);border-radius:50%;opacity:.42}
+.dv-07 .core{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--ink);opacity:.85}
+.dv-07 .traveler{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent)}
+/* 08 Orbit */
+.dv-08 svg{display:block;width:min(560px,88%);height:auto}
+.dv-08 .o{fill:none;stroke:var(--ink);stroke-width:2}
+.dv-08 .c{fill:var(--accent)}
+.dv-08 .s{fill:var(--ink)}
+.dv-08 .r{fill:none;stroke:var(--ink);stroke-width:2}
+/* 09 Steps */
+.dv-09 svg{display:block;width:min(640px,88%);height:auto}
+.dv-09 .p{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.dv-09 .d{fill:var(--accent)}
+/* 10 Chevrons */
+.dv-10{gap:26px}
+.dv-10 .ch{width:28px;height:28px;border-top:4px solid var(--ink);border-right:4px solid var(--ink);transform:rotate(45deg)}
+.dv-10 .ch.red{border-color:var(--accent)}
+/* 11 Grid */
+.dv-11 .g{display:grid;grid-template-columns:repeat(3,16px);gap:14px}
+.dv-11 i{display:block;width:16px;height:16px;border:2px solid var(--ink)}
+.dv-11 i.c{background:var(--accent);border-color:var(--accent)}
+/* 12 Gauge */
+.dv-12 svg{display:block;width:min(235px,58%);height:auto}
+.dv-12 .a{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.dv-12 .tk{stroke:var(--ink);stroke-width:3}
+.dv-12 .tkr{stroke:var(--accent);stroke-width:3}
+.dv-12 .n{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.dv-12 .c{fill:var(--ink)}
+/* 13 Crosshair */
+.dv-13 .ring{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border:3px solid var(--ink);border-radius:50%}
+.dv-13 .hl{position:absolute;left:50%;top:50%;width:min(420px,72%);height:3px;margin:-1.5px 0 0 calc(min(420px,72%)/-2);background:var(--ink);opacity:.85}
+.dv-13 .vl{position:absolute;left:50%;top:50%;width:3px;height:118px;margin:-59px 0 0 -1.5px;background:var(--ink);opacity:.85}
+.dv-13 .dot{position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:var(--accent)}
+/* 14 Squares */
+.dv-14{gap:18px}
+.dv-14 i{display:block;border:3px solid var(--ink)}
+.dv-14 i:nth-child(1),.dv-14 i:nth-child(7){width:10px;height:10px}
+.dv-14 i:nth-child(2),.dv-14 i:nth-child(6){width:16px;height:16px}
+.dv-14 i:nth-child(3),.dv-14 i:nth-child(5){width:22px;height:22px}
+.dv-14 i:nth-child(4){width:28px;height:28px;border-color:var(--accent)}
+/* 15 Arcs */
+.dv-15 svg{display:block;width:min(320px,72%);height:auto}
+.dv-15 .a{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.dv-15 .r{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+/* 16 Stitch */
+.dv-16 .line{width:min(660px,84%);border-top:4px dashed var(--ink);opacity:.85;position:relative}
+.dv-16 .tick{position:absolute;left:50%;top:50%;width:4px;height:26px;margin:-13px 0 0 -2px;background:var(--accent)}
+/* 17 Pillars */
+.dv-17{align-items:flex-end;padding-bottom:18px;gap:14px}
+.dv-17 i{display:block;width:18px;background:var(--ink);opacity:.85}
+.dv-17 i:nth-child(1){height:30px}.dv-17 i:nth-child(2){height:52px}.dv-17 i:nth-child(3){height:76px}
+.dv-17 i:nth-child(4){height:102px;background:var(--accent);opacity:1}
+.dv-17 i:nth-child(5){height:76px}.dv-17 i:nth-child(6){height:52px}.dv-17 i:nth-child(7){height:30px}
+/* 18 Diamonds */
+.dv-18{gap:20px}
+.dv-18 i{display:block;width:16px;height:16px;border:3px solid var(--ink);transform:rotate(45deg)}
+.dv-18 i.c{background:var(--accent);border-color:var(--accent)}
+/* 19 Hourglass */
+.dv-19 svg{display:block;height:118px;width:auto}
+.dv-19 .t{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.dv-19 .d{fill:var(--accent)}
+/* 20 Compass */
+.dv-20 svg{display:block;height:118px;width:auto}
+.dv-20 .s{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.dv-20 .d{fill:var(--accent)}
+/* 21 Brackets */
+.dv-21{gap:20px}
+.dv-21 .b{width:36px;height:72px;border:4px solid var(--ink)}
+.dv-21 .b.l{border-right:none}
+.dv-21 .b.r{border-left:none}
+.dv-21 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+/* 22 Ladder */
+.dv-22 .lad{position:relative;width:110px;height:118px}
+.dv-22 .rail{position:absolute;top:0;bottom:0;width:4px;background:var(--ink)}
+.dv-22 .rail.l{left:0}.dv-22 .rail.r{right:0}
+.dv-22 .rung{position:absolute;left:0;right:0;height:4px;background:var(--ink)}
+.dv-22 .rung.red{background:var(--accent)}
+/* 23 Zigzag */
+.dv-23 svg{display:block;width:min(660px,88%);height:auto}
+.dv-23 .p{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.dv-23 .d{fill:var(--accent)}
+/* 24 Ruler */
+.dv-24 .ru{width:min(680px,86%);border-top:3px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
+.dv-24 i{display:block;width:3px;height:14px;background:var(--ink)}
+.dv-24 i.t{height:26px}
+.dv-24 i.red{background:var(--accent);height:34px}
+/* 25 Sun */
+.dv-25 svg{display:block;height:124px;width:auto}
+.dv-25 .c{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-25 .r{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.dv-25 .d{fill:var(--accent)}
+/* 26 Links */
+.dv-26 .lk{display:block;width:76px;height:38px;border:4px solid var(--ink);border-radius:20px;transform:rotate(-24deg)}
+.dv-26 .lk.b{border-color:var(--accent);margin-left:-20px;transform:rotate(-24deg)}
+.dv-26 .lk.a{margin-right:0}
+/* 27 Split */
+.dv-27{gap:18px;padding:0 7%}
+.dv-27 .ln{flex:1;height:3px;background:var(--ink);opacity:.85}
+.dv-27 .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+/* 28 Stack */
+.dv-28{flex-direction:column;gap:10px}
+.dv-28 i{display:block;height:8px;background:var(--ink);opacity:.85}
+.dv-28 i:nth-child(1){width:min(480px,72%)}
+.dv-28 i:nth-child(2){width:min(360px,56%)}
+.dv-28 i:nth-child(3){width:min(240px,38%)}
+.dv-28 i:nth-child(4){width:120px;background:var(--accent);opacity:1}
+/* 29 Target */
+.dv-29 .o1{position:absolute;left:50%;top:50%;width:98px;height:98px;margin:-49px 0 0 -49px;border:4px solid var(--ink);border-radius:50%}
+.dv-29 .o2{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border:3px solid var(--ink);border-radius:50%}
+.dv-29 .o3{position:absolute;left:50%;top:50%;width:32px;height:32px;margin:-16px 0 0 -16px;border:3px solid var(--ink);border-radius:50%}
+.dv-29 .c{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--accent)}
+/* 30 Wave */
+.dv-30 .rail{display:flex;align-items:center;gap:11px}
+.dv-30 i{display:block;width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.dv-30 i:nth-child(1){transform:translateY(0)}.dv-30 i:nth-child(2){transform:translateY(-10px)}.dv-30 i:nth-child(3){transform:translateY(-18px)}
+.dv-30 i:nth-child(4){transform:translateY(-10px)}.dv-30 i:nth-child(5){transform:translateY(0)}.dv-30 i:nth-child(6){transform:translateY(10px)}
+.dv-30 i:nth-child(7){transform:translateY(18px)}.dv-30 i:nth-child(8){transform:translateY(10px)}.dv-30 i:nth-child(9){transform:translateY(0)}
+.dv-30 i:nth-child(10){transform:translateY(-10px)}.dv-30 i:nth-child(11){transform:translateY(-18px)}.dv-30 i:nth-child(12){transform:translateY(-10px)}
+.dv-30 i:nth-child(13){transform:translateY(0)}
+.dv-30 i.red{background:var(--accent);width:10px;height:10px}
+@media(max-width:560px){.dv-30 .rail{gap:7px}.dv-17{gap:9px}.dv-17 i{width:13px}.dv-14{gap:11px}.dv-18{gap:13px}.dv-21{gap:13px}}
+</style></head>
+<body><main class="page"><h1>Divider presets</h1><p class="sub">30 presets &middot; The Board</p>
+<section class="item"><p class="label">01 &middot; Thread</p><div class="dv dv-01" role="presentation"><span class="track"></span><span class="fill"></span><span class="tick r" style="--at:.3"></span><span class="tick l" style="--at:.55"></span><span class="tick r" style="--at:.8"></span><span class="traveler"></span><span class="ghost"></span></div></section>
+<section class="item"><p class="label">02 &middot; Dots</p><div class="dv dv-02" role="presentation"><div class="rail"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="red"></i></div></div></section>
+<section class="item"><p class="label">03 &middot; Bars</p><div class="dv dv-03" role="presentation"><div class="bar"><span class="seg" style="width:36%"></span></div><div class="bar"><span class="seg r red" style="width:24%"></span></div><div class="bar"><span class="seg gray thin" style="width:52%"></span></div><div class="bar"><span class="seg" style="width:30%"></span></div></div></section>
+<section class="item"><p class="label">04 &middot; Diamond</p><div class="dv dv-04" role="presentation"><span class="stem-t"></span><span class="stem-b"></span><span class="gem"></span></div></section>
+<section class="item"><p class="label">05 &middot; Nodes</p><div class="dv dv-05" role="presentation"><span class="track"></span><span class="fill"></span><span class="node" style="--at:.22"></span><span class="node" style="--at:.52"></span><span class="node" style="--at:.82"></span></div></section>
+<section class="item"><p class="label">06 &middot; Path</p><div class="dv dv-06" role="presentation"><svg viewBox="0 0 200 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path class="t" d="M100 4 C 170 58, 30 106, 100 148 C 152 180, 116 208, 100 236"/><path class="f" d="M100 4 C 170 58, 30 106, 100 148 C 152 180, 116 208, 100 236"/><circle class="h" r="4.5" cx="100" cy="236"/></svg></div></section>
+<section class="item"><p class="label">07 &middot; Echo</p><div class="dv dv-07" role="presentation"><span class="track"></span><span class="fill"></span><span class="ring" style="--at:.28"></span><span class="core" style="--at:.28"></span><span class="ring" style="--at:.55"></span><span class="core" style="--at:.55"></span><span class="ring" style="--at:.82"></span><span class="core" style="--at:.82"></span><span class="traveler"></span></div></section>
+<section class="item"><p class="label">08 &middot; Orbit</p><div class="dv dv-08" role="presentation"><svg viewBox="0 0 560 144" aria-hidden="true"><ellipse class="o" cx="280" cy="72" rx="250" ry="44"/><ellipse class="o" cx="280" cy="72" rx="150" ry="26" opacity=".45"/><circle class="r" cx="280" cy="72" r="17"/><circle class="c" cx="280" cy="72" r="6"/><circle class="s" cx="530" cy="72" r="5"/><circle class="s" cx="92" cy="50" r="4"/></svg></div></section>
+<section class="item"><p class="label">09 &middot; Steps</p><div class="dv dv-09" role="presentation"><svg viewBox="0 0 640 120" aria-hidden="true"><polyline class="p" points="20,102 140,102 140,78 260,78 260,54 380,54 380,30 500,30 500,12 620,12"/><circle class="d" cx="620" cy="12" r="6"/></svg></div></section>
+<section class="item"><p class="label">10 &middot; Chevrons</p><div class="dv dv-10" role="presentation"><span class="ch"></span><span class="ch red"></span><span class="ch"></span></div></section>
+<section class="item"><p class="label">11 &middot; Grid</p><div class="dv dv-11" role="presentation"><div class="g"><i></i><i></i><i></i><i></i><i class="c"></i><i></i><i></i><i></i><i></i></div></div></section>
+<section class="item"><p class="label">12 &middot; Gauge</p><div class="dv dv-12" role="presentation"><svg viewBox="0 0 240 135" aria-hidden="true"><path class="a" d="M20 118 A100 100 0 0 1 220 118"/><line class="tk" x1="20" y1="118" x2="34" y2="118"/><line class="tk" x1="120" y1="18" x2="120" y2="32"/><line class="tkr" x1="220" y1="118" x2="206" y2="118"/><line class="tk" x1="52" y1="46" x2="62" y2="56"/><line class="tk" x1="188" y1="46" x2="178" y2="56"/><line class="n" x1="120" y1="118" x2="168" y2="76"/><circle class="c" cx="120" cy="118" r="6"/></svg></div></section>
+<section class="item"><p class="label">13 &middot; Crosshair</p><div class="dv dv-13" role="presentation"><span class="hl"></span><span class="vl"></span><span class="ring"></span><span class="dot"></span></div></section>
+<section class="item"><p class="label">14 &middot; Squares</p><div class="dv dv-14" role="presentation"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></section>
+<section class="item"><p class="label">15 &middot; Arcs</p><div class="dv dv-15" role="presentation"><svg viewBox="0 0 320 132" aria-hidden="true"><path class="a" d="M35 125 A125 125 0 0 1 285 125"/><path class="a" d="M65 125 A95 95 0 0 1 255 125"/><path class="a" d="M95 125 A65 65 0 0 1 225 125"/><path class="r" d="M125 125 A35 35 0 0 1 195 125"/></svg></div></section>
+<section class="item"><p class="label">16 &middot; Stitch</p><div class="dv dv-16" role="presentation"><div class="line"><span class="tick"></span></div></div></section>
+<section class="item"><p class="label">17 &middot; Pillars</p><div class="dv dv-17" role="presentation"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></section>
+<section class="item"><p class="label">18 &middot; Diamonds</p><div class="dv dv-18" role="presentation"><i></i><i></i><i class="c"></i><i></i><i></i></div></section>
+<section class="item"><p class="label">19 &middot; Hourglass</p><div class="dv dv-19" role="presentation"><svg viewBox="0 0 120 120" aria-hidden="true"><path class="t" d="M25 12 H95 L62 57 H58 L25 12 Z M25 108 H95 L62 63 H58 L25 108 Z"/><circle class="d" cx="60" cy="60" r="4"/></svg></div></section>
+<section class="item"><p class="label">20 &middot; Compass</p><div class="dv dv-20" role="presentation"><svg viewBox="0 0 120 120" aria-hidden="true"><polygon class="s" points="60,6 72,48 114,60 72,72 60,114 48,72 6,60 48,48"/><circle class="d" cx="60" cy="60" r="5"/></svg></div></section>
+<section class="item"><p class="label">21 &middot; Brackets</p><div class="dv dv-21" role="presentation"><span class="b l"></span><span class="dot"></span><span class="b r"></span></div></section>
+<section class="item"><p class="label">22 &middot; Ladder</p><div class="dv dv-22" role="presentation"><div class="lad"><span class="rail l"></span><span class="rail r"></span><span class="rung" style="top:16px"></span><span class="rung" style="top:48px"></span><span class="rung red" style="top:80px"></span><span class="rung" style="top:110px"></span></div></div></section>
+<section class="item"><p class="label">23 &middot; Zigzag</p><div class="dv dv-23" role="presentation"><svg viewBox="0 0 660 100" aria-hidden="true"><polyline class="p" points="10,70 70,30 130,70 190,30 250,70 310,30 370,70 430,30 490,70 550,30 610,70 650,42"/><circle class="d" cx="310" cy="30" r="5"/></svg></div></section>
+<section class="item"><p class="label">24 &middot; Ruler</p><div class="dv dv-24" role="presentation"><div class="ru"><i class="t"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="t"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="red"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="t"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="t"></i></div></div></section>
+<section class="item"><p class="label">25 &middot; Sun</p><div class="dv dv-25" role="presentation"><svg viewBox="0 0 140 140" aria-hidden="true"><circle class="c" cx="70" cy="70" r="26"/><g><line class="r" x1="70" y1="12" x2="70" y2="30"/><line class="r" x1="70" y1="110" x2="70" y2="128"/><line class="r" x1="12" y1="70" x2="30" y2="70"/><line class="r" x1="110" y1="70" x2="128" y2="70"/><line class="r" x1="29" y1="29" x2="42" y2="42"/><line class="r" x1="98" y1="98" x2="111" y2="111"/><line class="r" x1="111" y1="29" x2="98" y2="42"/><line class="r" x1="42" y1="98" x2="29" y2="111"/></g><circle class="d" cx="70" cy="70" r="6"/></svg></div></section>
+<section class="item"><p class="label">26 &middot; Links</p><div class="dv dv-26" role="presentation"><span class="lk a"></span><span class="lk b"></span></div></section>
+<section class="item"><p class="label">27 &middot; Split</p><div class="dv dv-27" role="presentation"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div></section>
+<section class="item"><p class="label">28 &middot; Stack</p><div class="dv dv-28" role="presentation"><i></i><i></i><i></i><i></i></div></section>
+<section class="item"><p class="label">29 &middot; Target</p><div class="dv dv-29" role="presentation"><span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="c"></span></div></section>
+<section class="item"><p class="label">30 &middot; Wave</p><div class="dv dv-30" role="presentation"><div class="rail"><i></i><i></i><i></i><i></i><i></i><i></i><i class="red"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
+</main></body></html>

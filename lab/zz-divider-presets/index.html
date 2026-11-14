@@ -73,13 +73,12 @@ h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
 .dv-11 .g{display:grid;grid-template-columns:repeat(3,16px);gap:14px}
 .dv-11 i{display:block;width:16px;height:16px;border:2px solid var(--ink)}
 .dv-11 i.c{background:var(--accent);border-color:var(--accent)}
-/* 12 Gauge */
-.dv-12 svg{display:block;width:min(235px,58%);height:auto}
-.dv-12 .a{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
-.dv-12 .tk{stroke:var(--ink);stroke-width:3}
-.dv-12 .tkr{stroke:var(--accent);stroke-width:3}
-.dv-12 .n{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
-.dv-12 .c{fill:var(--ink)}
+/* 12 Pulley */
+.dv-12 svg{display:block;width:min(560px,88%);height:auto}
+.dv-12 .p{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-12 .b{stroke:var(--ink);stroke-width:3}
+.dv-12 .h{fill:var(--ink)}
+.dv-12 .hr{fill:var(--accent)}
 /* 13 Crosshair */
 .dv-13 .ring{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border:3px solid var(--ink);border-radius:50%}
 .dv-13 .hl{position:absolute;left:50%;top:50%;width:min(420px,72%);height:3px;margin:-1.5px 0 0 calc(min(420px,72%)/-2);background:var(--ink);opacity:.85}
@@ -92,10 +91,12 @@ h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
 .dv-14 i:nth-child(2),.dv-14 i:nth-child(6){width:16px;height:16px}
 .dv-14 i:nth-child(3),.dv-14 i:nth-child(5){width:22px;height:22px}
 .dv-14 i:nth-child(4){width:28px;height:28px;border-color:var(--accent)}
-/* 15 Arcs */
-.dv-15 svg{display:block;width:min(320px,72%);height:auto}
-.dv-15 .a{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
-.dv-15 .r{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+/* 15 Truss */
+.dv-15 svg{display:block;width:min(860px,94%);height:auto}
+.dv-15 .c{stroke:var(--ink);stroke-width:4.5}
+.dv-15 .m{stroke:var(--ink);stroke-width:3}
+.dv-15 .j{fill:var(--ink)}
+.dv-15 .jr{fill:var(--accent)}
 /* 16 Stitch */
 .dv-16 .line{width:min(660px,84%);border-top:4px dashed var(--ink);opacity:.85;position:relative}
 .dv-16 .tick{position:absolute;left:50%;top:50%;width:4px;height:26px;margin:-13px 0 0 -2px;background:var(--accent)}
@@ -186,10 +187,10 @@ h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
 <section class="item"><p class="label">09 &middot; Steps</p><div class="dv dv-09" role="presentation"><svg viewBox="0 0 640 120" aria-hidden="true"><polyline class="p" points="20,102 140,102 140,78 260,78 260,54 380,54 380,30 500,30 500,12 620,12"/><circle class="d" cx="620" cy="12" r="6"/></svg></div></section>
 <section class="item"><p class="label">10 &middot; Chevrons</p><div class="dv dv-10" role="presentation"><span class="ch"></span><span class="ch red"></span><span class="ch"></span></div></section>
 <section class="item"><p class="label">11 &middot; Grid</p><div class="dv dv-11" role="presentation"><div class="g"><i></i><i></i><i></i><i></i><i class="c"></i><i></i><i></i><i></i><i></i></div></div></section>
-<section class="item"><p class="label">12 &middot; Gauge</p><div class="dv dv-12" role="presentation"><svg viewBox="0 0 240 135" aria-hidden="true"><path class="a" d="M20 118 A100 100 0 0 1 220 118"/><line class="tk" x1="20" y1="118" x2="34" y2="118"/><line class="tk" x1="120" y1="18" x2="120" y2="32"/><line class="tkr" x1="220" y1="118" x2="206" y2="118"/><line class="tk" x1="52" y1="46" x2="62" y2="56"/><line class="tk" x1="188" y1="46" x2="178" y2="56"/><line class="n" x1="120" y1="118" x2="168" y2="76"/><circle class="c" cx="120" cy="118" r="6"/></svg></div></section>
+<section class="item"><p class="label">12 &middot; Pulley</p><div class="dv dv-12" role="presentation"><svg viewBox="0 0 560 144" aria-hidden="true"><circle class="p" cx="150" cy="72" r="46"/><circle class="p" cx="410" cy="72" r="27"/><line class="b" x1="153.4" y1="26.1" x2="412" y2="45.1"/><line class="b" x1="153.4" y1="117.9" x2="412" y2="98.9"/><circle class="h" cx="150" cy="72" r="5"/><circle class="hr" cx="410" cy="72" r="4"/></svg></div></section>
 <section class="item"><p class="label">13 &middot; Crosshair</p><div class="dv dv-13" role="presentation"><span class="hl"></span><span class="vl"></span><span class="ring"></span><span class="dot"></span></div></section>
 <section class="item"><p class="label">14 &middot; Squares</p><div class="dv dv-14" role="presentation"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></section>
-<section class="item"><p class="label">15 &middot; Arcs</p><div class="dv dv-15" role="presentation"><svg viewBox="0 0 320 132" aria-hidden="true"><path class="a" d="M35 125 A125 125 0 0 1 285 125"/><path class="a" d="M65 125 A95 95 0 0 1 255 125"/><path class="a" d="M95 125 A65 65 0 0 1 225 125"/><path class="r" d="M125 125 A35 35 0 0 1 195 125"/></svg></div></section>
+<section class="item"><p class="label">15 &middot; Truss</p><div class="dv dv-15" role="presentation"><svg viewBox="0 0 880 144" aria-hidden="true"><line class="c" x1="40" y1="32" x2="840" y2="32"/><line class="c" x1="40" y1="112" x2="840" y2="112"/><line class="m" x1="40" y1="32" x2="40" y2="112"/><line class="m" x1="140" y1="32" x2="140" y2="112"/><line class="m" x1="240" y1="32" x2="240" y2="112"/><line class="m" x1="340" y1="32" x2="340" y2="112"/><line class="m" x1="440" y1="32" x2="440" y2="112"/><line class="m" x1="540" y1="32" x2="540" y2="112"/><line class="m" x1="640" y1="32" x2="640" y2="112"/><line class="m" x1="740" y1="32" x2="740" y2="112"/><line class="m" x1="840" y1="32" x2="840" y2="112"/><line class="m" x1="40" y1="112" x2="140" y2="32"/><line class="m" x1="140" y1="32" x2="240" y2="112"/><line class="m" x1="240" y1="112" x2="340" y2="32"/><line class="m" x1="340" y1="32" x2="440" y2="112"/><line class="m" x1="440" y1="112" x2="540" y2="32"/><line class="m" x1="540" y1="32" x2="640" y2="112"/><line class="m" x1="640" y1="112" x2="740" y2="32"/><line class="m" x1="740" y1="32" x2="840" y2="112"/><circle class="j" cx="40" cy="32" r="3"/><circle class="j" cx="140" cy="32" r="3"/><circle class="j" cx="240" cy="32" r="3"/><circle class="j" cx="340" cy="32" r="3"/><circle class="j" cx="440" cy="32" r="3"/><circle class="j" cx="540" cy="32" r="3"/><circle class="j" cx="640" cy="32" r="3"/><circle class="j" cx="740" cy="32" r="3"/><circle class="j" cx="840" cy="32" r="3"/><circle class="j" cx="40" cy="112" r="3"/><circle class="j" cx="140" cy="112" r="3"/><circle class="j" cx="240" cy="112" r="3"/><circle class="j" cx="340" cy="112" r="3"/><circle class="jr" cx="440" cy="112" r="3.5"/><circle class="j" cx="540" cy="112" r="3"/><circle class="j" cx="640" cy="112" r="3"/><circle class="j" cx="740" cy="112" r="3"/><circle class="j" cx="840" cy="112" r="3"/></svg></div></section>
 <section class="item"><p class="label">16 &middot; Stitch</p><div class="dv dv-16" role="presentation"><div class="line"><span class="tick"></span></div></div></section>
 <section class="item"><p class="label">17 &middot; Pillars</p><div class="dv dv-17" role="presentation"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></section>
 <section class="item"><p class="label">18 &middot; Diamonds</p><div class="dv dv-18" role="presentation"><i></i><i></i><i class="c"></i><i></i><i></i></div></section>

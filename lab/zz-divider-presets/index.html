@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Divider presets — 30</title><style>
+<title>Divider presets — 60</title><style>
 :root{--paper:#faf7f0;--ink:#141310;--ink-soft:#3d3a35;--gray:#6f6a61;--accent:#b03a2e;--rule-light:#cfc8b4;--serif:"PT Serif",Charter,Georgia,"Times New Roman",serif;--sans:"Libre Franklin","Helvetica Neue",Arial,sans-serif}
 *{box-sizing:border-box}
 html{background:var(--paper)}
@@ -174,8 +174,162 @@ h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
 .dv-30 i:nth-child(13){transform:translateY(0)}
 .dv-30 i.red{background:var(--accent);width:10px;height:10px}
 @media(max-width:560px){.dv-30 .rail{gap:7px}.dv-17{gap:9px}.dv-17 i{width:13px}.dv-14{gap:11px}.dv-18{gap:13px}.dv-21{gap:13px}}
+/* 31 Meridian */
+.dv-31 svg{display:block;width:min(560px,88%);height:auto}
+.dv-31 .s{stroke:var(--ink);stroke-width:3}
+.dv-31 .t{stroke:var(--ink);stroke-width:2.5}
+.dv-31 .c{stroke:var(--accent);stroke-width:3}
+/* 32 Sprocket */
+.dv-32 svg{display:block;height:128px;width:auto}
+.dv-32 .r{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-32 .t{stroke:var(--ink);stroke-width:9}
+.dv-32 .d{fill:var(--accent)}
+/* 33 Loom */
+.dv-33 .warp{display:flex;gap:11px;height:104px;align-items:stretch}
+.dv-33 .warp i{display:block;width:3px;background:var(--ink);opacity:.75}
+.dv-33 .weft{position:absolute;left:9%;right:9%;top:50%;height:7px;margin-top:-3.5px;background:var(--accent)}
+@media(max-width:560px){.dv-33 .warp{gap:7px}}
+/* 34 Keystone */
+.dv-34 svg{display:block;width:min(640px,88%);height:auto}
+.dv-34 .b{stroke:var(--ink);stroke-width:3.5}
+.dv-34 .k{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linejoin:round}
+/* 35 Flange */
+.dv-35 svg{display:block;width:min(720px,92%);height:auto}
+.dv-35 .p{stroke:var(--ink);stroke-width:3}
+.dv-35 .f{stroke:var(--ink);stroke-width:6}
+.dv-35 .g{stroke:var(--accent);stroke-width:4}
+.dv-35 .d{fill:var(--ink)}
+/* 36 Rivets */
+.dv-36{flex-direction:column;gap:15px}
+.dv-36 .rule{width:min(680px,86%);height:3px;background:var(--ink);opacity:.85}
+.dv-36 .row{display:flex;gap:24px}
+.dv-36 .row i{display:block;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.dv-36 .row i.red{background:var(--accent)}
+@media(max-width:560px){.dv-36 .row{gap:15px}}
+/* 37 Coil */
+.dv-37 svg{display:block;width:min(720px,92%);height:auto}
+.dv-37 .s{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-37 .d{fill:var(--accent)}
+/* 38 Hinge */
+.dv-38 svg{display:block;width:min(560px,88%);height:auto}
+.dv-38 .p{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-38 .d{fill:var(--ink)}
+.dv-38 .c{fill:var(--accent)}
+/* 39 Tread */
+.dv-39 svg{display:block;width:min(780px,94%);height:auto}
+.dv-39 .b{fill:var(--ink);opacity:.85}
+.dv-39 .r{fill:var(--accent)}
+/* 40 Lattice */
+.dv-40 svg{display:block;width:min(880px,95%);height:auto}
+.dv-40 .c{stroke:var(--ink);stroke-width:4}
+.dv-40 .m{stroke:var(--ink);stroke-width:2.5}
+.dv-40 .d{fill:var(--accent)}
+/* 41 Piston */
+.dv-41 svg{display:block;height:132px;width:auto}
+.dv-41 .c{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-41 .r{stroke:var(--ink);stroke-width:5}
+.dv-41 .s{stroke:var(--accent);stroke-width:4}
+/* 42 Crank */
+.dv-42 svg{display:block;width:min(680px,88%);height:auto}
+.dv-42 .s{fill:none;stroke:var(--ink);stroke-width:4;stroke-linejoin:round}
+.dv-42 .d{fill:var(--accent)}
+/* 43 Flywheel */
+.dv-43 svg{display:block;height:130px;width:auto}
+.dv-43 .r{fill:none;stroke:var(--ink);stroke-width:5}
+.dv-43 .s{stroke:var(--ink);stroke-width:4}
+.dv-43 .h{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-43 .d{fill:var(--accent)}
+/* 44 Axle */
+.dv-44 svg{display:block;width:min(680px,88%);height:auto}
+.dv-44 .s{stroke:var(--ink);stroke-width:5}
+.dv-44 .w{fill:none;stroke:var(--ink);stroke-width:4}
+.dv-44 .h{fill:var(--ink)}
+.dv-44 .d{fill:var(--accent)}
+/* 45 Mortise */
+.dv-45 svg{display:block;width:min(680px,88%);height:auto}
+.dv-45 .b{fill:none;stroke:var(--ink);stroke-width:3.5}
+.dv-45 .m{fill:none;stroke:var(--ink);stroke-width:3}
+.dv-45 .d{fill:var(--accent)}
+/* 46 Sluice */
+.dv-46 svg{display:block;width:min(680px,88%);height:auto}
+.dv-46 .c{stroke:var(--ink);stroke-width:3.5}
+.dv-46 .g{stroke:var(--ink);stroke-width:5}
+.dv-46 .r{stroke:var(--accent);stroke-width:3}
+/* 47 Grate */
+.dv-47 .fr{width:min(720px,88%);height:96px;border:3.5px solid var(--ink);display:flex;justify-content:space-evenly;align-items:stretch}
+.dv-47 .fr i{display:block;width:5px;background:var(--ink);opacity:.85}
+.dv-47 .fr i.red{background:var(--accent);opacity:1}
+/* 48 Ingot */
+.dv-48 svg{display:block;width:min(560px,84%);height:auto}
+.dv-48 .i{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linejoin:round}
+.dv-48 .r{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linejoin:round}
+.dv-48 .b{stroke:var(--ink);stroke-width:3}
+/* 49 Seam */
+.dv-49 svg{display:block;width:min(700px,90%);height:auto}
+.dv-49 .r{stroke:var(--ink);stroke-width:3}
+.dv-49 .x{stroke:var(--ink);stroke-width:2.5}
+.dv-49 .xr{stroke:var(--accent);stroke-width:2.5}
+/* 50 Ballast */
+.dv-50 svg{display:block;width:min(700px,90%);height:auto}
+.dv-50 .r{stroke:var(--ink);stroke-width:4}
+.dv-50 .t{stroke:var(--ink);stroke-width:3}
+.dv-50 .s{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+.dv-50 .d{fill:var(--accent)}
+/* 51 Tally */
+.dv-51{gap:56px}
+.dv-51 .g{position:relative;display:flex;gap:9px}
+.dv-51 .g i{display:block;width:4px;height:74px;background:var(--ink)}
+.dv-51 .g .x{position:absolute;left:-8px;right:-8px;top:50%;height:4px;margin-top:-2px;background:var(--ink);transform:rotate(-16deg)}
+.dv-51 .g.red .x{background:var(--accent)}
+@media(max-width:560px){.dv-51{gap:36px}}
+/* 52 Anvil */
+.dv-52 svg{display:block;width:min(480px,80%);height:auto}
+.dv-52 .a{fill:var(--ink)}
+.dv-52 .f{fill:var(--accent)}
+.dv-52 .b{stroke:var(--ink);stroke-width:3}
+/* 53 Vault */
+.dv-53 svg{display:block;width:min(640px,88%);height:auto}
+.dv-53 .a{fill:none;stroke:var(--ink);stroke-width:4}
+.dv-53 .t{stroke:var(--ink);stroke-width:3}
+.dv-53 .k{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linejoin:round}
+.dv-53 .b{stroke:var(--ink);stroke-width:3}
+/* 54 Current */
+.dv-54 svg{display:block;width:min(700px,90%);height:auto}
+.dv-54 .f{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}
+.dv-54 .g{fill:none;stroke:var(--gray);stroke-width:2.5;stroke-linecap:round}
+.dv-54 .h{fill:var(--accent)}
+/* 55 Beam */
+.dv-55 svg{display:block;width:min(720px,92%);height:auto}
+.dv-55 .f{stroke:var(--ink);stroke-width:3}
+.dv-55 .p{fill:none;stroke:var(--ink);stroke-width:4;stroke-linejoin:round}
+.dv-55 .d{fill:var(--accent)}
+/* 56 Quarry */
+.dv-56 svg{display:block;width:min(760px,94%);height:auto}
+.dv-56 .q{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linejoin:round}
+.dv-56 .d{fill:var(--accent)}
+/* 57 Tenon */
+.dv-57 svg{display:block;width:min(680px,88%);height:auto}
+.dv-57 .r{fill:none;stroke:var(--ink);stroke-width:3.5}
+.dv-57 .t{fill:none;stroke:var(--ink);stroke-width:3.5}
+.dv-57 .d{fill:var(--accent)}
+/* 58 Quay */
+.dv-58 svg{display:block;width:min(700px,90%);height:auto}
+.dv-58 .e{stroke:var(--ink);stroke-width:5}
+.dv-58 .p{stroke:var(--ink);stroke-width:5}
+.dv-58 .w{fill:none;stroke:var(--gray);stroke-width:2.5;stroke-linecap:round}
+.dv-58 .d{fill:var(--accent)}
+/* 59 Forge */
+.dv-59 svg{display:block;width:min(640px,88%);height:auto}
+.dv-59 .b{stroke:var(--ink);stroke-width:4}
+.dv-59 .g{stroke:var(--accent);stroke-width:9}
+.dv-59 .s{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
+/* 60 Level */
+.dv-60 .lv{position:relative;width:min(620px,84%);height:34px;border:3.5px solid var(--ink);border-radius:17px}
+.dv-60 .bub{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--accent)}
+.dv-60 .mk{position:absolute;top:4px;bottom:4px;width:2.5px;background:var(--ink);opacity:.6}
+.dv-60 .cap{position:absolute;top:-3.5px;bottom:-3.5px;width:9px;background:var(--ink)}
 </style></head>
-<body><main class="page"><h1>Divider presets</h1><p class="sub">30 presets &middot; The Board</p>
+<body><main class="page"><h1>Divider presets</h1><p class="sub">60 presets &middot; The Board</p>
 <section class="item"><p class="label">01 &middot; Thread</p><div class="dv dv-01" role="presentation"><span class="track"></span><span class="fill"></span><span class="tick r" style="--at:.3"></span><span class="tick l" style="--at:.55"></span><span class="tick r" style="--at:.8"></span><span class="traveler"></span><span class="ghost"></span></div></section>
 <section class="item"><p class="label">02 &middot; Dots</p><div class="dv dv-02" role="presentation"><div class="rail"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="red"></i></div></div></section>
 <section class="item"><p class="label">03 &middot; Bars</p><div class="dv dv-03" role="presentation"><div class="bar"><span class="seg" style="width:36%"></span></div><div class="bar"><span class="seg r red" style="width:24%"></span></div><div class="bar"><span class="seg gray thin" style="width:52%"></span></div><div class="bar"><span class="seg" style="width:30%"></span></div></div></section>
@@ -206,4 +360,34 @@ h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
 <section class="item"><p class="label">28 &middot; Stack</p><div class="dv dv-28" role="presentation"><i></i><i></i><i></i><i></i></div></section>
 <section class="item"><p class="label">29 &middot; Target</p><div class="dv dv-29" role="presentation"><span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="c"></span></div></section>
 <section class="item"><p class="label">30 &middot; Wave</p><div class="dv dv-30" role="presentation"><div class="rail"><i></i><i></i><i></i><i></i><i></i><i></i><i class="red"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
+<section class="item"><p class="label">31 &middot; Meridian</p><div class="dv dv-31" role="presentation"><svg viewBox="0 0 560 148" aria-hidden="true"><line class="s" x1="280" y1="6" x2="280" y2="142"/><line class="t" x1="218" y1="14" x2="342" y2="14"/><line class="t" x1="232" y1="34" x2="328" y2="34"/><line class="t" x1="246" y1="54" x2="314" y2="54"/><line class="t" x1="246" y1="94" x2="314" y2="94"/><line class="t" x1="232" y1="114" x2="328" y2="114"/><line class="t" x1="218" y1="134" x2="342" y2="134"/><line class="c" x1="196" y1="74" x2="364" y2="74"/></svg></div></section>
+<section class="item"><p class="label">32 &middot; Sprocket</p><div class="dv dv-32" role="presentation"><svg viewBox="0 0 200 144" aria-hidden="true"><line class="t" x1="136.0" y1="72.0" x2="149.0" y2="72.0"/><line class="t" x1="125.5" y1="97.5" x2="134.6" y2="106.6"/><line class="t" x1="100.0" y1="108.0" x2="100.0" y2="121.0"/><line class="t" x1="74.5" y1="97.5" x2="65.4" y2="106.6"/><line class="t" x1="64.0" y1="72.0" x2="51.0" y2="72.0"/><line class="t" x1="74.5" y1="46.5" x2="65.4" y2="37.4"/><line class="t" x1="100.0" y1="36.0" x2="100.0" y2="23.0"/><line class="t" x1="125.5" y1="46.5" x2="134.6" y2="37.4"/><circle class="r" cx="100" cy="72" r="35"/><circle class="r" cx="100" cy="72" r="12"/><circle class="d" cx="100" cy="72" r="4"/></svg></div></section>
+<section class="item"><p class="label">33 &middot; Loom</p><div class="dv dv-33" role="presentation"><div class="warp"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="weft"></span></div></section>
+<section class="item"><p class="label">34 &middot; Keystone</p><div class="dv dv-34" role="presentation"><svg viewBox="0 0 640 144" aria-hidden="true"><line class="b" x1="40" y1="36" x2="600" y2="36"/><line class="b" x1="84" y1="36" x2="84" y2="112"/><line class="b" x1="556" y1="36" x2="556" y2="112"/><line class="b" x1="40" y1="112" x2="600" y2="112"/><line class="b" x1="84" y1="112" x2="196" y2="58"/><line class="b" x1="556" y1="112" x2="444" y2="58"/><polygon class="k" points="293,36 347,36 337,84 303,84"/></svg></div></section>
+<section class="item"><p class="label">35 &middot; Flange</p><div class="dv dv-35" role="presentation"><svg viewBox="0 0 720 144" aria-hidden="true"><line class="p" x1="40" y1="58" x2="680" y2="58"/><line class="p" x1="40" y1="86" x2="680" y2="86"/><line class="f" x1="300" y1="34" x2="300" y2="110"/><line class="f" x1="314" y1="34" x2="314" y2="110"/><line class="f" x1="406" y1="34" x2="406" y2="110"/><line class="f" x1="420" y1="34" x2="420" y2="110"/><line class="g" x1="360" y1="28" x2="360" y2="116"/><circle class="d" cx="307" cy="46" r="3.5"/><circle class="d" cx="307" cy="98" r="3.5"/><circle class="d" cx="413" cy="46" r="3.5"/><circle class="d" cx="413" cy="98" r="3.5"/></svg></div></section>
+<section class="item"><p class="label">36 &middot; Rivets</p><div class="dv dv-36" role="presentation"><span class="rule"></span><div class="row"><i></i><i></i><i></i><i></i><i class="red"></i><i></i><i></i><i></i><i></i></div><span class="rule"></span></div></section>
+<section class="item"><p class="label">37 &middot; Coil</p><div class="dv dv-37" role="presentation"><svg viewBox="0 0 706 100" aria-hidden="true"><path class="s" d="M10 50 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0 a 24.5 30 0 0 1 49 0 a 24.5 30 0 0 0 49 0"/><circle class="d" cx="328.5" cy="20" r="4.5"/></svg></div></section>
+<section class="item"><p class="label">38 &middot; Hinge</p><div class="dv dv-38" role="presentation"><svg viewBox="0 0 560 144" aria-hidden="true"><rect class="p" x="56" y="42" width="196" height="60"/><rect class="p" x="308" y="42" width="196" height="60"/><rect class="p" x="266" y="28" width="28" height="26"/><rect class="p" x="266" y="59" width="28" height="26"/><rect class="p" x="266" y="90" width="28" height="26"/><circle class="d" cx="84" cy="60" r="3.5"/><circle class="d" cx="84" cy="84" r="3.5"/><circle class="d" cx="224" cy="60" r="3.5"/><circle class="d" cx="224" cy="84" r="3.5"/><circle class="d" cx="336" cy="60" r="3.5"/><circle class="d" cx="336" cy="84" r="3.5"/><circle class="d" cx="476" cy="60" r="3.5"/><circle class="d" cx="476" cy="84" r="3.5"/><circle class="c" cx="280" cy="72" r="6"/></svg></div></section>
+<section class="item"><p class="label">39 &middot; Tread</p><div class="dv dv-39" role="presentation"><svg viewBox="0 0 780 120" aria-hidden="true"><polygon class="b" points="16,36 52,36 70,84 34,84"/><polygon class="b" points="126,36 162,36 144,84 108,84"/><polygon class="b" points="200,36 236,36 254,84 218,84"/><polygon class="r" points="292,36 328,36 346,84 310,84"/><polygon class="b" points="384,36 420,36 438,84 402,84"/><polygon class="b" points="494,36 530,36 512,84 476,84"/><polygon class="b" points="568,36 604,36 622,84 586,84"/><polygon class="b" points="678,36 714,36 696,84 660,84"/></svg></div></section>
+<section class="item"><p class="label">40 &middot; Lattice</p><div class="dv dv-40" role="presentation"><svg viewBox="0 0 880 144" aria-hidden="true"><line class="c" x1="20" y1="32" x2="860" y2="32"/><line class="c" x1="20" y1="112" x2="860" y2="112"/><line class="m" x1="20" y1="112" x2="76" y2="32"/><line class="m" x1="20" y1="32" x2="76" y2="112"/><line class="m" x1="90" y1="112" x2="146" y2="32"/><line class="m" x1="90" y1="32" x2="146" y2="112"/><line class="m" x1="160" y1="112" x2="216" y2="32"/><line class="m" x1="160" y1="32" x2="216" y2="112"/><line class="m" x1="230" y1="112" x2="286" y2="32"/><line class="m" x1="230" y1="32" x2="286" y2="112"/><line class="m" x1="300" y1="112" x2="356" y2="32"/><line class="m" x1="300" y1="32" x2="356" y2="112"/><line class="m" x1="370" y1="112" x2="426" y2="32"/><line class="m" x1="370" y1="32" x2="426" y2="112"/><line class="m" x1="440" y1="112" x2="496" y2="32"/><line class="m" x1="440" y1="32" x2="496" y2="112"/><line class="m" x1="510" y1="112" x2="566" y2="32"/><line class="m" x1="510" y1="32" x2="566" y2="112"/><line class="m" x1="580" y1="112" x2="636" y2="32"/><line class="m" x1="580" y1="32" x2="636" y2="112"/><line class="m" x1="650" y1="112" x2="706" y2="32"/><line class="m" x1="650" y1="32" x2="706" y2="112"/><line class="m" x1="720" y1="112" x2="776" y2="32"/><line class="m" x1="720" y1="32" x2="776" y2="112"/><line class="m" x1="790" y1="112" x2="846" y2="32"/><line class="m" x1="790" y1="32" x2="846" y2="112"/><circle class="d" cx="440" cy="72" r="5"/></svg></div></section>
+<section class="item"><p class="label">41 &middot; Piston</p><div class="dv dv-41" role="presentation"><svg viewBox="0 0 160 144" aria-hidden="true"><line class="r" x1="80" y1="6" x2="80" y2="52"/><rect class="c" x="52" y="52" width="56" height="34"/><line class="s" x1="52" y1="64" x2="108" y2="64"/><path class="c" d="M40 40 V124 M120 40 V124 M32 124 H128"/></svg></div></section>
+<section class="item"><p class="label">42 &middot; Crank</p><div class="dv dv-42" role="presentation"><svg viewBox="0 0 680 120" aria-hidden="true"><polyline class="s" points="20,60 150,60 150,34 250,34 250,60 430,60 430,86 530,86 530,60 660,60"/><circle class="d" cx="340" cy="60" r="6"/></svg></div></section>
+<section class="item"><p class="label">43 &middot; Flywheel</p><div class="dv dv-43" role="presentation"><svg viewBox="0 0 160 144" aria-hidden="true"><circle class="r" cx="80" cy="72" r="46"/><line class="s" x1="80" y1="72" x2="120.0" y2="72.0"/><line class="s" x1="80" y1="72" x2="100.0" y2="106.6"/><line class="s" x1="80" y1="72" x2="60.0" y2="106.6"/><line class="s" x1="80" y1="72" x2="40.0" y2="72.0"/><line class="s" x1="80" y1="72" x2="60.0" y2="37.4"/><line class="s" x1="80" y1="72" x2="100.0" y2="37.4"/><circle class="h" cx="80" cy="72" r="13"/><circle class="d" cx="80" cy="72" r="4.5"/></svg></div></section>
+<section class="item"><p class="label">44 &middot; Axle</p><div class="dv dv-44" role="presentation"><svg viewBox="0 0 680 144" aria-hidden="true"><line class="s" x1="70" y1="72" x2="610" y2="72"/><circle class="w" cx="70" cy="72" r="34"/><circle class="w" cx="610" cy="72" r="34"/><circle class="h" cx="70" cy="72" r="5"/><circle class="h" cx="610" cy="72" r="5"/><circle class="d" cx="340" cy="72" r="11"/></svg></div></section>
+<section class="item"><p class="label">45 &middot; Mortise</p><div class="dv dv-45" role="presentation"><svg viewBox="0 0 680 120" aria-hidden="true"><rect class="b" x="30" y="38" width="620" height="44"/><rect class="m" x="292" y="50" width="96" height="20"/><circle class="d" cx="340" cy="60" r="5"/><line class="b" x1="30" y1="98" x2="650" y2="98" stroke-width="2" opacity=".5"/></svg></div></section>
+<section class="item"><p class="label">46 &middot; Sluice</p><div class="dv dv-46" role="presentation"><svg viewBox="0 0 680 144" aria-hidden="true"><line class="c" x1="30" y1="26" x2="300" y2="60"/><line class="c" x1="30" y1="118" x2="300" y2="84"/><line class="c" x1="650" y1="26" x2="380" y2="60"/><line class="c" x1="650" y1="118" x2="380" y2="84"/><line class="g" x1="322" y1="34" x2="322" y2="110"/><line class="g" x1="340" y1="34" x2="340" y2="110"/><line class="g" x1="358" y1="34" x2="358" y2="110"/><line class="r" x1="340" y1="10" x2="340" y2="34"/><circle class="r" cx="340" cy="8" r="3" fill="var(--accent)" stroke="none"/></svg></div></section>
+<section class="item"><p class="label">47 &middot; Grate</p><div class="dv dv-47" role="presentation"><div class="fr"><i></i><i></i><i></i><i></i><i></i><i></i><i class="red"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
+<section class="item"><p class="label">48 &middot; Ingot</p><div class="dv dv-48" role="presentation"><svg viewBox="0 0 560 132" aria-hidden="true"><polygon class="i" points="96,78 224,78 208,108 112,108"/><polygon class="i" points="336,78 464,78 448,108 352,108"/><polygon class="r" points="216,36 344,36 328,66 232,66"/><line class="b" x1="40" y1="120" x2="520" y2="120"/></svg></div></section>
+<section class="item"><p class="label">49 &middot; Seam</p><div class="dv dv-49" role="presentation"><svg viewBox="0 0 700 136" aria-hidden="true"><line class="r" x1="30" y1="42" x2="670" y2="42"/><line class="r" x1="30" y1="94" x2="670" y2="94"/><path class="x" d="M52 56 L76 80 M76 56 L52 80"/><path class="x" d="M114 56 L138 80 M138 56 L114 80"/><path class="x" d="M176 56 L200 80 M200 56 L176 80"/><path class="x" d="M238 56 L262 80 M262 56 L238 80"/><path class="x" d="M300 56 L324 80 M324 56 L300 80"/><path class="xr" d="M362 56 L386 80 M386 56 L362 80"/><path class="x" d="M424 56 L448 80 M448 56 L424 80"/><path class="x" d="M486 56 L510 80 M510 56 L486 80"/><path class="x" d="M548 56 L572 80 M572 56 L548 80"/><path class="x" d="M610 56 L634 80 M634 56 L610 80"/></svg></div></section>
+<section class="item"><p class="label">50 &middot; Ballast</p><div class="dv dv-50" role="presentation"><svg viewBox="0 0 700 140" aria-hidden="true"><line class="r" x1="26" y1="58" x2="674" y2="58"/><line class="t" x1="90" y1="58" x2="90" y2="76"/><line class="t" x1="230" y1="58" x2="230" y2="76"/><line class="t" x1="370" y1="58" x2="370" y2="76"/><line class="t" x1="510" y1="58" x2="510" y2="76"/><line class="t" x1="630" y1="58" x2="630" y2="76"/><polygon class="s" points="74,106 106,100 122,118 90,126 70,120"/><polygon class="s" points="168,110 200,98 226,108 218,126 178,126"/><polygon class="s" points="278,104 316,96 336,114 304,126 276,122"/><polygon class="s" points="388,108 420,100 440,116 404,126 382,118"/><polygon class="s" points="494,102 534,98 550,112 524,126 496,124"/><polygon class="s" points="600,106 632,102 646,120 612,126 594,116"/><circle class="d" cx="350" cy="58" r="5"/></svg></div></section>
+<section class="item"><p class="label">51 &middot; Tally</p><div class="dv dv-51" role="presentation"><span class="g"><i></i><i></i><i></i><i></i><span class="x"></span></span><span class="g red"><i></i><i></i><i></i><i></i><span class="x"></span></span><span class="g"><i></i><i></i><i></i><i></i><span class="x"></span></span></div></section>
+<section class="item"><p class="label">52 &middot; Anvil</p><div class="dv dv-52" role="presentation"><svg viewBox="0 0 480 132" aria-hidden="true"><polygon class="a" points="70,44 330,44 410,58 330,68 292,68 292,84 330,96 330,106 150,106 150,96 188,84 188,68 70,68"/><rect class="f" x="70" y="50" width="260" height="5"/><line class="b" x1="40" y1="118" x2="440" y2="118"/></svg></div></section>
+<section class="item"><p class="label">53 &middot; Vault</p><div class="dv dv-53" role="presentation"><svg viewBox="0 0 640 132" aria-hidden="true"><path class="a" d="M60 118 A 260 95 0 0 1 580 118"/><line class="t" x1="545" y1="70" x2="569" y2="64"/><line class="t" x1="469" y1="40" x2="485" y2="30"/><line class="t" x1="365" y1="24" x2="370" y2="13"/><line class="t" x1="275" y1="24" x2="270" y2="13"/><line class="t" x1="171" y1="40" x2="155" y2="30"/><line class="t" x1="95" y1="70" x2="71" y2="64"/><polygon class="k" points="304,8 336,8 331,40 309,40"/><line class="b" x1="60" y1="118" x2="580" y2="118"/></svg></div></section>
+<section class="item"><p class="label">54 &middot; Current</p><div class="dv dv-54" role="presentation"><svg viewBox="0 0 700 120" aria-hidden="true"><path class="f" d="M20 44 C 140 12, 240 76, 360 44 C 470 16, 560 62, 652 40"/><path class="g" d="M20 84 C 140 58, 240 108, 360 84 C 470 62, 560 98, 652 80"/><polygon class="h" points="652,28 676,40 652,52"/></svg></div></section>
+<section class="item"><p class="label">55 &middot; Beam</p><div class="dv dv-55" role="presentation"><svg viewBox="0 0 720 132" aria-hidden="true"><line class="f" x1="30" y1="38" x2="690" y2="38"/><line class="f" x1="30" y1="94" x2="690" y2="94"/><polygon class="p" points="316,26 404,26 404,40 368,52 368,80 404,94 404,106 316,106 316,94 352,80 352,52 316,40"/><circle class="d" cx="360" cy="66" r="4.5"/></svg></div></section>
+<section class="item"><p class="label">56 &middot; Quarry</p><div class="dv dv-56" role="presentation"><svg viewBox="0 0 760 128" aria-hidden="true"><polyline class="q" points="20,26 150,26 150,52 260,52 260,78 340,78 340,104 420,104 420,78 500,78 500,52 610,52 610,26 740,26"/><circle class="d" cx="380" cy="104" r="5"/></svg></div></section>
+<section class="item"><p class="label">57 &middot; Tenon</p><div class="dv dv-57" role="presentation"><svg viewBox="0 0 680 132" aria-hidden="true"><rect class="r" x="30" y="30" width="252" height="26"/><rect class="r" x="398" y="30" width="252" height="26"/><rect class="r" x="30" y="76" width="252" height="26"/><rect class="r" x="398" y="76" width="252" height="26"/><rect class="t" x="282" y="52" width="116" height="28"/><circle class="d" cx="340" cy="66" r="5.5"/></svg></div></section>
+<section class="item"><p class="label">58 &middot; Quay</p><div class="dv dv-58" role="presentation"><svg viewBox="0 0 700 136" aria-hidden="true"><line class="e" x1="30" y1="48" x2="670" y2="48"/><line class="p" x1="110" y1="48" x2="110" y2="96"/><line class="p" x1="270" y1="48" x2="270" y2="96"/><line class="p" x1="430" y1="48" x2="430" y2="96"/><line class="p" x1="590" y1="48" x2="590" y2="96"/><path class="w" d="M60 112 q 22 -10 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0"/><circle class="d" cx="350" cy="48" r="5"/></svg></div></section>
+<section class="item"><p class="label">59 &middot; Forge</p><div class="dv dv-59" role="presentation"><svg viewBox="0 0 640 128" aria-hidden="true"><line class="b" x1="40" y1="70" x2="238" y2="70"/><line class="b" x1="402" y1="70" x2="600" y2="70"/><line class="g" x1="246" y1="70" x2="394" y2="70"/><polygon points="120,70 104,104 136,104" fill="none" stroke="var(--ink)" stroke-width="3.5"/><polygon points="520,70 504,104 536,104" fill="none" stroke="var(--ink)" stroke-width="3.5"/><line class="s" x1="290" y1="34" x2="282" y2="20"/><line class="s" x1="320" y1="30" x2="320" y2="14"/><line class="s" x1="350" y1="34" x2="358" y2="20"/></svg></div></section>
+<section class="item"><p class="label">60 &middot; Level</p><div class="dv dv-60" role="presentation"><div class="lv"><span class="cap" style="left:14px"></span><span class="cap" style="right:14px"></span><span class="mk" style="left:calc(50% - 26px)"></span><span class="mk" style="left:calc(50% + 24px)"></span><span class="bub"></span></div></div></section>
 </main></body></html>

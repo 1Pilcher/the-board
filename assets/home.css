@@ -187,6 +187,19 @@ section{margin-top:var(--section-gap);scroll-margin-top:calc(var(--topchrome) + 
 @media(max-width:700px){
 .ruler-grid{grid-template-columns:1fr 1fr}
 }
+/* Latest highlights: the latest report's best sections, each cell a link into the report (Nov 18, 2026) */
+.hl{background:var(--box);margin-top:var(--sp-6);padding:var(--sp-5) 22px}
+.hl-in{max-width:920px;margin:0 auto}
+.hl h3{font-family:var(--sans);font-size:var(--fs-label);font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);text-align:center;margin:0 0 var(--sp-4)}
+.hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.hl-cell{display:block;background:var(--paper);border:1px solid var(--rule-light);padding:20px 18px;text-decoration:none;text-align:left}
+.hl-cell:hover{border-color:var(--accent)}
+.hl-cell strong{font-size:1.12rem;line-height:1.3;color:var(--ink)}
+.hl-cell .hl-t{display:block;font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink-soft);margin-top:8px}
+.hl-cell .hl-go{display:block;font-family:var(--sans);font-size:var(--fs-label-sm);font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:12px;line-height:1.5}
+@media(max-width:700px){
+.hl-grid{grid-template-columns:1fr}
+}
 /* Towers chart: values on top, every bar standing on one baseline */
 .towers-wrap{max-width:760px;margin:var(--sp-6) auto 0}
 .towers-wrap h3{font-family:var(--display);font-weight:800;font-size:var(--fs-subhead);line-height:1.15;text-align:center;margin:0 0 var(--sp-1)}
@@ -393,6 +406,7 @@ html{scroll-behavior:auto}
 @media(min-width:1000px){
   #today:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;row-gap:var(--sp-6);align-items:start}
   #today>*{min-width:0}
+  #today>#latest-report{grid-column:1/-1}
 }
 
 /* Daily shape motion (Josh, Nov 11, 2026): the shapes themselves

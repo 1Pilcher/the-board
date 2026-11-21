@@ -1,4 +1,16 @@
 
+// Masthead and colophon dates: always the current date in America/Chicago,
+// rendered live into every [data-today] element. The static HTML carries
+// today's date as the no-JS fallback. Never a publication date.
+(function(){
+  var els=document.querySelectorAll('[data-today]');
+  if(!els.length) return;
+  var s;
+  try{
+    s=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'long',month:'long',day:'numeric',year:'numeric'}).format(new Date());
+  }catch(e){ return; }
+  Array.prototype.forEach.call(els,function(el){ el.textContent=s; });
+})();
 // Nine chapters dot field, drawn in its finished state:
 // 9 ink dots for the nine chapters of the featured report
 // (the first one red for Chapter One).

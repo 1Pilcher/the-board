@@ -71,17 +71,46 @@ nav.menu a.active{color:#f5eedd}
    beside blackletter Study) of the font-revert run: the
    faces now match, and the marks differ only in the words.
    Blackletter survives only on the Study session pages'
-   mastheads — this page's own included — untouched. */
+   mastheads — this page's own included — untouched.
+   LOGO / CLICK TREATMENT (Josh, Nov 21, 2026, after seeing
+   the plate on his phone: "they don't look like logos and
+   they don't look clickable"; the click effect he asked
+   for is "very, very minimalist and hardly noticeable but
+   clean"): each half is one LOCKUP — mark, tagline, and a
+   short hairline rule (2.5rem wide, 2px, vellum #f5eedd at
+   50% opacity, centered, 12px under the tagline) closing
+   it, identical on both halves so the pair reads as
+   matched marks. The CURRENT half stands at full
+   strength: no underline, cursor default, no hover
+   effect. The SIBLING (link) half rests MUTED at opacity
+   .55, rule included; on hover, active and keyboard focus
+   it eases to full strength (160ms ease) while a 1px
+   underline in the accent (lightened oxblood #c05f4d)
+   sweeps in from the center under the mark (::after on
+   the mark, scaleX 0 to 1, origin center, absolutely
+   positioned — nothing moves). prefers-reduced-motion
+   disables the transitions; the states still change.
+   Scoped to this nameplate link only; no other link on
+   the page is restyled. */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
 .sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.sp-mark{display:block;font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em;color:#f5eedd;white-space:nowrap}
+.sp-mark{display:block;position:relative;font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em;color:#f5eedd;white-space:nowrap}
 .sp-line{display:block}
-a.sp-half:hover .sp-mark{opacity:.72}
+.sp-rule{display:block;width:2.5rem;height:2px;margin:12px auto 0;background:rgba(245,238,221,.5)}
+a.sp-half{opacity:.55;cursor:pointer;transition:opacity .16s ease,color .16s ease}
+a.sp-half:hover,a.sp-half:active,a.sp-half:focus-visible{opacity:1}
+a.sp-half .sp-mark::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .16s ease}
+a.sp-half:hover .sp-mark::after,a.sp-half:active .sp-mark::after,a.sp-half:focus-visible .sp-mark::after{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){
+  a.sp-half{transition:none}
+  a.sp-half .sp-mark::after{transition:none}
+}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:var(--ink-soft)}
 .sp-study .sp-tag{color:var(--ink-soft)}
 @media(max-width:700px){
   .sp-half{padding:0 4px}
   .sp-tag{font-size:.92rem;margin-top:8px}
+  .sp-rule{margin-top:10px}
   .sp-mark{font-size:clamp(1.6rem,7.5vw,3.4rem);letter-spacing:.1em;text-indent:.1em;line-height:1.36}
 }
 
@@ -107,10 +136,12 @@ a.sp-half:hover .sp-mark{opacity:.72}
     <a class="sp-half sp-board" href="../index.html" aria-label="The Board — homepage">
       <span class="sp-mark"><span class="sp-line">The</span><span class="sp-line">Board</span></span>
       <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
     </a>
     <div class="sp-half sp-study" aria-current="page">
       <span class="sp-mark"><span class="sp-line">The</span><span class="sp-line">Study</span></span>
       <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
     </div>
   </div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>

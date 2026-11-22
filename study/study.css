@@ -51,19 +51,22 @@
   --rule-light:rgba(238,240,233,.12);
 }
 
-/* Nav bar: same pill, same behaviour; slate surface ground,
-   vellum links (var(--paper) no longer applies on the dark
-   ground, so the link colour is restated as the vellum ink),
-   the deep-blue active pill, and a thin deep-blue border under
-   the bar in place of the Board's red ring. */
+/* Nav bar: same pill, same shape, same behaviour as The Board's
+   — the two navs are one object in two palettes (Josh, Nov 22,
+   2026). Slate surface ground, vellum links (var(--paper) no
+   longer applies on the dark ground, so the link colour is
+   restated as the vellum ink), the deep-blue active pill, and
+   the full, even deep-blue ring on every side — the Board's red
+   ring restated in Slate, never a bottom-only highlight. The
+   active pill carries no border-color, exactly as board.css's
+   own active rule leaves it transparent. */
 nav.menu{
   background:rgba(27,34,45,.97);
-  border:1px solid #0a0e14;
-  border-bottom:1px solid #4769ba;
+  border:1px solid #4769ba;
   box-shadow:0 10px 30px rgba(0,0,0,.45);
 }
 nav.menu a{color:#f0ecdc}
-nav.menu a.active{color:#fff;background:#4769ba;border-color:#4769ba}
+nav.menu a.active{color:#fff;background:#4769ba}
 
 /* Kickers and kicker-family labels in the chrome blue, very
    sparing: the headline-block kicker, the chapter numbers, and

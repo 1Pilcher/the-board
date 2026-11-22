@@ -3,8 +3,8 @@
    Every report page links this file; edit here, never per page. */
 
 :root{
-  --paper:#faf7f0;--ink:#141310;--ink-soft:#3d3a35;--gray:#6f6a61;
-  --accent:#b03a2e;--box:#f3efe4;--rule-light:#cfc8b4;
+  --paper:#f7f7f5;--ink:#141310;--ink-soft:#3c3c39;--gray:#6b6b66;
+  --accent:#b03a2e;--box:#f0f0ec;--rule-light:#cfcfca;
   /* One spacing scale. Every vertical gap on the page comes from these
      tokens, so the rhythm is even from masthead to colophon. */
   --sp-1:8px;--sp-2:16px;--sp-3:24px;--sp-4:32px;
@@ -164,7 +164,7 @@ img{max-width:100%}
 /* LOCKED 2026-11-10: nav size/shape are template defaults (width, 7px padding,
    999px radius, pill type). Do not restyle per report; behaviour (sticky range,
    scroll-aware edge fades, pill pop) is unchanged. */
-nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) auto 0;width:min(1076px,calc(100% - 44px));max-width:1076px;background:rgba(111,106,97,.97);border:1px solid var(--accent);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) auto 0;width:min(1076px,calc(100% - 44px));max-width:1076px;background:rgba(107,106,101,.97);border:1px solid var(--accent);border-radius:999px;padding:7px;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;box-shadow:0 10px 30px rgba(20,19,16,.14);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 nav.menu::-webkit-scrollbar{display:none}
 /* Uniform in every report and at every width: one single row that
    scrolls sideways inside the pill, never wraps, and the same pill
@@ -990,7 +990,7 @@ body:has(.dy-front) nav.menu{display:none}
    The lockup: a small plain "THE" flanked by hairlines, the big
    word beneath as a rendered inline-traced image (Board red
    #ce2029 / Study deep royal blue #1f3a93 on the light ground;
-   lightened #e04a44 / #4a6fd4 on the dark), the Cormorant italic
+   lightened #e04a44 / #6f97e8 on the dark), the Cormorant italic
    tagline, and the short rule (2.5rem x 2px) closing it.
    COLOR SPEC: on the light ground THE, its flanking hairlines,
    the taglines and the short rules are black #141310, and the

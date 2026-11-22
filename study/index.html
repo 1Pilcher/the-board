@@ -45,38 +45,44 @@ nav.menu a{color:#f5eedd}
 nav.menu a.active{color:#f5eedd}
 .kicker{color:#a07d2c}
 
-/* Stacked nameplate (Josh, Nov 21, 2026, later still — his
-   reference: a screenshot of a Board report page's classic
-   masthead; "this is what both should look like", "same thing
-   with the study", "make sure it's the same font as that pic
-   i sent"). Identical in structure to the main homepage's new
-   masthead: the two publication names centered, stacked, each
-   broken onto two lines — here THE over STUDY first (the
-   current publication), THE over BOARD below it as the link
-   back to The Board's homepage. BOTH names stand in the
-   classic .nameplate face: Playfair Display 900, .16em
-   tracking, text-indent compensated, full original size; on
-   this dark ground the marks are the vellum ink. This
-   supersedes the side-by-side split plate shipped earlier
-   the same night, and with it the blackletter mark ON THE
-   HOMEPAGES ONLY — the session pages keep their one-line
-   blackletter nameplate, untouched. Beneath the stack sit
-   the current publication's tagline and the classic double
-   rule: the shared .tagline and .double-rule of home.css,
-   reading this page's variables (the tagline in the dimmed
-   vellum, the double rule in the lightened oxblood accent) —
-   the front page's original homepage anatomy in Study
-   colours, not a new treatment. (The earlier wordmark
-   history — the traced-fill rejection, the blackletter
-   direction, the uniform rule and its supersessions — is
-   kept in study-head-fragment.html and the study log.) */
-.stack-plate{margin:var(--sp-3) 0 var(--sp-1);text-align:center}
-.stack-name{display:block;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.stack-name + .stack-name{margin-top:var(--sp-3)}
-.stack-line{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.8rem,10vw,5.4rem);letter-spacing:.16em;line-height:1.08;text-indent:.16em;color:var(--ink);white-space:nowrap}
-a.stack-name:hover .stack-line{opacity:.72}
-@media(max-width:380px){
-  .stack-line{font-size:2.3rem;letter-spacing:.1em;text-indent:.1em}
+/* Split nameplate — The Board | The Study. FINAL RULE (Josh,
+   Nov 21, 2026, closing the night's wordmark saga with an
+   explicit clarification: "Not externally stacked but
+   internally stacked"). The pair is the switch between the
+   two homepages: the two blocks stand SIDE BY SIDE at full
+   presence, The Board on the LEFT and The Study on the
+   RIGHT on both homepages; the SIBLING half is the link,
+   the CURRENT half is not; there is no separate nav button.
+   Inside each block the mark is INTERNALLY stacked: "The"
+   on the first line, "Board" / "Study" on the second, both
+   lines the same size, centered in the half. BOTH marks
+   stand in Playfair Display (var(--display)), weight 900,
+   with the original .nameplate tracking (.16em, text-indent
+   compensated; .1em in the phone tier), at the half-plate
+   size measured and proved for the Board half in the
+   font-revert run (clamp(1.6rem,6.9vw,5rem), line-height
+   1.24, so the two taglines sit on one line). On this dark
+   ground both marks are plain white (the vellum ink); on
+   The Board's light ground, plain black. The Cormorant
+   italic tagline sits beneath each mark. This supersedes
+   both the uniform-blackletter rule and the four-line
+   externally stacked masthead shipped briefly the same
+   night, and it ends the mixed-face plate (Playfair Board
+   beside blackletter Study) of the font-revert run: the
+   faces now match, and the marks differ only in the words.
+   Blackletter survives only on the Study session pages'
+   mastheads — this page's own included — untouched. */
+.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
+.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.sp-mark{display:block;font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em;color:#f5eedd;white-space:nowrap}
+.sp-line{display:block}
+a.sp-half:hover .sp-mark{opacity:.72}
+.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:var(--ink-soft)}
+.sp-study .sp-tag{color:var(--ink-soft)}
+@media(max-width:700px){
+  .sp-half{padding:0 4px}
+  .sp-tag{font-size:.92rem;margin-top:8px}
+  .sp-mark{font-size:clamp(1.6rem,7.5vw,3.4rem);letter-spacing:.1em;text-indent:.1em;line-height:1.36}
 }
 
 /* Session list inside the Latest card, and the archive-row
@@ -97,18 +103,16 @@ a.stack-name:hover .stack-line{opacity:.72}
 
 <header class="masthead">
   <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
-  <div class="stack-plate" role="banner">
-    <div class="stack-name stack-study" aria-current="page">
-      <span class="stack-line">THE</span>
-      <span class="stack-line">STUDY</span>
-    </div>
-    <a class="stack-name stack-board" href="../index.html" aria-label="The Board — homepage">
-      <span class="stack-line">THE</span>
-      <span class="stack-line">BOARD</span>
+  <div class="split-plate" role="banner">
+    <a class="sp-half sp-board" href="../index.html" aria-label="The Board — homepage">
+      <span class="sp-mark"><span class="sp-line">The</span><span class="sp-line">Board</span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
     </a>
+    <div class="sp-half sp-study" aria-current="page">
+      <span class="sp-mark"><span class="sp-line">The</span><span class="sp-line">Study</span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+    </div>
   </div>
-  <div class="tagline">Reading the Bible slowly.</div>
-  <div class="double-rule"></div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
 </header>
 

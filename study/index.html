@@ -50,31 +50,47 @@ nav.menu a.active{color:#f5eedd}
    The pair is the switch between the two homepages: both names
    stand at full presence, the SIBLING half is the link, the
    CURRENT half is not; there is no separate nav button.
-   SETTLED WORDMARK RULE (Nov 21, 2026): the two marks are
-   UNIFORM — same UnifrakturMaguntia blackletter, same size, same
-   treatment, no weight or spacing tricks, no fill colour, no
-   stroke, no effects. On this dark ground both marks are plain
-   white (the vellum ink); on The Board's light ground, plain
-   black. The ground flip is the only difference. The Cormorant
-   italic tagline sits beneath each mark. (History, so none of
-   it is rebuilt: a traced-fill treatment was rejected by Josh
-   as terrible; a WSJ-style script was briefly targeted, then
-   NYT blackletter directed; Grenze Gotisch was implemented and
-   rejected the same night; a gilt setting was instructed late
-   on Nov 21 and corrected the same night to a white body with
-   a coloured centre trace, the variants page's candidate F —
-   and that correction was itself superseded the same night by
-   the settled rule above. Candidate F is not implemented on
-   any page.) */
+   WORDMARK RULE (Josh, Nov 21, 2026, later that night —
+   supersedes the uniform-wordmark rule set earlier the same
+   evening): the two marks are NOT uniform. The Board's mark
+   stands in its ORIGINAL treatment — Playfair Display 900,
+   the .nameplate face it has carried all along — scaled to
+   its half of the plate. The Study's mark stands in
+   UnifrakturMaguntia blackletter. On this dark ground both
+   marks are plain white (the vellum ink); on The Board's
+   light ground, plain black. The distinction between the
+   publications comes from the switch, not from matching
+   faces. The Cormorant italic tagline sits beneath each
+   mark. (History, so none of it is rebuilt: a traced-fill
+   treatment was rejected by Josh as terrible; a WSJ-style
+   script was briefly targeted, then NYT blackletter directed;
+   Grenze Gotisch was implemented and rejected the same night;
+   a gilt setting was instructed late on Nov 21 and corrected
+   the same night to a white body with a coloured centre
+   trace, the variants page's candidate F — and that
+   correction was itself superseded the same night by a
+   uniform-blackletter rule. Later still that night Josh
+   ordered The Board's mark back to its original Playfair
+   Display treatment, superseding the uniform rule: the
+   marks now differ by design. Candidate F is not
+   implemented on any page.) */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
 .sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.4rem,8.6vw,5.4rem);line-height:1.12;letter-spacing:0;color:#f5eedd;white-space:nowrap}
+/* The Board's mark in its original treatment: Playfair Display
+   900 with the .nameplate tracking (.16em, text-indent compen-
+   sated), scaled to fit its half of the plate; the line-height
+   is set so the two taglines sit on one line. The <=700px tier
+   drops the tracking to .1em — the original nameplate's own
+   phone move. */
+.sp-board .sp-mark{font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em}
 a.sp-half:hover .sp-mark{opacity:.72}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:var(--ink-soft)}
 .sp-study .sp-tag{color:var(--ink-soft)}
 @media(max-width:700px){
   .sp-half{padding:0 4px}
   .sp-tag{font-size:.92rem;margin-top:8px}
+  .sp-board .sp-mark{font-size:clamp(1.6rem,7.5vw,3.4rem);letter-spacing:.1em;text-indent:.1em;line-height:1.36}
 }
 
 /* Session list inside the Latest card, and the archive-row
@@ -111,7 +127,7 @@ a.sp-half:hover .sp-mark{opacity:.72}
 <nav class="menu" id="menu" data-fade="none" aria-label="Sections">
   <div class="menu-track" id="menuTrack" role="tablist" aria-label="Homepage tabs">
     <a href="#today" id="tab-today" data-tab="today" role="tab" aria-selected="true" aria-controls="today" class="active">Latest</a>
-    <a href="#reports" id="tab-reports" data-tab="reports" role="tab" aria-selected="false" aria-controls="reports">Reports</a>
+    <a href="#sessions" id="tab-sessions" data-tab="sessions" role="tab" aria-selected="false" aria-controls="sessions">Sessions</a>
     <a href="#purpose" id="tab-purpose" data-tab="purpose" role="tab" aria-selected="false" aria-controls="purpose">Purpose</a>
   </div>
 </nav>
@@ -151,8 +167,8 @@ a.sp-half:hover .sp-mark{opacity:.72}
   <span class="trail faint"></span><span class="diamond"></span><span class="trail"></span>
 </div>
 
-<!-- REPORTS -->
-<section id="reports" data-view="reports" role="tabpanel" aria-labelledby="tab-reports" hidden>
+<!-- SESSIONS -->
+<section id="sessions" data-view="sessions" role="tabpanel" aria-labelledby="tab-sessions" hidden>
   <div class="headline-block">
     <p class="kicker"><span class="k-left">THE STUDY</span></p>
     <h2 class="headline">Every session, newest first.</h2>
@@ -172,10 +188,12 @@ a.sp-half:hover .sp-mark{opacity:.72}
     <div class="byline-rule"></div>
   </div>
   <div class="purpose-body" id="purposeBody">
-    <p>The Study is a slow read through the Bible, one book at a time. It starts with the New Testament, because that's where the biggest question is, then goes back to the Old Testament, which is far older, and reads it on its own terms.</p>
-    <p>It's not a devotional, and it's not trying to convert anyone, me included. I'm a skeptical reader. I'd like to be a Christian, but I can't get past the case for the resurrection, and picking a religion feels too important to do without proper skepticism and logic. So the questions stay open as long as they need to.</p>
-    <p>Each session asks the same things. What does the text actually say. Who wrote it, when, and what was going on around them. What's actually historical, graded honestly. What it meant to the people hearing it first. What pattern is running underneath the story. And what its values ended up building in the world we still live in.</p>
+    <p>I don&rsquo;t have a ton of time. It&rsquo;s hard to keep up.</p>
+    <p>There are so many conflicting claims about the Bible, fed by conflicting interests. It feels hard to know what is true, and I know I&rsquo;m not alone in that.</p>
+    <p>I often have questions I want answered, or things I don&rsquo;t understand, that nobody seems to answer straight. Not all of the time, but sometimes. When that happens, there is nowhere obvious to go for a straight answer.</p>
+    <p>In my ideal world, I build something useful to me. Something I enjoy reading. Because if I do, so will other people, and it will help them too.</p>
   </div>
+  <p class="purpose-disclaimer">The Study is a personal project. Everything here reflects my own views and is not affiliated with, endorsed by, or representative of my employer.</p>
   <div class="interlude" aria-hidden="true" style="margin-top:var(--sp-6)">
     <span class="trail faint"></span><span class="diamond"></span><span class="trail"></span>
   </div>

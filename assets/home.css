@@ -598,3 +598,71 @@ html{scroll-behavior:auto}
    Purpose tabs keep the site's standing behaviour. */
 #today *,#today *::before,#today *::after{animation:none!important;transition:none!important}
 #today .dy-draw{stroke-dashoffset:0}
+
+/* ================================================================
+   G NAMEPLATE — CANONICAL (Josh, Nov 22, 2026). The standardized
+   nameplate for The Board and The Study, hardcoded in this sheet
+   so every page that loads it emits the mark identically: exact
+   same sizing, spacing and proportions on every page. Canonical
+   markup: report-head-fragment.html and study-head-fragment.html
+   (single mark, report/session pages) and the two homepages
+   (split plate). This block is byte-identical in assets/board.css
+   and assets/home.css; change it in both or not at all.
+   The lockup: a small plain "THE" flanked by hairlines, the big
+   word beneath as a rendered inline-traced image (Board red
+   #ce2029 / Study deep royal blue #1f3a93 on the light ground;
+   lightened #e04a44 / #4a6fd4 on the dark), the Cormorant italic
+   tagline, and the short rule (2.5rem x 2px) closing it.
+   COLOR SPEC: on the light ground THE, its flanking hairlines,
+   the taglines and the short rules are black #141310, and the
+   words carry the same fine black border/tracery inside their
+   fills; on the dark ground everything black flips to white
+   #ffffff as a pair (borders included), the word fills keeping
+   their hues, lightened only to read. The two marks always
+   match each other in treatment — same border, same furniture
+   colors — never one of each.
+   LINK TREATMENT (one line only): a lockup that is a link rests
+   muted at opacity .55; on hover/active/focus it comes to full
+   strength while its OWN short rule grows from 2.5rem to the
+   full width of the lockup itself — never a second line. The
+   grown width is the word render's own width (height .71em x
+   the render's fixed aspect: 4.405em Board, 4.165em Study),
+   resolved in the lockup's font-size, which .sp-rule carries
+   for exactly that purpose. A lockup that is not a link keeps
+   its short, static rule. ~160ms ease throughout; transitions
+   off under prefers-reduced-motion.
+   ================================================================ */
+.gplate .lk{position:relative;font-family:var(--display);font-weight:900;color:inherit}
+.gplate .lk-g{display:inline-block;font-size:clamp(1.6rem,6.9vw,5rem)}
+.gplate .le-row{display:flex;align-items:center;width:100%;margin-bottom:.16em}
+.gplate .le-rule{flex:1 1 0;height:1px;background:currentColor}
+.gplate .le-the{font-size:clamp(.68rem,2vw,1.5rem);letter-spacing:.5em;padding-left:.5em;line-height:1;white-space:nowrap}
+.gplate .g-name{display:block}
+.gplate .g-name img{display:block;height:.71em;width:auto;margin:0 auto}
+.gplate .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px}
+.gplate .sp-rule{display:block;width:2.5rem;height:2px;margin:12px auto 0;font-size:clamp(1.6rem,6.9vw,5rem);transition:width .16s ease}
+.gplate .sp-half{text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.gplate.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
+.gplate.split-plate .sp-half{flex:1 1 0;min-width:0;padding:0 10px}
+.gplate-single{display:flex;justify-content:center;margin:var(--sp-3) 0 var(--sp-2)}
+.gplate-single .sp-half{flex:none;padding:0}
+.gplate.ground-light .sp-half{color:#141310}
+.gplate.ground-light .sp-tag{color:#141310}
+.gplate.ground-light .sp-rule{background:#141310}
+.gplate.ground-dark .sp-half{color:#ffffff}
+.gplate.ground-dark .sp-tag{color:#ffffff}
+.gplate.ground-dark .sp-rule{background:#ffffff}
+.gplate a.sp-half{opacity:.55;cursor:pointer;transition:opacity .16s ease,color .16s ease}
+.gplate a.sp-half:hover,.gplate a.sp-half:active,.gplate a.sp-half:focus-visible{opacity:1}
+.gplate a.sp-board:hover .sp-rule,.gplate a.sp-board:active .sp-rule,.gplate a.sp-board:focus-visible .sp-rule,a:hover .gplate .sp-board .sp-rule,a:active .gplate .sp-board .sp-rule,a:focus-visible .gplate .sp-board .sp-rule{width:4.405em}
+.gplate a.sp-study:hover .sp-rule,.gplate a.sp-study:active .sp-rule,.gplate a.sp-study:focus-visible .sp-rule,a:hover .gplate .sp-study .sp-rule,a:active .gplate .sp-study .sp-rule,a:focus-visible .gplate .sp-study .sp-rule{width:4.165em}
+@media(max-width:700px){
+  .gplate .lk-g{font-size:clamp(1.6rem,7.5vw,3.4rem)}
+  .gplate .sp-tag{font-size:.92rem;margin-top:8px}
+  .gplate .sp-rule{margin-top:10px;font-size:clamp(1.6rem,7.5vw,3.4rem)}
+  .gplate.split-plate .sp-half{padding:0 4px}
+}
+@media (prefers-reduced-motion: reduce){
+  .gplate a.sp-half{transition:none}
+  .gplate .sp-rule{transition:none}
+}

@@ -56,22 +56,20 @@ nav.menu a.active{color:#f5eedd}
 .verdict h2{color:var(--gold)}
 
 /* The Study wordmark (final treatment, Nov 21, 2026): a ONE-LINE
-   blackletter wordmark, "The Study", in Grenze Gotisch 600 —
+   blackletter wordmark, "The Study", in UnifrakturMaguntia —
    the New York Times nameplate treatment Josh directed: plain
    black ink, no stroke, no fill colour, no effects; the
    letterforms themselves carry it, sitting directly on the
    vellum with no rule beneath it. Overrides board.css's
    .nameplate letterform only; the masthead margins are the
-   Board's, unchanged. Josh picked Grenze Gotisch from the
-   variants page (Nov 21, 2026) over UnifrakturMaguntia, but
-   called the 700 "a bit unserious" — so it is set at 600, a
-   modest step down in size, with a hair of letterspacing: the
-   family's more refined, engraved register. (Supersedes the
-   traced-fill treatment — letters filled with the Study livery
-   colours and traced with a black outline — built and rejected
-   by Josh as terrible earlier the same day, and a briefly
-   targeted WSJ-style script.) */
-.nameplate{font-family:"Grenze Gotisch",serif;font-weight:600;font-size:clamp(2.85rem,11.4vw,6rem);line-height:1.12;letter-spacing:.01em;text-indent:0;text-transform:none;color:#141310}
+   Board's, unchanged. (Supersedes the traced-fill treatment —
+   letters filled with the Study livery colours and traced with
+   a black outline — built and rejected by Josh as terrible
+   earlier the same day, and a briefly targeted WSJ-style
+   script. A Grenze Gotisch setting was implemented later that
+   night and rejected by Josh on sight; reverted the same
+   night — UnifrakturMaguntia is the settled face.) */
+.nameplate{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(3rem,12vw,6.4rem);line-height:1.12;letter-spacing:0;text-indent:0;text-transform:none;color:#141310}
 
 /* Drop initial on each section's lede, in gold. */
 p.lede::first-letter{color:var(--gold)}

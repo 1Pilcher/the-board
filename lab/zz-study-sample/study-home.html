@@ -8,7 +8,7 @@
 <title>The Study - Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@600&family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/home.css" />
 <style>
 /* ============================================================
@@ -44,19 +44,18 @@ nav.menu a.active{color:#f5eedd}
    The pair is the switch between the two homepages: each half is
    a link; there is no separate nav button. Final treatment
    (Nov 21, 2026): each mark is a ONE-LINE blackletter wordmark in
-   Grenze Gotisch 600 — the New York Times nameplate treatment
+   UnifrakturMaguntia — the New York Times nameplate treatment
    Josh directed: plain black ink, no stroke, no fill colour, no
-   effects; the letterforms themselves carry it. Josh picked
-   Grenze Gotisch from the variants page over UnifrakturMaguntia
-   but called the 700 "a bit unserious" — so it is set at 600, a
-   modest step down in size, with a hair of letterspacing. The
+   effects; the letterforms themselves carry it. The
    Cormorant italic tagline sits beneath each mark. (Supersedes the
    traced-fill Playfair treatment, built and rejected by Josh as
    terrible the same day, and a briefly targeted WSJ-style
-   script.) */
+   script. A Grenze Gotisch setting was implemented later that
+   night and rejected by Josh on sight; reverted the same
+   night — UnifrakturMaguntia is the settled face.) */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
 a.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.sp-mark{display:block;font-family:"Grenze Gotisch",serif;font-weight:600;font-size:clamp(2rem,8.2vw,5rem);line-height:1.12;letter-spacing:.01em;color:#141310;white-space:nowrap}
+.sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.4rem,8.6vw,5.4rem);line-height:1.12;letter-spacing:0;color:#141310;white-space:nowrap}
 a.sp-half:hover .sp-mark{opacity:.72}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
 .sp-study .sp-tag{color:#4a4238}

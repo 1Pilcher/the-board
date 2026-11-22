@@ -17,9 +17,10 @@
    the lab samples at lab/zz-study-palettes/).
    The Study's pages are dark; The Board's stay light. Ground is
    an ink-blue slate near-black; text ink is warm vellum; the
-   chrome accent is the royal blue of the STUDY word, lightened
-   for the dark ground; the nav pill's active state is the deep
-   blue. Oxblood is RETIRED from The Study entirely (Nov 22,
+   chrome accent is the rich royal blue of the STUDY word,
+   #3d68e6 (candidate 2, picked by Josh Nov 22, 2026 from
+   lab/zz-study-blue/ \u2014 the word's own blue, both grounds);
+   the nav pill's active state is the deep blue. Oxblood is RETIRED from The Study entirely (Nov 22,
    2026); aged gold survives ONLY inside divider motifs (the
    --acc variable, read by the session page's divider rules).
    Dividers invert with the ground: vellum lines on dark (their
@@ -31,7 +32,7 @@
      ink          vellum         #f0ecdc
      ink soft     dimmed vellum  #d2cfbc
      secondary    slate gray     #9da6ae
-     accent       chrome blue    #6f97e8
+     accent       chrome blue    #3d68e6
      nav pill     deep blue      #4769ba
      nav ground   slate surface  #1b222d
      gold         aged gold      #a07d2c  (divider motifs only)
@@ -44,7 +45,7 @@
   --ink:#f0ecdc;
   --ink-soft:#d2cfbc;
   --gray:#9da6ae;
-  --accent:#6f97e8;
+  --accent:#3d68e6;
   --gold:#a07d2c;
   --acc:#a07d2c;
   --box:#1f2733;

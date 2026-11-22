@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>The Study - Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../assets/home.css" />
+<style>
+/* ============================================================
+   THE STUDY — homepage prototype (lab only).
+   The main homepage's anatomy and tab mechanics (assets/home.css
+   + assets/home.js, unmodified), recolored to The Study's
+   palette: vellum #f5eedd, warm ink #1c1814, oxblood #6e2b25,
+   aged gold #a07d2c, warm gray #77705f, summary tint #efe5cd,
+   nav ground deep umber #3e2f26 with a gold border under the bar.
+   Production would fold these overrides into a study sheet.
+   ============================================================ */
+:root{
+  --paper:#f5eedd;
+  --ink:#1c1814;
+  --ink-soft:#4a4238;
+  --gray:#77705f;
+  --accent:#6e2b25;
+  --box:#efe5cd;
+  --rule-light:#d9cba6;
+}
+nav.menu{
+  background:rgba(62,47,38,.97);
+  border:1px solid #2c211a;
+  border-bottom:1px solid #a07d2c;
+}
+nav.menu::before{background:linear-gradient(to right,rgba(62,47,38,1) 18%,rgba(62,47,38,0))}
+nav.menu::after{background:linear-gradient(to left,rgba(62,47,38,1) 18%,rgba(62,47,38,0))}
+nav.menu a.active{color:#f5eedd}
+.kicker{color:#a07d2c}
+.double-rule{border-top-color:#a07d2c}
+.double-rule::after{border-top-color:#a07d2c}
+
+/* Split nameplate — THE BOARD | THE STUDY (shared with the staged
+   main homepage; production would move this into a shared sheet). */
+.split-plate{display:flex;margin:var(--sp-2) 0 var(--sp-3);border:1px solid var(--rule-light)}
+.sp-half{flex:1 1 0;min-width:0;padding:22px 14px 18px;text-align:center}
+.sp-board{background:#faf7f0}
+.sp-study{background:#f5eedd;border-left:1px solid #d9cba6}
+.sp-name{font-family:var(--display);font-weight:900;font-size:clamp(1.85rem,6vw,3.3rem);line-height:1.02;color:#141310}
+.sp-study .sp-name{color:#1c1814}
+.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:8px;color:#3d3a35}
+.sp-study .sp-tag{color:#4a4238}
+.sp-rule{width:54px;margin:12px auto 0;border-top:3px solid #b03a2e}
+.sp-study .sp-rule{border-top:2px solid #a07d2c}
+
+/* Session list inside the Latest card, and the archive-row
+   thumbnail placeholder (no photography in the prototype). */
+.sess-list{max-width:620px;margin:var(--sp-4) auto 0;text-align:left}
+.sess-list p{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#a07d2c;margin:0 0 var(--sp-2)}
+.sess-list a{display:flex;justify-content:space-between;gap:14px;padding:9px 2px;border-top:1px solid var(--rule-light);color:var(--ink);text-decoration:none;font-size:1.02rem}
+.sess-list a:last-child{border-bottom:1px solid var(--rule-light)}
+.sess-list a span:last-child{color:var(--accent);font-weight:700}
+.athumb.ph{display:flex;align-items:center;justify-content:center;background:#efe5cd}
+.athumb.ph i{display:block;width:13px;height:13px;background:#a07d2c;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+<div id="topstrip" aria-hidden="true"></div>
+
+<div class="page">
+
+<header class="masthead">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board">
+      <div class="sp-name">THE<br>BOARD</div>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <div class="sp-rule"></div>
+    </div>
+    <div class="sp-half sp-study">
+      <div class="sp-name">THE<br>STUDY</div>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <div class="sp-rule"></div>
+    </div>
+  </div>
+  <div class="double-rule"></div>
+  <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+
+<nav class="menu" id="menu" data-fade="none" aria-label="Sections">
+  <div class="menu-track" id="menuTrack" role="tablist" aria-label="Homepage tabs">
+    <a href="#today" id="tab-today" data-tab="today" role="tab" aria-selected="true" aria-controls="today" class="active">Latest</a>
+    <a href="#reports" id="tab-reports" data-tab="reports" role="tab" aria-selected="false" aria-controls="reports">Reports</a>
+    <a href="#purpose" id="tab-purpose" data-tab="purpose" role="tab" aria-selected="false" aria-controls="purpose">Purpose</a>
+  </div>
+</nav>
+
+<div class="headline-block" data-view="today">
+  <p class="kicker"><span class="k-left">THE STUDY</span></p>
+  <h1 class="headline">The latest<br>session</h1>
+  <div class="byline-rule"></div>
+</div>
+
+<!-- LATEST -->
+<section id="today" data-view="today" role="tabpanel" aria-labelledby="tab-today" style="margin-top:0">
+  <section id="latest-report" data-view="today">
+
+  <article class="lead">
+    <div class="lead-body">
+      <p class="lk">Saturday, November 21, 2026</p>
+      <h2><a href="index.html">The Gospel of Mark</a></h2>
+      <p class="lead-dek">The earliest Gospel, read slowly and honestly: who wrote it, when, what in it can be checked, and why it still sets the terms for everything written after.</p>
+      <div class="lead-verdict"><p>This study reads the Bible the slow way: one book at a time, with the history left in and the hard questions left open. It begins with Mark, the earliest Gospel we have, and the shortest.</p><p>Mark was written within living memory of the crucifixion, probably around the year 70. It is urgent, plain, and strange, and it ends, in its earliest form, at an empty tomb, with no risen Jesus on stage at all.</p></div>
+      <div class="sess-list">
+        <p>In this session</p>
+        <a href="index.html#text"><span>The Text</span><span>&rarr;</span></a>
+        <a href="index.html#backstory"><span>The Backstory</span><span>&rarr;</span></a>
+        <a href="index.html#historical"><span>What Is Historical</span><span>&rarr;</span></a>
+        <a href="index.html#meant"><span>What It Meant Then</span><span>&rarr;</span></a>
+        <a href="index.html#pattern"><span>The Pattern</span><span>&rarr;</span></a>
+        <a href="index.html#impact"><span>The Impact</span><span>&rarr;</span></a>
+      </div>
+    </div>
+  </article>
+
+  </section>
+</section>
+
+<div class="interlude" data-view="today" aria-hidden="true">
+  <span class="trail faint"></span><span class="diamond"></span><span class="trail"></span>
+</div>
+
+<!-- REPORTS -->
+<section id="reports" data-view="reports" role="tabpanel" aria-labelledby="tab-reports" hidden>
+  <div class="headline-block">
+    <p class="kicker"><span class="k-left">THE STUDY</span></p>
+    <h2 class="headline">Every session, newest first.</h2>
+    <div class="byline-rule"></div>
+  </div>
+
+  <div class="archive-list">
+    <a class="archive-row" href="index.html"><span class="athumb ph"><i></i></span><span class="ad">Sat <br />Nov 21, 2026</span><span class="am"><span class="ak">Session 1</span><h3>The Gospel of Mark</h3><p>The earliest Gospel, read slowly and honestly: who wrote it, when, what in it can be checked, and why it still sets the terms for everything written after.</p></span><span class="aarr">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- PURPOSE -->
+<section id="purpose" data-view="purpose" role="tabpanel" aria-labelledby="tab-purpose" hidden>
+  <div class="headline-block">
+    <p class="kicker"><span class="k-left">THE STUDY</span></p>
+    <h2 class="headline">Why The Study exists.</h2>
+    <div class="byline-rule"></div>
+  </div>
+  <div class="purpose-body" id="purposeBody">
+    <p>The Study is a slow read through the Bible, taken one book at a time and in the order the books were written. It is not a devotional.</p>
+    <p>Every session asks what the text says, what of it is historical, what it meant to the people who first heard it, what pattern it carries, and what its values went on to build.</p>
+    <p>The questions stay open longer than the answers do.</p>
+  </div>
+  <div class="interlude" aria-hidden="true" style="margin-top:var(--sp-6)">
+    <span class="trail faint"></span><span class="diamond"></span><span class="trail"></span>
+  </div>
+</section>
+
+<footer>
+  <div class="fname">THE STUDY</div>
+  <div class="ftag">Reading the Bible slowly.</div>
+  <div class="colophon">The Study &middot; By Josh Pilcher &middot; Home &middot; <span data-today>Saturday, November 21, 2026</span></div>
+</footer>
+
+</div>
+
+<script src="../../assets/home.js"></script>
+</body>
+</html>

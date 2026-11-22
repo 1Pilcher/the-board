@@ -1,0 +1,69 @@
+/* ============================================================
+   THE STUDY — palette sheet (PROTOTYPE, Nov 21, 2026).
+   Scratch copy for the lab sample only; on production this sheet
+   is promoted to assets/study.css and study pages link it after
+   assets/board.css.
+
+   The Study inherits The Board's skeleton entire: frame constants,
+   spacing scale, fonts, nav shape and behaviour, headline block,
+   chapter structure, verdict block, sources apparatus. This sheet
+   changes COLOUR ONLY — no geometry, no widths, no spacing — by
+   re-declaring the shared sheet's colour variables and restating
+   the few furniture rules that carry literal colour values in
+   board.css (the nav ground and its border).
+
+   Palette (set Nov 21, 2026):
+     paper        vellum cream   #f5eedd  (Board: #faf7f0)
+     ink          warm near-black #1c1814 (Board: #141310)
+     accent       deep oxblood   #6e2b25  (Board red: #b03a2e)
+     gold         aged gold      #a07d2c  (kickers, rules, drop
+                                          initials — very sparing)
+     secondary    warm gray      #77705f  (Board: #6f6a61)
+     summary tint deeper vellum  #efe5cd  (Board box: #f3efe4)
+     nav ground   deep umber     #3e2f26, gold border under the bar
+   ============================================================ */
+
+:root{
+  --paper:#f5eedd;
+  --ink:#1c1814;
+  --ink-soft:#4a4238;
+  --gray:#77705f;
+  --accent:#6e2b25;
+  --gold:#a07d2c;
+  --box:#efe5cd;
+  --rule-light:#d9cba6;
+}
+
+/* Nav bar: same pill, same behaviour; deep warm umber ground,
+   vellum links (var(--paper), already redeclared above), the
+   active pill in oxblood (var(--accent), already redeclared),
+   and a thin gold border under the bar in place of the Board's
+   red ring. */
+nav.menu{
+  background:rgba(62,47,38,.97);
+  border:1px solid #2c211a;
+  border-bottom:1px solid var(--gold);
+  box-shadow:0 10px 30px rgba(28,24,20,.18);
+}
+nav.menu a.active{color:#f5eedd}
+
+/* Kickers and kicker-family labels in aged gold, very sparing:
+   the headline-block kicker, the chapter numbers, and the
+   opening summary block's heading. */
+.kicker{color:var(--gold)}
+.chapter .ch-no{color:var(--gold)}
+.chapter .ch-no::after{border-top-color:var(--gold)}
+.verdict h2{color:var(--gold)}
+
+/* Rules in gold: the masthead double rule. */
+.double-rule{border-top-color:var(--gold)}
+.double-rule::after{border-top-color:var(--gold)}
+
+/* Drop initial on each section's lede, in gold. */
+p.lede::first-letter{color:var(--gold)}
+
+/* The study divider: a small gold diamond centred on a hairline,
+   drawn in the sample page's local style block (.dv-study). Its
+   band colours come from this sheet's variables so the motif
+   stays inside the palette. */
+.dv-study{border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);background:var(--paper)}

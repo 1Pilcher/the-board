@@ -13,17 +13,29 @@
 
 <style>
 /* PROTOTYPE (lab only): split nameplate — THE BOARD | THE STUDY.
-   Production would move this block into assets/home.css. */
-.split-plate{display:flex;margin:var(--sp-2) 0 var(--sp-3);border:1px solid var(--rule-light)}
-.sp-half{flex:1 1 0;min-width:0;padding:22px 14px 18px;text-align:center}
-.sp-board{background:var(--paper)}
-.sp-study{background:#f5eedd;border-left:1px solid #d9cba6}
-.sp-name{font-family:var(--display);font-weight:900;font-size:clamp(1.85rem,6vw,3.3rem);line-height:1.02;color:var(--ink)}
-.sp-study .sp-name{color:#1c1814}
-.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:8px;color:var(--ink-soft)}
+   Floating wordmarks (Nov 21, 2026 refinement): no panels, no
+   backgrounds, no borders, and no rule beneath either mark — the
+   two wordmarks sit directly on the page's own ground. Each mark
+   is stacked (a letterspaced "The" over the name, Playfair
+   Display 900) and fully coloured in its own livery: Board ink
+   over Board red for THE BOARD, aged gold over oxblood for
+   THE STUDY. Production would move this block into a shared sheet. */
+.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
+.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center}
+.sp-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.66rem,1.5vw,.84rem);letter-spacing:.52em;text-indent:.52em;text-transform:uppercase}
+.sp-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.7rem,11vw,6.5rem);line-height:1.04;letter-spacing:.05em;text-indent:.05em;text-transform:uppercase;margin-top:7px}
+.sp-board .sp-the{color:#141310}
+.sp-board .sp-name{color:#b03a2e}
+.sp-study .sp-the{color:#a07d2c}
+.sp-study .sp-name{color:#6e2b25}
+.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
 .sp-study .sp-tag{color:#4a4238}
-.sp-rule{width:54px;margin:12px auto 0;border-top:3px solid var(--accent)}
-.sp-study .sp-rule{border-top:2px solid #a07d2c}
+@media(max-width:700px){
+  .sp-half{padding:0 4px}
+  .sp-the{font-size:.6rem;letter-spacing:.42em;text-indent:.42em}
+  .sp-name{font-size:2.28rem;letter-spacing:.02em;text-indent:.02em;margin-top:5px}
+  .sp-tag{font-size:.92rem;margin-top:8px}
+}
 .study-entry{max-width:620px;margin:0 auto;text-align:center}
 .study-entry .se-dek{font-size:1.12rem;line-height:1.65;color:var(--ink-soft)}
 .study-entry .se-link{display:inline-block;margin-top:var(--sp-3);font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:999px;padding:9px 20px}
@@ -38,17 +50,16 @@
   <div class="topline"><span class="side">Houston, Texas</span><!-- left slot intentionally blank: no weekday label above the masthead --><span class="mid"></span><span class="side right"></span></div>
   <div class="split-plate" role="banner">
     <div class="sp-half sp-board">
-      <div class="sp-name">THE<br>BOARD</div>
+      <span class="sp-the">The</span>
+      <span class="sp-name">Board</span>
       <div class="sp-tag">What&rsquo;s actually going on.</div>
-      <div class="sp-rule"></div>
     </div>
     <div class="sp-half sp-study">
-      <div class="sp-name">THE<br>STUDY</div>
+      <span class="sp-the">The</span>
+      <span class="sp-name">Study</span>
       <div class="sp-tag">Reading the Bible slowly.</div>
-      <div class="sp-rule"></div>
     </div>
   </div>
-  <div class="double-rule"></div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
 </header>
 

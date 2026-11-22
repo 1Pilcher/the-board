@@ -55,9 +55,15 @@ nav.menu a.active{color:#f5eedd}
 .chapter .ch-no::after{border-top-color:var(--gold)}
 .verdict h2{color:var(--gold)}
 
-/* Rules in gold: the masthead double rule. */
-.double-rule{border-top-color:var(--gold)}
-.double-rule::after{border-top-color:var(--gold)}
+/* The Study wordmark (Nov 21, 2026 refinement): stacked and
+   floating — a letterspaced gold "The" over a large oxblood
+   "Study", the mark fully coloured in the Study livery, sitting
+   directly on the vellum with no rule beneath it. Overrides
+   board.css's .nameplate geometry of letterform only; the
+   masthead margins are the Board's, unchanged. */
+.nameplate{letter-spacing:0;text-indent:0;line-height:1}
+.nameplate .np-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.78rem,2vw,1rem);letter-spacing:.55em;text-indent:.55em;text-transform:uppercase;color:var(--gold)}
+.nameplate .np-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(3.8rem,15vw,7.5rem);line-height:1.02;letter-spacing:.04em;text-indent:.04em;text-transform:uppercase;color:var(--accent);margin-top:9px}
 
 /* Drop initial on each section's lede, in gold. */
 p.lede::first-letter{color:var(--gold)}

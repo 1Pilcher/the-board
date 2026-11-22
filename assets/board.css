@@ -989,26 +989,30 @@ body:has(.dy-front) nav.menu{display:none}
    and assets/home.css; change it in both or not at all.
    The lockup: a small plain "THE" flanked by hairlines, the big
    word beneath as a rendered inline-traced image (Board red
-   #ce2029 / Study deep royal blue #1f3a93 on the light ground;
-   lightened #e04a44 / #6f97e8 on the dark), the Cormorant italic
-   tagline, and the short rule (2.5rem x 2px) closing it.
+   #ce2029 on the light ground, lightened #e04a44 on the dark;
+   Study rich royal blue #3d68e6 on both grounds, candidate 2
+   from lab/zz-study-blue/), the Cormorant italic tagline, and
+   the short rule (2.5rem x 2px) closing it.
    COLOR SPEC: on the light ground THE, its flanking hairlines,
    the taglines and the short rules are black #141310, and the
-   words carry the same fine black border/tracery inside their
-   fills; on the dark ground everything black flips to white
-   #ffffff as a pair (borders included), the word fills keeping
-   their hues, lightened only to read. The two marks always
+   words carry the same fine black outline around their fills
+   (fill and outline only \u2014 the interior tracery lines were
+   removed Nov 22, 2026, on Josh's order); on the dark ground
+   everything black flips to white #ffffff as a pair (outlines
+   included), the word fills keeping their hues, lightened
+   only to read (Board only; the Study blue is one hex on both
+   grounds). The two marks always
    match each other in treatment — same border, same furniture
    colors — never one of each.
       UNIFORM FURNITURE (Josh, Nov 22, 2026): THE, its flanking
    hairlines, the taglines, the short rules and the letters'
-   border/tracery are ONE color \u2014 black #141310 on the light
+   outlines are ONE color \u2014 black #141310 on the light
    ground, white #ffffff on the dark \u2014 on both marks, in both
    states, at all times. No element carries its own shade.
    LINK TREATMENT: the mute lives in the word fill only. A
    lockup that is a link rests with its fill washed to 55%
    toward the ground (a second render of the word stacked over
-   the full-strength one, its border/tracery pixels identical);
+   the full-strength one, its outline pixels identical);
    the furniture is never dimmed. On hover/active/focus the
    washed render fades out (opacity, .2s ease-out \u2014 the nav
    bar's color timing) and the fill stands at full strength,
@@ -1023,6 +1027,11 @@ body:has(.dy-front) nav.menu{display:none}
    lines in every engine (Josh, Nov 22, 2026: the grown line
    aligns with the lines and the words above it). A lockup
    that is not a link keeps its short, static rule.
+   TAGLINE GAP (Josh, Nov 22, 2026): the tagline sits tight
+   under the word \u2014 line-height 1.15, not the inherited 1.85,
+   and cut margins \u2014 so the word-to-tagline gap reads in the
+   same family as the THE-to-word gap and each lockup holds
+   together as one thing.
    Transitions off under prefers-reduced-motion.
    STANDALONE SCALE: on report/session pages the single mark is
    this same lockup scaled as one unit until the big word's
@@ -1042,7 +1051,7 @@ body:has(.dy-front) nav.menu{display:none}
 .gplate .g-name img{display:block;height:.71em;width:auto;margin:0 auto}
 .gplate .g-name img.g-wash{position:absolute;top:0;left:50%;transform:translateX(-50%);opacity:1;transition:opacity .2s ease-out}
 .gplate a.sp-half:hover .g-wash,.gplate a.sp-half:active .g-wash,.gplate a.sp-half:focus-visible .g-wash{opacity:0}
-.gplate .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px}
+.gplate .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);line-height:1.15;margin-top:10px}
 .gplate .sp-rule{display:block;width:2.5rem;height:2px;margin:12px auto 0;font-size:clamp(1.6rem,6.9vw,5rem);transition:width .25s ease-out}
 .gplate .sp-half{text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .gplate.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
@@ -1069,14 +1078,14 @@ body:has(.dy-front) nav.menu{display:none}
    space above it is the plate's margin, like the split plate. */
 .gplate.gplate-single .lk-g{display:block}
 .gplate.gplate-single .le-the{font-size:.3em}
-.gplate.gplate-single .sp-tag{font-size:.23em;margin-top:.125em}
+.gplate.gplate-single .sp-tag{font-size:.23em;margin-top:.3em}
 .gplate.gplate-single .sp-rule{font-size:1em;width:.5em;height:.025em;margin-top:.15em}
 @media(max-width:380px){
   .gplate.gplate-single .sp-half{font-size:3.521rem}
 }
 @media(max-width:700px){
   .gplate .lk-g{font-size:clamp(1.6rem,7.5vw,3.4rem)}
-  .gplate .sp-tag{font-size:.92rem;margin-top:8px}
+  .gplate .sp-tag{font-size:.92rem;margin-top:3px}
   .gplate .sp-rule{margin-top:10px;font-size:clamp(1.6rem,7.5vw,3.4rem)}
   .gplate.split-plate .sp-half{padding:0 4px}
 }

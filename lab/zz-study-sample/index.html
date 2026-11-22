@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="color-scheme" content="light" />
+<meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
 <title>The Study &middot; The Gospel of Mark</title>
 <meta name="description" content="The earliest Gospel, read slowly and honestly: who wrote it, when, what in it can be checked, and why it still sets the terms for everything written after." />
@@ -17,15 +17,64 @@
 <link rel="stylesheet" href="../../assets/board.css" />
 <link rel="stylesheet" href="study.css" />
 <style>
-/* Sample-local geometry for the study divider motif (a small gold
-   diamond centred between two hairlines). Colours live in study.css. */
-.dv-study{height:120px;max-width:920px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:18px}
-@media(max-width:700px){.dv-study{height:104px}}
-.dv-study .ln{display:block;width:min(180px,30%);border-top:1px solid var(--gold);opacity:.6}
-.dv-study .dia{display:block;width:11px;height:11px;background:var(--gold);transform:rotate(45deg);flex:0 0 auto}
+/* Session-local divider rules: the drawn presets for this session
+   (draw recorded in the run's working files), extracted from the
+   Study divider catalog. Colours read the study sheet's variables,
+   so on the dark ground the motifs render in vellum lines with
+   oxblood and gold accents unchanged; the band borders are
+   restated below in a dark umber rule. */
 /* The nameplate is the switch back to The Study's front page. */
 .np-link{display:block;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 .np-link:hover .nameplate{opacity:.72}
+.dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;border-top:1px solid #eae0c0;border-bottom:1px solid #eae0c0;background:var(--paper)}
+.dv-17 svg{display:block;width:min(372px,94%);height:auto}
+.dv-17 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-17 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-17 .f{fill:var(--ink)}
+.dv-17 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-17 .a{fill:var(--acc)}
+.dv-17 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-17 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.dv-06{--acc:var(--ox)}
+.dv-06 svg{display:block;height:130px;width:auto}
+.dv-06 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-06 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-06 .f{fill:var(--ink)}
+.dv-06 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-06 .a{fill:var(--acc)}
+.dv-06 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-09 svg{display:block;height:130px;width:auto}
+.dv-09 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-09 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-09 .f{fill:var(--ink)}
+.dv-09 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-09 .a{fill:var(--acc)}
+.dv-09 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-12{--acc:var(--gold)}
+.dv-12 svg{display:block;width:min(335px,94%);height:auto}
+.dv-12 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-12 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-12 .f{fill:var(--ink)}
+.dv-12 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-12 .a{fill:var(--acc)}
+.dv-12 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-26 svg{display:block;width:min(261px,94%);height:auto}
+.dv-26 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-26 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-26 .f{fill:var(--ink)}
+.dv-26 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-26 .a{fill:var(--acc)}
+.dv-26 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-20{--acc:var(--gold)}
+.dv-20 svg{display:block;height:130px;width:auto}
+.dv-20 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-20 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-20 .f{fill:var(--ink)}
+.dv-20 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-20 .a{fill:var(--acc)}
+.dv-20 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv{border-top-color:#57462e;border-bottom-color:#57462e}
+@media(max-width:700px){.dv{height:135px}}
 </style>
 </head>
 <body>
@@ -66,12 +115,14 @@
 <section class="verdict" id="brief">
 <div class="verdict-in reveal rv-deep">
 <h2>In Brief</h2>
-<p>This study reads the Bible the slow way: one book at a time, with the history left in and the hard questions left open. It begins with Mark, the earliest Gospel we have, and the shortest.</p>
-<p>Mark was written within living memory of the crucifixion, probably around the year 70. It is urgent, plain, and strange, and it ends, in its earliest form, at an empty tomb, with no risen Jesus on stage at all.</p>
+<p>Six questions run through every session of this study. What does the text actually say? Who wrote it, and when? What in it can be checked against the evidence?</p>
+<p>What did it mean to the people who heard it first? What pattern runs underneath the story? And what did its values go on to build?</p>
+<p>This session takes up the Gospel of Mark, the earliest of the four and the shortest. It was written about forty years after the crucifixion, most likely near the year 70, by an author who never names himself and never claims to have seen the events he describes.</p>
+<p>Mark is also where this study has to begin, because of how the book ends. In its earliest recoverable form it stops at an empty tomb, with frightened women and no risen Jesus on stage at all. The case for the resurrection starts here, and it starts in silence.</p>
 </div>
 </section>
 
-<div class="dv dv-study" role="presentation"><span class="ln"></span><span class="dia"></span><span class="ln"></span></div>
+<div class="dv dv-17" role="presentation"><svg viewBox="0 0 400 144" aria-hidden="true"><path class="o" style="stroke-width:3.5" d="M20,106 C140,92 262,54 380,28"/><path class="lf" d="M38.0,103.7 Q46.5,86.7 58.3,78.6"/><path class="lf" d="M45.2,102.7 Q61.5,114.6 75.2,136.6"/><path class="lf" d="M56.8,101.0 Q66.2,81.2 79.6,70.4"/><path class="lf" d="M64.0,99.9 Q82.9,113.2 98.9,137.1"/><path class="lf" d="M75.6,98.0 Q85.9,75.4 100.6,62.2"/><path class="lf" d="M82.8,96.7 Q104.1,111.2 122.3,136.8"/><path class="lf" d="M94.4,94.6 Q105.4,69.6 121.2,54.1"/><path class="lf" d="M101.6,93.2 Q125.1,108.8 145.2,135.8"/><path class="lf" d="M113.2,91.0 Q124.7,63.9 141.5,46.4"/><path class="lf" d="M120.4,89.5 Q145.7,105.8 167.5,134.0"/><path class="lf" d="M132.0,87.1 Q143.8,58.4 161.3,39.3"/><path class="lf" d="M139.2,85.6 Q166.0,102.4 189.1,131.4"/><path class="lf" d="M150.8,83.1 Q162.8,53.1 180.7,32.9"/><path class="lf" d="M158.1,81.5 Q185.8,98.5 209.8,128.0"/><path class="lf" d="M169.6,78.8 Q181.6,48.2 199.6,27.3"/><path class="lf" d="M176.9,77.2 Q205.1,94.2 229.6,123.8"/><path class="lf" d="M188.5,74.4 Q200.2,43.7 218.1,22.5"/><path class="lf" d="M195.7,72.7 Q223.9,89.5 248.4,118.8"/><path class="lf" d="M207.3,69.9 Q218.7,39.5 236.1,18.8"/><path class="lf" d="M214.5,68.2 Q242.1,84.5 266.3,113.2"/><path class="lf" d="M226.0,65.3 Q237.0,35.9 253.7,15.9"/><path class="lf" d="M233.3,63.6 Q259.9,79.2 283.2,106.9"/><path class="lf" d="M244.8,60.7 Q255.1,32.7 271.0,14.0"/><path class="lf" d="M252.0,58.9 Q277.2,73.6 299.2,100.1"/><path class="lf" d="M263.5,56.0 Q273.2,29.9 287.9,13.0"/><path class="lf" d="M270.7,54.2 Q294.0,67.8 314.3,92.9"/><path class="lf" d="M282.2,51.3 Q291.0,27.5 304.5,12.6"/><path class="lf" d="M289.4,49.5 Q310.5,61.9 328.9,85.2"/><path class="lf" d="M300.9,46.7 Q308.8,25.4 320.9,13.0"/><path class="lf" d="M308.1,44.9 Q326.6,55.9 342.9,77.4"/><path class="lf" d="M319.5,42.1 Q326.4,23.7 337.0,13.8"/><path class="lf" d="M326.7,40.4 Q342.6,49.9 356.5,69.4"/><path class="lf" d="M338.1,37.6 Q344.0,22.1 353.0,14.9"/><path class="lf" d="M345.2,36.0 Q358.9,44.2 370.8,62.1"/><path class="lf" d="M356.6,33.3 Q362.4,18.4 371.1,11.8"/><path class="lf" d="M363.7,31.7 Q377.3,40.0 389.2,58.0"/></svg></div>
 
 <div class="column">
 <header class="chapter" id="text">
@@ -82,13 +133,39 @@
 </div>
 </header>
 <section class="story">
-<p class="lede">Mark opens without a birth story, without shepherds or wise men. His first line is a title for everything that follows: &ldquo;The beginning of the good news of Jesus Christ, the Son of God.&rdquo; Then John is baptizing in the wilderness, and Jesus walks into the water.</p>
-<p>Everything in Mark moves at that pace. His favourite word is &ldquo;immediately,&rdquo; used more than forty times, and scenes follow one another like breaths. A man is healed; immediately a crowd gathers; immediately the trouble starts.</p>
-<p>The Greek is rough, the sentences plain, the details oddly specific: green grass, two hundred denarii, a cushion in the boat. Scholars have long noticed that Mark reads less like literature composed at leisure and more like testimony written down in a hurry.</p>
+<p class="lede">Mark opens without a birth story. There are no shepherds, no wise men, no angels over Bethlehem.</p>
+<p>His first line is a title for everything that follows: &ldquo;The beginning of the good news of Jesus Christ.&rdquo; Then John is baptizing in the wilderness, and Jesus walks into the water.</p>
+<p>Even that title line is not quite steady. The words &ldquo;the Son of God&rdquo; stand in most copies, and in brackets in the standard Greek edition, because a handful of witnesses, including Codex Sinaiticus as first written, leave them out. The NRSVUE prints the verse without them and footnotes the longer reading.</p>
+<p>The uncertainty is honest from the first verse: this book reaches us through copyists, and copyists leave fingerprints.</p>
+<p>Everything in Mark moves fast. His favourite connective is the Greek word euthys, &ldquo;immediately,&rdquo; used forty-one times, and his sentences begin with &ldquo;and&rdquo; the way a story does when it is told out loud. A man is healed; immediately a crowd gathers; immediately the trouble starts.</p>
+<p>The Greek is rough and the details are oddly specific. The crowd sits on green grass. The disciples price bread at two hundred denarii.</p>
+<p>Jesus sleeps in the storm on a cushion in the boat. Such details read less like literature composed at leisure and more like testimony set down in a hurry.</p>
+<p>Words from Jesus&rsquo;s own language keep surfacing, and Mark has to translate them for his readers. &ldquo;Talitha koum,&rdquo; little girl, get up. &ldquo;Ephphatha,&rdquo; be opened. &ldquo;Abba,&rdquo; father, in the garden prayer. On the cross, &ldquo;Eloi, Eloi, lema sabachthani,&rdquo; my God, my God, why have you forsaken me.</p>
+<p>The book falls into two halves, and the hinge is a conversation. In the first half Jesus moves through Galilee healing, teaching, and gathering crowds, while everyone asks who he is. At Caesarea Philippi, Peter finally answers: &ldquo;You are the Messiah.&rdquo; Jesus accepts the title and immediately forbids anyone to repeat it.</p>
+<p>From that moment the road turns south, toward Jerusalem and the cross. Three times Jesus predicts his death in plain words, and three times the disciples fail to absorb it.</p>
+<p>The second half of Mark is a journey narrative, and its destination is announced so often that the reader cannot pretend not to know.</p>
+<p>Running through the whole book is a strange command: silence. Demons recognize Jesus and are ordered to be quiet. People he heals are told to tell no one, and sometimes tell everyone anyway. After Peter&rsquo;s confession, and again after the transfiguration, the disciples are charged to say nothing until after the resurrection.</p>
+<p>Almost nobody in Mark understands him. The family thinks he has gone out of his mind. The religious authorities decide early that he must die. The disciples, who see the most, grasp the least: they argue about which of them is greatest while he is describing his execution.</p>
+<p>Mark&rsquo;s portrait of the inner circle is the harshest in the four Gospels. In Gethsemane they sleep. At the arrest they all flee. Peter, who swore he would die first, denies three times that he knows the man. Later Gospels soften several of these scenes. Mark leaves them raw.</p>
+<p>One scene has never been explained. During the arrest, a young man following Jesus is seized, slips out of his linen cloth, and runs away naked into the night.</p>
+<p>He appears in no other Gospel, does nothing, and is never mentioned again. Readers have guessed for centuries. The text simply leaves him running.</p>
+<p>At the cross, Mark&rsquo;s details tighten. Darkness covers the land at noon. Jesus dies with the opening line of Psalm 22 on his lips.</p>
+<p>The curtain of the Temple tears in two, the same Greek word Mark used when the heavens tore open at the baptism. The book&rsquo;s two tearings frame everything between them.</p>
+<p>Then a Roman speaks the book&rsquo;s verdict. God said it at the baptism, in his own voice to his Son. Possessed men and the spirits in them said it in terror. The first human being in Mark to say it in his own right, standing on his own feet, is a Roman centurion, the officer in charge at the execution, watching Jesus die: &ldquo;Truly this man was God&rsquo;s Son.&rdquo;</p>
+<p>Joseph of Arimathea, a member of the council that condemned Jesus, asks Pilate for the body and lays it in a rock tomb.</p>
+<p>Two women watch where the body is placed: Mary Magdalene and Mary the mother of Joses. The Sabbath intervenes, a day when no work can be done, and when it ends, at sunrise on the first day of the week, three women come to the tomb with spices to anoint the body: those two, and Salome. They find the stone rolled away and the tomb empty.</p>
+<p>Inside sits a young man in a white robe. &ldquo;Do not be alarmed,&rdquo; he says. &ldquo;You are looking for Jesus of Nazareth, who was crucified.</p>
+<p>He has been raised; he is not here.&rdquo; He gives them a message: tell the disciples and Peter that Jesus goes ahead of them to Galilee, where they will see him.</p>
+<p>Here is how the earliest recoverable text of Mark ends: &ldquo;So they went out and fled from the tomb, for terror and amazement had seized them; and they said nothing to anyone, for they were afraid.&rdquo; The book&rsquo;s last word, in Greek, is &ldquo;for.&rdquo; No appearance. No reunion. No explanation.</p>
+<p>Most Bibles print twelve more verses, in which Jesus appears, commissions the disciples, and ascends. Those verses are not in the two oldest complete copies of Mark, Codex Sinaiticus and Codex Vaticanus, both from the fourth century.</p>
+<p>The Vaticanus scribe even left a whole column blank after verse 8, the only blank column in its New Testament. Many readers take it as a sign he knew other copies had more. The space is, in his normal hand, slightly too small to hold it, so the point is debated.</p>
+<p>In the early fourth century the church historian Eusebius, answering a question from Marinus, reported one solution in these terms: the accurate copies of Mark, and almost all copies, ended with the women&rsquo;s fear. He went on to offer a second solution that kept the longer ending, but the report itself is early and clear. A shorter alternative ending also circulated in a few copies.</p>
+<p>The longer ending&rsquo;s style differs from Mark&rsquo;s, and it reintroduces Mary Magdalene as if she were a stranger. The verdict of textual scholarship is about as firm as such verdicts get: Mark did not write it. It was composed in the second century, by a hand or hands unknown, to give the book an ending with appearances in it.</p>
+<p>So the first Gospel ends the way it began, abruptly, with the story handed to frightened people. Whether Mark meant to stop there, or whether an original ending was lost, is a question the evidence cannot quite close.</p>
+<p>What it means that the church could not leave the ending alone is a question this session will come back to.</p>
 </section>
 </div>
-
-<div class="dv dv-study" role="presentation"><span class="ln"></span><span class="dia"></span><span class="ln"></span></div>
+<div class="dv dv-06" role="presentation"><svg viewBox="0 0 240 144" aria-hidden="true"><path class="o" style="stroke-width:3.5" d="M120,14 C124,24 123,33 116,42"/><path class="i" d="M124,20 C136,12 148,16 146,26 C144,34 134,35 131,28"/><path class="o" style="stroke-width:2.4" d="M121,25 C105,9 84,4 66,12 C63,26 73,38 89,40 C105,42 119,36 121,25 Z"/><path class="i" d="M114,27 C99,19 85,14 73,13"/><line class="o" style="stroke-width:2.2" x1="120" y1="42" x2="120" y2="46"/><circle class="o" style="stroke-width:2.4" cx="101.5" cy="52" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="120.0" cy="52" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="138.5" cy="52" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="92.2" cy="69" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="110.8" cy="69" r="9.5"/><circle class="a" cx="129.2" cy="69" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="147.8" cy="69" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="92.2" cy="86" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="110.8" cy="86" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="129.2" cy="86" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="147.8" cy="86" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="101.5" cy="102" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="120.0" cy="102" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="138.5" cy="102" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="110.8" cy="117" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="129.2" cy="117" r="9.5"/><circle class="o" style="stroke-width:2.4" cx="120.0" cy="130" r="9.5"/></svg></div>
 
 <div class="column">
 <header class="chapter" id="backstory">
@@ -99,13 +176,27 @@
 </div>
 </header>
 <section class="story">
-<p class="lede">Nobody signed this book. The title &ldquo;according to Mark&rdquo; was added later, when churches held several Gospels and needed labels for the scrolls. The text itself never names its author, and never claims to be an eyewitness.</p>
-<p>An early tradition, recorded by Papias around the year 130, says Mark was Peter&rsquo;s interpreter, writing down what Peter preached. That may be true. It cannot be checked, and honest readers hold it the way scholars do: as a possibility, not a foundation.</p>
-<p>The Gospel was most likely written around the year 70, as Rome destroyed Jerusalem and burned the Temple. Its first readers were frightened people asking whether God had abandoned them. Mark&rsquo;s answer is a story, told fast, about a Messiah who suffers.</p>
+<p class="lede">Nobody signed this book. The words &ldquo;according to Mark&rdquo; were added later, most scholars say in the second century, probably when churches holding several Gospels side by side needed labels to tell them apart. The text itself never names its author, and never claims to be the work of an eyewitness.</p>
+<p>The earliest statement about who wrote it comes from Papias, bishop of Hierapolis in Asia Minor, writing in the early second century (about AD 110-130), whose own book is lost. His words survive because Eusebius, writing two centuries later, quoted them. Papias says he is passing on what an elder told him.</p>
+<p>Here is the tradition, in Eusebius&rsquo;s quotation: &ldquo;Mark, who had been Peter&rsquo;s interpreter, accurately wrote what he remembered, yet not in order the things either said or done by the Lord.&rdquo; Papias adds that Mark never heard Jesus himself. He followed Peter, who taught as the need arose rather than in sequence.</p>
+<p>Notice what Papias is doing. He is defending the book. Someone had noticed that Mark&rsquo;s order differs from other accounts, and the defense is that the disorder came from Peter&rsquo;s preaching, not from error. The Gospel was already being cross-examined within living memory of its writing.</p>
+<p>Whether the tradition is true cannot be checked. No independent source confirms that a man named Mark turned Peter&rsquo;s sermons into this book. A letter attributed to Peter sends greetings from the church in &ldquo;Babylon,&rdquo; widely read as a code name for Rome, &ldquo;and so does my son Mark&rdquo; (1 Peter 5:13). That puts a Mark beside Peter in Rome, which fits the tradition without proving it.</p>
+<p>Scholars have argued both sides for a century. The defense points out that Papias is early, specific, and oddly unflattering: nobody inventing an author would choose an obscure interpreter and then apologize for his arrangement.</p>
+<p>The skeptic answers that the early church attached apostolic names to anonymous books for the same reason anyone does, to give them weight.</p>
+<p>The honest grade is tradition: plausible, early, and unprovable. What can be said without it is still considerable. The author wrote Greek for readers who needed Jewish customs explained and Aramaic translated, which places his audience outside Judea and mostly outside Judaism.</p>
+<p>His Greek carries Latin loanwords: denarius, legion, centurion, praetorium. A later tradition, from Clement of Alexandria, says the book was written in Rome, for people who had heard Peter preach there. Rome fits the internal evidence better than any rival, though a minority of scholars argue for Galilee or southern Syria.</p>
+<p>The date can be narrowed by the book&rsquo;s own anxieties. Mark&rsquo;s thirteenth chapter warns of war, false messiahs, and the Temple&rsquo;s destruction, stone by stone.</p>
+<p>Jerusalem fell to Rome in the year 70, and the Temple burned. Most scholars place the Gospel between about 65 and 75, close enough to the catastrophe that its first readers were living inside it.</p>
+<p>If the book was written in Rome, its first readers had lived through, or just after, Nero&rsquo;s persecution of AD 64, when Christians in the city were tortured and killed as scapegoats for a fire.</p>
+<p>If it was written nearer Judea, they were refugees or survivors of the war. Either way, this is a book for frightened people.</p>
+<p>Their question runs under every chapter. Jesus had promised a kingdom. Instead they had an executed Messiah, a burned Temple, and an empire that killed his followers for sport.</p>
+<p>Mark&rsquo;s answer is not an argument. It is a story, told at speed, about a Messiah whose path to glory runs through a cross.</p>
+<p>Something else was happening that made a book necessary. The eyewitness generation was dying. James, the Lord&rsquo;s brother, had been executed in Jerusalem in the year 62. Peter, by tradition, died under Nero a few years later. Memory that had lived in mouths was moving, of necessity, onto pages.</p>
+<p>So far as we know, nobody had ever written a gospel before. Paul&rsquo;s letters are letters, addressed to problems.</p>
+<p>Mark took the sayings, the healings, and the passion story that communities had carried separately, and stitched them into one continuous narrative with a cross at the end of it. The stitching is the interpretation, and every Gospel since has followed his design.</p>
 </section>
 </div>
-
-<div class="dv dv-study" role="presentation"><span class="ln"></span><span class="dia"></span><span class="ln"></span></div>
+<div class="dv dv-09" role="presentation"><svg viewBox="0 0 224 144" aria-hidden="true"><path class="o" d="M30,128 L30,56 C30,32 46,18 68,18 C90,18 106,32 106,56 L106,128 Z"/><line class="i" x1="42" y1="50" x2="60" y2="50"/><line class="i" x1="72" y1="50" x2="92" y2="50"/><line class="i" x1="44" y1="66" x2="70" y2="66"/><line class="i" x1="78" y1="66" x2="94" y2="66"/><line class="i" x1="42" y1="82" x2="60" y2="82"/><line class="i" x1="72" y1="82" x2="92" y2="82"/><line class="i" x1="44" y1="98" x2="70" y2="98"/><line class="i" x1="78" y1="98" x2="94" y2="98"/><line class="i" x1="42" y1="112" x2="60" y2="112"/><line class="i" x1="72" y1="112" x2="92" y2="112"/><path class="o" d="M118,128 L118,56 C118,32 134,18 156,18 C178,18 194,32 194,56 L194,128 Z"/><line class="i" x1="130" y1="50" x2="148" y2="50"/><line class="i" x1="160" y1="50" x2="180" y2="50"/><line class="i" x1="132" y1="66" x2="158" y2="66"/><line class="i" x1="166" y1="66" x2="182" y2="66"/><line class="i" x1="130" y1="82" x2="148" y2="82"/><line class="i" x1="160" y1="82" x2="180" y2="82"/><line class="i" x1="132" y1="98" x2="158" y2="98"/><line class="i" x1="166" y1="98" x2="182" y2="98"/><line class="i" x1="130" y1="112" x2="148" y2="112"/><line class="i" x1="160" y1="112" x2="180" y2="112"/></svg></div>
 
 <div class="column">
 <header class="chapter" id="historical">
@@ -116,12 +207,54 @@
 </div>
 </header>
 <section class="story">
-<p>What can be checked, checked plainly: Jesus was baptized by John, gathered followers in Galilee, and was crucified under Pontius Pilate. Those points rest on more than one source, including writers with no love for the movement.</p>
-<p><em>Sample text. In a full session this section grades each claim in the book: corroborated, contested, or beyond checking, with the evidence for each grade laid out beside it.</em></p>
+<p class="lede">This section grades the book&rsquo;s claims the way the study grades everything: corroborated, where independent evidence converges; contested, where honest scholars divide; and beyond checking, where the tools of history simply cannot reach. Mark gets no gentler treatment than any other ancient text, and no harsher one either.</p>
+<p>Corroborated first. Jesus of Nazareth existed, taught in Galilee, and drew crowds. That is not a church claim resting on church paper.</p>
+<p>The Jewish historian Josephus, writing in the 90s, describes John the Baptist as a real and respected preacher executed by Herod Antipas, and the broad outline of his account agrees with Mark&rsquo;s while differing in its details.</p>
+<p>The baptism itself carries the mark of memory rather than invention. A movement does not usually invent a scene in which its founder submits to another man&rsquo;s ritual of repentance.</p>
+<p>The later Gospels visibly struggle with it; Matthew adds a scene Mark does not have, in which John tries to refuse: &ldquo;I need to be baptized by you, and do you come to me?&rdquo; Details a tradition finds embarrassing, and keeps anyway, are usually there because they happened.</p>
+<p>The crucifixion stands on the firmest ground of all.</p>
+<p>Tacitus, the Roman historian, no friend of the movement, records it as background fact while describing Nero&rsquo;s Rome: &ldquo;Christus, from whom the name had its origin, suffered the extreme penalty during the reign of Tiberius at the hands of one of our procurators, Pontius Pilatus.&rdquo;</p>
+<p>Josephus mentions Jesus too, in a passage Christian copyists later padded with confessions Josephus never made.</p>
+<p>Most scholars think the additions can be peeled away to leave a short, more neutral notice underneath: a teacher, a following, an execution under Pilate, and a movement that did not quit, though scholars reconstruct that original differently, and a minority think Josephus wrote none of it.</p>
+<p>One hostile Roman outsider, Tacitus, states the execution under Pilate as background fact. Josephus, an indifferent Jewish outsider, independently attests Jesus, his following, and his brother James, and, on the majority reconstruction, the execution too.</p>
+<p>What happened next is also early, and this matters for everything this study will examine. Within a few years of the crucifixion, Jesus&rsquo;s followers were proclaiming that God had raised him.</p>
+<p>Paul, writing in the 50s, quotes a formula he says he received: Christ died, was buried, was raised, and appeared to Peter, then to the Twelve, then to many more.</p>
+<p>Most scholars, sceptical as well as confessional, date that formula to within about five years of the cross. A small minority dissent, and some decline to date it more precisely than &ldquo;well before Paul wrote,&rdquo; but the early date is the majority view across the spectrum. Paul says he later spent fifteen days with Peter in Jerusalem, and also saw James, the Lord&rsquo;s brother.</p>
+<p>Be precise about what that proves, because the study will return to it. The early creed proves the belief is early, and that named men staked their lives on it.</p>
+<p>It does not, by itself, prove the event. And notice what Paul&rsquo;s formula never mentions: a tomb that anyone visited, an empty tomb, or women who found anything. It says he was buried, and then it goes straight to appearances.</p>
+<p>James gives us one more fixed point. Josephus reports, in a passage almost no scholar doubts, that the high priest had &ldquo;the brother of Jesus who was called Christ, whose name was James,&rdquo; stoned in the year 62.</p>
+<p>The movement had leaders, they were known, and within a generation they were dying for the proclamation.</p>
+<p>Now the contested ground, and the contest that matters most: the empty tomb. Mark is the first writer we know to tell the story, some forty years after the event. Paul, earlier, never tells it. Everything depends on how that gap is read, and both readings deserve their strongest form.</p>
+<p>The case that the tomb was really found empty runs like this. The discoverers are women, in a culture whose law, as Josephus expounds it, would not admit a woman&rsquo;s testimony in court &ldquo;on account of the levity and boldness of their sex,&rdquo; a general exclusion with exceptions in practice, but a real discount on a woman&rsquo;s word.</p>
+<p>A community inventing its founding miracle does not cast witnesses its own world discounts. It casts Peter. The story&rsquo;s awkwardness is the signature of memory.</p>
+<p>The witnesses are also named, and placed, in a story published within reach of people who knew where the tomb was and could have asked the women themselves.</p>
+<p>The burial helps the case. All four Gospels name Joseph of Arimathea, a member of the very council that condemned Jesus, as the man who buried him. Inventing a benefactor from the enemy&rsquo;s bench, with a name and a hometown, invites checking.</p>
+<p>Nor was such a burial an anomaly that needed inventing. A council member of Joseph&rsquo;s standing seeing an executed man buried before the festival was the pious duty his world expected of him, and ordinary practice makes a poor candidate for fabrication.</p>
+<p>And when Matthew, a generation later, reports the rival explanation in circulation, that the disciples stole the body, the argument on both sides already assumes a missing corpse.</p>
+<p>Even the ending argues for memory. No one inventing a founding story closes it with the witnesses fleeing in terror and the message undelivered.</p>
+<p>The case against runs like this. Forty years is a long silence for the most checkable claim in the story, and it is broken by a writer whose passion narrative is woven from scripture.</p>
+<p>Mark&rsquo;s cross is staged from Psalm 22: the garments divided by lot, the bystanders wagging their heads, the dying cry itself. A narrative that scriptural may be embroidery on every point, the tomb included.</p>
+<p>The silence inside the story cuts the same way. Mark&rsquo;s women &ldquo;said nothing to anyone,&rdquo; which conveniently explains why no one had heard of an empty tomb before Mark published one.</p>
+<p>Matthew&rsquo;s theft story cuts both ways, too. It proves that by Matthew&rsquo;s day the empty tomb was being claimed and needed an answer. It does not prove the tomb was empty a generation earlier, and the guard Matthew posts at the tomb is widely read as an answer built for the argument, not a memory.</p>
+<p>And the earliest writer, Paul, builds his whole resurrection argument on appearances, never once reaching for an empty tomb that would have settled the matter in Corinth.</p>
+<p>Those appearances are themselves visionary in kind. The creed Paul quotes is a confession, a formula recited to state what the community believes, not a report filed by witnesses. And experiences of the dead are neither rare nor dishonest: the bereaved commonly see and hear the person they have lost, and they are not lying when they say so.</p>
+<p>The honest grade is contested, and it is the live center of the resurrection question. Specialists divide, and the division does not follow the line between believers and skeptics.</p>
+<p>What can be said is that the tomb story is neither provable nor dismissible, and that Mark, remarkably, attaches no appearance to it. His tomb produces fear, not faith.</p>
+<p>The burial itself sits one grade lower in certainty. Crucified men in the Roman world were commonly left on the cross or thrown into common graves, though exceptions are documented, including one crucified man&rsquo;s heel bone found in a Jerusalem family tomb.</p>
+<p>A council member claiming the body is possible. It is not the sort of thing that can now be verified.</p>
+<p>Mark&rsquo;s geography raises a quieter doubt. His demons plunge into a lake at a town whose very name wobbles in the manuscripts, because the candidates lie miles from the water.</p>
+<p>His route from Tyre to Galilee wanders through Sidon like a man reading a map he has never walked. These slips suggest an author writing at a distance from the scene, one more reason the eyewitness tradition traced in the backstory is graded as tradition, not as record.</p>
+<p>The messianic secret grades as Mark&rsquo;s shaping rather than history, on most readings. In 1901 William Wrede argued that the commands to silence are too impractical to be memory: healed crowds cannot be hidden, and Mark keeps reporting that the secret leaked anyway.</p>
+<p>Wrede&rsquo;s full theory has few heirs, but his central observation stands. The earliest Gospel is a shaped argument, not a transcript.</p>
+<p>Some of Mark&rsquo;s most solemn details lie beyond checking altogether. No record of the darkness at noon survives outside the Gospels.</p>
+<p>The Temple curtain tore, if it tore, in a sanctuary almost no one was permitted to see. These are theological narration, and the honest reader files them there, neither as data nor as fraud.</p>
+<p>The miracles belong in the same file, by method rather than by verdict. History can establish that crowds believed Jesus healed, and that his reputation as a healer and exorcist is early and widespread.</p>
+<p>Whether the healings happened as described is a question the historian&rsquo;s tools are not built to answer, and this study will not pretend otherwise.</p>
+<p>And the resurrection itself? Mark, read strictly, does not even narrate it. He narrates an empty tomb, a young man&rsquo;s announcement, and a failure to deliver the message.</p>
+<p>The appearances are not waiting in some later session. They are in this record already, in Paul&rsquo;s list, the earliest evidence there is, and they are the evidence. What remains genuinely open is what kind of events they were, how they relate to the tomb Mark describes, and why the accounts of them diverge as much as they do. This session ends where Mark does: at the evidence, unfinished.</p>
 </section>
 </div>
-
-<div class="dv dv-study" role="presentation"><span class="ln"></span><span class="dia"></span><span class="ln"></span></div>
+<div class="dv dv-12" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" d="M58,104 C110,80 180,64 238,50 C258,45 276,36 288,24 C296,30 298,40 294,48 C288,57 278,60 268,56 C230,72 160,88 100,102 C84,106 70,110 62,112 C57,110 56,107 58,104 Z"/><path class="i" d="M288,24 C290,34 288,44 268,56"/><path class="i" d="M84,96 C130,76 186,64 232,54"/><path class="i" d="M96,102 C140,84 192,72 234,62"/><path class="as" style="stroke-width:3" d="M288,24 C296,30 298,40 294,48 C291,53 286,56 281,57"/></svg></div>
 
 <div class="column">
 <header class="chapter" id="meant">
@@ -132,12 +265,31 @@
 </div>
 </header>
 <section class="story">
-<p>&ldquo;Good news&rdquo; was not a religious word first. It was the language of empire: the good news of a victory, of an emperor&rsquo;s birth or accession. Mark&rsquo;s first line takes Caesar&rsquo;s word and gives it to a crucified Jew. His first hearers would have heard the provocation.</p>
-<p><em>Sample text. A full session stays with the first audience: what they feared, what they expected a Messiah to be, and why this book disappointed those expectations on purpose.</em></p>
+<p class="lede">Begin with the first word of the book that mattered: euangelion, good news. It was not a religious word first. It was the language of empire, the announcement of a victory, an heir, an accession. Mark&rsquo;s first hearers lived in a world papered with Caesar&rsquo;s good news.</p>
+<p>A few years before Jesus was born, the cities of Asia reset their calendar so the year would begin on Augustus&rsquo;s birthday.</p>
+<p>Their decree, carved in stone at Priene in the year 9 BC, calls the emperor a savior who would end war, and says &ldquo;the birthday of the god Augustus was the beginning of the good tidings for the world.&rdquo;</p>
+<p>Now hear Mark&rsquo;s first line in that world. The beginning of the good news of Jesus Christ, the Son of God.</p>
+<p>Every loaded word in the inscription is here, reassigned: good news, savior&rsquo;s story, Son of God, a claim Augustus&rsquo;s coins made for him in Latin as divi filius, son of the deified Julius. Mark opens by entering a rival claim in the empire&rsquo;s own vocabulary.</p>
+<p>The claim was dangerous in a way modern readers miss. Rome did not merely tolerate its emperor&rsquo;s divinity; it built loyalty out of it, in temples, oaths, and festivals across the world Mark&rsquo;s readers lived in.</p>
+<p>To announce another Son of God, executed by Rome as a criminal, was not a private opinion. It was a provocation with an address.</p>
+<p>&ldquo;Messiah&rdquo; carried a different charge for Jewish hearers. It meant an anointed king from David&rsquo;s line, and in a land under occupation the word leaned toward liberation: a ruler who would break Rome&rsquo;s grip and restore Israel. Crowds followed Jesus in Galilee hoping, on the most natural reading, for something like that.</p>
+<p>A crucified Messiah was a contradiction in terms. Worse, it brushed against a curse in the Torah itself: a man hanged on a tree is cursed by God.</p>
+<p>Whatever else the first Christians had to explain, they had to explain why God&rsquo;s anointed died under God&rsquo;s curse, at the hands of the occupier he was supposed to expel.</p>
+<p>Mark&rsquo;s whole book is that explanation, and it is an argument, not a chronicle. His answer is that the cross is not the refutation of the Messiah but the definition of him.</p>
+<p>The title is only true on the far side of the execution, which is why the book keeps it under seal: &ldquo;until after the Son of Man had risen from the dead.&rdquo;</p>
+<p>That is what the secrecy meant to its first hearers. It answered the movement&rsquo;s own most painful question: if he was the Messiah, why did nobody know, and why did he die like that?</p>
+<p>Because, Mark says, the identity could not be read correctly until the end. You are reading from past the end. They were not.</p>
+<p>For the frightened community holding the book, the disciples were the mirror held closest. These are not heroes. They misunderstand, compete, sleep, run, and deny, and they are the chosen inner circle anyway.</p>
+<p>A reader who had fled Jerusalem, or denied knowing the Christians under questioning in Rome, found himself in this book, and found himself kept.</p>
+<p>The message at the tomb is aimed at exactly that reader. &ldquo;Tell his disciples and Peter.&rdquo; Not the disciples in general: Peter, the denier, named separately, summoned by name to a meeting in Galilee.</p>
+<p>In a book for people who had failed under pressure, the first word after the resurrection is that the worst failure is expected back.</p>
+<p>And the ending, in their ears, was not a defect to be repaired. It was the shape of their own situation. They too had a message and were afraid to carry it.</p>
+<p>They too had been promised a meeting they could not yet see. The book ends by handing itself over.</p>
+<p>One more thing the first hearers would have caught, which later centuries nearly lost: the book calls itself a beginning. &ldquo;The beginning of the good news&rdquo; is its first line and its whole self-understanding.</p>
+<p>Mark did not think he was writing the last word. He was writing the first one, for people who would have to live the rest.</p>
 </section>
 </div>
-
-<div class="dv dv-study" role="presentation"><span class="ln"></span><span class="dia"></span><span class="ln"></span></div>
+<div class="dv dv-26" role="presentation"><svg viewBox="0 0 280 144" aria-hidden="true"><path class="o" style="stroke-width:3.5" d="M62,130 L62,62 C62,32 96,16 140,16 C184,16 218,32 218,62 L218,130"/><path class="i" d="M78,130 L78,64 C78,40 104,28 140,28 C176,28 202,40 202,64 L202,130"/><line class="o" style="stroke-width:2.5" x1="140" y1="30" x2="140" y2="130"/><line class="i" x1="80" y1="76" x2="200" y2="76"/><line class="i" x1="80" y1="106" x2="200" y2="106"/><circle class="f" cx="97" cy="56" r="2.2"/><circle class="f" cx="97" cy="88" r="2.2"/><circle class="f" cx="97" cy="116" r="2.2"/><circle class="f" cx="117" cy="56" r="2.2"/><circle class="f" cx="117" cy="88" r="2.2"/><circle class="f" cx="117" cy="116" r="2.2"/><circle class="f" cx="163" cy="56" r="2.2"/><circle class="f" cx="163" cy="88" r="2.2"/><circle class="f" cx="163" cy="116" r="2.2"/><circle class="f" cx="183" cy="56" r="2.2"/><circle class="f" cx="183" cy="88" r="2.2"/><circle class="f" cx="183" cy="116" r="2.2"/><circle class="o" style="stroke-width:2.5" cx="126" cy="88" r="6"/><circle class="o" style="stroke-width:2.5" cx="154" cy="88" r="6"/><line class="o" x1="52" y1="130" x2="228" y2="130"/></svg></div>
 
 <div class="column">
 <header class="chapter" id="pattern">
@@ -148,12 +300,33 @@
 </div>
 </header>
 <section class="story">
-<p>Underneath the history sits a shape anyone can recognize. Mark&rsquo;s Jesus is misunderstood by everyone closest to him, abandoned at the moment of greatest need, and vindicated only after the worst has happened. The disciples fail in this book more honestly than in any other.</p>
-<p><em>Sample text. A full session draws the pattern out slowly: what this story trains a reader to expect from the world, and what it asks of them when the worst arrives.</em></p>
+<p class="lede">Underneath the history sits a shape, and the shape is why this book outlasted its century. Mark is not only reporting a life.</p>
+<p>He is training a reader in how sight, failure, and courage actually work, and his teaching method is placement: he puts two healings of blind men around his central section like brackets.</p>
+<p>The first blind man, at Bethsaida, is healed in two touches. After the first, he sees people &ldquo;like trees, walking.&rdquo; Only after the second does he see clearly.</p>
+<p>No other healing in Mark works this way, and it stands at the head of the road section, immediately before Peter&rsquo;s confession. Peter then demonstrates the first touch exactly: he sees that Jesus is the Messiah, and in the same breath rebukes him for planning to die.</p>
+<p>That is the book&rsquo;s diagnosis of its reader. Understanding, in Mark, arrives in stages, and the dangerous stage is the first one, because it feels like sight.</p>
+<p>The half-blind man is not lying about the trees. He is reporting his real vision. It is simply not yet vision, and everything he does next will be built on the blur.</p>
+<p>The second blind man closes the bracket. Bartimaeus, sitting by the road out of Jericho, hears who is passing and will not be silenced, and when he is healed he does the one thing the rich man earlier could not do: he follows, on the way.</p>
+<p>Between the two healings, everyone with eyes has been failing to see. The blind men are the only ones who end up on the road.</p>
+<p>Failure, in Mark, is not the exception among the faithful. It is the norm, described without softening. The inner circle sleeps through the crisis, scatters at the arrest, and its leader swears he does not know the man.</p>
+<p>Mark does not excuse any of it, and he does not treat any of it as final. The story&rsquo;s deepest pattern is that collapse is a chapter, not the book.</p>
+<p>The tomb message is where the pattern shows its hand. &ldquo;Tell his disciples and Peter&rdquo; is a small phrase with the whole ethic inside it: the denier is not written out of the summons, he is written into it, by name, first among the failed.</p>
+<p>Restoration in Mark is not earned by an apology tour. It begins with being expected, by name, at a meeting you have every reason to skip.</p>
+<p>Watch who sees clearly in this book, and a second pattern emerges: it is almost never the insiders. The demons know who Jesus is before the disciples do.</p>
+<p>A foreign woman argues with him and wins her daughter&rsquo;s healing. A poor widow&rsquo;s two coins outweigh the treasury. A Roman centurion makes the confession the whole book has been waiting for, at the foot of the cross.</p>
+<p>Position, in Mark&rsquo;s world, is a kind of blindness. The people with the most access see the least; the people at the edge see first.</p>
+<p>As a piece of moral psychology this needs no updating. Institutions still cannot see what the outsider at the execution can, because the insider&rsquo;s sight is mortgaged to what he needs to be true.</p>
+<p>The book&rsquo;s emotional pattern is just as deliberate. Fear is the response Mark records at every unveiling: the disciples are terrified in the boat, the townspeople beg Jesus to leave after the exorcism, the women flee the tomb trembling.</p>
+<p>In Mark, fear is not the opposite of faith. It is the normal first sensation of standing close to something real, and the story never shames anyone for feeling it.</p>
+<p>What the story does ask is what happens next. The women, in the text we have, say nothing, and the book stops, mid-breath, on their silence.</p>
+<p>Every reader since has stood exactly there: holding news that costs something to carry, afraid, with a road back to Galilee in front of them. Mark does not resolve the scene because the resolution was never his to write. It belongs to whoever is holding the book.</p>
+<p>At the center of the pattern stands the book&rsquo;s one great redefinition.</p>
+<p>The rulers of the world, Jesus says, lord it over their subjects; &ldquo;it is not so among you.&rdquo; Greatness is reassigned to service, and the Son of Man&rsquo;s own summary of his life is that he came &ldquo;not to be served but to serve, and to give his life a ransom for many.&rdquo;</p>
+<p>Read as psychology, that saying is the pattern&rsquo;s engine. Mark&rsquo;s story keeps stripping status away from the people who chase it and handing significance to the people who serve, wash, give, and endure.</p>
+<p>Two thousand years of readers have found their ambitions quietly rearranged by it, which is a large part of why a short, rough book from a frightened community is still being read at all.</p>
 </section>
 </div>
-
-<div class="dv dv-study" role="presentation"><span class="ln"></span><span class="dia"></span><span class="ln"></span></div>
+<div class="dv dv-20" role="presentation"><svg viewBox="0 0 200 144" aria-hidden="true"><polygon class="a" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round" points="100.0,12.0 105.7,40.1 121.2,32.8 113.9,48.3 142.0,54.0 113.9,59.7 121.2,75.2 105.7,67.9 107,84 100,138 93,84 94.3,67.9 78.8,75.2 86.1,59.7 58.0,54.0 86.1,48.3 78.8,32.8 94.3,40.1"/></svg></div>
 
 <div class="column">
 <header class="chapter" id="impact">
@@ -164,8 +337,24 @@
 </div>
 </header>
 <section class="story">
-<p>Because Mark was first, his choices became Christianity&rsquo;s defaults. Matthew and Luke used his book as their skeleton, keeping most of it and building on it. The plain, urgent, suffering Messiah of Mark is the ground floor under every later portrait, including John&rsquo;s.</p>
-<p><em>Sample text. A full session follows the consequences outward: how this one short book shaped two thousand years of art, ethics, and argument about what a good life costs.</em></p>
+<p class="lede">Start with the most concrete fact: Mark survived because he was copied into other men&rsquo;s books. Matthew and Luke, writing a decade or two later, took his narrative as their skeleton.</p>
+<p>About ninety percent of Mark&rsquo;s material reappears in Matthew, and well over half of it in Luke. Of his roughly eleven thousand Greek words, only 132 have no parallel in either Gospel, and even those figures count a loosely paralleled story as absorbed, so treat them as a measure of scale, not of copying word for word.</p>
+<p>The mechanism matters. Ancient books lived by being recopied, and Mark was recopied into the two Gospels that became the church&rsquo;s favorites.</p>
+<p>His plot became the default plot: baptism, Galilee, the road, the cross, the empty tomb. Nearly every later telling of Jesus&rsquo;s life, in preaching, painting, and film, walks a road Mark surveyed.</p>
+<p>He also, so far as we can tell, invented the form. Before Mark there were letters, sayings collections, and preaching.</p>
+<p>After Mark there is a kind of book the world had not had: a gospel, a life arranged as an argument ending in an execution. The book-shaped character of Christianity, a faith carried by texts read aloud in assembly, begins on his desk.</p>
+<p>His ending had an impact of its own, and it is the strangest in the story. The church could not leave the book in fear.</p>
+<p>Copyists supplied the longer ending, complete with appearances, a commission, and an ascension, and for most of Christian history those twelve added verses were simply read as Mark. Transmission itself became the first commentary: the tradition voted, with its pens, for a risen Jesus on stage.</p>
+<p>One of those added verses is still at work. &ldquo;They will pick up snakes,&rdquo; says the longer ending, a promise Mark never wrote.</p>
+<p>In the early twentieth century it became a founding text for serpent handling in Appalachian Holiness churches, a practice that continues today and has killed some of its practitioners. A copyist&rsquo;s patch, added to comfort ancient readers, reached across nineteen centuries and put snakes in people&rsquo;s hands.</p>
+<p>The cross underwent the larger transformation. Rome&rsquo;s instrument of shame became, within a few centuries, the emblem on buildings, coins, and bodies, traced in blessing and worn in gold.</p>
+<p>The mechanism ran through Mark&rsquo;s redefinition: if the Messiah is known by his cross, the cross cannot remain a symbol of defeat. Constantine&rsquo;s adoption of the sign in the fourth century merely crowned a reversal the text had already performed.</p>
+<p>The ethic traveled with the symbol. A story that locates greatness in service, and God in a suffering man, gave later centuries a template their institutions kept citing: care for the sick and the outcast as sacred work, and the last placed first.</p>
+<p>Not every institution lived up to its template. The template itself is traceable, and it is set in this book&rsquo;s climax.</p>
+<p>Finally, Mark set the floor for the argument that still continues. When modern scholarship went looking for the historical Jesus, it started where the evidence starts, with Mark and the sayings source, and the tools it built, source criticism, form criticism, Wrede&rsquo;s suspicion of the text&rsquo;s own agenda, were built on this book.</p>
+<p>Every life of Jesus written since is, in part, an argument with Mark&rsquo;s decisions about what to include and where to stop.</p>
+<p>Which returns the impact to its beginning. A short book, by an author we cannot name, for a community we can barely reconstruct, ends in a tomb garden with three frightened women and an unanswered message.</p>
+<p>Everything in this session, and everything in the sessions to come, is downstream of the fact that the message got carried anyway. By whom, and on what evidence, is the question the study now takes up in earnest.</p>
 </section>
 </div>
 
@@ -173,12 +362,21 @@
 <h3>Sources and Method</h3>
 <p>Every historical claim in a session is checked before the session is published; what cannot be proven is cut or plainly labelled as tradition. Sources are grouped below, each linked to the document itself.</p>
 <p><em><strong>The text</strong><br>
-<a href="https://www.biblegateway.com/passage/?search=Mark%201&amp;version=NRSVUE">The Gospel of Mark, chapter 1 (NRSVUE)</a></em></p>
+<a href="https://www.biblegateway.com/passage/?search=Mark%201&amp;version=NRSVUE">The Gospel of Mark, chapter 1 (NRSVUE)</a><br>
+<a href="https://www.biblegateway.com/passage/?search=Mark%2016&amp;version=NRSVUE">The Gospel of Mark, chapter 16 (NRSVUE)</a></em></p>
 <p><em><strong>Dating and authorship</strong><br>
-<a href="https://oyc.yale.edu/religious-studies/rlst-152">Martin, New Testament History and Literature, Yale Open Courses</a><br>
-<a href="https://www.earlychristianwritings.com/text/papias.html">Papias, fragments, in translation</a></em></p>
-<p><em><strong>The first readers</strong><br>
-<a href="https://oyc.yale.edu/religious-studies/rlst-145">Hayes, Introduction to the Old Testament, Yale Open Courses</a></em></p>
+<a href="https://www.earlychristianwritings.com/text/papias.html">Papias, fragments, in translation</a><br>
+<a href="https://oyc.yale.edu/religious-studies/rlst-152">Martin, New Testament History and Literature, Yale Open Courses</a></em></p>
+<p><em><strong>The ending of Mark</strong><br>
+<a href="https://en.wikipedia.org/wiki/Mark_16">Mark 16: the manuscript evidence for the endings</a></em></p>
+<p><em><strong>Outside witnesses</strong><br>
+<a href="http://www.perseus.tufts.edu/hopper/text?doc=Tac.+Ann.+15.44&amp;redirect=true">Tacitus, Annals 15.44 (Perseus, Church and Brodribb translation)</a><br>
+<a href="https://biblicaltraining.org/library/josephus">Josephus, the passages on John the Baptist and James</a></em></p>
+<p><em><strong>The first readers&rsquo; world</strong><br>
+<a href="https://en.wikipedia.org/wiki/Priene_calendar_inscription">The Priene calendar inscription, 9 BC</a></em></p>
+<p><em><strong>Mark among the Gospels</strong><br>
+<a href="https://bible.org/article/synoptic-problem">The synoptic problem and Markan priority</a><br>
+<a href="https://en.wikipedia.org/wiki/Messianic_Secret">Wrede and the messianic secret</a></em></p>
 
 <div class="colophon">The Study &middot; By Josh Pilcher &middot; Saturday, November 21, 2026 &middot; Session 1</div>
 

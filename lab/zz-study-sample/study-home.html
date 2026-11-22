@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="color-scheme" content="light" />
+<meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
 <title>The Study - Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,53 +14,66 @@
 /* ============================================================
    THE STUDY — homepage prototype (lab only).
    The main homepage's anatomy and tab mechanics (assets/home.css
-   + assets/home.js, unmodified), recolored to The Study's
-   palette: vellum #f5eedd, warm ink #1c1814, oxblood #6e2b25,
-   aged gold #a07d2c, warm gray #77705f, summary tint #efe5cd,
-   nav ground deep umber #3e2f26 with a gold border under the bar.
-   Production would fold these overrides into a study sheet.
+   + assets/home.js, unmodified), recolored to The Study's DARK
+   livery (Josh, Nov 21, 2026: "the study is dark mode"): ground
+   deep umber #221b14, ink vellum #f5eedd, oxblood lightened
+   #c05f4d, aged gold #a07d2c, warm gray #a79a80, summary tint
+   #2d2317, nav ground deep umber #3e2f26 with a gold border
+   under the bar. Production would fold these overrides into a
+   study sheet.
    ============================================================ */
 :root{
-  --paper:#f5eedd;
-  --ink:#1c1814;
-  --ink-soft:#4a4238;
-  --gray:#77705f;
-  --accent:#6e2b25;
-  --box:#efe5cd;
-  --rule-light:#d9cba6;
+  --paper:#221b14;
+  --ink:#f5eedd;
+  --ink-soft:#d9cdb2;
+  --gray:#a79a80;
+  --accent:#c05f4d;
+  --ox:#c05f4d;
+  --gold:#a07d2c;
+  --acc:#c05f4d;
+  --box:#2d2317;
+  --rule-light:#4d3d29;
 }
 nav.menu{
   background:rgba(62,47,38,.97);
-  border:1px solid #2c211a;
+  border:1px solid #17100b;
   border-bottom:1px solid #a07d2c;
 }
 nav.menu::before{background:linear-gradient(to right,rgba(62,47,38,1) 18%,rgba(62,47,38,0))}
 nav.menu::after{background:linear-gradient(to left,rgba(62,47,38,1) 18%,rgba(62,47,38,0))}
+nav.menu a{color:#f5eedd}
 nav.menu a.active{color:#f5eedd}
 .kicker{color:#a07d2c}
 
 /* Split nameplate — The Board | The Study (shared with the staged
    main homepage; production would move this into a shared sheet).
-   The pair is the switch between the two homepages: each half is
-   a link; there is no separate nav button. Final treatment
-   (Nov 21, 2026): each mark is a ONE-LINE blackletter wordmark in
-   UnifrakturMaguntia — the New York Times nameplate treatment
-   Josh directed: plain black ink, no stroke, no fill colour, no
-   effects; the letterforms themselves carry it. The
-   Cormorant italic tagline sits beneath each mark. (Supersedes the
-   traced-fill Playfair treatment, built and rejected by Josh as
-   terrible the same day, and a briefly targeted WSJ-style
-   script. A Grenze Gotisch setting was implemented later that
-   night and rejected by Josh on sight; reverted the same
-   night — UnifrakturMaguntia is the settled face.) */
+   The pair is the switch between the two homepages: both names
+   stand at full presence, the SIBLING half is the link, the
+   CURRENT half is not; there is no separate nav button.
+   SETTLED WORDMARK RULE (Nov 21, 2026): the two marks are
+   UNIFORM — same UnifrakturMaguntia blackletter, same size, same
+   treatment, no weight or spacing tricks, no fill colour, no
+   stroke, no effects. On this dark ground both marks are plain
+   white (the vellum ink); on The Board's light ground, plain
+   black. The ground flip is the only difference. The Cormorant
+   italic tagline sits beneath each mark. (History, so none of
+   it is rebuilt: a traced-fill treatment was rejected by Josh
+   as terrible; a WSJ-style script was briefly targeted, then
+   NYT blackletter directed; Grenze Gotisch was implemented and
+   rejected the same night; a gilt setting was instructed late
+   on Nov 21 and corrected the same night to a white body with
+   a coloured centre trace, the variants page's candidate F —
+   and that correction was itself superseded the same night by
+   the settled rule above. Candidate F is not implemented on
+   any page.) */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
-a.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.4rem,8.6vw,5.4rem);line-height:1.12;letter-spacing:0;color:#141310;white-space:nowrap}
+.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.4rem,8.6vw,5.4rem);line-height:1.12;letter-spacing:0;color:#f5eedd;white-space:nowrap}
 a.sp-half:hover .sp-mark{opacity:.72}
-.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
-.sp-study .sp-tag{color:#4a4238}
+.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:var(--ink-soft)}
+.sp-study .sp-tag{color:var(--ink-soft)}
 @media(max-width:700px){
-  a.sp-half{padding:0 4px}
+  .sp-half{padding:0 4px}
   .sp-tag{font-size:.92rem;margin-top:8px}
 }
 
@@ -71,7 +84,7 @@ a.sp-half:hover .sp-mark{opacity:.72}
 .sess-list a{display:flex;justify-content:space-between;gap:14px;padding:9px 2px;border-top:1px solid var(--rule-light);color:var(--ink);text-decoration:none;font-size:1.02rem}
 .sess-list a:last-child{border-bottom:1px solid var(--rule-light)}
 .sess-list a span:last-child{color:var(--accent);font-weight:700}
-.athumb.ph{display:flex;align-items:center;justify-content:center;background:#efe5cd}
+.athumb.ph{display:flex;align-items:center;justify-content:center;background:#2d2317}
 .athumb.ph i{display:block;width:13px;height:13px;background:#a07d2c;transform:rotate(45deg)}
 </style>
 </head>
@@ -87,10 +100,10 @@ a.sp-half:hover .sp-mark{opacity:.72}
       <span class="sp-mark">The Board</span>
       <div class="sp-tag">What&rsquo;s actually going on.</div>
     </a>
-    <a class="sp-half sp-study" href="study-home.html" aria-label="The Study — front page">
+    <div class="sp-half sp-study" aria-current="page">
       <span class="sp-mark">The Study</span>
       <div class="sp-tag">Reading the Bible slowly.</div>
-    </a>
+    </div>
   </div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
 </header>
@@ -118,7 +131,7 @@ a.sp-half:hover .sp-mark{opacity:.72}
       <p class="lk">Saturday, November 21, 2026</p>
       <h2><a href="index.html">The Gospel of Mark</a></h2>
       <p class="lead-dek">The earliest Gospel, read slowly and honestly: who wrote it, when, what in it can be checked, and why it still sets the terms for everything written after.</p>
-      <div class="lead-verdict"><p>This study reads the Bible the slow way: one book at a time, with the history left in and the hard questions left open. It begins with Mark, the earliest Gospel we have, and the shortest.</p><p>Mark was written within living memory of the crucifixion, probably around the year 70. It is urgent, plain, and strange, and it ends, in its earliest form, at an empty tomb, with no risen Jesus on stage at all.</p></div>
+      <div class="lead-verdict"><p>Six questions run through every session of this study. What does the text actually say? Who wrote it, and when? What in it can be checked against the evidence?</p><p>What did it mean to the people who heard it first? What pattern runs underneath the story? And what did its values go on to build?</p><p>This session takes up the Gospel of Mark, the earliest of the four and the shortest. It was written about forty years after the crucifixion, most likely near the year 70, by an author who never names himself and never claims to have seen the events he describes.</p><p>Mark is also where this study has to begin, because of how the book ends. In its earliest recoverable form it stops at an empty tomb, with frightened women and no risen Jesus on stage at all. The case for the resurrection starts here, and it starts in silence.</p></div>
       <div class="sess-list">
         <p>In this session</p>
         <a href="index.html#text"><span>The Text</span><span>&rarr;</span></a>

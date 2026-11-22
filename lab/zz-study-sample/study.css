@@ -12,39 +12,51 @@
    the few furniture rules that carry literal colour values in
    board.css (the nav ground and its border).
 
-   Palette (set Nov 21, 2026):
-     paper        vellum cream   #f5eedd  (Board: #faf7f0)
-     ink          warm near-black #1c1814 (Board: #141310)
-     accent       deep oxblood   #6e2b25  (Board red: #b03a2e)
-     gold         aged gold      #a07d2c  (kickers, rules, drop
-                                          initials — very sparing)
-     secondary    warm gray      #77705f  (Board: #6f6a61)
-     summary tint deeper vellum  #efe5cd  (Board box: #f3efe4)
-     nav ground   deep umber     #3e2f26, gold border under the bar
+   DARK LIVERY (Josh, Nov 21, 2026: "the study is dark mode").
+   The Study's pages are dark; The Board's stay light. Ground is
+   a deep umber near-black; text ink is the vellum of the earlier
+   light palette, now the foreground; oxblood is lightened for
+   legibility on the dark ground; aged gold stays the accent.
+   Dividers invert with the ground: vellum lines on dark, accents
+   unchanged (their rules live in the session page's local style
+   block; this sheet supplies the variables they read).
+
+   Palette (dark, set Nov 21, 2026):
+     ground       deep umber     #221b14
+     ink          vellum         #f5eedd
+     ink soft     dimmed vellum  #d9cdb2
+     secondary    warm gray      #a79a80
+     accent       oxblood, lit   #c05f4d  (lightened from #6e2b25)
+     gold         aged gold      #a07d2c  (unchanged)
+     summary tint dark umber     #2d2317
+     rule         dark umber     #4d3d29
    ============================================================ */
 
 :root{
-  --paper:#f5eedd;
-  --ink:#1c1814;
-  --ink-soft:#4a4238;
-  --gray:#77705f;
-  --accent:#6e2b25;
+  --paper:#221b14;
+  --ink:#f5eedd;
+  --ink-soft:#d9cdb2;
+  --gray:#a79a80;
+  --accent:#c05f4d;
+  --ox:#c05f4d;
   --gold:#a07d2c;
-  --box:#efe5cd;
-  --rule-light:#d9cba6;
+  --acc:#c05f4d;
+  --box:#2d2317;
+  --rule-light:#4d3d29;
 }
 
 /* Nav bar: same pill, same behaviour; deep warm umber ground,
-   vellum links (var(--paper), already redeclared above), the
-   active pill in oxblood (var(--accent), already redeclared),
+   vellum links (var(--paper) no longer applies on the dark
+   ground, so the active colour is restated as the vellum ink),
    and a thin gold border under the bar in place of the Board's
    red ring. */
 nav.menu{
   background:rgba(62,47,38,.97);
-  border:1px solid #2c211a;
+  border:1px solid #17100b;
   border-bottom:1px solid var(--gold);
-  box-shadow:0 10px 30px rgba(28,24,20,.18);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
 }
+nav.menu a{color:#f5eedd}
 nav.menu a.active{color:#f5eedd}
 
 /* Kickers and kicker-family labels in aged gold, very sparing:
@@ -55,27 +67,26 @@ nav.menu a.active{color:#f5eedd}
 .chapter .ch-no::after{border-top-color:var(--gold)}
 .verdict h2{color:var(--gold)}
 
-/* The Study wordmark (final treatment, Nov 21, 2026): a ONE-LINE
-   blackletter wordmark, "The Study", in UnifrakturMaguntia —
-   the New York Times nameplate treatment Josh directed: plain
-   black ink, no stroke, no fill colour, no effects; the
-   letterforms themselves carry it, sitting directly on the
-   vellum with no rule beneath it. Overrides board.css's
-   .nameplate letterform only; the masthead margins are the
-   Board's, unchanged. (Supersedes the traced-fill treatment —
-   letters filled with the Study livery colours and traced with
-   a black outline — built and rejected by Josh as terrible
-   earlier the same day, and a briefly targeted WSJ-style
-   script. A Grenze Gotisch setting was implemented later that
-   night and rejected by Josh on sight; reverted the same
-   night — UnifrakturMaguntia is the settled face.) */
-.nameplate{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(3rem,12vw,6.4rem);line-height:1.12;letter-spacing:0;text-indent:0;text-transform:none;color:#141310}
+/* The Study wordmark (SETTLED RULE, Nov 21, 2026): the two
+   publications' wordmarks are UNIFORM — same UnifrakturMaguntia
+   blackletter, same size, same treatment, no weight or spacing
+   tricks, no fill colour, no stroke, no effects. On The Study's
+   dark ground the mark is plain white (here, the vellum ink);
+   on The Board's light ground, plain black. The ground flip is
+   the only difference; distinction between the publications
+   comes from the masthead switch mechanism, not the marks.
+   Treatment history, so none of it is ever rebuilt: a traced-
+   fill mark was built first and rejected by Josh as terrible;
+   a WSJ-style script was briefly targeted, then NYT blackletter
+   directed; Grenze Gotisch was implemented and rejected the
+   same night; late on Nov 21 a gilt (gold-leaf) setting was
+   instructed and then corrected the same night to a white body
+   with a coloured centre trace (the variants page's candidate
+   F), and that correction was itself superseded the same night
+   by this settled rule: the colouring idea is dropped entirely.
+   Candidate F stays a variants-page candidate only and is not
+   implemented on any page. */
+.nameplate{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(3rem,12vw,6.4rem);line-height:1.12;letter-spacing:0;text-indent:0;text-transform:none;color:var(--ink)}
 
 /* Drop initial on each section's lede, in gold. */
 p.lede::first-letter{color:var(--gold)}
-
-/* The study divider: a small gold diamond centred on a hairline,
-   drawn in the sample page's local style block (.dv-study). Its
-   band colours come from this sheet's variables so the motif
-   stays inside the palette. */
-.dv-study{border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);background:var(--paper)}

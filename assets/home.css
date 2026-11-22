@@ -621,26 +621,45 @@ html{scroll-behavior:auto}
    their hues, lightened only to read. The two marks always
    match each other in treatment — same border, same furniture
    colors — never one of each.
-   LINK TREATMENT (one line only): a lockup that is a link rests
-   muted at opacity .55; on hover/active/focus it comes to full
-   strength while its OWN short rule grows from 2.5rem to the
-   full width of the lockup itself — never a second line. The
-   grown width is the word render's own width (height .71em x
-   the render's fixed aspect: 4.405em Board, 4.165em Study),
-   resolved in the lockup's font-size, which .sp-rule carries
-   for exactly that purpose. A lockup that is not a link keeps
-   its short, static rule. ~160ms ease throughout; transitions
-   off under prefers-reduced-motion.
+      UNIFORM FURNITURE (Josh, Nov 22, 2026): THE, its flanking
+   hairlines, the taglines, the short rules and the letters'
+   border/tracery are ONE color \u2014 black #141310 on the light
+   ground, white #ffffff on the dark \u2014 on both marks, in both
+   states, at all times. No element carries its own shade.
+   LINK TREATMENT: the mute lives in the word fill only. A
+   lockup that is a link rests with its fill washed to 55%
+   toward the ground (a second render of the word stacked over
+   the full-strength one, its border/tracery pixels identical);
+   the furniture is never dimmed. On hover/active/focus the
+   washed render fades out (opacity, .2s ease-out \u2014 the nav
+   bar's color timing) and the fill stands at full strength,
+   while the lockup's OWN short rule grows from 2.5rem to the
+   full width of the lockup itself (width, .25s ease-out \u2014
+   the nav bar's transform timing; nav.menu a runs color .2s
+   ease-out and transform .25s ease-out). One line only, still
+   once settled; no bounce, no overshoot, no looping. A lockup
+   that is not a link keeps its short, static rule.
+   Transitions off under prefers-reduced-motion.
+   STANDALONE SCALE: on report/session pages the single mark is
+   this same lockup scaled as one unit until the big word's
+   render height equals the page title's font size
+   (h1.headline: clamp(3rem,9.5vw,6.6rem); 2.5rem at 380px and
+   under). One font size on the single .sp-half \u2014 the title
+   size divided by .71, the word render's height factor \u2014
+   drives every element in em at the homepage ratios (THE .30,
+   tagline .23), so no element is sized independently.
    ================================================================ */
 .gplate .lk{position:relative;font-family:var(--display);font-weight:900;color:inherit}
 .gplate .lk-g{display:inline-block;font-size:clamp(1.6rem,6.9vw,5rem)}
 .gplate .le-row{display:flex;align-items:center;width:100%;margin-bottom:.16em}
 .gplate .le-rule{flex:1 1 0;height:1px;background:currentColor}
 .gplate .le-the{font-size:clamp(.68rem,2vw,1.5rem);letter-spacing:.5em;padding-left:.5em;line-height:1;white-space:nowrap}
-.gplate .g-name{display:block}
+.gplate .g-name{display:block;position:relative}
 .gplate .g-name img{display:block;height:.71em;width:auto;margin:0 auto}
+.gplate .g-name img.g-wash{position:absolute;top:0;left:50%;transform:translateX(-50%);opacity:1;transition:opacity .2s ease-out}
+.gplate a.sp-half:hover .g-wash,.gplate a.sp-half:active .g-wash,.gplate a.sp-half:focus-visible .g-wash{opacity:0}
 .gplate .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px}
-.gplate .sp-rule{display:block;width:2.5rem;height:2px;margin:12px auto 0;font-size:clamp(1.6rem,6.9vw,5rem);transition:width .16s ease}
+.gplate .sp-rule{display:block;width:2.5rem;height:2px;margin:12px auto 0;font-size:clamp(1.6rem,6.9vw,5rem);transition:width .25s ease-out}
 .gplate .sp-half{text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .gplate.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
 .gplate.split-plate .sp-half{flex:1 1 0;min-width:0;padding:0 10px}
@@ -652,10 +671,17 @@ html{scroll-behavior:auto}
 .gplate.ground-dark .sp-half{color:#ffffff}
 .gplate.ground-dark .sp-tag{color:#ffffff}
 .gplate.ground-dark .sp-rule{background:#ffffff}
-.gplate a.sp-half{opacity:.55;cursor:pointer;transition:opacity .16s ease,color .16s ease}
-.gplate a.sp-half:hover,.gplate a.sp-half:active,.gplate a.sp-half:focus-visible{opacity:1}
+.gplate a.sp-half{cursor:pointer}
 .gplate a.sp-board:hover .sp-rule,.gplate a.sp-board:active .sp-rule,.gplate a.sp-board:focus-visible .sp-rule,a:hover .gplate .sp-board .sp-rule,a:active .gplate .sp-board .sp-rule,a:focus-visible .gplate .sp-board .sp-rule{width:4.405em}
 .gplate a.sp-study:hover .sp-rule,.gplate a.sp-study:active .sp-rule,.gplate a.sp-study:focus-visible .sp-rule,a:hover .gplate .sp-study .sp-rule,a:active .gplate .sp-study .sp-rule,a:focus-visible .gplate .sp-study .sp-rule{width:4.165em}
+.gplate.gplate-single .sp-half{font-size:clamp(4.225rem,13.38vw,9.296rem)}
+.gplate.gplate-single .lk-g{font-size:1em}
+.gplate.gplate-single .le-the{font-size:.3em}
+.gplate.gplate-single .sp-tag{font-size:.23em;margin-top:.125em}
+.gplate.gplate-single .sp-rule{font-size:1em;width:.5em;height:.025em;margin-top:.15em}
+@media(max-width:380px){
+  .gplate.gplate-single .sp-half{font-size:3.521rem}
+}
 @media(max-width:700px){
   .gplate .lk-g{font-size:clamp(1.6rem,7.5vw,3.4rem)}
   .gplate .sp-tag{font-size:.92rem;margin-top:8px}
@@ -663,6 +689,7 @@ html{scroll-behavior:auto}
   .gplate.split-plate .sp-half{padding:0 4px}
 }
 @media (prefers-reduced-motion: reduce){
-  .gplate a.sp-half{transition:none}
+  .gplate .g-name img.g-wash{transition:none}
   .gplate .sp-rule{transition:none}
+}
 }

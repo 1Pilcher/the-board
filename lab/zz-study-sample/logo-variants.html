@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>Logo variants — blackletter wordmarks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Pirata+One&family=Grenze+Gotisch:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Libre+Franklin:wght@700&display=swap" rel="stylesheet" />
+<style>
+/* LAB ONLY — blackletter wordmark comparison (Nov 21, 2026).
+   History: the traced-fill Playfair marks were scrapped ("look
+   absolutely terrible"); a calligraphic-script direction (WSJ)
+   was briefly targeted, then Josh corrected the model — the
+   NEW YORK TIMES nameplate: blackletter (Textura) letterforms,
+   black ink, no effects. Three candidates, each shown as the
+   split pair at desktop masthead size and at phone size. The
+   chosen face is implemented on the sample pages; this page
+   stays so the call can be flipped by eye. */
+:root{--paper:#faf7f0;--ink:#141310;--gray:#6f6a61}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,serif;padding:28px 18px 80px}
+h1{font-family:"Libre Franklin",sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;text-align:center;margin:0 0 6px}
+.note{text-align:center;color:var(--gray);font-size:.95rem;font-style:italic;margin:0 auto 44px;max-width:620px}
+.cand{margin:0 auto 56px;max-width:1160px}
+.cand h2{font-family:"Libre Franklin",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gray);border-top:1px solid #d8d2c2;padding-top:14px;margin:0 0 18px}
+.cand h2 b{color:var(--ink)}
+.frame{margin:0 auto 22px;background:var(--paper)}
+.frame.desk{width:1120px;max-width:none}
+.frame.phone{width:354px}
+.frame .cap{font-family:"Libre Franklin",sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);text-align:center;margin-bottom:8px}
+.pair{display:flex}
+.half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center}
+.mark{display:block;color:var(--ink);line-height:1.12;white-space:nowrap}
+.tag{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;color:#3d3a35;margin-top:8px}
+.desk .mark{font-size:76px}
+.desk .tag{font-size:1.15rem}
+.phone .mark{font-size:36px}
+.phone .tag{font-size:.92rem;margin-top:6px}
+.f-maguntia .mark{font-family:"UnifrakturMaguntia",serif}
+.f-pirata .mark{font-family:"Pirata One",serif}
+.f-grenze .mark{font-family:"Grenze Gotisch",serif;font-weight:700}
+.f-grenze .desk .mark{font-size:72px}
+.f-grenze .phone .mark{font-size:34px}
+</style>
+</head>
+<body>
+<h1>Blackletter wordmark — candidates</h1>
+<p class="note">One-line blackletter marks, plain black ink, tagline beneath — the New York Times nameplate treatment. Each candidate is shown as the split pair at desktop masthead size and at phone size.</p>
+
+<section class="cand f-maguntia">
+  <h2><b>A — UnifrakturMaguntia</b> · Textura, closest to the NYT plate</h2>
+  <div class="frame desk"><div class="cap">Desktop</div>
+    <div class="pair">
+      <div class="half"><span class="mark">The Board</span><div class="tag">What&rsquo;s actually going on.</div></div>
+      <div class="half"><span class="mark">The Study</span><div class="tag">Reading the Bible slowly.</div></div>
+    </div>
+  </div>
+  <div class="frame phone"><div class="cap">Phone</div>
+    <div class="pair">
+      <div class="half"><span class="mark">The Board</span><div class="tag">What&rsquo;s actually going on.</div></div>
+      <div class="half"><span class="mark">The Study</span><div class="tag">Reading the Bible slowly.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cand f-pirata">
+  <h2><b>B — Pirata One</b> · lighter decorative blackletter</h2>
+  <div class="frame desk"><div class="cap">Desktop</div>
+    <div class="pair">
+      <div class="half"><span class="mark">The Board</span><div class="tag">What&rsquo;s actually going on.</div></div>
+      <div class="half"><span class="mark">The Study</span><div class="tag">Reading the Bible slowly.</div></div>
+    </div>
+  </div>
+  <div class="frame phone"><div class="cap">Phone</div>
+    <div class="pair">
+      <div class="half"><span class="mark">The Board</span><div class="tag">What&rsquo;s actually going on.</div></div>
+      <div class="half"><span class="mark">The Study</span><div class="tag">Reading the Bible slowly.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cand f-grenze">
+  <h2><b>C — Grenze Gotisch 700</b> · heavier, more open blackletter</h2>
+  <div class="frame desk"><div class="cap">Desktop</div>
+    <div class="pair">
+      <div class="half"><span class="mark">The Board</span><div class="tag">What&rsquo;s actually going on.</div></div>
+      <div class="half"><span class="mark">The Study</span><div class="tag">Reading the Bible slowly.</div></div>
+    </div>
+  </div>
+  <div class="frame phone"><div class="cap">Phone</div>
+    <div class="pair">
+      <div class="half"><span class="mark">The Board</span><div class="tag">What&rsquo;s actually going on.</div></div>
+      <div class="half"><span class="mark">The Study</span><div class="tag">Reading the Bible slowly.</div></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

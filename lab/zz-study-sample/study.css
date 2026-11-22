@@ -55,20 +55,19 @@ nav.menu a.active{color:#f5eedd}
 .chapter .ch-no::after{border-top-color:var(--gold)}
 .verdict h2{color:var(--gold)}
 
-/* The Study wordmark (final treatment, Nov 21, 2026): stacked —
-   a letterspaced gold "The" over a large oxblood "Study" — the
-   letters FILLED with the Study livery colours and every letter
-   traced with a black outline so the colours stand out, sitting
-   directly on the vellum with no rule beneath it. Overrides
-   board.css's .nameplate geometry of letterform only; the
-   masthead margins are the Board's, unchanged. */
-.nameplate{letter-spacing:0;text-indent:0;line-height:1}
-.nameplate .np-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.78rem,2vw,1rem);letter-spacing:.55em;text-indent:.55em;text-transform:uppercase;color:var(--gold);-webkit-text-stroke:1.5px var(--ink)}
-.nameplate .np-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(3.8rem,15vw,7.5rem);line-height:1.02;letter-spacing:.04em;text-indent:.04em;text-transform:uppercase;color:var(--accent);margin-top:9px;-webkit-text-stroke:5px var(--ink)}
-@media(max-width:700px){
-  .nameplate .np-the{-webkit-text-stroke-width:1.1px}
-  .nameplate .np-name{-webkit-text-stroke-width:3px}
-}
+/* The Study wordmark (final treatment, Nov 21, 2026): a ONE-LINE
+   blackletter wordmark, "The Study", in UnifrakturMaguntia —
+   the New York Times nameplate treatment Josh directed: plain
+   black ink, no stroke, no fill colour, no effects; the
+   letterforms themselves carry it, sitting directly on the
+   vellum with no rule beneath it. Overrides board.css's
+   .nameplate letterform only; the masthead margins are the
+   Board's, unchanged. (Supersedes the traced-fill treatment —
+   letters filled with the Study livery colours and traced with
+   a black outline — built and rejected by Josh as terrible
+   earlier the same day, and a briefly targeted WSJ-style
+   script.) */
+.nameplate{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(3rem,12vw,6.4rem);line-height:1.12;letter-spacing:0;text-indent:0;text-transform:none;color:#141310}
 
 /* Drop initial on each section's lede, in gold. */
 p.lede::first-letter{color:var(--gold)}

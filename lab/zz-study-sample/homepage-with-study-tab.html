@@ -8,40 +8,31 @@
 <title>The Board - Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/home.css" />
 
 <style>
-/* PROTOTYPE (lab only): split nameplate — THE BOARD | THE STUDY.
+/* PROTOTYPE (lab only): split nameplate — The Board | The Study.
    The pair is the switch between the two homepages: each half is
    a link; there is no Study tab or nav button (removed Nov 21,
    2026 — the logos do that job). Final treatment (Nov 21, 2026):
-   each mark is stacked (a letterspaced "The" over the name,
-   Playfair Display 900), the letters FILLED with each logo's own
-   colours — Board ink over Board red for THE BOARD, aged gold
-   over oxblood for THE STUDY — and every letter traced with a
-   black outline so the colours stand out. No panels, no
-   backgrounds, no rule beneath either mark. This page is The
-   Board's homepage, so the Board half carries a marginally
-   heavier outline as the only "you are here" cue. Production
-   would move this block into a shared sheet. */
+   each mark is a ONE-LINE blackletter wordmark in
+   UnifrakturMaguntia — the New York Times nameplate treatment
+   Josh directed: plain black ink, no stroke, no fill colour, no
+   effects; the letterforms themselves carry it. The Cormorant
+   italic tagline sits beneath each mark. (Supersedes the
+   traced-fill Playfair treatment, built and rejected by Josh as
+   terrible the same day, and a briefly targeted WSJ-style
+   script.) Production would move this block into a shared
+   sheet. */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
 a.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.sp-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.66rem,1.5vw,.84rem);letter-spacing:.52em;text-indent:.52em;text-transform:uppercase;-webkit-text-stroke:1.3px #141310}
-.sp-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.7rem,11vw,6.5rem);line-height:1.04;letter-spacing:.05em;text-indent:.05em;text-transform:uppercase;margin-top:7px;-webkit-text-stroke:4.5px #141310}
-.sp-board .sp-the{color:#141310;-webkit-text-stroke-width:1.6px}
-.sp-board .sp-name{color:#b03a2e;-webkit-text-stroke-width:5.5px}
-.sp-study .sp-the{color:#a07d2c}
-.sp-study .sp-name{color:#6e2b25}
-a.sp-half:hover .sp-the,a.sp-half:hover .sp-name{filter:brightness(1.08)}
+.sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.15rem,8.6vw,5.4rem);line-height:1.12;color:#141310;white-space:nowrap}
+a.sp-half:hover .sp-mark{opacity:.72}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
 .sp-study .sp-tag{color:#4a4238}
 @media(max-width:700px){
   a.sp-half{padding:0 4px}
-  .sp-the{font-size:.6rem;letter-spacing:.42em;text-indent:.42em;-webkit-text-stroke-width:1px}
-  .sp-board .sp-the{-webkit-text-stroke-width:1.2px}
-  .sp-name{font-size:2.28rem;letter-spacing:.02em;text-indent:.02em;margin-top:5px;-webkit-text-stroke-width:2.6px}
-  .sp-board .sp-name{-webkit-text-stroke-width:3.2px}
   .sp-tag{font-size:.92rem;margin-top:8px}
 }
 </style>
@@ -55,13 +46,11 @@ a.sp-half:hover .sp-the,a.sp-half:hover .sp-name{filter:brightness(1.08)}
   <div class="topline"><span class="side">Houston, Texas</span><!-- left slot intentionally blank: no weekday label above the masthead --><span class="mid"></span><span class="side right"></span></div>
   <div class="split-plate" role="banner">
     <a class="sp-half sp-board" href="../../index.html" aria-label="The Board — homepage">
-      <span class="sp-the">The</span>
-      <span class="sp-name">Board</span>
+      <span class="sp-mark">The Board</span>
       <div class="sp-tag">What&rsquo;s actually going on.</div>
     </a>
     <a class="sp-half sp-study" href="study-home.html" aria-label="The Study — front page">
-      <span class="sp-the">The</span>
-      <span class="sp-name">Study</span>
+      <span class="sp-mark">The Study</span>
       <div class="sp-tag">Reading the Bible slowly.</div>
     </a>
   </div>

@@ -155,14 +155,8 @@ a.sp-half:hover .lk::after,a.sp-half:active .lk::after,a.sp-half:focus-visible .
   .lk-g{font-size:clamp(1.6rem,7.5vw,3.4rem)}
 }
 
-/* G chrome (Nov 22): each publication keeps its own color — a half's
-   underline sweep matches its word, in the ground-matched shade:
-   Board pronounced red (#ce2029 light / #e04a44 dark),
-   Study royal blue (#1f3a93 light / #4a6fd4 dark, the E1 blues). */
-#variant-g .ground-light a.sp-board .lk::after{background:#ce2029}
-#variant-g .ground-light a.sp-study .lk::after{background:#1f3a93}
-#variant-g .ground-dark a.sp-board .lk::after{background:#e04a44}
-#variant-g .ground-dark a.sp-study .lk::after{background:#4a6fd4}
+/* G's earlier per-publication underline sweep (a half's ::after in its
+   word's color) is REMOVED — see the one-line rule below. */
 
 /* G full color spec (Josh, Nov 22 — supersedes the earlier
    black-on-both-grounds border treatment): on the light ground THE, its
@@ -181,6 +175,30 @@ a.sp-half:hover .lk::after,a.sp-half:active .lk::after,a.sp-half:focus-visible .
 #variant-g .ground-dark .sp-half{color:#ffffff}
 #variant-g .ground-dark .sp-tag{color:#ffffff}
 #variant-g .ground-dark .sp-rule{background:#ffffff}
+
+/* G link treatment (Josh, Nov 22): ONE line only. The line under a
+   lockup is the existing short rule under the tagline, and on
+   hover/active/focus of a lockup that is a link that same rule GROWS
+   from its short 2.5rem to the full width of the lockup itself — it is
+   not a new line. The separate 1px underline sweep (::after) is
+   disabled for G — never two lines. The current half (not a link)
+   keeps its short, static rule. The mute-to-full-strength opacity
+   behavior is unchanged. The grown width is the word render's own
+   width, expressed in the lockup's font-size: the renders sit at
+   height .71em with fixed aspect ratios (Board 1340/216, Study
+   1267/216), so word width = .71 x aspect = 4.405em (Board) /
+   4.165em (Study) at every viewport; .sp-rule carries the lockup
+   font-size purely so those em widths resolve identically. */
+#variant-g .sp-rule{font-size:clamp(1.6rem,6.9vw,5rem);transition:width .16s ease}
+@media(max-width:700px){
+  #variant-g .sp-rule{font-size:clamp(1.6rem,7.5vw,3.4rem)}
+}
+#variant-g a.sp-half.sp-board:hover .sp-rule,#variant-g a.sp-half.sp-board:active .sp-rule,#variant-g a.sp-half.sp-board:focus-visible .sp-rule{width:4.405em}
+#variant-g a.sp-half.sp-study:hover .sp-rule,#variant-g a.sp-half.sp-study:active .sp-rule,#variant-g a.sp-half.sp-study:focus-visible .sp-rule{width:4.165em}
+#variant-g a.sp-half .lk::after{display:none}
+@media (prefers-reduced-motion: reduce){
+  #variant-g .sp-rule{transition:none}
+}
 
 /* ---- F: the 9:52 version (blackletter THE over inline-traced Playfair caps;
    the big words are exact renders of the erosion-band construction, so the
@@ -214,7 +232,7 @@ a.sp-half:hover .lk::after,a.sp-half:active .lk::after,a.sp-half:focus-visible .
   <div class="page">
     <div class="variant-head">
       <h2><span class="vletter">G</span> &middot; The combination</h2>
-      <p>The mix Josh asked for: E&rsquo;s composition &mdash; a small &ldquo;THE&rdquo; with a short line flanking it on each side, the big word beneath, tagline under that &mdash; with F&rsquo;s letters inside it. &ldquo;THE&rdquo; is plain upright roman caps, no blackletter, no script. The big words carry F&rsquo;s treatment in new colors: Board in a pronounced red, Study in royal blue, the dark tracery left inside the strokes. No border around either lockup. Each publication keeps its own color in its chrome, too &mdash; a half&rsquo;s underline sweep matches its word, red for The Board, blue for The Study, on both grounds. Colors follow Josh&rsquo;s full spec: on the light ground &ldquo;THE&rdquo;, its flanking lines, the taglines and the short rules are black, and the words&rsquo; fine border is black inside the red and the deep royal blue; on the dark ground everything black flips to white &mdash; borders included &mdash; as a pair, the fills keeping their hues, lightened only to read. The two marks always match each other in treatment, never one of each.</p>
+      <p>The mix Josh asked for: E&rsquo;s composition &mdash; a small &ldquo;THE&rdquo; with a short line flanking it on each side, the big word beneath, tagline under that &mdash; with F&rsquo;s letters inside it. &ldquo;THE&rdquo; is plain upright roman caps, no blackletter, no script. The big words carry F&rsquo;s treatment in new colors: Board in a pronounced red, Study in royal blue, the dark tracery left inside the strokes. No border around either lockup. And there is only one line under a lockup: the short rule under the tagline. On a half that is a link, that same rule grows on hover to the full width of the lockup itself &mdash; no second underline appears. Colors follow Josh&rsquo;s full spec: on the light ground &ldquo;THE&rdquo;, its flanking lines, the taglines and the short rules are black, and the words&rsquo; fine border is black inside the red and the deep royal blue; on the dark ground everything black flips to white &mdash; borders included &mdash; as a pair, the fills keeping their hues, lightened only to read. The two marks always match each other in treatment, never one of each.</p>
     </div>
     <p class="ground-note">On The Board — light</p>
     <header class="mh ground-light">

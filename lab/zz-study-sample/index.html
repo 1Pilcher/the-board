@@ -23,6 +23,9 @@
 @media(max-width:700px){.dv-study{height:104px}}
 .dv-study .ln{display:block;width:min(180px,30%);border-top:1px solid var(--gold);opacity:.6}
 .dv-study .dia{display:block;width:11px;height:11px;background:var(--gold);transform:rotate(45deg);flex:0 0 auto}
+/* The nameplate is the switch back to The Study's front page. */
+.np-link{display:block;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
+.np-link:hover .np-the,.np-link:hover .np-name{filter:brightness(1.08)}
 </style>
 </head>
 <body>
@@ -33,7 +36,7 @@
 <div class="home-bar"><a class="home-link" href="https://1pilcher.github.io/the-board/" aria-label="Back to The Board homepage"><span class="arr" aria-hidden="true">&larr;</span> Home</a></div>
 <header class="masthead">
 <div class="topline"><span class="side">Houston</span><span class="mid"></span><span class="side right">Session 1</span></div>
-<div class="nameplate"><span class="np-the">The</span><span class="np-name">Study</span></div>
+<a class="np-link" href="study-home.html" aria-label="The Study — front page"><div class="nameplate"><span class="np-the">The</span><span class="np-name">Study</span></div></a>
 <div class="tagline">Reading the Bible slowly.</div>
 <div class="edition-line"><span>Saturday, November 21, 2026</span><span class="c">By Josh Pilcher</span></div>
 </header>

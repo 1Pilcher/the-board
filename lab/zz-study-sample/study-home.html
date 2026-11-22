@@ -41,27 +41,33 @@ nav.menu a.active{color:#f5eedd}
 
 /* Split nameplate — THE BOARD | THE STUDY (shared with the staged
    main homepage; production would move this into a shared sheet).
-   Floating wordmarks (Nov 21, 2026 refinement): no panels, no
-   backgrounds, no borders, and no rule beneath either mark — the
-   two wordmarks sit directly on the page's own ground. Each mark
-   is stacked (a letterspaced "The" over the name, Playfair
-   Display 900) and fully coloured in its own livery: Board ink
-   over Board red for THE BOARD, aged gold over oxblood for
-   THE STUDY. */
+   The pair is the switch between the two homepages: each half is
+   a link; there is no separate nav button. Final treatment
+   (Nov 21, 2026): each mark is stacked (a letterspaced "The" over
+   the name, Playfair Display 900), the letters FILLED with each
+   logo's own colours — Board ink over Board red for THE BOARD,
+   aged gold over oxblood for THE STUDY — and every letter traced
+   with a black outline so the colours stand out. No panels, no
+   backgrounds, no rule beneath either mark. This page is The
+   Study's front page, so the Study half carries a marginally
+   heavier outline as the only "you are here" cue. */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
-.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center}
-.sp-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.66rem,1.5vw,.84rem);letter-spacing:.52em;text-indent:.52em;text-transform:uppercase}
-.sp-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.7rem,11vw,6.5rem);line-height:1.04;letter-spacing:.05em;text-indent:.05em;text-transform:uppercase;margin-top:7px}
+a.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.sp-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.66rem,1.5vw,.84rem);letter-spacing:.52em;text-indent:.52em;text-transform:uppercase;-webkit-text-stroke:1.3px #1c1814}
+.sp-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.7rem,11vw,6.5rem);line-height:1.04;letter-spacing:.05em;text-indent:.05em;text-transform:uppercase;margin-top:7px;-webkit-text-stroke:4.5px #1c1814}
 .sp-board .sp-the{color:#141310}
 .sp-board .sp-name{color:#b03a2e}
-.sp-study .sp-the{color:#a07d2c}
-.sp-study .sp-name{color:#6e2b25}
+.sp-study .sp-the{color:#a07d2c;-webkit-text-stroke-width:1.6px}
+.sp-study .sp-name{color:#6e2b25;-webkit-text-stroke-width:5.5px}
+a.sp-half:hover .sp-the,a.sp-half:hover .sp-name{filter:brightness(1.08)}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
 .sp-study .sp-tag{color:#4a4238}
 @media(max-width:700px){
-  .sp-half{padding:0 4px}
-  .sp-the{font-size:.6rem;letter-spacing:.42em;text-indent:.42em}
-  .sp-name{font-size:2.28rem;letter-spacing:.02em;text-indent:.02em;margin-top:5px}
+  a.sp-half{padding:0 4px}
+  .sp-the{font-size:.6rem;letter-spacing:.42em;text-indent:.42em;-webkit-text-stroke-width:1px}
+  .sp-study .sp-the{-webkit-text-stroke-width:1.2px}
+  .sp-name{font-size:2.28rem;letter-spacing:.02em;text-indent:.02em;margin-top:5px;-webkit-text-stroke-width:2.6px}
+  .sp-study .sp-name{-webkit-text-stroke-width:3.2px}
   .sp-tag{font-size:.92rem;margin-top:8px}
 }
 
@@ -84,16 +90,16 @@ nav.menu a.active{color:#f5eedd}
 <header class="masthead">
   <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
   <div class="split-plate" role="banner">
-    <div class="sp-half sp-board">
+    <a class="sp-half sp-board" href="../../index.html" aria-label="The Board — homepage">
       <span class="sp-the">The</span>
       <span class="sp-name">Board</span>
       <div class="sp-tag">What&rsquo;s actually going on.</div>
-    </div>
-    <div class="sp-half sp-study">
+    </a>
+    <a class="sp-half sp-study" href="study-home.html" aria-label="The Study — front page">
       <span class="sp-the">The</span>
       <span class="sp-name">Study</span>
       <div class="sp-tag">Reading the Bible slowly.</div>
-    </div>
+    </a>
   </div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
 </header>

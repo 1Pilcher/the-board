@@ -13,32 +13,37 @@
 
 <style>
 /* PROTOTYPE (lab only): split nameplate — THE BOARD | THE STUDY.
-   Floating wordmarks (Nov 21, 2026 refinement): no panels, no
-   backgrounds, no borders, and no rule beneath either mark — the
-   two wordmarks sit directly on the page's own ground. Each mark
-   is stacked (a letterspaced "The" over the name, Playfair
-   Display 900) and fully coloured in its own livery: Board ink
-   over Board red for THE BOARD, aged gold over oxblood for
-   THE STUDY. Production would move this block into a shared sheet. */
+   The pair is the switch between the two homepages: each half is
+   a link; there is no Study tab or nav button (removed Nov 21,
+   2026 — the logos do that job). Final treatment (Nov 21, 2026):
+   each mark is stacked (a letterspaced "The" over the name,
+   Playfair Display 900), the letters FILLED with each logo's own
+   colours — Board ink over Board red for THE BOARD, aged gold
+   over oxblood for THE STUDY — and every letter traced with a
+   black outline so the colours stand out. No panels, no
+   backgrounds, no rule beneath either mark. This page is The
+   Board's homepage, so the Board half carries a marginally
+   heavier outline as the only "you are here" cue. Production
+   would move this block into a shared sheet. */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
-.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center}
-.sp-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.66rem,1.5vw,.84rem);letter-spacing:.52em;text-indent:.52em;text-transform:uppercase}
-.sp-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.7rem,11vw,6.5rem);line-height:1.04;letter-spacing:.05em;text-indent:.05em;text-transform:uppercase;margin-top:7px}
-.sp-board .sp-the{color:#141310}
-.sp-board .sp-name{color:#b03a2e}
+a.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.sp-the{display:block;font-family:var(--sans);font-weight:700;font-size:clamp(.66rem,1.5vw,.84rem);letter-spacing:.52em;text-indent:.52em;text-transform:uppercase;-webkit-text-stroke:1.3px #141310}
+.sp-name{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.7rem,11vw,6.5rem);line-height:1.04;letter-spacing:.05em;text-indent:.05em;text-transform:uppercase;margin-top:7px;-webkit-text-stroke:4.5px #141310}
+.sp-board .sp-the{color:#141310;-webkit-text-stroke-width:1.6px}
+.sp-board .sp-name{color:#b03a2e;-webkit-text-stroke-width:5.5px}
 .sp-study .sp-the{color:#a07d2c}
 .sp-study .sp-name{color:#6e2b25}
+a.sp-half:hover .sp-the,a.sp-half:hover .sp-name{filter:brightness(1.08)}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
 .sp-study .sp-tag{color:#4a4238}
 @media(max-width:700px){
-  .sp-half{padding:0 4px}
-  .sp-the{font-size:.6rem;letter-spacing:.42em;text-indent:.42em}
-  .sp-name{font-size:2.28rem;letter-spacing:.02em;text-indent:.02em;margin-top:5px}
+  a.sp-half{padding:0 4px}
+  .sp-the{font-size:.6rem;letter-spacing:.42em;text-indent:.42em;-webkit-text-stroke-width:1px}
+  .sp-board .sp-the{-webkit-text-stroke-width:1.2px}
+  .sp-name{font-size:2.28rem;letter-spacing:.02em;text-indent:.02em;margin-top:5px;-webkit-text-stroke-width:2.6px}
+  .sp-board .sp-name{-webkit-text-stroke-width:3.2px}
   .sp-tag{font-size:.92rem;margin-top:8px}
 }
-.study-entry{max-width:620px;margin:0 auto;text-align:center}
-.study-entry .se-dek{font-size:1.12rem;line-height:1.65;color:var(--ink-soft)}
-.study-entry .se-link{display:inline-block;margin-top:var(--sp-3);font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:999px;padding:9px 20px}
 </style>
 </head>
 <body>
@@ -49,16 +54,16 @@
 <header class="masthead">
   <div class="topline"><span class="side">Houston, Texas</span><!-- left slot intentionally blank: no weekday label above the masthead --><span class="mid"></span><span class="side right"></span></div>
   <div class="split-plate" role="banner">
-    <div class="sp-half sp-board">
+    <a class="sp-half sp-board" href="../../index.html" aria-label="The Board — homepage">
       <span class="sp-the">The</span>
       <span class="sp-name">Board</span>
       <div class="sp-tag">What&rsquo;s actually going on.</div>
-    </div>
-    <div class="sp-half sp-study">
+    </a>
+    <a class="sp-half sp-study" href="study-home.html" aria-label="The Study — front page">
       <span class="sp-the">The</span>
       <span class="sp-name">Study</span>
       <div class="sp-tag">Reading the Bible slowly.</div>
-    </div>
+    </a>
   </div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
 </header>
@@ -68,7 +73,6 @@
     <a href="#today" id="tab-today" data-tab="today" role="tab" aria-selected="true" aria-controls="today" class="active">Latest</a>
     <a href="#reports" id="tab-reports" data-tab="reports" role="tab" aria-selected="false" aria-controls="reports">Reports</a>
     <a href="#purpose" id="tab-purpose" data-tab="purpose" role="tab" aria-selected="false" aria-controls="purpose">Purpose</a>
-    <a href="#study" id="tab-study" data-tab="study" role="tab" aria-selected="false" aria-controls="study">The Study</a>
   </div>
 </nav>
 
@@ -208,22 +212,6 @@
     <p>In my ideal world, I build something useful to me. Something I enjoy reading. Because if I do, so will other people, and it will help them too.</p>
   </div>
   <p class="purpose-disclaimer">The Board is a personal project. Everything here reflects my own views and is not affiliated with, endorsed by, or representative of my employer.</p>
-  <div class="interlude" aria-hidden="true" style="margin-top:var(--sp-6)">
-    <span class="trail faint"></span><span class="diamond"></span><span class="trail"></span>
-  </div>
-</section>
-
-<!-- THE STUDY -->
-<section id="study" data-view="study" role="tabpanel" aria-labelledby="tab-study" hidden>
-  <div class="headline-block">
-    <p class="kicker"><span class="k-left">THE STUDY</span></p>
-    <h2 class="headline">The Study</h2>
-    <div class="byline-rule"></div>
-  </div>
-  <div class="study-entry">
-    <p class="se-dek">Reading the Bible slowly, as a skeptic: what happened, what it meant, and why it still runs the world.</p>
-    <a class="se-link" href="study-home.html">Enter The Study &rarr;</a>
-  </div>
   <div class="interlude" aria-hidden="true" style="margin-top:var(--sp-6)">
     <span class="trail faint"></span><span class="diamond"></span><span class="trail"></span>
   </div>

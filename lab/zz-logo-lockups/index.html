@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="icon" href="data:," />
+<title>Logo Lockups — Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#faf7f0;--ink:#141310;--ink-soft:#3d3a35;--gray:#6f6a61;
+  --accent:#b03a2e;--rule-light:#cfc8b4;
+  --sp-1:8px;--sp-2:16px;--sp-3:24px;--sp-4:32px;--sp-5:48px;--sp-6:64px;
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --serif:"PT Serif",Georgia,serif;
+  --sans:"Libre Franklin",Helvetica,Arial,sans-serif;
+  --dark:#221b14;--vellum:#f5eedd;--vellum-soft:#d9cdb2;--vellum-gray:#a79a80;
+  --dark-accent:#c05f4d;--dark-rule:#4d3d29;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.05rem;line-height:1.6}
+.page{max-width:1120px;margin:0 auto;padding:var(--sp-4) 22px 0}
+.pageband{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ---- lab chrome ---- */
+.lab-kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 var(--sp-2)}
+.lab-title{font-family:var(--display);font-weight:900;font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.1;margin:0 0 var(--sp-2)}
+.lab-intro{max-width:640px;color:var(--ink-soft);margin:0 0 var(--sp-3)}
+.lab-intro p{margin:0 0 var(--sp-2)}
+.variant-head{margin:var(--sp-6) 0 var(--sp-3);border-top:1px solid var(--rule-light);padding-top:var(--sp-3)}
+.variant-head h2{font-family:var(--sans);font-size:.78rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;margin:0 0 6px}
+.variant-head h2 .vletter{color:var(--accent)}
+.variant-head p{margin:0;color:var(--ink-soft);max-width:640px;font-size:.98rem}
+.ground-note{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin:var(--sp-3) 0 var(--sp-1)}
+.darkband{background:var(--dark);margin-top:var(--sp-4);padding:var(--sp-3) 0 var(--sp-4)}
+.darkband .ground-note{color:var(--vellum-gray);margin-top:0}
+.lab-foot{margin:var(--sp-6) 0 var(--sp-6);border-top:1px solid var(--rule-light);padding-top:var(--sp-3);color:var(--ink-soft);max-width:640px}
+
+/* ---- masthead furniture (copied values from the real homepage) ---- */
+.mh .topline{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:3px solid var(--ink);padding-top:8px;font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.mh .edition-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:var(--sp-1) 2px;border-bottom:1px solid var(--ink);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.mh .edition-line>span{flex:1 1 0;min-width:0}
+.mh .edition-line>span:first-child{text-align:left}
+.mh .edition-line .c{text-align:center}
+.mh .edition-line>span:last-child{text-align:right}
+@media(max-width:560px){
+  .mh .edition-line{flex-direction:column;align-items:center;gap:3px;text-align:center}
+  .mh .edition-line>span{flex:none}
+}
+@media(max-width:380px){
+  .mh .edition-line{font-size:.62rem;letter-spacing:.12em}
+}
+.ground-dark .topline{border-top-color:var(--vellum);color:var(--vellum-gray)}
+.ground-dark .edition-line{border-bottom-color:var(--dark-rule);color:var(--vellum-gray)}
+
+/* ---- the plate (live values) ---- */
+.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
+.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent;color:var(--ink)}
+.ground-dark .sp-half{color:var(--vellum)}
+.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
+.sp-study .sp-tag{color:#4a4238}
+.ground-dark .sp-tag,.ground-dark .sp-study .sp-tag{color:var(--vellum-soft)}
+.sp-rule{display:block;width:2.5rem;height:2px;margin:12px auto 0;background:var(--ink)}
+.ground-dark .sp-rule{background:rgba(245,238,221,.5)}
+a.sp-half{opacity:.55;cursor:pointer;transition:opacity .16s ease,color .16s ease}
+a.sp-half:hover,a.sp-half:active,a.sp-half:focus-visible{opacity:1}
+a.sp-half .lk::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .16s ease}
+.ground-dark a.sp-half .lk::after{background:var(--dark-accent)}
+a.sp-half:hover .lk::after,a.sp-half:active .lk::after,a.sp-half:focus-visible .lk::after{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){
+  a.sp-half{transition:none}
+  a.sp-half .lk::after{transition:none}
+}
+@media(max-width:700px){
+  .sp-half{padding:0 4px}
+  .sp-tag{font-size:.92rem;margin-top:8px}
+  .sp-rule{margin-top:10px}
+}
+
+/* ---- shared lockup base ---- */
+.lk{position:relative;font-family:var(--display);font-weight:900;color:inherit}
+
+/* ---- A + D: justified block ---- */
+.lk-just{display:inline-block;font-size:clamp(1.6rem,6.9vw,5rem)}
+.jl{display:block;white-space:nowrap;text-align:left}
+.jl-name{font-size:1em;letter-spacing:.16em;line-height:1.1;margin-right:-.16em}
+.jl-the{letter-spacing:.45em;line-height:1.1;margin-right:-.45em}
+.sp-board .jl-the{font-size:1.29em}
+.sp-study .jl-the{font-size:1.22em}
+/* painted-ink nudge: Playfair's S carries ~3px more left bearing than T at
+   plate size, so Study's name line is shifted a breath left to sit its ink
+   exactly over "The" (transform: layout and block width untouched) */
+.sp-study .jl-name{transform:translateX(-.037em)}
+/* Study's "The" runs a larger line-height so the two justified marks are the
+   same total height and their taglines sit on one line (Board: (1.29+1)*1.1) */
+.sp-study .jl-the{line-height:1.163}
+@media(max-width:700px){
+  .lk-just{font-size:clamp(1.6rem,7.5vw,3.4rem)}
+  .jl-name{letter-spacing:.1em;margin-right:-.1em}
+  .jl-the{letter-spacing:.355em;margin-right:-.355em}
+}
+/* D's double rules */
+.lk-drule{display:block;height:7px;border-top:3px solid currentColor;border-bottom:1px solid currentColor}
+.lk-drule.top{margin-bottom:10px}
+.lk-drule.bot{margin-top:10px}
+
+/* ---- B: oversized initial ---- */
+.lk-b{display:inline-flex;align-items:center}
+.lb-big{font-size:clamp(3.4rem,13.8vw,9.5rem);line-height:.8}
+.lb-stack{display:block;margin-left:clamp(.45rem,1.6vw,1.25rem);text-align:left}
+.lb-the{display:block;font-size:clamp(.8rem,2.5vw,1.95rem);letter-spacing:.34em;line-height:1.1;white-space:nowrap}
+.lb-name{display:block;font-size:clamp(1.5rem,4.85vw,3.9rem);letter-spacing:.08em;line-height:1.08;white-space:nowrap}
+
+/* ---- C: boxed badge ---- */
+.lk-c{display:inline-block}
+.lc-box{display:block;border:1px solid currentColor;padding:clamp(12px,2vw,20px) clamp(16px,2.6vw,30px);font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em}
+.lc-line{display:block;white-space:nowrap}
+@media(max-width:700px){
+  .lc-box{font-size:clamp(1.6rem,7.5vw,3.4rem);letter-spacing:.1em;text-indent:.1em;line-height:1.36}
+}
+
+/* ---- E: small-THE block ---- */
+.lk-e{display:inline-block;font-size:clamp(1.6rem,6.9vw,5rem)}
+.le-row{display:flex;align-items:center;width:100%;margin-bottom:.16em}
+.le-rule{flex:1 1 0;height:1px;background:currentColor}
+.le-the{font-size:clamp(.68rem,2vw,1.5rem);letter-spacing:.5em;padding-left:.5em;line-height:1;white-space:nowrap}
+.le-name{display:block;font-size:1em;letter-spacing:.16em;line-height:1.12;margin-right:-.16em;text-align:left;white-space:nowrap}
+.sp-study .le-name{transform:translateX(-.025em)}
+@media(max-width:700px){
+  .lk-e{font-size:clamp(1.6rem,7.5vw,3.4rem)}
+  .le-name{letter-spacing:.1em;margin-right:-.1em}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="lab-kicker">The Board &middot; Lab</p>
+  <h1 class="lab-title">Logo lockups</h1>
+  <div class="lab-intro">
+    <p>Logo lockups — pick one, or mix parts. Nothing here is live.</p>
+    <p>Every variant is the full nameplate — The Board on the left, The Study on the
+    right, taglines under each — shown twice: once on The Board&rsquo;s light ground,
+    once on The Study&rsquo;s dark ground. The Study half is the link in every
+    variant: hover or tap it and it comes up to full strength with the accent
+    underline, the same click treatment as the live plate. All five are set in
+    Playfair Display; only the geometry changes.</p>
+  </div>
+</div>
+<section class="variant" id="variant-a">
+  <div class="page">
+    <div class="variant-head">
+      <h2><span class="vletter">A</span> &middot; Justified block</h2>
+      <p>&ldquo;The&rdquo; is sized and tracked out until its edges sit exactly over &ldquo;Board&rdquo; and &ldquo;Study&rdquo; — one clean rectangle, no ornaments.</p>
+    </div>
+    <p class="ground-note">On The Board — light</p>
+    <header class="mh ground-light">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-just"><span class="jl jl-the">The</span><span class="jl jl-name">Board</span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-just"><span class="jl jl-the">The</span><span class="jl jl-name">Study</span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+  </div>
+  <div class="darkband">
+    <div class="pageband">
+      <p class="ground-note">On The Study — dark</p>
+      <header class="mh ground-dark">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-just"><span class="jl jl-the">The</span><span class="jl jl-name">Board</span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-just"><span class="jl jl-the">The</span><span class="jl jl-name">Study</span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+    </div>
+  </div>
+</section>
+<section class="variant" id="variant-b">
+  <div class="page">
+    <div class="variant-head">
+      <h2><span class="vletter">B</span> &middot; Oversized initial</h2>
+      <p>A double-height B and S carry the mark, with &ldquo;The&rdquo; over the name stacked beside them. The big letter does the logo work.</p>
+    </div>
+    <p class="ground-note">On The Board — light</p>
+    <header class="mh ground-light">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-b"><span class="lb-big">B</span><span class="lb-stack"><span class="lb-the">The</span><span class="lb-name">Board</span></span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-b"><span class="lb-big">S</span><span class="lb-stack"><span class="lb-the">The</span><span class="lb-name">Study</span></span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+  </div>
+  <div class="darkband">
+    <div class="pageband">
+      <p class="ground-note">On The Study — dark</p>
+      <header class="mh ground-dark">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-b"><span class="lb-big">B</span><span class="lb-stack"><span class="lb-the">The</span><span class="lb-name">Board</span></span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-b"><span class="lb-big">S</span><span class="lb-stack"><span class="lb-the">The</span><span class="lb-name">Study</span></span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+    </div>
+  </div>
+</section>
+<section class="variant" id="variant-c">
+  <div class="page">
+    <div class="variant-head">
+      <h2><span class="vletter">C</span> &middot; Boxed badge</h2>
+      <p>The stacked name centered inside a thin square border, padding even on all sides. A literal square logo; the tagline sits under the box.</p>
+    </div>
+    <p class="ground-note">On The Board — light</p>
+    <header class="mh ground-light">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-c"><span class="lc-box"><span class="lc-line">The</span><span class="lc-line">Board</span></span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-c"><span class="lc-box"><span class="lc-line">The</span><span class="lc-line">Study</span></span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+  </div>
+  <div class="darkband">
+    <div class="pageband">
+      <p class="ground-note">On The Study — dark</p>
+      <header class="mh ground-dark">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-c"><span class="lc-box"><span class="lc-line">The</span><span class="lc-line">Board</span></span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-c"><span class="lc-box"><span class="lc-line">The</span><span class="lc-line">Study</span></span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+    </div>
+  </div>
+</section>
+<section class="variant" id="variant-d">
+  <div class="page">
+    <div class="variant-head">
+      <h2><span class="vletter">D</span> &middot; Double-rule block</h2>
+      <p>The justified block fenced by a newspaper double rule above and below, cut to the block&rsquo;s own width.</p>
+    </div>
+    <p class="ground-note">On The Board — light</p>
+    <header class="mh ground-light">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-just"><span class="lk-drule top" aria-hidden="true"></span><span class="jl jl-the">The</span><span class="jl jl-name">Board</span><span class="lk-drule bot" aria-hidden="true"></span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-just"><span class="lk-drule top" aria-hidden="true"></span><span class="jl jl-the">The</span><span class="jl jl-name">Study</span><span class="lk-drule bot" aria-hidden="true"></span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+  </div>
+  <div class="darkband">
+    <div class="pageband">
+      <p class="ground-note">On The Study — dark</p>
+      <header class="mh ground-dark">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-just"><span class="lk-drule top" aria-hidden="true"></span><span class="jl jl-the">The</span><span class="jl jl-name">Board</span><span class="lk-drule bot" aria-hidden="true"></span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-just"><span class="lk-drule top" aria-hidden="true"></span><span class="jl jl-the">The</span><span class="jl jl-name">Study</span><span class="lk-drule bot" aria-hidden="true"></span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+    </div>
+  </div>
+</section>
+<section class="variant" id="variant-e">
+  <div class="page">
+    <div class="variant-head">
+      <h2><span class="vletter">E</span> &middot; Small-THE block</h2>
+      <p>&ldquo;THE&rdquo; set small in wide-tracked caps between two hairlines that run out to the block&rsquo;s edges, the name large beneath.</p>
+    </div>
+    <p class="ground-note">On The Board — light</p>
+    <header class="mh ground-light">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-e"><span class="le-row"><span class="le-rule" aria-hidden="true"></span><span class="le-the">THE</span><span class="le-rule" aria-hidden="true"></span></span><span class="le-name">Board</span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-e"><span class="le-row"><span class="le-rule" aria-hidden="true"></span><span class="le-the">THE</span><span class="le-rule" aria-hidden="true"></span></span><span class="le-name">Study</span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+  </div>
+  <div class="darkband">
+    <div class="pageband">
+      <p class="ground-note">On The Study — dark</p>
+      <header class="mh ground-dark">
+  <div class="topline"><span class="side">Houston, Texas</span><span class="mid"></span><span class="side right"></span></div>
+  <div class="split-plate" role="banner">
+    <div class="sp-half sp-board" aria-current="page">
+      <span class="lk lk-e"><span class="le-row"><span class="le-rule" aria-hidden="true"></span><span class="le-the">THE</span><span class="le-rule" aria-hidden="true"></span></span><span class="le-name">Board</span></span>
+      <div class="sp-tag">What&rsquo;s actually going on.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </div>
+    <a class="sp-half sp-study" href="#stay" aria-label="The Study — front page">
+      <span class="lk lk-e"><span class="le-row"><span class="le-rule" aria-hidden="true"></span><span class="le-the">THE</span><span class="le-rule" aria-hidden="true"></span></span><span class="le-name">Study</span></span>
+      <div class="sp-tag">Reading the Bible slowly.</div>
+      <span class="sp-rule" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="edition-line"><span>Sunday, November 22, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
+</header>
+    </div>
+  </div>
+</section>
+<div class="page">
+  <div class="lab-foot">
+    <p>Production homepages are untouched. Pick a letter — or mix parts, say
+    C&rsquo;s box around A&rsquo;s justified block — and say the word.</p>
+  </div>
+</div>
+</body>
+</html>

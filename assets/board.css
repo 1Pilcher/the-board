@@ -1016,7 +1016,12 @@ body:has(.dy-front) nav.menu{display:none}
    full width of the lockup itself (width, .25s ease-out \u2014
    the nav bar's transform timing; nav.menu a runs color .2s
    ease-out and transform .25s ease-out). One line only, still
-   once settled; no bounce, no overshoot, no looping. A lockup
+   once settled; no bounce, no overshoot, no looping. The rule
+   sits inside .lk-g -- the lockup block, which also holds the
+   tagline -- and grows to width:100% of it, so at full growth
+   its ends land exactly on the outer ends of THE's flanking
+   lines in every engine (Josh, Nov 22, 2026: the grown line
+   aligns with the lines and the words above it). A lockup
    that is not a link keeps its short, static rule.
    Transitions off under prefers-reduced-motion.
    STANDALONE SCALE: on report/session pages the single mark is
@@ -1051,8 +1056,7 @@ body:has(.dy-front) nav.menu{display:none}
 .gplate.ground-dark .sp-tag{color:#ffffff}
 .gplate.ground-dark .sp-rule{background:#ffffff}
 .gplate a.sp-half{cursor:pointer}
-.gplate a.sp-board:hover .sp-rule,.gplate a.sp-board:active .sp-rule,.gplate a.sp-board:focus-visible .sp-rule,a:hover .gplate .sp-board .sp-rule,a:active .gplate .sp-board .sp-rule,a:focus-visible .gplate .sp-board .sp-rule{width:4.405em}
-.gplate a.sp-study:hover .sp-rule,.gplate a.sp-study:active .sp-rule,.gplate a.sp-study:focus-visible .sp-rule,a:hover .gplate .sp-study .sp-rule,a:active .gplate .sp-study .sp-rule,a:focus-visible .gplate .sp-study .sp-rule{width:4.165em}
+.gplate a.sp-board:hover .sp-rule,.gplate a.sp-board:active .sp-rule,.gplate a.sp-board:focus-visible .sp-rule,a:hover .gplate .sp-board .sp-rule,a:active .gplate .sp-board .sp-rule,a:focus-visible .gplate .sp-board .sp-rule,.gplate a.sp-study:hover .sp-rule,.gplate a.sp-study:active .sp-rule,.gplate a.sp-study:focus-visible .sp-rule,a:hover .gplate .sp-study .sp-rule,a:active .gplate .sp-study .sp-rule,a:focus-visible .gplate .sp-study .sp-rule{width:100%}
 .gplate.gplate-single .sp-half{font-size:clamp(4.225rem,13.38vw,9.296rem)}
 .gplate.gplate-single .lk-g{font-size:1em}
 /* Single plate only: the lockup stands as a block, never an

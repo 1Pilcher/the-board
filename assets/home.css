@@ -676,6 +676,15 @@ html{scroll-behavior:auto}
 .gplate a.sp-study:hover .sp-rule,.gplate a.sp-study:active .sp-rule,.gplate a.sp-study:focus-visible .sp-rule,a:hover .gplate .sp-study .sp-rule,a:active .gplate .sp-study .sp-rule,a:focus-visible .gplate .sp-study .sp-rule{width:4.165em}
 .gplate.gplate-single .sp-half{font-size:clamp(4.225rem,13.38vw,9.296rem)}
 .gplate.gplate-single .lk-g{font-size:1em}
+/* Single plate only: the lockup stands as a block, never an
+   inline-block. The scale font size sits on .sp-half, so an
+   inline-block lockup would be baseline-aligned inside a line
+   box whose strut is that font size times the inherited body
+   line-height (1.85) — 125px at phone width, 275px on desktop —
+   leaving a dead band of empty line box above THE. As a block
+   the lockup starts at the plate's own top edge and the only
+   space above it is the plate's margin, like the split plate. */
+.gplate.gplate-single .lk-g{display:block}
 .gplate.gplate-single .le-the{font-size:.3em}
 .gplate.gplate-single .sp-tag{font-size:.23em;margin-top:.125em}
 .gplate.gplate-single .sp-rule{font-size:1em;width:.5em;height:.025em;margin-top:.15em}

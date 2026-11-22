@@ -13,285 +13,306 @@ h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
 .dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--paper)}
 @media(max-width:700px){.page{padding:16px 18px 72px}.dv{height:135px}}
 /* 01 Thread */
-.dv-01 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
-.dv-01 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
-.dv-01 .tick{position:absolute;top:calc(var(--at,.5)*100%);height:1px;background:var(--ink);opacity:.4;width:56px}
+.dv-01 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-0.5px;background:var(--rule-light)}
+.dv-01 .fill{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.8;height:100%}
+.dv-01 .tick{position:absolute;top:calc(var(--at,.5)*100%);height:1px;background:var(--ink);opacity:.4;width:37px}
 .dv-01 .tick.r{left:50%}.dv-01 .tick.l{right:50%}
-.dv-01 .traveler{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent)}
-.dv-01 .ghost{position:absolute;left:50%;top:36%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent);opacity:.38}
+.dv-01 .traveler{position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent)}
+.dv-01 .ghost{position:absolute;left:50%;top:36%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:50%;background:var(--accent);opacity:.38}
 /* 02 Dots */
-.dv-02 .rail{display:flex;align-items:center;gap:11px}
-.dv-02 i{display:block;width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.92}
+.dv-02 .rail{display:flex;align-items:center;gap:7.5px}
+.dv-02 i{display:block;width:4px;height:4px;border-radius:50%;background:var(--ink);opacity:.92}
 .dv-02 i.red{background:var(--accent)}
-.dv-02 i:nth-child(3n+2){transform:translateY(-6px)}
-.dv-02 i:nth-child(3n){transform:translateY(5px)}
-@media(max-width:560px){.dv-02 .rail{gap:7px}}
+.dv-02 i:nth-child(3n+2){transform:translateY(-4px)}
+.dv-02 i:nth-child(3n){transform:translateY(3.5px)}
+@media(max-width:560px){.dv-02 .rail{gap:4.5px}}
 /* 03 Bars */
-.dv-03{flex-direction:column;gap:18px;padding:0 10px}
-.dv-03 .bar{position:relative;height:14px;width:100%;max-width:780px}
+.dv-03{flex-direction:column;gap:12px;padding:0 6.5px}
+.dv-03 .bar{position:relative;height:9px;width:100%;max-width:520px}
 .dv-03 .bar::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule-light)}
-.dv-03 .seg{position:absolute;left:4px;top:50%;height:6px;margin-top:-3px;background:var(--ink);opacity:.85}
-.dv-03 .seg.r{left:auto;right:4px}
+.dv-03 .seg{position:absolute;left:2.5px;top:50%;height:4px;margin-top:-2px;background:var(--ink);opacity:.85}
+.dv-03 .seg.r{left:auto;right:2.5px}
 .dv-03 .seg.red{background:var(--accent);opacity:1}
 .dv-03 .seg.gray{background:var(--gray)}
-.dv-03 .seg.thin{height:3px;margin-top:-1.5px}
+.dv-03 .seg.thin{height:2px;margin-top:-1px}
 /* 04 Diamond */
-.dv-04 .stem-t{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:44%}
-.dv-04 .stem-b{position:absolute;left:50%;bottom:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:44%}
-.dv-04 .gem{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(45deg)}
+.dv-04 .stem-t{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.75;height:44%}
+.dv-04 .stem-b{position:absolute;left:50%;bottom:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.75;height:44%}
+.dv-04 .gem{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(45deg)}
 /* 05 Nodes */
-.dv-05 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
-.dv-05 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
-.dv-05 .node{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:24px;height:24px;margin:-12px 0 0 -12px;border:1px solid var(--ink-soft);border-radius:50%;background:var(--paper)}
-.dv-05 .node::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent)}
+.dv-05 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-0.5px;background:var(--rule-light)}
+.dv-05 .fill{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.8;height:100%}
+.dv-05 .node{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:16px;height:16px;margin:-8px 0 0 -8px;border:1px solid var(--ink-soft);border-radius:50%;background:var(--paper)}
+.dv-05 .node::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:50%;background:var(--accent)}
 /* 06 Path */
-.dv-06 svg{display:block;height:100%;width:auto;max-width:90%}
+.dv-06 svg{display:block;height:66.7%;width:auto;max-width:90%}
 .dv-06 .t{stroke:var(--rule-light);stroke-width:1.5;fill:none}
 .dv-06 .f{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
 .dv-06 .h{fill:var(--accent)}
 /* 07 Echo */
-.dv-07 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
-.dv-07 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
-.dv-07 .ring{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--accent);border-radius:50%;opacity:.42}
-.dv-07 .core{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--ink);opacity:.85}
-.dv-07 .traveler{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent)}
+.dv-07 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-0.5px;background:var(--rule-light)}
+.dv-07 .fill{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.8;height:100%}
+.dv-07 .ring{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:23px;height:23px;margin:-11.5px 0 0 -11.5px;border:1.5px solid var(--accent);border-radius:50%;opacity:.42}
+.dv-07 .core{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:50%;background:var(--ink);opacity:.85}
+.dv-07 .traveler{position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent)}
 /* 09 Steps */
-.dv-09 svg{display:block;width:min(640px,88%);height:auto}
+.dv-09 svg{display:block;width:min(425px,88%);height:auto}
 .dv-09 .p{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
 .dv-09 .d{fill:var(--accent)}
 /* 10 Chevrons */
-.dv-10{gap:26px}
-.dv-10 .ch{width:28px;height:28px;border-top:4px solid var(--ink);border-right:4px solid var(--ink);transform:rotate(45deg)}
+.dv-10{gap:17.5px}
+.dv-10 .ch{width:19px;height:19px;border-top:2.5px solid var(--ink);border-right:2.5px solid var(--ink);transform:rotate(45deg)}
 .dv-10 .ch.red{border-color:var(--accent)}
 /* 11 Grid */
-.dv-11 .g{display:grid;grid-template-columns:repeat(3,16px);gap:14px}
-.dv-11 i{display:block;width:16px;height:16px;border:2px solid var(--ink)}
+.dv-11 .g{display:grid;grid-template-columns:repeat(3,10.5px);gap:9.5px}
+.dv-11 i{display:block;width:11px;height:11px;border:2px solid var(--ink)}
 .dv-11 i.c{background:var(--accent);border-color:var(--accent)}
 /* 13 Crosshair */
-.dv-13 .ring{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border:3px solid var(--ink);border-radius:50%}
-.dv-13 .hl{position:absolute;left:50%;top:50%;width:min(420px,72%);height:3px;margin:-1.5px 0 0 calc(min(420px,72%)/-2);background:var(--ink);opacity:.85}
-.dv-13 .vl{position:absolute;left:50%;top:50%;width:3px;height:118px;margin:-59px 0 0 -1.5px;background:var(--ink);opacity:.85}
-.dv-13 .dot{position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:var(--accent)}
+.dv-13 .ring{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border:2px solid var(--ink);border-radius:50%}
+.dv-13 .hl{position:absolute;left:50%;top:50%;width:min(280px,72%);height:2px;margin:-1px 0 0 calc(min(280px,72%)/-2);background:var(--ink);opacity:.85}
+.dv-13 .vl{position:absolute;left:50%;top:50%;width:2px;height:79px;margin:-39.5px 0 0 -1px;background:var(--ink);opacity:.85}
+.dv-13 .dot{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--accent)}
 /* 14 Squares */
-.dv-14{gap:18px}
-.dv-14 i{display:block;border:3px solid var(--ink)}
-.dv-14 i:nth-child(1),.dv-14 i:nth-child(7){width:10px;height:10px}
-.dv-14 i:nth-child(2),.dv-14 i:nth-child(6){width:16px;height:16px}
-.dv-14 i:nth-child(3),.dv-14 i:nth-child(5){width:22px;height:22px}
-.dv-14 i:nth-child(4){width:28px;height:28px;border-color:var(--accent)}
+.dv-14{gap:12px}
+.dv-14 i{display:block;border:2px solid var(--ink)}
+.dv-14 i:nth-child(1),.dv-14 i:nth-child(7){width:7px;height:7px}
+.dv-14 i:nth-child(2),.dv-14 i:nth-child(6){width:11px;height:11px}
+.dv-14 i:nth-child(3),.dv-14 i:nth-child(5){width:15px;height:15px}
+.dv-14 i:nth-child(4){width:19px;height:19px;border-color:var(--accent)}
 /* 15 Truss */
-.dv-15 svg{display:block;width:min(860px,94%);height:auto}
+.dv-15 svg{display:block;width:min(575px,94%);height:auto}
 .dv-15 .c{stroke:var(--ink);stroke-width:4.5}
 .dv-15 .m{stroke:var(--ink);stroke-width:3}
 .dv-15 .j{fill:var(--ink)}
 .dv-15 .jr{fill:var(--accent)}
 /* 16 Stitch */
-.dv-16 .line{width:min(660px,84%);border-top:4px dashed var(--ink);opacity:.85;position:relative}
-.dv-16 .tick{position:absolute;left:50%;top:50%;width:4px;height:26px;margin:-13px 0 0 -2px;background:var(--accent)}
+.dv-16 .line{width:min(440px,84%);border-top:2.5px dashed var(--ink);opacity:.85;position:relative}
+.dv-16 .tick{position:absolute;left:50%;top:50%;width:3px;height:17px;margin:-8.5px 0 0 -1.5px;background:var(--accent)}
 /* 17 Pillars */
-.dv-17{align-items:flex-end;padding-bottom:18px;gap:14px}
-.dv-17 i{display:block;width:18px;background:var(--ink);opacity:.85}
-.dv-17 i:nth-child(1){height:30px}.dv-17 i:nth-child(2){height:52px}.dv-17 i:nth-child(3){height:76px}
-.dv-17 i:nth-child(4){height:102px;background:var(--accent);opacity:1}
-.dv-17 i:nth-child(5){height:76px}.dv-17 i:nth-child(6){height:52px}.dv-17 i:nth-child(7){height:30px}
+.dv-17{align-items:flex-end;padding-bottom:12px;gap:9.5px}
+.dv-17 i{display:block;width:12px;background:var(--ink);opacity:.85}
+.dv-17 i:nth-child(1){height:20px}.dv-17 i:nth-child(2){height:35px}.dv-17 i:nth-child(3){height:51px}
+.dv-17 i:nth-child(4){height:68px;background:var(--accent);opacity:1}
+.dv-17 i:nth-child(5){height:51px}.dv-17 i:nth-child(6){height:35px}.dv-17 i:nth-child(7){height:20px}
 /* 18 Diamonds */
-.dv-18{gap:20px}
-.dv-18 i{display:block;width:16px;height:16px;border:3px solid var(--ink);transform:rotate(45deg)}
+.dv-18{gap:13.5px}
+.dv-18 i{display:block;width:11px;height:11px;border:2px solid var(--ink);transform:rotate(45deg)}
 .dv-18 i.c{background:var(--accent);border-color:var(--accent)}
 /* 19 Hourglass */
-.dv-19 svg{display:block;height:118px;width:auto}
+.dv-19 svg{display:block;height:79px;width:auto}
 .dv-19 .t{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
 .dv-19 .d{fill:var(--accent)}
 /* 20 Compass */
-.dv-20 svg{display:block;height:118px;width:auto}
+.dv-20 svg{display:block;height:79px;width:auto}
 .dv-20 .s{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
 .dv-20 .d{fill:var(--accent)}
 /* 21 Brackets */
-.dv-21{gap:20px}
-.dv-21 .b{width:36px;height:72px;border:4px solid var(--ink)}
+.dv-21{gap:13.5px}
+.dv-21 .b{width:24px;height:48px;border:2.5px solid var(--ink)}
 .dv-21 .b.l{border-right:none}
 .dv-21 .b.r{border-left:none}
-.dv-21 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.dv-21 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 /* 22 Ladder */
-.dv-22 .lad{position:relative;width:110px;height:118px}
-.dv-22 .rail{position:absolute;top:0;bottom:0;width:4px;background:var(--ink)}
+.dv-22 .lad{position:relative;width:73px;height:79px}
+.dv-22 .rail{position:absolute;top:0;bottom:0;width:3px;background:var(--ink)}
 .dv-22 .rail.l{left:0}.dv-22 .rail.r{right:0}
-.dv-22 .rung{position:absolute;left:0;right:0;height:4px;background:var(--ink)}
+.dv-22 .rung{position:absolute;left:0;right:0;height:3px;background:var(--ink)}
 .dv-22 .rung.red{background:var(--accent)}
 /* 23 Zigzag */
-.dv-23 svg{display:block;width:min(660px,88%);height:auto}
+.dv-23 svg{display:block;width:min(440px,88%);height:auto}
 .dv-23 .p{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
 .dv-23 .d{fill:var(--accent)}
 /* 24 Ruler */
-.dv-24 .ru{width:min(680px,86%);border-top:3px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
-.dv-24 i{display:block;width:3px;height:14px;background:var(--ink)}
-.dv-24 i.t{height:26px}
-.dv-24 i.red{background:var(--accent);height:34px}
+.dv-24 .ru{width:min(455px,86%);border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
+.dv-24 i{display:block;width:2px;height:9px;background:var(--ink)}
+.dv-24 i.t{height:17px}
+.dv-24 i.red{background:var(--accent);height:23px}
 /* 25 Sun */
-.dv-25 svg{display:block;height:124px;width:auto}
+.dv-25 svg{display:block;height:83px;width:auto}
 .dv-25 .c{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-25 .r{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
 .dv-25 .d{fill:var(--accent)}
 /* 26 Links */
-.dv-26 .lk{display:block;width:76px;height:38px;border:4px solid var(--ink);border-radius:20px;transform:rotate(-24deg)}
-.dv-26 .lk.b{border-color:var(--accent);margin-left:-20px;transform:rotate(-24deg)}
+.dv-26 .lk{display:block;width:51px;height:25px;border:2.5px solid var(--ink);border-radius:13.5px;transform:rotate(-24deg)}
+.dv-26 .lk.b{border-color:var(--accent);margin-left:-13.5px;transform:rotate(-24deg)}
 .dv-26 .lk.a{margin-right:0}
 /* 27 Split */
-.dv-27{gap:18px;padding:0 7%}
-.dv-27 .ln{flex:1;height:3px;background:var(--ink);opacity:.85}
-.dv-27 .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+.dv-27{gap:12px;padding:0 7%}
+.dv-27 .ln{flex:1;height:2px;background:var(--ink);opacity:.85}
+.dv-27 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
 /* 28 Stack */
-.dv-28{flex-direction:column;gap:10px}
-.dv-28 i{display:block;height:8px;background:var(--ink);opacity:.85}
-.dv-28 i:nth-child(1){width:min(480px,72%)}
-.dv-28 i:nth-child(2){width:min(360px,56%)}
-.dv-28 i:nth-child(3){width:min(240px,38%)}
-.dv-28 i:nth-child(4){width:120px;background:var(--accent);opacity:1}
+.dv-28{flex-direction:column;gap:6.5px}
+.dv-28 i{display:block;height:5px;background:var(--ink);opacity:.85}
+.dv-28 i:nth-child(1){width:min(320px,72%)}
+.dv-28 i:nth-child(2){width:min(240px,56%)}
+.dv-28 i:nth-child(3){width:min(160px,38%)}
+.dv-28 i:nth-child(4){width:80px;background:var(--accent);opacity:1}
 /* 29 Target */
-.dv-29 .o1{position:absolute;left:50%;top:50%;width:98px;height:98px;margin:-49px 0 0 -49px;border:4px solid var(--ink);border-radius:50%}
-.dv-29 .o2{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border:3px solid var(--ink);border-radius:50%}
-.dv-29 .o3{position:absolute;left:50%;top:50%;width:32px;height:32px;margin:-16px 0 0 -16px;border:3px solid var(--ink);border-radius:50%}
-.dv-29 .c{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--accent)}
+.dv-29 .o1{position:absolute;left:50%;top:50%;width:65px;height:65px;margin:-32.5px 0 0 -32.5px;border:2.5px solid var(--ink);border-radius:50%}
+.dv-29 .o2{position:absolute;left:50%;top:50%;width:43px;height:43px;margin:-21.5px 0 0 -21.5px;border:2px solid var(--ink);border-radius:50%}
+.dv-29 .o3{position:absolute;left:50%;top:50%;width:21px;height:21px;margin:-10.5px 0 0 -10.5px;border:2px solid var(--ink);border-radius:50%}
+.dv-29 .c{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--accent)}
 /* 30 Wave */
-.dv-30 .rail{display:flex;align-items:center;gap:11px}
-.dv-30 i{display:block;width:7px;height:7px;border-radius:50%;background:var(--ink)}
-.dv-30 i:nth-child(1){transform:translateY(0)}.dv-30 i:nth-child(2){transform:translateY(-10px)}.dv-30 i:nth-child(3){transform:translateY(-18px)}
-.dv-30 i:nth-child(4){transform:translateY(-10px)}.dv-30 i:nth-child(5){transform:translateY(0)}.dv-30 i:nth-child(6){transform:translateY(10px)}
-.dv-30 i:nth-child(7){transform:translateY(18px)}.dv-30 i:nth-child(8){transform:translateY(10px)}.dv-30 i:nth-child(9){transform:translateY(0)}
-.dv-30 i:nth-child(10){transform:translateY(-10px)}.dv-30 i:nth-child(11){transform:translateY(-18px)}.dv-30 i:nth-child(12){transform:translateY(-10px)}
+.dv-30 .rail{display:flex;align-items:center;gap:7.5px}
+.dv-30 i{display:block;width:5px;height:5px;border-radius:50%;background:var(--ink)}
+.dv-30 i:nth-child(1){transform:translateY(0)}.dv-30 i:nth-child(2){transform:translateY(-6.5px)}.dv-30 i:nth-child(3){transform:translateY(-12px)}
+.dv-30 i:nth-child(4){transform:translateY(-6.5px)}.dv-30 i:nth-child(5){transform:translateY(0)}.dv-30 i:nth-child(6){transform:translateY(6.5px)}
+.dv-30 i:nth-child(7){transform:translateY(12px)}.dv-30 i:nth-child(8){transform:translateY(6.5px)}.dv-30 i:nth-child(9){transform:translateY(0)}
+.dv-30 i:nth-child(10){transform:translateY(-6.5px)}.dv-30 i:nth-child(11){transform:translateY(-12px)}.dv-30 i:nth-child(12){transform:translateY(-6.5px)}
 .dv-30 i:nth-child(13){transform:translateY(0)}
-.dv-30 i.red{background:var(--accent);width:10px;height:10px}
-@media(max-width:560px){.dv-30 .rail{gap:7px}.dv-17{gap:9px}.dv-17 i{width:13px}.dv-14{gap:11px}.dv-18{gap:13px}.dv-21{gap:13px}}
+.dv-30 i.red{background:var(--accent);width:7px;height:7px}
+@media(max-width:560px){.dv-30 .rail{gap:4.5px}.dv-17{gap:6px}.dv-17 i{width:9px}.dv-14{gap:7.5px}.dv-18{gap:8.5px}.dv-21{gap:8.5px}}
 /* 31 Meridian */
-.dv-31 svg{display:block;width:min(560px,88%);height:auto}
+.dv-31 svg{display:block;width:min(375px,88%);height:auto}
 .dv-31 .s{stroke:var(--ink);stroke-width:3}
 .dv-31 .t{stroke:var(--ink);stroke-width:2.5}
 .dv-31 .c{stroke:var(--accent);stroke-width:3}
 /* 32 Sprocket */
-.dv-32 svg{display:block;height:128px;width:auto}
+.dv-32 svg{display:block;height:85px;width:auto}
 .dv-32 .r{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-32 .t{stroke:var(--ink);stroke-width:9}
 .dv-32 .d{fill:var(--accent)}
 /* 33 Loom */
-.dv-33 .warp{display:flex;gap:11px;height:104px;align-items:stretch}
-.dv-33 .warp i{display:block;width:3px;background:var(--ink);opacity:.75}
-.dv-33 .weft{position:absolute;left:9%;right:9%;top:50%;height:7px;margin-top:-3.5px;background:var(--accent)}
-@media(max-width:560px){.dv-33 .warp{gap:7px}}
+.dv-33 .warp{display:flex;gap:7.5px;height:69px;align-items:stretch}
+.dv-33 .warp i{display:block;width:2px;background:var(--ink);opacity:.75}
+.dv-33 .weft{position:absolute;left:9%;right:9%;top:50%;height:5px;margin-top:-2.5px;background:var(--accent)}
+@media(max-width:560px){.dv-33 .warp{gap:4.5px}}
 /* 34 Keystone */
-.dv-34 svg{display:block;width:min(640px,88%);height:auto}
+.dv-34 svg{display:block;width:min(425px,88%);height:auto}
 .dv-34 .b{stroke:var(--ink);stroke-width:3.5}
 .dv-34 .k{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linejoin:round}
 /* 35 Flange */
-.dv-35 svg{display:block;width:min(720px,92%);height:auto}
+.dv-35 svg{display:block;width:min(480px,92%);height:auto}
 .dv-35 .p{stroke:var(--ink);stroke-width:3}
 .dv-35 .f{stroke:var(--ink);stroke-width:6}
 .dv-35 .g{stroke:var(--accent);stroke-width:4}
 .dv-35 .d{fill:var(--ink)}
 /* 36 Rivets */
-.dv-36{flex-direction:column;gap:15px}
-.dv-36 .rule{width:min(680px,86%);height:3px;background:var(--ink);opacity:.85}
-.dv-36 .row{display:flex;gap:24px}
-.dv-36 .row i{display:block;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.dv-36{flex-direction:column;gap:10px}
+.dv-36 .rule{width:min(455px,86%);height:2px;background:var(--ink);opacity:.85}
+.dv-36 .row{display:flex;gap:16px}
+.dv-36 .row i{display:block;width:5px;height:5px;border-radius:50%;background:var(--ink)}
 .dv-36 .row i.red{background:var(--accent)}
-@media(max-width:560px){.dv-36 .row{gap:15px}}
+@media(max-width:560px){.dv-36 .row{gap:10px}}
 /* 37 Coil */
-.dv-37 svg{display:block;width:min(720px,92%);height:auto}
+.dv-37 svg{display:block;width:min(480px,92%);height:auto}
 .dv-37 .s{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-37 .d{fill:var(--accent)}
 /* 38 Hinge */
-.dv-38 svg{display:block;width:min(560px,88%);height:auto}
+.dv-38 svg{display:block;width:min(375px,88%);height:auto}
 .dv-38 .p{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-38 .d{fill:var(--ink)}
 .dv-38 .c{fill:var(--accent)}
 /* 39 Tread */
-.dv-39 svg{display:block;width:min(780px,94%);height:auto}
+.dv-39 svg{display:block;width:min(520px,94%);height:auto}
 .dv-39 .b{fill:var(--ink);opacity:.85}
 .dv-39 .r{fill:var(--accent)}
 /* 40 Lattice */
-.dv-40 svg{display:block;width:min(880px,95%);height:auto}
+.dv-40 svg{display:block;width:min(585px,95%);height:auto}
 .dv-40 .c{stroke:var(--ink);stroke-width:4}
 .dv-40 .m{stroke:var(--ink);stroke-width:2.5}
 .dv-40 .d{fill:var(--accent)}
 /* 41 Piston */
-.dv-41 svg{display:block;height:132px;width:auto}
+.dv-41 svg{display:block;height:88px;width:auto}
 .dv-41 .c{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-41 .r{stroke:var(--ink);stroke-width:5}
 .dv-41 .s{stroke:var(--accent);stroke-width:4}
 /* 42 Crank */
-.dv-42 svg{display:block;width:min(680px,88%);height:auto}
+.dv-42 svg{display:block;width:min(455px,88%);height:auto}
 .dv-42 .s{fill:none;stroke:var(--ink);stroke-width:4;stroke-linejoin:round}
 .dv-42 .d{fill:var(--accent)}
 /* 43 Flywheel */
-.dv-43 svg{display:block;height:130px;width:auto}
+.dv-43 svg{display:block;height:87px;width:auto}
 .dv-43 .r{fill:none;stroke:var(--ink);stroke-width:5}
 .dv-43 .s{stroke:var(--ink);stroke-width:4}
 .dv-43 .h{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-43 .d{fill:var(--accent)}
 /* 44 Axle */
-.dv-44 svg{display:block;width:min(680px,88%);height:auto}
+.dv-44 svg{display:block;width:min(455px,88%);height:auto}
 .dv-44 .s{stroke:var(--ink);stroke-width:5}
 .dv-44 .w{fill:none;stroke:var(--ink);stroke-width:4}
 .dv-44 .h{fill:var(--ink)}
 .dv-44 .d{fill:var(--accent)}
 /* 45 Mortise */
-.dv-45 svg{display:block;width:min(680px,88%);height:auto}
+.dv-45 svg{display:block;width:min(455px,88%);height:auto}
 .dv-45 .b{fill:none;stroke:var(--ink);stroke-width:3.5}
 .dv-45 .m{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-45 .d{fill:var(--accent)}
 /* 46 Sluice */
-.dv-46 svg{display:block;width:min(680px,88%);height:auto}
+.dv-46 svg{display:block;width:min(455px,88%);height:auto}
 .dv-46 .c{stroke:var(--ink);stroke-width:3.5}
 .dv-46 .g{stroke:var(--ink);stroke-width:5}
 .dv-46 .r{stroke:var(--accent);stroke-width:3}
 /* 47 Grate */
-.dv-47 .fr{width:min(720px,88%);height:96px;border:3.5px solid var(--ink);display:flex;justify-content:space-evenly;align-items:stretch}
-.dv-47 .fr i{display:block;width:5px;background:var(--ink);opacity:.85}
+.dv-47 .fr{width:min(480px,88%);height:64px;border:2.5px solid var(--ink);display:flex;justify-content:space-evenly;align-items:stretch}
+.dv-47 .fr i{display:block;width:3px;background:var(--ink);opacity:.85}
 .dv-47 .fr i.red{background:var(--accent);opacity:1}
 /* 48 Ingot */
-.dv-48 svg{display:block;width:min(560px,84%);height:auto}
+.dv-48 svg{display:block;width:min(375px,84%);height:auto}
 .dv-48 .i{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linejoin:round}
 .dv-48 .r{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linejoin:round}
 .dv-48 .b{stroke:var(--ink);stroke-width:3}
 /* 49 Seam */
-.dv-49 svg{display:block;width:min(700px,90%);height:auto}
+.dv-49 svg{display:block;width:min(465px,90%);height:auto}
 .dv-49 .r{stroke:var(--ink);stroke-width:3}
 .dv-49 .x{stroke:var(--ink);stroke-width:2.5}
 .dv-49 .xr{stroke:var(--accent);stroke-width:2.5}
 /* 54 Current */
-.dv-54 svg{display:block;width:min(700px,90%);height:auto}
+.dv-54 svg{display:block;width:min(465px,90%);height:auto}
 .dv-54 .f{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}
 .dv-54 .g{fill:none;stroke:var(--gray);stroke-width:2.5;stroke-linecap:round}
 .dv-54 .h{fill:var(--accent)}
 /* 55 Beam */
-.dv-55 svg{display:block;width:min(720px,92%);height:auto}
+.dv-55 svg{display:block;width:min(480px,92%);height:auto}
 .dv-55 .f{stroke:var(--ink);stroke-width:3}
 .dv-55 .p{fill:none;stroke:var(--ink);stroke-width:4;stroke-linejoin:round}
 .dv-55 .d{fill:var(--accent)}
 /* 56 Quarry */
-.dv-56 svg{display:block;width:min(760px,94%);height:auto}
+.dv-56 svg{display:block;width:min(505px,94%);height:auto}
 .dv-56 .q{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linejoin:round}
 .dv-56 .d{fill:var(--accent)}
 /* 57 Tenon */
-.dv-57 svg{display:block;width:min(680px,88%);height:auto}
+.dv-57 svg{display:block;width:min(455px,88%);height:auto}
 .dv-57 .r{fill:none;stroke:var(--ink);stroke-width:3.5}
 .dv-57 .t{fill:none;stroke:var(--ink);stroke-width:3.5}
 .dv-57 .d{fill:var(--accent)}
 /* 58 Quay */
-.dv-58 svg{display:block;width:min(700px,90%);height:auto}
+.dv-58 svg{display:block;width:min(465px,90%);height:auto}
 .dv-58 .e{stroke:var(--ink);stroke-width:5}
 .dv-58 .p{stroke:var(--ink);stroke-width:5}
 .dv-58 .w{fill:none;stroke:var(--gray);stroke-width:2.5;stroke-linecap:round}
 .dv-58 .d{fill:var(--accent)}
 /* 59 Forge */
-.dv-59 svg{display:block;width:min(640px,88%);height:auto}
+.dv-59 svg{display:block;width:min(425px,88%);height:auto}
 .dv-59 .b{stroke:var(--ink);stroke-width:4}
 .dv-59 .g{stroke:var(--accent);stroke-width:9}
 .dv-59 .s{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
 /* 60 Level */
-.dv-60 .lv{position:relative;width:min(620px,84%);height:34px;border:3.5px solid var(--ink);border-radius:17px}
-.dv-60 .bub{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--accent)}
-.dv-60 .mk{position:absolute;top:4px;bottom:4px;width:2.5px;background:var(--ink);opacity:.6}
-.dv-60 .cap{position:absolute;top:-3.5px;bottom:-3.5px;width:9px;background:var(--ink)}
+.dv-60 .lv{position:relative;width:min(415px,84%);height:23px;border:2.5px solid var(--ink);border-radius:11.5px}
+.dv-60 .bub{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--accent)}
+.dv-60 .mk{position:absolute;top:2.5px;bottom:2.5px;width:2px;background:var(--ink);opacity:.6}
+.dv-60 .cap{position:absolute;top:-2.5px;bottom:-2.5px;width:6px;background:var(--ink)}
+
+/* --- Divider centering rule (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes. Horizontally: the band is margin:0 auto with
+   flex-centered content, so the graphic sits on the column's centre
+   line. Vertically: the facing spacing on each side of the band is one
+   equal gap (--dv-gap), so the space above the graphic (previous
+   section's last content to the graphic) equals the space below it
+   (graphic to the next section's kicker). --dv-gap is sized so a
+   divider boundary totals about one ordinary section break
+   (2 x --section-gap) once the band is counted. The band itself stays
+   144px on desktop / 135px on phone; divider graphics are sized at
+   two-thirds of the original standard (upright motifs 87px tall,
+   wide motifs scaled proportionally). */
+:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 72px), 48px)}
+@media(max-width:700px){:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 67.5px), 48px)}}
+section:has(+ .dv){padding-bottom:var(--dv-gap)}
+.column:has(+ .dv) > section:last-child{padding-bottom:var(--dv-gap)}
+.dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
+figure:has(+ .dv){margin-bottom:var(--dv-gap)}
+figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}
 </style></head>
 <body><main class="page"><h1>Divider presets</h1><p class="sub">54 presets &middot; The Board</p>
 <section class="item"><p class="label">01 &middot; Thread</p><div class="dv dv-01" role="presentation"><span class="track"></span><span class="fill"></span><span class="tick r" style="--at:.3"></span><span class="tick l" style="--at:.55"></span><span class="tick r" style="--at:.8"></span><span class="traveler"></span><span class="ghost"></span></div></section>

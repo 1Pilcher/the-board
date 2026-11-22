@@ -86,7 +86,12 @@ nav.menu a.active{color:#f5eedd}
    by this settled rule: the colouring idea is dropped entirely.
    Candidate F stays a variants-page candidate only and is not
    implemented on any page. */
-.nameplate{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(3rem,12vw,6.4rem);line-height:1.12;letter-spacing:0;text-indent:0;text-transform:none;color:var(--ink)}
+/* SUPERSEDED (Josh, Nov 22, 2026): the UnifrakturMaguntia blackletter
+   session masthead above is retired. Session pages now carry the
+   standardized G nameplate (single mark, dark-ground treatment),
+   styled by the canonical G block in assets/board.css and hardcoded
+   in study-head-fragment.html. The blackletter rule is removed so no
+   future build can resurrect it by accident. */
 
 /* Drop initial on each section's lede, in gold. */
 p.lede::first-letter{color:var(--gold)}

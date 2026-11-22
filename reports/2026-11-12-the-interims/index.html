@@ -15,6 +15,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&amp;family=Cormorant+Garamond:ital,wght@1,600&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;family=Libre+Franklin:wght@700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/board.css">
 
+<style>
+/* --- Divider centering + shrink (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes: horizontally in the column (the band is
+   margin:0 auto), vertically with equal space above and below the
+   graphic. Interlude motifs span their band, so the band is the
+   graphic's governing size: bands and the free-standing motif
+   elements are sized at two-thirds of the original standard, and the
+   facing section spacing becomes one equal gap on each side
+   (--dv-gap-il), sized so a divider boundary totals about one
+   ordinary section break (2 x --section-gap). The canonical home for
+   this rule is board.css, which Coffee to Kalshi also loads; Coffee
+   is excluded from this pass, so the rule lives page-locally here. */
+:root{--interlude-h:clamp(80px,12vh,120px);--interlude-h-short:clamp(59px,8.7vh,85px);--dv-gap-il:clamp(12px, calc(var(--section-gap) - var(--interlude-h)/2), 48px);--dv-gap-il-s:clamp(12px, calc(var(--section-gap) - var(--interlude-h-short)/2), 48px)}
+@media(max-width:560px){:root{--interlude-h:clamp(69px,10.7vh,96px);--interlude-h-short:clamp(53px,8vh,75px)}}
+section:has(+ .interlude){padding-bottom:var(--dv-gap-il)}
+.column:has(+ .interlude) > section:last-child{padding-bottom:var(--dv-gap-il)}
+section:has(+ .interlude.short){padding-bottom:var(--dv-gap-il-s)}
+.column:has(+ .interlude.short) > section:last-child{padding-bottom:var(--dv-gap-il-s)}
+.interlude + .column > .chapter, .interlude + .chapter{padding-top:var(--dv-gap-il)}
+.interlude.short + .column > .chapter, .interlude.short + .chapter{padding-top:var(--dv-gap-il-s)}
+figure:has(+ .interlude){margin-bottom:var(--dv-gap-il)}
+figure.viz:has(+ .interlude){padding-bottom:var(--dv-gap-il);margin-bottom:0}
+.pin-cap:has(+ .interlude){margin-bottom:var(--dv-gap-il)}
+.il-thread .traveler{width:5px;height:5px;margin:-2.5px 0 0 -2.5px}
+.il-thread .ghost{width:3px;height:3px;margin:-1.5px 0 0 -1.5px}
+.il-thread .tick::before,.il-thread .tick::after{width:127px}
+.il-nodes .node{width:16px;height:16px;margin:-8px 0 0 -8px}
+.il-nodes .node::after{width:3px;height:3px;margin:-1.5px 0 0 -1.5px}
+.il-nodes .core{width:3px;height:3px;margin:-1.5px 0 0 -1.5px}
+.il-bars{gap:12px}
+.il-bars .bar{height:9px;gap:12px}
+.il-bars .seg{height:4px}
+.il-bars .seg.thin{height:2px}
+.il-dots .rail{gap:7px}
+.il-dots i{width:4px;height:4px}
+.il-diamond .gem{width:9px;height:9px;margin:-4.5px 0 0 -4.5px}
+.il-echo .ring{width:17px;height:17px;margin:-8.5px 0 0 -8.5px}
+.il-echo .core{width:3px;height:3px;margin:-1.5px 0 0 -1.5px}
+@media(max-width:560px){.il-dots .rail{gap:4.5px}}
+
+</style>
 </head>
 <body>
 <div id="topstrip" aria-hidden="true"></div>

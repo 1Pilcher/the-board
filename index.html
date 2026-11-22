@@ -8,39 +8,36 @@
 <title>The Board - Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,900;1,800&family=Cormorant+Garamond:ital,wght@1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/home.css" />
 <style>
-/* Split nameplate — The Board | The Study. The pair is the switch
-   between the two homepages: both names stand at full presence,
-   the SIBLING half is the link, the CURRENT half is not; there is
-   no separate nav button. WORDMARK RULE (Josh, Nov 21, 2026,
-   later that night — supersedes the uniform-wordmark rule set
-   earlier the same evening): the two marks are NOT uniform.
-   The Board's mark stands in its ORIGINAL treatment — Playfair
-   Display 900, the .nameplate face it has carried all along.
-   The Study's mark stands in UnifrakturMaguntia blackletter.
-   On this light ground both marks are plain black; on The
-   Study's dark ground, plain white. The distinction between
-   the publications comes from the switch, not from matching
-   faces. The Cormorant italic tagline sits beneath each mark. */
-.split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
-.sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.4rem,8.6vw,5.4rem);line-height:1.12;letter-spacing:0;color:#141310;white-space:nowrap}
-/* The Board's mark in its original treatment: Playfair Display
-   900 with the .nameplate tracking (.16em, text-indent compen-
-   sated), scaled to fit its half of the plate; the line-height
-   is set so the two taglines sit on one line. The <=700px tier
-   drops the tracking to .1em — the original nameplate's own
-   phone move. */
-.sp-board .sp-mark{font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em}
-a.sp-half:hover .sp-mark{opacity:.72}
-.sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
-.sp-study .sp-tag{color:#4a4238}
-@media(max-width:700px){
-  .sp-half{padding:0 4px}
-  .sp-tag{font-size:.92rem;margin-top:8px}
-  .sp-board .sp-mark{font-size:clamp(1.6rem,7.5vw,3.4rem);letter-spacing:.1em;text-indent:.1em;line-height:1.36}
+/* Stacked nameplate (Josh, Nov 21, 2026, later still — his
+   reference: a screenshot of a report page's classic masthead;
+   "this is what both should look like", "the and board on
+   different lines", "stacked", "make sure it's the same font
+   as that pic i sent"). Both homepages carry the SAME stacked
+   masthead: the two publication names centered, one above the
+   other, each broken onto two lines — THE over BOARD, THE over
+   STUDY — the stack four lines tall. BOTH names stand in the
+   classic .nameplate face: Playfair Display 900, .16em
+   tracking, text-indent compensated, the full original size
+   (no halves to fit any more). This supersedes the side-by-side
+   split plate shipped earlier the same night, and with it the
+   blackletter Study mark ON THE HOMEPAGES ONLY; the session
+   pages keep their one-line blackletter nameplate, untouched.
+   The pair is still the switch between the homepages: the
+   CURRENT publication's name stands first and is not a link;
+   the SIBLING name below it is the link. Beneath the stack sit
+   the current publication's tagline and the classic red double
+   rule — the shared .tagline and .double-rule of home.css,
+   restored exactly as the pre-launch homepage had them. */
+.stack-plate{margin:var(--sp-3) 0 var(--sp-1);text-align:center}
+.stack-name{display:block;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.stack-name + .stack-name{margin-top:var(--sp-3)}
+.stack-line{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.8rem,10vw,5.4rem);letter-spacing:.16em;line-height:1.08;text-indent:.16em;color:#141310;white-space:nowrap}
+a.stack-name:hover .stack-line{opacity:.72}
+@media(max-width:380px){
+  .stack-line{font-size:2.3rem;letter-spacing:.1em;text-indent:.1em}
 }
 </style>
 </head>
@@ -51,16 +48,18 @@ a.sp-half:hover .sp-mark{opacity:.72}
 
 <header class="masthead">
   <div class="topline"><span class="side">Houston, Texas</span><!-- left slot intentionally blank: no weekday label above the masthead --><span class="mid"></span><span class="side right"></span></div>
-  <div class="split-plate" role="banner">
-    <div class="sp-half sp-board" aria-current="page">
-      <span class="sp-mark">The Board</span>
-      <div class="sp-tag">What&rsquo;s actually going on.</div>
+  <div class="stack-plate" role="banner">
+    <div class="stack-name stack-board" aria-current="page">
+      <span class="stack-line">THE</span>
+      <span class="stack-line">BOARD</span>
     </div>
-    <a class="sp-half sp-study" href="study/" aria-label="The Study — front page">
-      <span class="sp-mark">The Study</span>
-      <div class="sp-tag">Reading the Bible slowly.</div>
+    <a class="stack-name stack-study" href="study/" aria-label="The Study — front page">
+      <span class="stack-line">THE</span>
+      <span class="stack-line">STUDY</span>
     </a>
   </div>
+  <div class="tagline">What&rsquo;s actually going on.</div>
+  <div class="double-rule"></div>
   <div class="edition-line"><span data-today>Saturday, November 21, 2026</span><span class="c">Home</span><span>By Josh Pilcher</span></div>
 </header>
 

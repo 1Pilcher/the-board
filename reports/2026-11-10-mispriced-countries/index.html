@@ -151,6 +151,52 @@ table.rtable td.num{text-align:right;white-space:normal}
 nav.menu a{transition:none!important}
 }
 footer.method a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:2px}
+
+/* --- Divider centering + shrink (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes: horizontally in the column (the band is
+   margin:0 auto), vertically with equal space above and below the
+   graphic. Bands and motif elements are sized at two-thirds of the
+   original standard, and the facing section spacing becomes one equal
+   gap on each side (--dv-gap-il), sized so a divider boundary totals
+   about one ordinary section break (2 x --section-gap). This page's
+   sections are margin-spaced and its interlude contents were laid out
+   as a top-hugging block stack, so centering also sets the band to a
+   centered flex row, the layout the variant CSS was written for.
+   The canonical home for this rule is board.css, which Coffee to
+   Kalshi also loads; Coffee is excluded from this pass, so the rule
+   lives page-locally here. */
+:root{--interlude-h:clamp(80px,12vh,120px);--interlude-h-short:clamp(59px,8.7vh,85px);--dv-gap-il:clamp(12px, calc(var(--section-gap) - var(--interlude-h)/2), 48px);--dv-gap-il-s:clamp(12px, calc(var(--section-gap) - var(--interlude-h-short)/2), 48px)}
+@media(max-width:560px){:root{--interlude-h:clamp(69px,10.7vh,96px);--interlude-h-short:clamp(53px,8vh,75px)}}
+.interlude{display:flex;align-items:center;justify-content:center;gap:7px}
+.interlude.v-bars{align-items:center}
+section:has(+ .interlude){padding-bottom:var(--dv-gap-il)}
+section:has(+ .interlude) > :last-child{margin-bottom:0}
+.interlude + section{margin-top:var(--dv-gap-il)}
+.interlude + footer.method{margin-top:calc(var(--dv-gap-il) - 24px)}
+.interlude i:nth-child(1),.interlude i:nth-child(5){width:3px;height:3px}
+.interlude i:nth-child(2),.interlude i:nth-child(4){width:5px;height:5px}
+.interlude i:nth-child(3){width:8px;height:8px}
+.interlude .bar{width:37px}
+.interlude.v-diamond .bar,.interlude.v-ring .bar{width:60px}
+.interlude .gem{width:7px;height:7px}
+.interlude .ring{width:9px;height:9px}
+.interlude .sq{width:6px;height:6px}
+.interlude.v-squares .sq:nth-child(1),.interlude.v-squares .sq:nth-child(3){width:4px;height:4px}
+.interlude.v-squares .sq:nth-child(2){width:8px;height:8px}
+.interlude .cdot{width:6px;height:6px}
+.interlude .vbar.b1{height:8px}
+.interlude .vbar.b2{height:13px}
+.interlude .vbar.b3{height:19px}
+.interlude .dot{width:4px;height:4px}
+.interlude.v-dots .dot:nth-child(5){width:7px;height:7px}
+.interlude .drule{width:47px;height:3px}
+.interlude .csq{width:5px;height:5px}
+
+/* A prose tail before a divider: the last paragraph's own bottom
+   margin stacks inside the section on top of the boundary gap. */
+section:has(+ .interlude) > .prose:last-child > :last-child{margin-bottom:0}
+.interlude + footer.method{margin-top:calc(var(--dv-gap-il) - 27px)}
 </style>
 </head>
 <body>

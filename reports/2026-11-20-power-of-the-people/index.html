@@ -18,34 +18,34 @@
 <style>
 .dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--paper)}
 @media(max-width:700px){.dv{height:135px}}
-.dv-29 .o1{position:absolute;left:50%;top:50%;width:98px;height:98px;margin:-49px 0 0 -49px;border:4px solid var(--ink);border-radius:50%}
-.dv-29 .o2{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border:3px solid var(--ink);border-radius:50%}
-.dv-29 .o3{position:absolute;left:50%;top:50%;width:32px;height:32px;margin:-16px 0 0 -16px;border:3px solid var(--ink);border-radius:50%}
-.dv-29 .c{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--accent)}
-.dv-24 .ru{width:min(680px,86%);border-top:3px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
-.dv-24 i{display:block;width:3px;height:14px;background:var(--ink)}
-.dv-24 i.t{height:26px}
-.dv-24 i.red{background:var(--accent);height:34px}
-.dv-59 svg{display:block;width:min(640px,88%);height:auto}
+.dv-29 .o1{position:absolute;left:50%;top:50%;width:65px;height:65px;margin:-32.5px 0 0 -32.5px;border:2.5px solid var(--ink);border-radius:50%}
+.dv-29 .o2{position:absolute;left:50%;top:50%;width:43px;height:43px;margin:-21.5px 0 0 -21.5px;border:2px solid var(--ink);border-radius:50%}
+.dv-29 .o3{position:absolute;left:50%;top:50%;width:21px;height:21px;margin:-10.5px 0 0 -10.5px;border:2px solid var(--ink);border-radius:50%}
+.dv-29 .c{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--accent)}
+.dv-24 .ru{width:min(455px,86%);border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
+.dv-24 i{display:block;width:2px;height:9px;background:var(--ink)}
+.dv-24 i.t{height:17px}
+.dv-24 i.red{background:var(--accent);height:23px}
+.dv-59 svg{display:block;width:min(425px,88%);height:auto}
 .dv-59 .b{stroke:var(--ink);stroke-width:4}
 .dv-59 .g{stroke:var(--accent);stroke-width:9}
 .dv-59 .s{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
-.dv-22 .lad{position:relative;width:110px;height:118px}
-.dv-22 .rail{position:absolute;top:0;bottom:0;width:4px;background:var(--ink)}
+.dv-22 .lad{position:relative;width:73px;height:79px}
+.dv-22 .rail{position:absolute;top:0;bottom:0;width:3px;background:var(--ink)}
 .dv-22 .rail.l{left:0}.dv-22 .rail.r{right:0}
-.dv-22 .rung{position:absolute;left:0;right:0;height:4px;background:var(--ink)}
+.dv-22 .rung{position:absolute;left:0;right:0;height:3px;background:var(--ink)}
 .dv-22 .rung.red{background:var(--accent)}
-.dv-15 svg{display:block;width:min(860px,94%);height:auto}
+.dv-15 svg{display:block;width:min(575px,94%);height:auto}
 .dv-15 .c{stroke:var(--ink);stroke-width:4.5}
 .dv-15 .m{stroke:var(--ink);stroke-width:3}
 .dv-15 .j{fill:var(--ink)}
 .dv-15 .jr{fill:var(--accent)}
-.dv-43 svg{display:block;height:130px;width:auto}
+.dv-43 svg{display:block;height:87px;width:auto}
 .dv-43 .r{fill:none;stroke:var(--ink);stroke-width:5}
 .dv-43 .s{stroke:var(--ink);stroke-width:4}
 .dv-43 .h{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-43 .d{fill:var(--accent)}
-.dv-41 svg{display:block;height:132px;width:auto}
+.dv-41 svg{display:block;height:88px;width:auto}
 .dv-41 .c{fill:none;stroke:var(--ink);stroke-width:3}
 .dv-41 .r{stroke:var(--ink);stroke-width:5}
 .dv-41 .s{stroke:var(--accent);stroke-width:4}
@@ -207,7 +207,7 @@
 </section>
 </div>
 
-<div class="dv dv-22" role="presentation"><div class="lad"><span class="rail l"></span><span class="rail r"></span><span class="rung" style="top:16px"></span><span class="rung" style="top:48px"></span><span class="rung red" style="top:80px"></span><span class="rung" style="top:110px"></span></div></div>
+<div class="dv dv-22" role="presentation"><div class="lad"><span class="rail l"></span><span class="rail r"></span><span class="rung" style="top:10.5px"></span><span class="rung" style="top:32px"></span><span class="rung red" style="top:53.5px"></span><span class="rung" style="top:73.5px"></span></div></div>
 
 <div class="column">
 <header class="chapter" id="concession">
@@ -2147,7 +2147,28 @@ z
   </rdf:RDF>
  </metadata>
  <defs>
-  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}
+/* --- Divider centering rule (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes. Horizontally: the band is margin:0 auto with
+   flex-centered content, so the graphic sits on the column's centre
+   line. Vertically: the facing spacing on each side of the band is one
+   equal gap (--dv-gap), so the space above the graphic (previous
+   section's last content to the graphic) equals the space below it
+   (graphic to the next section's kicker). --dv-gap is sized so a
+   divider boundary totals about one ordinary section break
+   (2 x --section-gap) once the band is counted. The band itself stays
+   144px on desktop / 135px on phone; divider graphics are sized at
+   two-thirds of the original standard (upright motifs 87px tall,
+   wide motifs scaled proportionally). */
+:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 72px), 48px)}
+@media(max-width:700px){:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 67.5px), 48px)}}
+section:has(+ .dv){padding-bottom:var(--dv-gap)}
+.column:has(+ .dv) > section:last-child{padding-bottom:var(--dv-gap)}
+.dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
+figure:has(+ .dv){margin-bottom:var(--dv-gap)}
+figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}
+</style>
  </defs>
  <g id="figure_1">
   <g id="patch_1">

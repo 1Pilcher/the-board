@@ -18,29 +18,29 @@
 <style>
 .dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--paper)}
 @media(max-width:700px){.dv{height:135px}}
-.dv-26 .lk{display:block;width:76px;height:38px;border:4px solid var(--ink);border-radius:20px;transform:rotate(-24deg)}
-.dv-26 .lk.b{border-color:var(--accent);margin-left:-20px;transform:rotate(-24deg)}
+.dv-26 .lk{display:block;width:51px;height:25px;border:2.5px solid var(--ink);border-radius:13.5px;transform:rotate(-24deg)}
+.dv-26 .lk.b{border-color:var(--accent);margin-left:-13.5px;transform:rotate(-24deg)}
 .dv-26 .lk.a{margin-right:0}
-.dv-20 svg{display:block;height:118px;width:auto}
+.dv-20 svg{display:block;height:79px;width:auto}
 .dv-20 .s{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
 .dv-20 .d{fill:var(--accent)}
-.dv-31 svg{display:block;width:min(560px,88%);height:auto}
+.dv-31 svg{display:block;width:min(375px,88%);height:auto}
 .dv-31 .s{stroke:var(--ink);stroke-width:3}
 .dv-31 .t{stroke:var(--ink);stroke-width:2.5}
 .dv-31 .c{stroke:var(--accent);stroke-width:3}
-.dv-24 .ru{width:min(680px,86%);border-top:3px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
-.dv-24 i{display:block;width:3px;height:14px;background:var(--ink)}
-.dv-24 i.t{height:26px}
-.dv-24 i.red{background:var(--accent);height:34px}
-.dv-57 svg{display:block;width:min(680px,88%);height:auto}
+.dv-24 .ru{width:min(455px,86%);border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start}
+.dv-24 i{display:block;width:2px;height:9px;background:var(--ink)}
+.dv-24 i.t{height:17px}
+.dv-24 i.red{background:var(--accent);height:23px}
+.dv-57 svg{display:block;width:min(455px,88%);height:auto}
 .dv-57 .r{fill:none;stroke:var(--ink);stroke-width:3.5}
 .dv-57 .t{fill:none;stroke:var(--ink);stroke-width:3.5}
 .dv-57 .d{fill:var(--accent)}
-.dv-60 .lv{position:relative;width:min(620px,84%);height:34px;border:3.5px solid var(--ink);border-radius:17px}
-.dv-60 .bub{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border-radius:50%;background:var(--accent)}
-.dv-60 .mk{position:absolute;top:4px;bottom:4px;width:2.5px;background:var(--ink);opacity:.6}
-.dv-60 .cap{position:absolute;top:-3.5px;bottom:-3.5px;width:9px;background:var(--ink)}
-.dv-39 svg{display:block;width:min(780px,94%);height:auto}
+.dv-60 .lv{position:relative;width:min(415px,84%);height:23px;border:2.5px solid var(--ink);border-radius:11.5px}
+.dv-60 .bub{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--accent)}
+.dv-60 .mk{position:absolute;top:2.5px;bottom:2.5px;width:2px;background:var(--ink);opacity:.6}
+.dv-60 .cap{position:absolute;top:-2.5px;bottom:-2.5px;width:6px;background:var(--ink)}
+.dv-39 svg{display:block;width:min(520px,94%);height:auto}
 .dv-39 .b{fill:var(--ink);opacity:.85}
 .dv-39 .r{fill:var(--accent)}
 .viz-in>svg{width:100%;height:auto;display:block}
@@ -219,7 +219,33 @@
   </rdf:RDF>
  </metadata>
  <defs>
-  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}
+/* --- Divider centering rule (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes. Horizontally: the band is margin:0 auto with
+   flex-centered content, so the graphic sits on the column's centre
+   line. Vertically: the facing spacing on each side of the band is one
+   equal gap (--dv-gap), so the space above the graphic (previous
+   section's last content to the graphic) equals the space below it
+   (graphic to the next section's kicker). --dv-gap is sized so a
+   divider boundary totals about one ordinary section break
+   (2 x --section-gap) once the band is counted. The band itself stays
+   144px on desktop / 135px on phone; divider graphics are sized at
+   two-thirds of the original standard (upright motifs 87px tall,
+   wide motifs scaled proportionally). */
+:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 72px), 48px)}
+@media(max-width:700px){:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 67.5px), 48px)}}
+section:has(+ .dv){padding-bottom:var(--dv-gap)}
+.column:has(+ .dv) > section:last-child{padding-bottom:var(--dv-gap)}
+.dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
+figure:has(+ .dv){margin-bottom:var(--dv-gap)}
+figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}
+
+/* A photo figure neighbour carries its own bottom margin; the
+   divider boundary gap is --dv-gap alone. */
+figure.photo:has(+ .dv){margin-bottom:0}
+@media(min-width:701px){figure.photo:has(+ .dv.dv-57){margin-bottom:8px}}
+</style>
  </defs>
  <g id="figure_1">
   <g id="patch_1">

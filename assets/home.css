@@ -3,8 +3,8 @@
    stylesheet, extracted verbatim from the homepage. */
 
 :root{
-  --paper:#faf7f0;--ink:#141310;--ink-soft:#3d3a35;--gray:#6f6a61;
-  --accent:#b03a2e;--box:#f3efe4;--rule-light:#cfc8b4;
+  --paper:#f7f7f5;--ink:#141310;--ink-soft:#3c3c39;--gray:#6b6b66;
+  --accent:#b03a2e;--box:#f0f0ec;--rule-light:#cfcfca;
   /* One spacing scale. Every vertical gap on the page comes from these
      tokens, so the rhythm is even from masthead to colophon. */
   --sp-1:8px;--sp-2:16px;--sp-3:24px;--sp-4:32px;
@@ -104,7 +104,7 @@ a{color:inherit}
    bubble always clears the pill border) and one uniform gap between
    tabs. Each tab takes an equal share of the width and centers its
    label, so the row looks spread out on desktop and still fits a phone. */
-nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(111,106,97,.97);border:1px solid var(--accent);border-radius:999px;padding:0;overflow:hidden;box-shadow:0 10px 30px rgba(20,19,16,.14)}
+nav.menu{position:sticky;top:calc(var(--topchrome) + 10px);z-index:60;margin:var(--sp-3) 0 0;width:100%;max-width:none;background:rgba(107,106,101,.97);border:1px solid var(--accent);border-radius:999px;padding:0;overflow:hidden;box-shadow:0 10px 30px rgba(20,19,16,.14)}
 .menu-track{position:relative;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:12px;padding:7px 10px;overflow-x:hidden;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
 .menu-track::before,.menu-track::after{content:none}
 .menu-track::-webkit-scrollbar{display:none}
@@ -114,8 +114,8 @@ nav.menu a:hover{border-color:var(--rule-light);color:#fff}
 nav.menu a.active{background:var(--accent);color:#fff;border-color:var(--accent);animation:pillPop .38s cubic-bezier(.22,.8,.3,1)}
 @keyframes pillPop{0%{transform:scale(1)}35%{transform:scale(1.12)}100%{transform:scale(1)}}
 nav.menu::before,nav.menu::after{content:"";position:absolute;top:0;bottom:0;width:46px;z-index:2;pointer-events:none;opacity:0;transition:opacity .25s ease}
-nav.menu::before{left:0;border-radius:999px 0 0 999px;background:linear-gradient(to right,rgba(111,106,97,1) 18%,rgba(111,106,97,0))}
-nav.menu::after{right:0;border-radius:0 999px 999px 0;background:linear-gradient(to left,rgba(111,106,97,1) 18%,rgba(111,106,97,0))}
+nav.menu::before{left:0;border-radius:999px 0 0 999px;background:linear-gradient(to right,rgba(107,106,101,1) 18%,rgba(107,106,101,0))}
+nav.menu::after{right:0;border-radius:0 999px 999px 0;background:linear-gradient(to left,rgba(107,106,101,1) 18%,rgba(107,106,101,0))}
 nav.menu[data-fade="left"]::before{opacity:1}
 nav.menu[data-fade="right"]::after{opacity:1}
 nav.menu[data-fade="both"]::before,nav.menu[data-fade="both"]::after{opacity:1}
@@ -325,7 +325,7 @@ html{scroll-behavior:auto}
 /* Daily briefing (Today tab): the day's briefing in full on the
    homepage. Section heads, item rows and the shape panels that
    carry the numbers, in the homepage's tokens. */
-.dy-pills{display:flex;gap:6px;align-items:center;background:rgba(111,106,97,.97);border:1px solid var(--accent);border-radius:999px;padding:7px 10px;overflow-x:auto;scrollbar-width:none;box-shadow:0 6px 22px rgba(20,19,16,.14);max-width:920px;margin:0 auto var(--sp-5)}
+.dy-pills{display:flex;gap:6px;align-items:center;background:rgba(107,106,101,.97);border:1px solid var(--accent);border-radius:999px;padding:7px 10px;overflow-x:auto;scrollbar-width:none;box-shadow:0 6px 22px rgba(20,19,16,.14);max-width:920px;margin:0 auto var(--sp-5)}
 .dy-pills::-webkit-scrollbar{display:none}
 .dy-pills a{flex:0 0 auto;color:var(--paper);text-decoration:none;font-family:var(--sans);font-size:var(--fs-label);font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 15px;border-radius:999px;white-space:nowrap}
 .dy-pills a:hover{color:#fff}
@@ -611,7 +611,7 @@ html{scroll-behavior:auto}
    The lockup: a small plain "THE" flanked by hairlines, the big
    word beneath as a rendered inline-traced image (Board red
    #ce2029 / Study deep royal blue #1f3a93 on the light ground;
-   lightened #e04a44 / #4a6fd4 on the dark), the Cormorant italic
+   lightened #e04a44 / #6f97e8 on the dark), the Cormorant italic
    tagline, and the short rule (2.5rem x 2px) closing it.
    COLOR SPEC: on the light ground THE, its flanking hairlines,
    the taglines and the short rules are black #141310, and the

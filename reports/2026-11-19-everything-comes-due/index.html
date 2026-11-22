@@ -18,49 +18,49 @@
 <style>
 .dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--paper)}
 @media(max-width:700px){.dv{height:135px}}
-.dv-06 svg{display:block;height:100%;width:auto;max-width:90%}
+.dv-06 svg{display:block;height:66.7%;width:auto;max-width:90%}
 .dv-06 .t{stroke:var(--rule-light);stroke-width:1.5;fill:none}
 .dv-06 .f{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
 .dv-06 .h{fill:var(--accent)}
-.dv-23 svg{display:block;width:min(660px,88%);height:auto}
+.dv-23 svg{display:block;width:min(440px,88%);height:auto}
 .dv-23 .p{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
 .dv-23 .d{fill:var(--accent)}
-.dv-01 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
-.dv-01 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
-.dv-01 .tick{position:absolute;top:calc(var(--at,.5)*100%);height:1px;background:var(--ink);opacity:.4;width:56px}
+.dv-01 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-0.5px;background:var(--rule-light)}
+.dv-01 .fill{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.8;height:100%}
+.dv-01 .tick{position:absolute;top:calc(var(--at,.5)*100%);height:1px;background:var(--ink);opacity:.4;width:37px}
 .dv-01 .tick.r{left:50%}.dv-01 .tick.l{right:50%}
-.dv-01 .traveler{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent)}
-.dv-01 .ghost{position:absolute;left:50%;top:36%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent);opacity:.38}
-.dv-11 .g{display:grid;grid-template-columns:repeat(3,16px);gap:14px}
-.dv-11 i{display:block;width:16px;height:16px;border:2px solid var(--ink)}
+.dv-01 .traveler{position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent)}
+.dv-01 .ghost{position:absolute;left:50%;top:36%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:50%;background:var(--accent);opacity:.38}
+.dv-11 .g{display:grid;grid-template-columns:repeat(3,10.5px);gap:9.5px}
+.dv-11 i{display:block;width:11px;height:11px;border:2px solid var(--ink)}
 .dv-11 i.c{background:var(--accent);border-color:var(--accent)}
-.dv-03{flex-direction:column;gap:18px;padding:0 10px}
-.dv-03 .bar{position:relative;height:14px;width:100%;max-width:780px}
+.dv-03{flex-direction:column;gap:12px;padding:0 6.5px}
+.dv-03 .bar{position:relative;height:9px;width:100%;max-width:520px}
 .dv-03 .bar::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule-light)}
-.dv-03 .seg{position:absolute;left:4px;top:50%;height:6px;margin-top:-3px;background:var(--ink);opacity:.85}
-.dv-03 .seg.r{left:auto;right:4px}
+.dv-03 .seg{position:absolute;left:2.5px;top:50%;height:4px;margin-top:-2px;background:var(--ink);opacity:.85}
+.dv-03 .seg.r{left:auto;right:2.5px}
 .dv-03 .seg.red{background:var(--accent);opacity:1}
 .dv-03 .seg.gray{background:var(--gray)}
-.dv-03 .seg.thin{height:3px;margin-top:-1.5px}
+.dv-03 .seg.thin{height:2px;margin-top:-1px}
 .viz-in>svg{width:100%;height:auto;display:block}
 .viz-in>svg[data-chart-engine="board"]{max-width:660px;margin-left:auto;margin-right:auto}
 
 /* 07 Echo */
-.dv-07 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;background:var(--rule-light)}
-.dv-07 .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.8;height:100%}
-.dv-07 .ring{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--accent);border-radius:50%;opacity:.42}
-.dv-07 .core{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--ink);opacity:.85}
-.dv-07 .traveler{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--accent)}
+.dv-07 .track{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-0.5px;background:var(--rule-light)}
+.dv-07 .fill{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.8;height:100%}
+.dv-07 .ring{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:23px;height:23px;margin:-11.5px 0 0 -11.5px;border:1.5px solid var(--accent);border-radius:50%;opacity:.42}
+.dv-07 .core{position:absolute;left:50%;top:calc(var(--at,.5)*100%);width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:50%;background:var(--ink);opacity:.85}
+.dv-07 .traveler{position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--accent)}
 /* 33 Loom */
-.dv-33 .warp{display:flex;gap:11px;height:104px;align-items:stretch}
-.dv-33 .warp i{display:block;width:3px;background:var(--ink);opacity:.75}
-.dv-33 .weft{position:absolute;left:9%;right:9%;top:50%;height:7px;margin-top:-3.5px;background:var(--accent)}
+.dv-33 .warp{display:flex;gap:7.5px;height:69px;align-items:stretch}
+.dv-33 .warp i{display:block;width:2px;background:var(--ink);opacity:.75}
+.dv-33 .weft{position:absolute;left:9%;right:9%;top:50%;height:5px;margin-top:-2.5px;background:var(--accent)}
 /* 04 Diamond */
-.dv-04 .stem-t{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:44%}
-.dv-04 .stem-b{position:absolute;left:50%;bottom:0;width:2px;margin-left:-1px;background:var(--accent);opacity:.75;height:44%}
-.dv-04 .gem{position:absolute;left:50%;top:50%;width:15px;height:15px;margin:-7.5px 0 0 -7.5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(45deg)}
+.dv-04 .stem-t{position:absolute;left:50%;top:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.75;height:44%}
+.dv-04 .stem-b{position:absolute;left:50%;bottom:0;width:1px;margin-left:-0.5px;background:var(--accent);opacity:.75;height:44%}
+.dv-04 .gem{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border:2px solid var(--accent);background:var(--paper);transform:rotate(45deg)}
 /* 54 Current */
-.dv-54 svg{display:block;width:min(700px,90%);height:auto}
+.dv-54 svg{display:block;width:min(465px,90%);height:auto}
 .dv-54 .f{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linecap:round}
 .dv-54 .g{fill:none;stroke:var(--gray);stroke-width:2.5;stroke-linecap:round}
 .dv-54 .h{fill:var(--accent)}
@@ -2400,7 +2400,28 @@ z
   </rdf:RDF>
  </metadata>
  <defs>
-  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}
+/* --- Divider centering rule (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes. Horizontally: the band is margin:0 auto with
+   flex-centered content, so the graphic sits on the column's centre
+   line. Vertically: the facing spacing on each side of the band is one
+   equal gap (--dv-gap), so the space above the graphic (previous
+   section's last content to the graphic) equals the space below it
+   (graphic to the next section's kicker). --dv-gap is sized so a
+   divider boundary totals about one ordinary section break
+   (2 x --section-gap) once the band is counted. The band itself stays
+   144px on desktop / 135px on phone; divider graphics are sized at
+   two-thirds of the original standard (upright motifs 87px tall,
+   wide motifs scaled proportionally). */
+:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 72px), 48px)}
+@media(max-width:700px){:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 67.5px), 48px)}}
+section:has(+ .dv){padding-bottom:var(--dv-gap)}
+.column:has(+ .dv) > section:last-child{padding-bottom:var(--dv-gap)}
+.dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
+figure:has(+ .dv){margin-bottom:var(--dv-gap)}
+figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}
+</style>
  </defs>
  <g id="figure_1">
   <g id="patch_1">

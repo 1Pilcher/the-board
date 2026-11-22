@@ -14,22 +14,33 @@
 /* Split nameplate — The Board | The Study. The pair is the switch
    between the two homepages: both names stand at full presence,
    the SIBLING half is the link, the CURRENT half is not; there is
-   no separate nav button. SETTLED WORDMARK RULE (Nov 21, 2026):
-   the two marks are UNIFORM — same UnifrakturMaguntia blackletter,
-   same size, same treatment, no weight or spacing tricks, no fill
-   colour, no stroke, no effects. On this light ground both marks
-   are plain black; on The Study's dark ground, plain white. The
-   ground flip is the only difference. The Cormorant italic
-   tagline sits beneath each mark. */
+   no separate nav button. WORDMARK RULE (Josh, Nov 21, 2026,
+   later that night — supersedes the uniform-wordmark rule set
+   earlier the same evening): the two marks are NOT uniform.
+   The Board's mark stands in its ORIGINAL treatment — Playfair
+   Display 900, the .nameplate face it has carried all along.
+   The Study's mark stands in UnifrakturMaguntia blackletter.
+   On this light ground both marks are plain black; on The
+   Study's dark ground, plain white. The distinction between
+   the publications comes from the switch, not from matching
+   faces. The Cormorant italic tagline sits beneath each mark. */
 .split-plate{display:flex;margin:var(--sp-3) 0 var(--sp-2)}
 .sp-half{flex:1 1 0;min-width:0;padding:0 10px;text-align:center;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .sp-mark{display:block;font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(2.4rem,8.6vw,5.4rem);line-height:1.12;letter-spacing:0;color:#141310;white-space:nowrap}
+/* The Board's mark in its original treatment: Playfair Display
+   900 with the .nameplate tracking (.16em, text-indent compen-
+   sated), scaled to fit its half of the plate; the line-height
+   is set so the two taglines sit on one line. The <=700px tier
+   drops the tracking to .1em — the original nameplate's own
+   phone move. */
+.sp-board .sp-mark{font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,6.9vw,5rem);line-height:1.24;letter-spacing:.16em;text-indent:.16em}
 a.sp-half:hover .sp-mark{opacity:.72}
 .sp-tag{font-family:"Cormorant Garamond",var(--display);font-style:italic;font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);margin-top:10px;color:#3d3a35}
 .sp-study .sp-tag{color:#4a4238}
 @media(max-width:700px){
   .sp-half{padding:0 4px}
   .sp-tag{font-size:.92rem;margin-top:8px}
+  .sp-board .sp-mark{font-size:clamp(1.6rem,7.5vw,3.4rem);letter-spacing:.1em;text-indent:.1em;line-height:1.36}
 }
 </style>
 </head>

@@ -114,7 +114,14 @@ img{max-width:100%}
    ink-soft at rest, accent red on hover, no box or pill. */
 .home-bar{max-width:1120px;margin:0 auto var(--sp-2);text-align:left}
 .home-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:7px 2px;line-height:1.2}
-.home-link .arr{font-size:.85rem;line-height:1;letter-spacing:0}
+/* BACK-LINK ARROW RULE (hardcoded, Josh Nov 22, 2026): the arrow's
+   rendered ink center must sit exactly on the cap-height center of
+   the letters beside it, on every page. In Libre Franklin the ←
+   glyph's ink rides 3.3px low at these sizes, so .arr is lifted by
+   that much; measured in Chromium (glyph ink box vs the H cap box)
+   at 390 and 1280 — delta after the lift: 0.0px. Do not remove the
+   transform or re-style .arr locally on a page. */
+.home-link .arr{font-size:.85rem;line-height:1;letter-spacing:0;transform:translateY(-3.3px)}
 .home-link:hover{color:var(--accent)}
 .home-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 .wide{max-width:920px;margin:0 auto}

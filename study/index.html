@@ -45,6 +45,14 @@ nav.menu::after{background:linear-gradient(to left,rgba(27,34,45,1) 18%,rgba(27,
 nav.menu a{color:#f0ecdc}
 nav.menu a.active{color:#fff;background:#4769ba;border-color:#4769ba}
 .kicker{color:#3d68e6}
+/* Tab-panel section margin: home.css zeroes it for the Board's
+   reports/purpose views (section[data-view="reports"],section
+   [data-view="purpose"]{margin-top:0}); the Study's renamed
+   sessions view takes the same zero here, so all three tabs open
+   on the identical nav-to-kicker rhythm (uniformity pass,
+   Nov 22, 2026). Without it the generic section margin
+   (var(--section-gap)) pushed the Sessions kicker ~37-44px low. */
+section[data-view="sessions"]{margin-top:0}
 
 /* The split nameplate is the standardized G plate: styles are the canonical G NAMEPLATE block in assets/home.css; the markup is below. */
 /* Session list inside the Latest card, and the archive-row

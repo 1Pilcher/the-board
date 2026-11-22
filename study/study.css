@@ -10,7 +10,10 @@
    changes COLOUR ONLY — no geometry, no widths, no spacing — by
    re-declaring the shared sheet's colour variables and restating
    the few furniture rules that carry literal colour values in
-   board.css (the nav ground and its border).
+   board.css (the nav ground and its border). ONE exception, added
+   Nov 22, 2026: the divider centering rule at the bottom of this
+   sheet (spacing), which is Study-canonical and lives here so
+   every future session inherits it.
 
    DARK LIVERY (Josh, Nov 21, 2026: "the study is dark mode";
    palette replaced Nov 22, 2026 by SLATE, picked by Josh from
@@ -105,3 +108,24 @@ nav.menu a.active{color:#fff;background:#4769ba}
 
 /* Drop initial on each section's lede, in the chrome blue. */
 p.lede::first-letter{color:var(--accent)}
+
+/* --- Divider centering rule (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes. Horizontally: the band is margin:0 auto with
+   flex-centered content, so the graphic sits on the column's centre
+   line. Vertically: the facing spacing on each side of the band is one
+   equal gap (--dv-gap), so the space above the graphic (previous
+   section's last content to the graphic) equals the space below it
+   (graphic to the next section's kicker). --dv-gap is sized so a
+   divider boundary totals about one ordinary section break
+   (2 x --section-gap) once the band is counted. The band itself stays
+   144px on desktop / 135px on phone; divider graphics are sized at
+   two-thirds of the original standard (upright motifs 87px tall,
+   wide motifs scaled proportionally). */
+:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 72px), 48px)}
+@media(max-width:700px){:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 67.5px), 48px)}}
+section:has(+ .dv){padding-bottom:var(--dv-gap)}
+.column:has(+ .dv) > section:last-child{padding-bottom:var(--dv-gap)}
+.dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
+figure:has(+ .dv){margin-bottom:var(--dv-gap)}
+figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}

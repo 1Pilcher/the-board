@@ -129,3 +129,20 @@ section:has(+ .dv){padding-bottom:var(--dv-gap)}
 .dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
 figure:has(+ .dv){margin-bottom:var(--dv-gap)}
 figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}
+
+/* --- Verse block (hardcoded, Nov 22, 2026) ---
+   The Study's text-in-the-open component (Josh's verse rule,
+   Nov 22, 2026): a session quotes its passages in full, in
+   blocks, wherever the analysis turns on wording — never as
+   fragments stitched into prose alone. One treatment, defined
+   here so every future session inherits it: the summary tint
+   ground, a chrome-blue rule at the left, the body serif at
+   reading size, and a sans reference line closing the block.
+   The verses run as flowing prose paragraphs — no verse
+   numbers, no per-verse breaks; the reference line names the
+   passage and the translation (NRSVUE, the Study's settled
+   primary text). */
+blockquote.verse{margin:0 0 2em;padding:1.35em 1.5em;background:var(--box);border-left:2px solid var(--accent)}
+blockquote.verse p{margin:0 0 1em;line-height:1.75}
+blockquote.verse p.vref{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:1.15em 0 0;line-height:1.5}
+@media(max-width:700px){blockquote.verse{padding:1.1em 1.05em}}

@@ -273,9 +273,42 @@ section.story{padding-bottom:var(--section-gap)}
 .statement p{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.8vw,2.6rem);line-height:1.3;margin:0;text-wrap:balance}
 .statement .attrib{font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin-top:var(--sp-3)}
 
-/* ---------- Verdict band ---------- */
-.verdict{background:var(--box);margin:0 calc(50% - var(--chw));width:var(--cw);padding:var(--section-gap) 22px}
+/* ---------- Verdict box (Josh, Nov 27, 2026) ----------
+   The Verdict (Board reports) and In Brief (Study sessions) no
+   longer run as a full-bleed flat tint band. The section is an
+   inset citation-style box in the text column, formatted exactly
+   like the Study's verse blocks: the summary tint ground, a 2px
+   accent rule at the left (red on The Board, chrome blue on The
+   Study, via var(--accent)), and short padding that is EQUAL on
+   all four sides (1.35em/1.5em; 1.1em/1.05em at phone widths) —
+   the top is no longer a full --section-gap while a divider rule
+   shrinks the bottom. The box styling sits on .verdict itself,
+   constrained to the 620px column and centred with auto margins,
+   so it lands on the column line whatever its parent (.page,
+   .column, or the body). .verdict-in stays as a plain wrapper.
+   Spacing to neighbours comes from the box's own margins (2em
+   below, matching the verse blocks), never from asymmetric
+   padding. */
+.verdict{background:var(--box);border-left:2px solid var(--accent);max-width:620px;margin:0 auto 2em;padding:1.35em 1.5em}
 .verdict-in{max-width:620px;margin:0 auto}
+/* A following divider must not shrink the box's bottom padding:
+   the section:has(+ .dv) rules (study.css, and inline copies in
+   some report pages) and the older .interlude variant of the same
+   rules (inline in the earliest reports) target sections
+   generally, so these more specific rules restore the box
+   padding; the divider boundary is carried by the box's 2em
+   bottom margin plus the band. */
+section.verdict:has(+ .dv){padding-bottom:1.35em}
+.column:has(+ .dv) > section.verdict:last-child{padding-bottom:1.35em}
+section.verdict:has(+ .interlude){padding-bottom:1.35em}
+.column:has(+ .interlude) > section.verdict:last-child{padding-bottom:1.35em}
+@media(max-width:700px){
+  .verdict{padding:1.1em 1.05em}
+  section.verdict:has(+ .dv){padding-bottom:1.1em}
+  .column:has(+ .dv) > section.verdict:last-child{padding-bottom:1.1em}
+  section.verdict:has(+ .interlude){padding-bottom:1.1em}
+  .column:has(+ .interlude) > section.verdict:last-child{padding-bottom:1.1em}
+}
 .verdict h2{font-family:var(--sans);font-size:.74rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin:0 0 var(--sp-3)}
 .verdict p{font-size:1.14rem;line-height:1.75}
 .verdict p:first-of-type{font-size:clamp(1.3rem,3.4vw,1.55rem);line-height:1.55}
@@ -645,7 +678,6 @@ html.gliding *,html.gliding *::before,html.gliding *::after{animation-play-state
   .scrolly .lines{gap:var(--sp-3)}
   .scrolly .src-note{margin-top:var(--sp-2)}
   .viz{padding-left:18px;padding-right:18px}
-  .verdict{padding-left:20px;padding-right:20px}
   .watch-list li{gap:16px}
 }
 @media(max-width:560px){
@@ -692,7 +724,7 @@ html.gliding *,html.gliding *::before,html.gliding *::after{animation-play-state
    18px var(--bottomclear)}. This block is last in the stylesheet
    so it settles every frame edge at phone widths: at 700px and
    below, the page fragments and every full-bleed band that carries
-   text (.viz, .verdict, .rulers) and the photo overlays/captions
+   text (.viz, .rulers) and the photo overlays/captions
    (.pin-text, .pin-cap) all sit on the homepage's exact margins,
    16px top and 18px sides (widened only by a device's own safe
    area inset, exactly as before), instead of the report's old mix
@@ -707,7 +739,6 @@ html.gliding *,html.gliding *::before,html.gliding *::after{animation-play-state
   .pin-text{padding-left:18px;padding-right:18px}
   .pin-cap{padding-left:18px;padding-right:18px}
   .viz{padding-left:18px;padding-right:18px}
-  .verdict{padding-left:18px;padding-right:18px}
   .rulers{padding-left:18px;padding-right:18px}
 }
 

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Divider presets — The Study &middot; 30</title><style>
+:root{--paper:#12161d;--ink:#f0ecdc;--ink-soft:#d2cfbc;--gray:#9da6ae;--gold:#a07d2c;--rule-light:rgba(238,240,233,.12);--serif:"PT Serif",Charter,Georgia,"Times New Roman",serif;--sans:"Libre Franklin","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}
+.page{max-width:1120px;margin:0 auto;padding:24px 22px 96px}
+h1{font-size:1.6rem;font-weight:700;margin:8px 0 4px;text-align:center}
+.sub{text-align:center;color:var(--gray);font-size:.95rem;margin:0 0 40px}
+.item{max-width:920px;margin:0 auto 34px}
+.label{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);margin:0 0 6px 2px}
+.dv{position:relative;height:144px;max-width:920px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+@media(max-width:700px){.page{padding:16px 18px 72px}.dv{height:135px}}
+.dv-01 svg{display:block;height:87px;width:auto}
+.dv-01 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-01 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-01 .f{fill:var(--ink)}
+.dv-01 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-01 .a{fill:var(--acc)}
+.dv-01 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-01 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-02 svg{display:block;width:min(265px,94%);height:auto}
+.dv-02 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-02 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-02 .f{fill:var(--ink)}
+.dv-02 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-02 .a{fill:var(--acc)}
+.dv-02 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-02 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-03 svg{display:block;width:min(240px,94%);height:auto}
+.dv-03 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-03 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-03 .f{fill:var(--ink)}
+.dv-03 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-03 .a{fill:var(--acc)}
+.dv-03 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-03 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-04{--acc:var(--gold)}
+.dv-04 svg{display:block;width:min(215px,94%);height:auto}
+.dv-04 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-04 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-04 .f{fill:var(--ink)}
+.dv-04 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-04 .a{fill:var(--acc)}
+.dv-04 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-04 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-05 svg{display:block;width:min(215px,94%);height:auto}
+.dv-05 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-05 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-05 .f{fill:var(--ink)}
+.dv-05 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-05 .a{fill:var(--acc)}
+.dv-05 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-05 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-06 svg{display:block;width:min(240px,94%);height:auto}
+.dv-06 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-06 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-06 .f{fill:var(--ink)}
+.dv-06 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-06 .a{fill:var(--acc)}
+.dv-06 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-07 svg{display:block;width:min(200px,94%);height:auto}
+.dv-07 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-07 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-07 .f{fill:var(--ink)}
+.dv-07 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-07 .a{fill:var(--acc)}
+.dv-07 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-07 .pn{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.dv-08{--acc:var(--gold)}
+.dv-08 svg{display:block;width:min(215px,94%);height:auto}
+.dv-08 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-08 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-08 .f{fill:var(--ink)}
+.dv-08 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-08 .a{fill:var(--acc)}
+.dv-08 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-08 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-09 svg{display:block;width:min(240px,94%);height:auto}
+.dv-09 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-09 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-09 .f{fill:var(--ink)}
+.dv-09 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-09 .a{fill:var(--acc)}
+.dv-09 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-09 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-10 svg{display:block;height:87px;width:auto}
+.dv-10 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-10 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-10 .f{fill:var(--ink)}
+.dv-10 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-10 .a{fill:var(--acc)}
+.dv-10 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-10 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-11 svg{display:block;height:87px;width:auto}
+.dv-11 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-11 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-11 .f{fill:var(--ink)}
+.dv-11 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-11 .a{fill:var(--acc)}
+.dv-11 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-11 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-12 svg{display:block;width:min(240px,94%);height:auto}
+.dv-12 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-12 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-12 .f{fill:var(--ink)}
+.dv-12 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-12 .a{fill:var(--acc)}
+.dv-12 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-12 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-13 svg{display:block;width:min(240px,94%);height:auto}
+.dv-13 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-13 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-13 .f{fill:var(--ink)}
+.dv-13 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-13 .a{fill:var(--acc)}
+.dv-13 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-13 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-14 svg{display:block;width:min(200px,94%);height:auto}
+.dv-14 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-14 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-14 .f{fill:var(--ink)}
+.dv-14 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-14 .a{fill:var(--acc)}
+.dv-14 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-14 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-15 svg{display:block;height:87px;width:auto}
+.dv-15 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-15 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-15 .f{fill:var(--ink)}
+.dv-15 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-15 .a{fill:var(--acc)}
+.dv-15 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-16 svg{display:block;height:87px;width:auto}
+.dv-16 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-16 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-16 .f{fill:var(--ink)}
+.dv-16 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-16 .a{fill:var(--acc)}
+.dv-16 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-16 .pn{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.dv-17{--acc:var(--gold)}
+.dv-17 svg{display:block;height:87px;width:auto}
+.dv-17 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-17 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-17 .f{fill:var(--ink)}
+.dv-17 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-17 .a{fill:var(--acc)}
+.dv-17 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-17 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-18{--acc:var(--gold)}
+.dv-18 svg{display:block;width:min(240px,94%);height:auto}
+.dv-18 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-18 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-18 .f{fill:var(--ink)}
+.dv-18 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-18 .a{fill:var(--acc)}
+.dv-18 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-18 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-19 svg{display:block;height:87px;width:auto}
+.dv-19 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-19 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-19 .f{fill:var(--ink)}
+.dv-19 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-19 .a{fill:var(--acc)}
+.dv-19 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-19 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-20 svg{display:block;height:87px;width:auto}
+.dv-20 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-20 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-20 .f{fill:var(--ink)}
+.dv-20 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-20 .a{fill:var(--acc)}
+.dv-20 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-20 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-21 svg{display:block;width:min(187px,94%);height:auto}
+.dv-21 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-21 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-21 .f{fill:var(--ink)}
+.dv-21 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-21 .a{fill:var(--acc)}
+.dv-21 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-21 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-22 svg{display:block;width:min(215px,94%);height:auto}
+.dv-22 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-22 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-22 .f{fill:var(--ink)}
+.dv-22 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-22 .a{fill:var(--acc)}
+.dv-22 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-22 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-23{--acc:var(--gold)}
+.dv-23 svg{display:block;width:min(240px,94%);height:auto}
+.dv-23 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-23 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-23 .f{fill:var(--ink)}
+.dv-23 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-23 .a{fill:var(--acc)}
+.dv-23 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-24 svg{display:block;width:min(255px,94%);height:auto}
+.dv-24 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-24 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-24 .f{fill:var(--ink)}
+.dv-24 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-24 .a{fill:var(--acc)}
+.dv-24 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-24 .pn{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.dv-25{--acc:var(--gold)}
+.dv-25 svg{display:block;width:min(187px,94%);height:auto}
+.dv-25 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-25 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-25 .f{fill:var(--ink)}
+.dv-25 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-25 .a{fill:var(--acc)}
+.dv-25 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-25 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-26 svg{display:block;width:min(225px,94%);height:auto}
+.dv-26 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-26 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-26 .f{fill:var(--ink)}
+.dv-26 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-26 .a{fill:var(--acc)}
+.dv-26 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-26 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-27 svg{display:block;height:87px;width:auto}
+.dv-27 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-27 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-27 .f{fill:var(--ink)}
+.dv-27 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-27 .a{fill:var(--acc)}
+.dv-27 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-27 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-28 svg{display:block;height:87px;width:auto}
+.dv-28 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-28 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-28 .f{fill:var(--ink)}
+.dv-28 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-28 .a{fill:var(--acc)}
+.dv-28 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-28 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-29 svg{display:block;height:87px;width:auto}
+.dv-29 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-29 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-29 .f{fill:var(--ink)}
+.dv-29 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-29 .a{fill:var(--acc)}
+.dv-29 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-30{--acc:var(--gold)}
+.dv-30 svg{display:block;height:87px;width:auto}
+.dv-30 .o{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-30 .i{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.dv-30 .f{fill:var(--ink)}
+.dv-30 .g{fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round}
+.dv-30 .a{fill:var(--acc)}
+.dv-30 .as{fill:none;stroke:var(--acc);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.dv-30 .lf{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* --- Divider centering rule (Josh, 2026-11-22) ---
+   A divider graphic sits BETWEEN two sections and is CENTERED in that
+   boundary, both axes. Horizontally: the band is margin:0 auto with
+   flex-centered content, so the graphic sits on the column's centre
+   line. Vertically: the facing spacing on each side of the band is one
+   equal gap (--dv-gap), so the space above the graphic (previous
+   section's last content to the graphic) equals the space below it
+   (graphic to the next section's kicker). --dv-gap is sized so a
+   divider boundary totals about one ordinary section break
+   (2 x --section-gap) once the band is counted. The band itself stays
+   144px on desktop / 135px on phone; divider graphics are sized at
+   two-thirds of the original standard (upright motifs 87px tall,
+   wide motifs scaled proportionally). */
+:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 72px), 48px)}
+@media(max-width:700px){:root{--dv-gap:clamp(16px, calc(var(--section-gap) - 67.5px), 48px)}}
+section:has(+ .dv){padding-bottom:var(--dv-gap)}
+.column:has(+ .dv) > section:last-child{padding-bottom:var(--dv-gap)}
+.dv + .column > .chapter, .dv + .chapter{padding-top:var(--dv-gap)}
+figure:has(+ .dv){margin-bottom:var(--dv-gap)}
+figure.viz:has(+ .dv){padding-bottom:var(--dv-gap);margin-bottom:0}
+</style></head>
+<body><main class="page"><h1>Divider presets</h1><p class="sub">30 presets &middot; The Study &middot; The Board</p>
+<section class="item"><p class="label">01 &middot; Sprig</p><div class="dv dv-01" role="presentation"><svg viewBox="0 0 240 144" aria-hidden="true"><path class="o" d="M120.0,132.0 C112.0,96.0 128.0,60.0 120.0,26.0"/><path class="lf" transform="translate(118.0,99.7) rotate(-138.7) scale(0.92)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(118.0,99.7) rotate(-34.7) scale(0.92)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(120.6,72.9) rotate(-135.7) scale(0.86)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(120.6,72.9) rotate(-31.7) scale(0.86)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(122.3,48.7) rotate(-141.6) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(122.3,48.7) rotate(-37.6) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(120.0,26.0) rotate(-103.2) scale(0.95)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">02 &middot; Vine Squiggle</p><div class="dv dv-02" role="presentation"><svg viewBox="0 0 400 144" aria-hidden="true"><path class="o" d="M20.0,84.0 C70.0,40.0 110.0,40.0 150.0,72.0"/><path class="o" d="M150.0,72.0 C190.0,104.0 230.0,104.0 270.0,72.0"/><path class="o" d="M270.0,72.0 C310.0,40.0 348.0,42.0 378.0,64.0"/><path class="o" style="stroke-width:2.4" d="M378,64 C394,76 392,94 380,93 C369,92 369,79 378,77"/><path class="lf" transform="translate(69.3,53.5) rotate(-76.4) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(119.8,54.2) rotate(78.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(186.0,92.2) rotate(-40.3) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(234.0,92.2) rotate(40.3) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(311.0,50.3) rotate(-72.7) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(349.0,50.0) rotate(72.3) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">03 &middot; Branch</p><div class="dv dv-03" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" d="M36.0,118.0 C140.0,96.0 240.0,66.0 330.0,30.0"/><path class="o" style="stroke-width:2.4" d="M152.5,89.6 Q166.1,106.6 165.2,58.0"/><path class="lf" transform="translate(165.2,58.0) rotate(-56.0) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(165.2,58.0) rotate(-106.0) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M223.4,68.3 Q235.4,83.3 239.3,42.9"/><path class="lf" transform="translate(239.3,42.9) rotate(-46.0) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(239.3,42.9) rotate(-96.0) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M286.1,46.8 Q295.7,58.8 301.5,28.4"/><path class="lf" transform="translate(301.5,28.4) rotate(-38.0) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(301.5,28.4) rotate(-88.0) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(97.9,103.9) rotate(-67.8) scale(0.78)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(188.2,79.2) rotate(37.3) scale(0.78)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(252.2,58.8) rotate(-72.9) scale(0.78)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(311.0,37.5) rotate(33.0) scale(0.78)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">04 &middot; Arch</p><div class="dv dv-04" role="presentation"><svg viewBox="0 0 320 144" aria-hidden="true"><line class="g" x1="40" y1="126" x2="280" y2="126"/><path class="o" d="M70.0,126.0 C64.0,74.0 94.0,36.0 156.0,22.0"/><path class="o" d="M250.0,126.0 C256.0,74.0 226.0,36.0 164.0,22.0"/><path class="lf" transform="translate(76.2,78.2) rotate(-122.4) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(76.2,78.2) rotate(-10.4) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(97.2,49.7) rotate(-97.5) scale(0.56)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(97.2,49.7) rotate(14.5) scale(0.56)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(128.7,30.5) rotate(-78.5) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(128.7,30.5) rotate(33.5) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(243.8,78.2) rotate(-169.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(243.8,78.2) rotate(-57.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(222.8,49.7) rotate(-194.5) scale(0.56)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(222.8,49.7) rotate(-82.5) scale(0.56)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(191.3,30.5) rotate(-213.5) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(191.3,30.5) rotate(-101.5) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><circle class="a" cx="160" cy="20" r="4.2"/></svg></div></section>
+<section class="item"><p class="label">05 &middot; Reeds</p><div class="dv dv-05" role="presentation"><svg viewBox="0 0 320 144" aria-hidden="true"><line class="g" x1="40" y1="126" x2="280" y2="126"/><path class="o" style="stroke-width:2.6" d="M70,126 Q63,80.0 63,34"/><path class="lf" transform="translate(65.8,86.0) rotate(-118.0) scale(1.35,0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M120,126 Q125,76.0 125,26"/><path class="lf" transform="translate(123.0,82.0) rotate(-62.0) scale(1.35,0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(121.5,110.0) rotate(-118.0) scale(1.05,0.50)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M170,126 Q166,82.0 166,38"/><path class="lf" transform="translate(167.6,88.0) rotate(-118.0) scale(1.35,0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M220,126 Q226,77.0 226,28"/><path class="lf" transform="translate(223.6,83.0) rotate(-62.0) scale(1.35,0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(221.8,111.0) rotate(-118.0) scale(1.05,0.50)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M268,126 Q262,84.0 262,42"/><path class="lf" transform="translate(264.4,90.0) rotate(-118.0) scale(1.35,0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">06 &middot; Grass</p><div class="dv dv-06" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" style="stroke-width:2.2" d="M112,132 Q100.6,94.80000000000001 74,70"/><path class="o" style="stroke-width:2.2" d="M112,132 Q104.8,85.2 88,54"/><path class="o" style="stroke-width:2.2" d="M112,132 Q108.7,78.0 101,42"/><path class="o" style="stroke-width:2.2" d="M112,132 Q112.0,74.4 112,36"/><path class="o" style="stroke-width:2.2" d="M112,132 Q115.3,79.2 123,44"/><path class="o" style="stroke-width:2.2" d="M112,132 Q119.2,87.6 136,58"/><path class="o" style="stroke-width:2.2" d="M112,132 Q123.4,97.2 150,74"/><path class="o" style="stroke-width:2.2" d="M248,132 Q236.6,94.80000000000001 210,70"/><path class="o" style="stroke-width:2.2" d="M248,132 Q240.8,85.2 224,54"/><path class="o" style="stroke-width:2.2" d="M248,132 Q244.7,78.0 237,42"/><path class="o" style="stroke-width:2.2" d="M248,132 Q248.0,74.4 248,36"/><path class="o" style="stroke-width:2.2" d="M248,132 Q251.3,79.2 259,44"/><path class="o" style="stroke-width:2.2" d="M248,132 Q255.2,87.6 272,58"/><path class="o" style="stroke-width:2.2" d="M248,132 Q259.4,97.2 286,74"/></svg></div></section>
+<section class="item"><p class="label">07 &middot; Fern</p><div class="dv dv-07" role="presentation"><svg viewBox="0 0 300 144" aria-hidden="true"><path class="o" style="stroke-width:2.8" d="M58.0,116.0 C140.0,84.0 212.0,52.0 264.0,26.0"/><path class="pn" d="M82.3,106.4 Q83.4,79.8 90.4,61.1"/><path class="pn" d="M82.3,106.4 Q97.8,116.0 119.4,133.6"/><path class="pn" d="M110.6,94.9 Q111.0,70.4 117.5,53.9"/><path class="pn" d="M110.6,94.9 Q124.5,103.1 144.4,119.2"/><path class="pn" d="M137.8,83.6 Q137.7,61.2 143.7,46.9"/><path class="pn" d="M137.8,83.6 Q150.0,90.3 168.2,105.0"/><path class="pn" d="M163.8,72.4 Q163.3,52.2 168.7,40.0"/><path class="pn" d="M163.8,72.4 Q174.4,77.7 190.9,91.0"/><path class="pn" d="M188.6,61.5 Q187.6,43.4 192.5,33.4"/><path class="pn" d="M188.6,61.5 Q197.4,65.4 212.2,77.3"/><path class="pn" d="M212.1,50.9 Q210.6,35.0 215.1,27.1"/><path class="pn" d="M212.1,50.9 Q219.1,53.4 232.1,64.0"/><path class="pn" d="M232.3,41.4 Q230.4,27.7 234.5,22.0"/><path class="pn" d="M232.3,41.4 Q237.5,42.7 248.8,52.0"/><path class="pn" d="M247.8,34.0 Q245.6,22.4 249.4,18.9"/><path class="pn" d="M247.8,34.0 Q251.2,34.0 260.7,42.1"/></svg></div></section>
+<section class="item"><p class="label">08 &middot; Twin Sprigs</p><div class="dv dv-08" role="presentation"><svg viewBox="0 0 320 144" aria-hidden="true"><path class="o" d="M160.0,126.0 C120.0,100.0 96.0,64.0 104.0,30.0"/><path class="lf" transform="translate(125.4,96.5) rotate(-185.0) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(125.4,96.5) rotate(-77.0) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(108.7,71.0) rotate(-168.1) scale(0.73)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(108.7,71.0) rotate(-60.1) scale(0.73)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(102.7,48.5) rotate(-149.0) scale(0.66)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(102.7,48.5) rotate(-41.0) scale(0.66)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(104.0,30.0) rotate(-76.8) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" d="M160.0,126.0 C200.0,100.0 224.0,64.0 216.0,30.0"/><path class="lf" transform="translate(194.6,96.5) rotate(-103.0) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(194.6,96.5) rotate(5.0) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(211.3,71.0) rotate(-119.9) scale(0.73)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(211.3,71.0) rotate(-11.9) scale(0.73)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(217.3,48.5) rotate(-139.0) scale(0.66)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(217.3,48.5) rotate(-31.0) scale(0.66)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(216.0,30.0) rotate(-103.2) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><circle class="a" cx="160" cy="128" r="4.2"/></svg></div></section>
+<section class="item"><p class="label">09 &middot; Willow</p><div class="dv dv-09" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" d="M30.0,36.0 C130.0,20.0 250.0,22.0 334.0,40.0"/><path class="o" style="stroke-width:2.4" d="M82,29 C77,55.75945017495262 87,75.55945017495262 82,95.35945017495263"/><path class="lf" transform="translate(78.0,52.5) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(86.0,69.0) rotate(55.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(78.0,85.5) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M142,26 C137,59.145414783496136 147,84.34541478349612 142,109.54541478349614"/><path class="lf" transform="translate(138.0,54.9) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(146.0,75.9) rotate(55.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(138.0,96.9) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M208,26 C203,57.206669499015895 213,80.60666949901588 208,104.00666949901589"/><path class="lf" transform="translate(204.0,53.3) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(212.0,72.8) rotate(55.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(204.0,92.3) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M278,32 C273,54.89394226563639 283,72.29394226563639 278,89.6939422656364"/><path class="lf" transform="translate(274.0,52.0) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(282.0,66.5) rotate(55.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(274.0,81.0) rotate(125.0) scale(0.52)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">10 &middot; Bud</p><div class="dv dv-10" role="presentation"><svg viewBox="0 0 200 144" aria-hidden="true"><path class="o" d="M100.0,130.0 C94.0,100.0 104.0,76.0 100.0,56.0"/><path class="lf" transform="translate(98.2,116.1) rotate(-149.4) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(98.2,116.1) rotate(-37.4) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" d="M100,54 C89,41 89,23 100,10 C111,23 111,41 100,54 Z"/><path class="i" d="M100,49 C95.5,38 95.5,26 100,17"/></svg></div></section>
+<section class="item"><p class="label">11 &middot; Seed Head</p><div class="dv dv-11" role="presentation"><svg viewBox="0 0 240 144" aria-hidden="true"><path class="o" d="M120.0,132.0 C116.0,104.0 122.0,80.0 120.0,60.0"/><path class="lf" transform="translate(118.7,117.3) rotate(-148.1) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(118.7,117.3) rotate(-36.1) scale(0.80)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="89.7" y2="39.6"/><circle class="f" cx="89.7" cy="39.6" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="93.3" y2="30.3"/><circle class="f" cx="93.3" cy="30.3" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="99.7" y2="22.6"/><circle class="f" cx="99.7" cy="22.6" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="108.1" y2="17.4"/><circle class="f" cx="108.1" cy="17.4" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="117.8" y2="15.1"/><circle class="f" cx="117.8" cy="15.1" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="127.8" y2="16.0"/><circle class="f" cx="127.8" cy="16.0" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="136.9" y2="20.0"/><circle class="f" cx="136.9" cy="20.0" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="144.3" y2="26.7"/><circle class="f" cx="144.3" cy="26.7" r="3.0"/><line class="o" style="stroke-width:2" x1="120" y1="46" x2="149.1" y2="35.4"/><circle class="f" cx="149.1" cy="35.4" r="3.0"/><circle class="f" cx="120" cy="46" r="3.2"/></svg></div></section>
+<section class="item"><p class="label">12 &middot; Tendril</p><div class="dv dv-12" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" style="stroke-width:2.6" d="M20,110 C110,98 250,120 340,106"/><path class="o" style="stroke-width:2.4" d="M90,106 C88,92 92,82 90,72"/><path class="o" style="stroke-width:2.4" d="M90.0,73.0 L86.4,72.2 L83.2,70.4 L80.7,67.8 L79.2,64.7 L78.6,61.4 L78.9,58.1 L80.2,55.2 L82.2,52.8 L84.8,51.1 L87.6,50.2 L90.5,50.3 L93.1,51.1 L95.4,52.6 L97.0,54.6 L98.0,57.0 L98.3,59.4 L97.8,61.7 L96.7,63.7 L95.2,65.3 L93.3,66.3 L91.3,66.7 L89.4,66.5 L87.7,65.7 L86.3,64.6 L85.4,63.2 L84.9,61.6 L85.0,60.1 L85.4,58.8 L86.2,57.7 L87.3,56.9 L88.4,56.5 L89.5,56.5 L90.5,56.8 L91.2,57.3 L91.8,58.0 L92.0,58.8"/><path class="o" style="stroke-width:2.4" d="M180,106 C178,92 182,82 180,72"/><path class="o" style="stroke-width:2.4" d="M180.0,73.0 L176.4,72.2 L173.2,70.4 L170.7,67.8 L169.2,64.7 L168.6,61.4 L168.9,58.1 L170.2,55.2 L172.2,52.8 L174.8,51.1 L177.6,50.2 L180.5,50.3 L183.1,51.1 L185.4,52.6 L187.0,54.6 L188.0,57.0 L188.3,59.4 L187.8,61.7 L186.7,63.7 L185.2,65.3 L183.3,66.3 L181.3,66.7 L179.4,66.5 L177.7,65.7 L176.3,64.6 L175.4,63.2 L174.9,61.6 L175.0,60.1 L175.4,58.8 L176.2,57.7 L177.3,56.9 L178.4,56.5 L179.5,56.5 L180.5,56.8 L181.2,57.3 L181.8,58.0 L182.0,58.8"/><path class="o" style="stroke-width:2.4" d="M270,106 C268,92 272,82 270,72"/><path class="o" style="stroke-width:2.4" d="M270.0,73.0 L266.4,72.2 L263.2,70.4 L260.7,67.8 L259.2,64.7 L258.6,61.4 L258.9,58.1 L260.2,55.2 L262.2,52.8 L264.8,51.1 L267.6,50.2 L270.5,50.3 L273.1,51.1 L275.4,52.6 L277.0,54.6 L278.0,57.0 L278.3,59.4 L277.8,61.7 L276.7,63.7 L275.2,65.3 L273.3,66.3 L271.3,66.7 L269.4,66.5 L267.7,65.7 L266.3,64.6 L265.4,63.2 L264.9,61.6 L265.0,60.1 L265.4,58.8 L266.2,57.7 L267.3,56.9 L268.4,56.5 L269.5,56.5 L270.5,56.8 L271.2,57.3 L271.8,58.0 L272.0,58.8"/><path class="lf" transform="translate(135.0,103.0) rotate(-24.0) scale(0.50)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(228.0,108.0) rotate(-156.0) scale(0.50)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">13 &middot; Heart-Leaf Vine</p><div class="dv dv-13" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" d="M24.0,78.0 C110.0,50.0 180.0,90.0 252.0,60.0"/><path class="o" d="M252.0,60.0 C290.0,44.0 316.0,52.0 338.0,68.0"/><path class="lf" transform="translate(78.6,67.9) rotate(-65.4) scale(0.95)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(138.8,69.4) rotate(66.2) scale(0.95)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(195.9,71.6) rotate(-64.3) scale(0.95)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(241.2,64.0) rotate(44.0) scale(0.95)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(292.4,51.3) rotate(63.2) scale(0.90)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">14 &middot; Pods</p><div class="dv dv-14" role="presentation"><svg viewBox="0 0 300 144" aria-hidden="true"><path class="o" d="M40.0,46.0 C110.0,24.0 190.0,24.0 260.0,46.0"/><line class="o" style="stroke-width:2.2" x1="100.7" y1="32.7" x2="100.7" y2="52.7"/><g transform="translate(100.7,67.9) scale(0.95)"><path class="o" style="stroke-width:2.4" d="M0,-16 C7,-9 7,9 0,16 C-7,9 -7,-9 0,-16 Z"/><line class="i" x1="0" y1="-11" x2="0" y2="11"/></g><line class="o" style="stroke-width:2.2" x1="150.0" y1="29.5" x2="150.0" y2="55.5"/><g transform="translate(150.0,73.1) scale(1.1)"><path class="o" style="stroke-width:2.4" d="M0,-16 C7,-9 7,9 0,16 C-7,9 -7,-9 0,-16 Z"/><line class="i" x1="0" y1="-11" x2="0" y2="11"/></g><line class="o" style="stroke-width:2.2" x1="199.3" y1="32.7" x2="199.3" y2="52.7"/><g transform="translate(199.3,67.9) scale(0.95)"><path class="o" style="stroke-width:2.4" d="M0,-16 C7,-9 7,9 0,16 C-7,9 -7,-9 0,-16 Z"/><line class="i" x1="0" y1="-11" x2="0" y2="11"/></g><path class="lf" transform="translate(61.3,40.1) rotate(-71.8) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(238.7,40.1) rotate(71.8) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">15 &middot; Round-Leaf Sprig</p><div class="dv dv-15" role="presentation"><svg viewBox="0 0 260 144" aria-hidden="true"><path class="o" d="M130.0,132.0 C120.0,92.0 138.0,56.0 130.0,26.0"/><line class="o" style="stroke-width:2.2" x1="126.9" y1="103.9" x2="113.9" y2="100.9"/><circle class="o" style="stroke-width:2.4" cx="105.9" cy="100.9" r="10.5"/><line class="o" style="stroke-width:2.2" x1="128.5" y1="81.7" x2="141.5" y2="78.7"/><circle class="o" style="stroke-width:2.4" cx="149.5" cy="78.7" r="10.5"/><line class="o" style="stroke-width:2.2" x1="131.1" y1="60.6" x2="118.1" y2="57.6"/><circle class="o" style="stroke-width:2.4" cx="110.1" cy="57.6" r="10.5"/><line class="o" style="stroke-width:2.2" x1="132.1" y1="41.8" x2="145.1" y2="38.8"/><circle class="o" style="stroke-width:2.4" cx="153.1" cy="38.8" r="10.5"/><circle class="o" style="stroke-width:2.4" cx="130.0" cy="18.0" r="10"/></svg></div></section>
+<section class="item"><p class="label">16 &middot; Needles</p><div class="dv dv-16" role="presentation"><svg viewBox="0 0 260 144" aria-hidden="true"><path class="o" style="stroke-width:2.6" d="M130.0,130.0 C126.0,84.0 134.0,44.0 130.0,22.0"/><line class="pn" x1="129.0" y1="111.1" x2="117.7" y2="98.3"/><line class="pn" x1="129.0" y1="111.1" x2="139.6" y2="97.8"/><line class="pn" x1="128.9" y1="95.5" x2="118.9" y2="83.2"/><line class="pn" x1="128.9" y1="95.5" x2="139.3" y2="83.5"/><line class="pn" x1="129.3" y1="80.8" x2="120.3" y2="69.1"/><line class="pn" x1="129.3" y1="80.8" x2="139.3" y2="69.9"/><line class="pn" x1="130.0" y1="67.0" x2="121.8" y2="56.0"/><line class="pn" x1="130.0" y1="67.0" x2="139.4" y2="57.0"/><line class="pn" x1="130.7" y1="54.2" x2="123.1" y2="44.2"/><line class="pn" x1="130.7" y1="54.2" x2="139.2" y2="45.0"/><line class="pn" x1="131.1" y1="42.6" x2="123.9" y2="33.6"/><line class="pn" x1="131.1" y1="42.6" x2="138.7" y2="33.9"/><line class="pn" x1="131.1" y1="33.1" x2="124.1" y2="25.3"/><line class="pn" x1="131.1" y1="33.1" x2="137.5" y2="24.9"/><line class="pn" x1="130.6" y1="26.2" x2="123.9" y2="19.7"/><line class="pn" x1="130.6" y1="26.2" x2="135.8" y2="18.4"/></svg></div></section>
+<section class="item"><p class="label">17 &middot; Lavender</p><div class="dv dv-17" role="presentation"><svg viewBox="0 0 220 144" aria-hidden="true"><path class="o" style="stroke-width:2.6" d="M110.0,132.0 C106.0,96.0 112.0,68.0 110.0,54.0"/><path class="lf" transform="translate(108.9,117.4) rotate(-148.6) scale(0.82)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(108.9,117.4) rotate(-36.6) scale(0.82)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.2" transform="translate(99,54) scale(0.68)" d="M0,0 C-6,-8 -6,-18 0,-26 C6,-18 6,-8 0,0 Z"/><path class="o" style="stroke-width:2.2" transform="translate(121,54) scale(0.68)" d="M0,0 C-6,-8 -6,-18 0,-26 C6,-18 6,-8 0,0 Z"/><path class="o" style="stroke-width:2.2" transform="translate(103,66) scale(0.7)" d="M0,0 C-6,-8 -6,-18 0,-26 C6,-18 6,-8 0,0 Z"/><path class="o" style="stroke-width:2.2" transform="translate(117,66) scale(0.7)" d="M0,0 C-6,-8 -6,-18 0,-26 C6,-18 6,-8 0,0 Z"/><path class="a" stroke="var(--ink)" stroke-width="1.6" transform="translate(110,50) scale(0.74)" d="M0,0 C-6,-8 -6,-18 0,-26 C6,-18 6,-8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">18 &middot; Garland</p><div class="dv dv-18" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" d="M30.0,38.0 C120.0,98.0 240.0,98.0 330.0,38.0"/><path class="lf" transform="translate(69.4,61.7) rotate(124.0) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(117.5,77.8) rotate(113.2) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(242.5,77.8) rotate(66.8) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(290.6,61.7) rotate(56.0) scale(0.72)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><line class="o" style="stroke-width:2.2" x1="180.0" y1="83.0" x2="180.0" y2="96.0"/><circle class="a" cx="180.0" cy="102.0" r="4.2"/></svg></div></section>
+<section class="item"><p class="label">19 &middot; Two Leaves</p><div class="dv dv-19" role="presentation"><svg viewBox="0 0 260 144" aria-hidden="true"><path class="o" style="stroke-width:2.6" d="M130,128 C122,110 112,98 104,90"/><path class="o" style="stroke-width:2.6" d="M130,128 C138,110 148,98 156,90"/><g transform="translate(104.0,90.0) rotate(-118.0) scale(2.00)"><path class="lf" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><line class="i" x1="4" y1="0" x2="24" y2="0"/></g><g transform="translate(156.0,90.0) rotate(-62.0) scale(2.00)"><path class="lf" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><line class="i" x1="4" y1="0" x2="24" y2="0"/></g></svg></div></section>
+<section class="item"><p class="label">20 &middot; Sprout</p><div class="dv dv-20" role="presentation"><svg viewBox="0 0 260 144" aria-hidden="true"><line class="g" x1="58" y1="118" x2="202" y2="118"/><path class="o" style="stroke-width:2.8" d="M130,118 C130,102 130,88 130,76"/><path class="lf" transform="translate(130.0,80.0) rotate(200.0) scale(1.05)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(130.0,80.0) rotate(-20.0) scale(1.05)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M130,76 C130,64 139,57 148,61"/></svg></div></section>
+<section class="item"><p class="label">21 &middot; Roots</p><div class="dv dv-21" role="presentation"><svg viewBox="0 0 280 144" aria-hidden="true"><line class="g" x1="36" y1="64" x2="244" y2="64"/><path class="o" style="stroke-width:2.6" d="M140,64 C140,56 140,50 140,44"/><path class="lf" transform="translate(140.0,46.0) rotate(-155.0) scale(0.55)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(140.0,46.0) rotate(-25.0) scale(0.55)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="lf" transform="translate(140.0,42.0) rotate(-90.0) scale(0.50)" d="M0,0 Q12,-11 28,0 Q12,11 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M140,64 Q124,89 82,114"/><path class="o" style="stroke-width:2.6" d="M140,64 Q134,94 120,124"/><path class="o" style="stroke-width:2.6" d="M140,64 Q146,94 162,124"/><path class="o" style="stroke-width:2.6" d="M140,64 Q156,88 200,112"/><path class="o" style="stroke-width:2.2" d="M104,96 Q96,102 90,108"/><path class="o" style="stroke-width:2.2" d="M178,94 Q186,100 192,104"/></svg></div></section>
+<section class="item"><p class="label">22 &middot; Hanging Vine</p><div class="dv dv-22" role="presentation"><svg viewBox="0 0 320 144" aria-hidden="true"><path class="o" d="M30,26 C120,16 220,16 290,26"/><path class="o" style="stroke-width:2.4" d="M90,22 C85,50.8 95,72.4 90,94"/><path class="lf" transform="translate(86.0,43.6) rotate(130.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(94.0,61.6) rotate(50.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(86.0,79.6) rotate(130.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(90.0,94.0) rotate(90.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M160,22 C155,58.800000000000004 165,86.39999999999999 160,114"/><path class="lf" transform="translate(156.0,49.6) rotate(130.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(164.0,72.6) rotate(50.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(156.0,95.6) rotate(130.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(160.0,114.0) rotate(90.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" d="M232,22 C227,48.400000000000006 237,68.19999999999999 232,88"/><path class="lf" transform="translate(228.0,41.8) rotate(130.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(236.0,58.3) rotate(50.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(228.0,74.8) rotate(130.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(232.0,88.0) rotate(90.0) scale(0.55)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">23 &middot; Bare Branch</p><div class="dv dv-23" role="presentation"><svg viewBox="0 0 360 144" aria-hidden="true"><path class="o" style="stroke-width:3.5" d="M30.0,104.0 C130.0,84.0 230.0,58.0 322.0,30.0"/><path class="o" style="stroke-width:2.4" d="M125.7,83.1 Q134.7,66.3 143.6,49.5"/><path class="o" style="stroke-width:2.4" d="M202.4,63.9 Q211.8,51.0 221.2,38.0"/><path class="o" style="stroke-width:2.4" d="M271.6,44.9 Q280.6,35.6 289.7,26.2"/><circle class="a" cx="289.7" cy="26.2" r="3.6"/></svg></div></section>
+<section class="item"><p class="label">24 &middot; Frond</p><div class="dv dv-24" role="presentation"><svg viewBox="0 0 380 144" aria-hidden="true"><path class="o" style="stroke-width:3" d="M24.0,110.0 C140.0,84.0 260.0,52.0 356.0,26.0"/><line class="pn" x1="58.9" y1="102.0" x2="78.2" y2="51.6"/><line class="pn" x1="58.9" y1="102.0" x2="98.4" y2="138.8"/><line class="pn" x1="93.9" y1="93.8" x2="111.3" y2="47.1"/><line class="pn" x1="93.9" y1="93.8" x2="130.6" y2="127.4"/><line class="pn" x1="128.7" y1="85.3" x2="144.4" y2="42.5"/><line class="pn" x1="128.7" y1="85.3" x2="162.5" y2="115.9"/><line class="pn" x1="163.3" y1="76.7" x2="177.4" y2="37.8"/><line class="pn" x1="163.3" y1="76.7" x2="194.2" y2="104.3"/><line class="pn" x1="197.5" y1="68.0" x2="210.0" y2="33.0"/><line class="pn" x1="197.5" y1="68.0" x2="225.3" y2="92.7"/><line class="pn" x1="231.1" y1="59.3" x2="242.0" y2="28.2"/><line class="pn" x1="231.1" y1="59.3" x2="255.8" y2="81.1"/><line class="pn" x1="263.9" y1="50.7" x2="273.3" y2="23.5"/><line class="pn" x1="263.9" y1="50.7" x2="285.5" y2="69.7"/><line class="pn" x1="292.6" y1="43.1" x2="300.6" y2="19.8"/><line class="pn" x1="292.6" y1="43.1" x2="311.2" y2="59.2"/><line class="pn" x1="317.4" y1="36.4" x2="324.0" y2="17.1"/><line class="pn" x1="317.4" y1="36.4" x2="332.8" y2="49.8"/><line class="pn" x1="338.5" y1="30.7" x2="343.7" y2="15.4"/><line class="pn" x1="338.5" y1="30.7" x2="350.7" y2="41.3"/></svg></div></section>
+<section class="item"><p class="label">25 &middot; Wreath</p><div class="dv dv-25" role="presentation"><svg viewBox="0 0 280 144" aria-hidden="true"><path class="o" style="stroke-width:2.6" d="M119.3,112.8 A44,44 0 1 1 160.7,112.8"/><path class="lf" transform="translate(140.0,28.0) rotate(-38.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(158.7,32.0) rotate(-14.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(174.2,43.2) rotate(10.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(183.7,59.8) rotate(34.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(185.7,78.8) rotate(58.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(179.8,97.0) rotate(82.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(167.0,111.2) rotate(106.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(113.0,111.2) rotate(178.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(100.2,97.0) rotate(202.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(94.3,78.8) rotate(226.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(96.3,59.8) rotate(250.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(105.8,43.2) rotate(274.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(121.3,32.0) rotate(298.0) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><circle class="a" cx="140" cy="123" r="4.2"/></svg></div></section>
+<section class="item"><p class="label">26 &middot; Three Sprigs</p><div class="dv dv-26" role="presentation"><svg viewBox="0 0 340 144" aria-hidden="true"><line class="g" x1="30" y1="124" x2="310" y2="124"/><path class="o" style="stroke-width:2.6" d="M92.0,124.0 C88.0,106.0 96.0,84.0 92.0,88.0"/><path class="lf" transform="translate(92.0,88.0) rotate(135.0) scale(0.68)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M170.0,124.0 C166.0,106.0 174.0,84.0 170.0,64.0"/><path class="lf" transform="translate(169.7,97.8) rotate(-140.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(169.7,97.8) rotate(-28.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(170.0,64.0) rotate(-101.3) scale(0.68)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M248.0,124.0 C244.0,106.0 252.0,84.0 248.0,40.0"/><path class="lf" transform="translate(247.7,95.6) rotate(-141.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(247.7,95.6) rotate(-29.6) scale(0.60)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(248.0,40.0) rotate(-95.2) scale(0.68)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/></svg></div></section>
+<section class="item"><p class="label">27 &middot; Fiddlehead</p><div class="dv dv-27" role="presentation"><svg viewBox="0 0 240 144" aria-hidden="true"><path class="o" d="M120.0,132.0 C112.0,100.0 124.0,74.0 121.0,56.0"/><path class="lf" transform="translate(117.3,111.8) rotate(-146.7) scale(0.82)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(117.3,111.8) rotate(-36.7) scale(0.82)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.6" d="M133.1,49.6 L131.6,51.1 L129.9,52.2 L128.1,53.0 L126.2,53.6 L124.3,53.8 L122.5,53.7 L120.7,53.4 L119.0,52.8 L117.5,51.9 L116.2,50.8 L115.1,49.6 L114.3,48.3 L113.6,46.9 L113.2,45.4 L113.1,44.0 L113.2,42.5 L113.5,41.2 L114.0,40.0 L114.7,38.9 L115.5,38.0 L116.5,37.2 L117.4,36.6 L118.5,36.2 L119.5,36.0 L120.6,36.0 L121.5,36.2 L122.4,36.4 L123.2,36.9 L123.9,37.4 L124.4,38.0 L124.8,38.6 L125.1,39.3 L125.2,39.9 L125.2,40.6 L125.1,41.2 L124.9,41.7 L124.6,42.1 L124.3,42.5 L123.9,42.7 L123.5,42.9"/><path class="o" style="stroke-width:2.6" d="M121,56 C121,50 121,46 122,42"/></svg></div></section>
+<section class="item"><p class="label">28 &middot; One Leaf</p><div class="dv dv-28" role="presentation"><svg viewBox="0 0 220 144" aria-hidden="true"><path class="o" style="stroke-width:2.6" d="M110,132 C109,122 108,114 108,106"/><g transform="translate(108,104) rotate(-90) scale(2.6)"><path class="lf" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><line class="i" style="stroke-width:1.1" x1="3" y1="0" x2="26" y2="0"/></g></svg></div></section>
+<section class="item"><p class="label">29 &middot; Bulrush</p><div class="dv dv-29" role="presentation"><svg viewBox="0 0 240 144" aria-hidden="true"><path class="o" style="stroke-width:2.2" d="M112,132 Q88,98 80,46"/><path class="o" style="stroke-width:2.2" d="M116,132 Q132,106 138,74"/><line class="o" style="stroke-width:2.6" x1="114" y1="132" x2="114" y2="30"/><line class="o" style="stroke-width:2" x1="114" y1="32" x2="114" y2="14"/><path class="f" d="M105.5,68 L105.5,42 Q105.5,31 114,31 Q122.5,31 122.5,42 L122.5,68 Q122.5,77 114,77 Q105.5,77 105.5,68 Z"/></svg></div></section>
+<section class="item"><p class="label">30 &middot; Simple Flower</p><div class="dv dv-30" role="presentation"><svg viewBox="0 0 240 144" aria-hidden="true"><path class="o" d="M120.0,132.0 C114.0,98.0 124.0,74.0 120.0,62.0"/><path class="lf" transform="translate(118.1,104.2) rotate(-143.1) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="lf" transform="translate(118.1,104.2) rotate(-33.1) scale(0.85)" d="M0,0 Q10,-8 30,0 Q10,8 0,0 Z"/><path class="o" style="stroke-width:2.4" transform="translate(120,40) rotate(0)" d="M0,-5 C-8,-11 -8,-22 0,-28 C8,-22 8,-11 0,-5 Z"/><path class="o" style="stroke-width:2.4" transform="translate(120,40) rotate(72)" d="M0,-5 C-8,-11 -8,-22 0,-28 C8,-22 8,-11 0,-5 Z"/><path class="o" style="stroke-width:2.4" transform="translate(120,40) rotate(144)" d="M0,-5 C-8,-11 -8,-22 0,-28 C8,-22 8,-11 0,-5 Z"/><path class="o" style="stroke-width:2.4" transform="translate(120,40) rotate(216)" d="M0,-5 C-8,-11 -8,-22 0,-28 C8,-22 8,-11 0,-5 Z"/><path class="o" style="stroke-width:2.4" transform="translate(120,40) rotate(288)" d="M0,-5 C-8,-11 -8,-22 0,-28 C8,-22 8,-11 0,-5 Z"/><circle class="a" stroke="var(--ink)" stroke-width="1.6" cx="120" cy="40" r="5.2"/></svg></div></section>
+</main></body></html>
